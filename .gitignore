@@ -1,0 +1,21 @@
+# Build
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Audit / temp
+dunhuang-jiuquan.com-audit/
+_compress.cjs
+_compress.js
+_write_pages.py
+_dev.cmd

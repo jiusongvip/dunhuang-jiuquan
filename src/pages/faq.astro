@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+
+const faqs = [
+  { q: "How many days do I need for Dunhuang and Jiuquan?", a: "Minimum 4 days: 2-3 in Dunhuang for Mogao Caves, Crescent Lake, and Yadan Geopark, plus 1-2 in Jiuquan for Jiayuguan Fort. With 5 days you can see both cities comfortably. With 7 days add Zhangye Rainbow Mountains (1.5h train from Jiuquan). The high-speed train between Dunhuang and Jiuquan takes only 2.5 hours." },
+  { q: "Do I need a visa to visit Gansu?", a: "Most foreign visitors need a Chinese tourist visa (L visa) before arrival. Apply at your nearest Chinese embassy -- processing takes 4-7 business days. The 144-hour (6-day) transit visa is available through certain cities but does not cover Dunhuang. Your passport must be valid for at least 6 months beyond departure. Check your country's specific requirements on the Chinese embassy website." },
+  { q: "Can I visit Mogao Caves without a guide?", a: "No. All visitors join a guided group tour of 20-25 people. A-ticket holders visit 8 caves over approximately 75 minutes. B-ticket holders visit 4 caves. English-speaking guides are available. Photography is strictly forbidden inside the caves -- no exceptions. Book 1-4 weeks ahead in peak season (May-October)." },
+  { q: "Is Gansu safe for solo travelers?", a: "Yes, very safe. The Silk Road cities are well-policed and tourist-friendly. Violent crime is extremely rare. The main challenges are practical: language barrier outside major hotels, mobile payment setup (install Alipay before arriving), extreme desert heat in summer (35-40C+), and getting lost if you wander off marked paths in Yadan Geopark. The biggest challenge is logistics, not safety." },
+  { q: "Can I use Google Maps in China?", a: "Google Maps has a significant location offset in China and is unreliable. Use Apple Maps (works correctly on iPhones in China), Baidu Maps (Chinese-only), or download offline maps in Maps.me before arriving. Install a VPN before entering China -- Google, Instagram, WhatsApp are all blocked. Astrill and ExpressVPN work reliably in Gansu." },
+  { q: "Which is better: Dunhuang or Jiuquan?", a: "Dunhuang if you can only visit one -- it has the Mogao Caves (UNESCO World Heritage), Crescent Lake, and a vibrant backpacker scene. Jiuquan is essential for history buffs (Jiayuguan Fort, Great Wall terminus) and space enthusiasts (Satellite Launch Center). With 5+ days, visit both -- the train takes only 2.5 hours and you won't regret it." },
+  { q: "What is the best time to visit?", a: "May-June and September-October are ideal with mild 15-28C weather. Avoid July-August (35-40C desert heat, peak domestic tourism). October is perfect but skip Golden Week (Oct 1-7). Winter (Nov-Feb) is cold but sunny with near-empty attractions and half-price hotels -- the Mogao Caves stay 15C inside year-round." },
+  { q: "Do I need to book Mogao Caves in advance?", a: "Yes, absolutely. A-tickets (8 caves + 2 films) sell out 2-4 weeks ahead in peak season (May-October). Book through the official WeChat mini-program (Chinese phone number required), Trip.com (5-15% markup but accepts international cards), or ask your hotel concierge. B-tickets (4 caves) are sold at the gate when A-tickets are gone. Never rely on same-day tickets in peak season." },
+  { q: "How much should I budget per day?", a: "Budget: CNY 400-600/day (hostel, street food, B-tickets, public transport). Mid-range: CNY 600-1000/day (3-star hotel, mix of restaurants, A-tickets, private driver for day trips). Comfort: CNY 1000-2000/day (4-5 star hotel, guided tours, special cave access). Prices in USD are roughly CNY divided by 7." }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  }))
+};
+---
+
+<BaseLayout
+  title="Dunhuang &amp; Jiuquan FAQ 2026 | Frequently Asked Questions"
+  description="Honest answers to the most common questions about visiting Dunhuang and Jiuquan: visas, safety, tickets, transport, food, and more."
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <article class="py-12 md:py-20">
+    <div class="section-container max-w-3xl">
+      <header class="mb-16 reveal">
+        <SectionHeader eyebrow="FAQ" title="Frequently Asked Questions" subtitle="Straight answers from Silk Road travelers. No tourism brochure fluff." center />
+      </header>
+      <!-- Placeholder image - replace with real photography -->
+      <div class="mb-8 rounded-2xl overflow-hidden bg-stone-200">
+        <img src="/images/faq.webp" alt="Dunhuang Travel FAQ" class="w-full h-auto object-cover" width="1200" height="600" loading="lazy" />
+      </div>
+
+      <div class="space-y-3">
+        {faqs.map(({ q, a }) => (
+          <details class="group bg-white rounded-2xl border border-stone-200">
+            <summary class="flex items-center justify-between px-6 py-5 cursor-pointer text-left font-semibold text-stone-900 list-none">
+              {q}
+              <svg class="w-5 h-5 shrink-0 text-stone-400 group-open:rotate-180 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="px-6 pb-5 text-stone-600 text-sm leading-relaxed">{a}</div>
+          </details>
+        ))}
+      </div>
+
+      <div class="mt-12 p-6 bg-stone-50 rounded-2xl border border-stone-200 text-center">
+        <p class="text-sm text-stone-500">Didn't find your answer? Try our <a href="/guide" class="text-mogao-600 hover:text-mogao-700 underline font-semibold">Complete Guide</a> or <a href="/contact" class="text-mogao-600 hover:text-mogao-700 underline font-semibold">Contact Us</a>.</p>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+

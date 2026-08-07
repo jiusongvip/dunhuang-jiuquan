@@ -1,0 +1,129 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+
+const phrases = [
+  {
+    cat: "Getting Around",
+    items: [
+      { en: "Take me to...", zh: "请带我去...", py: "Qǐng dài wǒ qù...", tip: "Show your hotel's Chinese business card to drivers" },
+      { en: "How much?", zh: "多少钱？", py: "Duō shao qián?", tip: "Use for taxis and market purchases" },
+      { en: "Turn on the meter", zh: "请打表", py: "Qǐng dǎ biǎo", tip: "For taxis. Meter = dǎ biǎo" },
+      { en: "Stop here", zh: "停在这里", py: "Tíng zài zhè lǐ", tip: "Point to your destination on a map" },
+      { en: "Where is the train station?", zh: "火车站在哪里？", py: "Huǒ chē zhàn zài nǎ lǐ?", tip: "Use for both classic and high-speed stations" },
+      { en: "High-speed train", zh: "高铁", py: "Gāo tiě", tip: "Dunhuang station has G, D, and C trains" }
+    ]
+  },
+  {
+    cat: "Tickets & Attractions",
+    items: [
+      { en: "One ticket please", zh: "一张票", py: "Yī zhāng piào", tip: "Show your passport — tickets are linked to your ID" },
+      { en: "I have a reservation", zh: "我有预订", py: "Wǒ yǒu yù dìng", tip: "Use at Mogao Caves when you have booked online" },
+      { en: "Is there an English guide?", zh: "有英文导游吗？", py: "Yǒu yīng wén dǎo yóu ma?", tip: "Mogao Caves has English guides — ask at the assembly point" },
+      { en: "What time does it open/close?", zh: "几点开门/关门？", py: "Jǐ diǎn kāi mén / guān mén?", tip: "Times change by season. Confirm at your hotel." }
+    ]
+  },
+  {
+    cat: "Food & Eating",
+    items: [
+      { en: "I'd like to order", zh: "我要点菜", py: "Wǒ yào diǎn cài", tip: "Many restaurants use QR code menus — scan with WeChat" },
+      { en: "Not spicy please", zh: "不要辣", py: "Bù yào là", tip: "Gansu food is not very spicy, but it helps to say this" },
+      { en: "Vegetarian only", zh: "我吃素", py: "Wǒ chī sù", tip: "Halal restaurants (清真) are abundant in Gansu and often have vegetable options" },
+      { en: "The bill please", zh: "买单", py: "Mǎi dān", tip: "Or use the international hand signal (writing in the air)" },
+      { en: "Bottled water", zh: "矿泉水", py: "Kuàng quán shuǐ", tip: "Do not drink tap water anywhere in Gansu" },
+      { en: "Donkey meat noodles", zh: "驴肉黄面", py: "Lǘ ròu huáng miàn", tip: "Dunhuang's signature dish — you must try this" }
+    ]
+  },
+  {
+    cat: "Hotel & Money",
+    items: [
+      { en: "I have a reservation", zh: "我有预订", py: "Wǒ yǒu yù dìng", tip: "Show your Trip.com or Ctrip confirmation" },
+      { en: "Do you accept foreign cards?", zh: "可以用外国卡吗？", py: "Kě yǐ yòng wài guó kǎ ma?", tip: "Most places use WeChat Pay or Alipay. Link your card before arriving." },
+      { en: "WiFi password", zh: "WiFi密码", py: "Wifi mì mǎ", tip: "Hotels will write it down for you" },
+      { en: "ATM / Bank of China", zh: "中国银行", py: "Zhōng guó yín háng", tip: "Accepts foreign cards. ICBC (工商银行) also works." }
+    ]
+  },
+  {
+    cat: "Emergency & Help",
+    items: [
+      { en: "Help!", zh: "救命！", py: "Jiù mìng!", tip: "Only for genuine emergencies" },
+      { en: "Call the police", zh: "叫警察", py: "Jiào jǐng chá", tip: "Police number: 110. Ambulance: 120. Fire: 119." },
+      { en: "I'm lost", zh: "我迷路了", py: "Wǒ mí lù le", tip: "Show your hotel card. Most Chinese will help you find your way." },
+      { en: "I need a doctor", zh: "我需要医生", py: "Wǒ xū yào yī shēng", tip: "Major hotels have English-speaking staff who can assist" },
+      { en: "Where is the bathroom?", zh: "洗手间在哪里？", py: "Xǐ shǒu jiān zài nǎ lǐ?", tip: "Squat toilets are standard outside of hotels. Carry your own tissue." }
+    ]
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Essential Chinese Phrases for Dunhuang & Jiuquan Travelers",
+  "description": "30 essential Chinese phrases with pinyin for Silk Road travelers: transport, food, hotels, tickets, and emergencies. Printable guide for your phone."
+};
+---
+
+<BaseLayout
+  title="Essential Chinese Phrases for Dunhuang &amp; Jiuquan 2026 | Printable Guide"
+  description="30 essential Chinese phrases with pinyin for Silk Road travelers: transport, food, hotels, tickets, and emergencies. Save to your phone or print before you go."
+  author="Dunhuang &amp; Jiuquan Guide Team"
+  datePublished="2026-08-07"
+  dateModified="2026-08-07"
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <article class="py-12 md:py-20">
+    <div class="section-container max-w-3xl">
+      <header class="mb-8 reveal">
+        <SectionHeader
+          eyebrow="Language Aid"
+          title="Essential Chinese Phrases for the Silk Road"
+          subtitle="30 phrases you will actually use in Dunhuang and Jiuquan. Pinyin included. No textbook fluff — just what works on the ground."
+        />
+      </header>
+      <!-- Placeholder image - replace with real photography -->
+      <div class="mb-8 rounded-2xl overflow-hidden bg-stone-200">
+        <img src="/images/survival-phrases.webp" alt="Chinese Survival Phrases" class="w-full h-auto object-cover" width="1200" height="600" loading="lazy" />
+      </div>
+
+      <div class="bg-amber-50 rounded-2xl p-5 border border-amber-200 mb-12 reveal">
+        <p class="text-sm text-amber-800 font-semibold mb-1">How to use this page</p>
+        <p class="text-sm text-amber-700">Show the Chinese characters to locals. Try the pinyin if you are comfortable. Outside of major hotels and Mogao Caves, English is rare in Gansu. These phrases will get you through 90% of situations. Save this page offline before you go — cell signal can be spotty in the desert.</p>
+      </div>
+
+      {phrases.map(({ cat, items }) => (
+        <section class="mb-12 reveal">
+          <h2 class="text-xl font-bold tracking-tight text-stone-900 mb-5">{cat}</h2>
+          <div class="space-y-3">
+            {items.map(({ en, zh, py, tip }) => (
+              <div class="bg-white rounded-xl border border-stone-200 p-4 hover:border-stone-300 transition-colors">
+                <div class="flex items-start justify-between gap-4 mb-1">
+                  <p class="font-semibold text-stone-900 text-sm">{en}</p>
+                  <span class="shrink-0 text-xs text-stone-400 font-mono">{py}</span>
+                </div>
+                <p class="text-lg text-mogao-700 font-medium mb-1">{zh}</p>
+                <p class="text-xs text-stone-400">{tip}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      <div class="bg-stone-900 text-stone-200 rounded-2xl p-8 text-center reveal">
+        <h2 class="text-xl font-bold text-white mb-3">A Note on Language in Gansu</h2>
+        <p class="text-sm text-stone-400 leading-relaxed mb-3">English is spoken at major attractions (Mogao Caves, Crescent Lake, Jiayuguan Fort) and international hotel chains. In taxis, small restaurants, night markets, and train stations, <strong class="text-stone-300">assume zero English.</strong> A translation app (Google Translate with offline Chinese pack, or Baidu Translate) plus this page will handle everything. Most Chinese people are patient with foreign visitors trying to communicate — a smile and pointing goes a long way.</p>
+        <p class="text-sm text-stone-500">Download an offline translation app before you enter China. Google Translate needs a VPN to work.</p>
+      </div>
+
+      <div class="mt-12 text-center reveal">
+        <a href="/guide" class="inline-flex items-center gap-2 rounded-xl bg-mogao-600 px-6 py-3 text-sm font-semibold text-white hover:bg-mogao-700 transition-all">
+          Back to Complete Guide
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+

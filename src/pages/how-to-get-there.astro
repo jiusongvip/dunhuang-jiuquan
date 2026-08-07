@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"How to Get to Dunhuang & Jiuquan (2026)","description":"Complete transportation guide: flights, high-speed trains, buses, private cars. Routes from Lanzhou, Xi'an, Beijing, and within Gansu Province.","datePublished":"2026-07-01","dateModified":"2026-08-07"}]};
+
+const dunhuangOptions = [
+  { method: "By Air", duration: "2-4 hours from major cities", cost: "CNY 500-2000", steps: ["Dunhuang Mogao International Airport (DNH) has domestic flights from Beijing, Xi'an, Lanzhou, Chengdu, and Urumqi", "Most international travelers fly into Lanzhou (LHW) and connect by train (6-8 hours)", "Airport is 13 km from Dunhuang city center. Airport shuttle bus CNY 10, taxi CNY 30-40"] },
+  { method: "By High-Speed Train", duration: "6-8 hours from Lanzhou", cost: "CNY 300-400", steps: ["Dunhuang Station is 10 km from city center. Bus No. 3 connects to the city (CNY 2)", "High-speed line opened in 2023. Connects to Lanzhou, Zhangye, and Jiayuguan/Jiuquan", "Book on Trip.com or at the station. Second class seats are comfortable with AC"] },
+  { method: "By Long-Distance Bus", duration: "12-14 hours from Lanzhou", cost: "CNY 150-200", steps: ["Overnight sleeper buses available from Lanzhou Bus Station", "Slower and less comfortable than trains. Use only if trains are sold out", "Dunhuang Bus Station is on Mingshan Road in the city center"] },
+];
+
+const dunhuangToJiuquan = [
+  { method: "High-Speed Train", duration: "2.5 hours", cost: "CNY 150-200", freq: "10+ daily", best: true, note: "Clear winner. Comfortable second class seats. Power outlets at every seat. Book on Trip.com or at station." },
+  { method: "Long-Distance Bus", duration: "5-6 hours", cost: "CNY 60-80", freq: "4-6 daily", best: false, note: "Budget pick. Slower but scenic route along the Hexi Corridor. Depart from Dunhuang Bus Station." },
+  { method: "Private Car", duration: "4-5 hours", cost: "CNY 600-900", freq: "By arrangement", best: false, note: "Most flexible. Stop anywhere along the route. Arrange through hotel or Didi. Good for photography stops." },
+  { method: "Flight", duration: "1 hour", cost: "CNY 800-1500", freq: "1-2 daily", best: false, note: "Fastest but rare. Only makes sense if connecting to an onward flight. DNH to JGN." },
+];
+---
+
+<BaseLayout title="How to Get to Dunhuang &amp; Jiuquan 2026 | Complete Transport Guide" description="Every way to reach Dunhuang and Jiuquan: flights, high-speed trains, buses, private cars. Routes from Lanzhou, Xi'an, Beijing, and between the two cities." author="Dunhuang &amp; Jiuquan Guide Team" datePublished="2026-07-01" dateModified="2026-08-07">
+<slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+<div class="section-container max-w-3xl pb-20 md:pb-28">
+  <header class="pt-12 md:pt-20 mb-16 reveal">
+    <SectionHeader eyebrow="Transportation" title="How to Get to Dunhuang &amp; Jiuquan" subtitle="Every way to reach the Silk Road: flights, trains, buses, and driving routes. Pros and cons for each option, with current prices." />
+  </header>
+      <!-- Placeholder image - replace with real photography -->
+      <div class="mb-8 rounded-2xl overflow-hidden bg-stone-200">
+        <img src="/images/how-to-get-there.webp" alt="How to Get to Dunhuang and Jiuquan" class="w-full h-auto object-cover" width="1200" height="600" loading="lazy" />
+      </div>
+
+  <section class="mb-16 reveal">
+    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Getting to Dunhuang</h2>
+    <div class="space-y-5">
+      {dunhuangOptions.map(({ method, duration, cost, steps }) => (
+        <div class="bg-white rounded-2xl border border-stone-200 p-6">
+          <h3 class="font-semibold text-stone-900">{method} <span class="text-xs font-normal text-stone-400">({duration}, {cost})</span></h3>
+          <ul class="mt-2 space-y-1.5 text-sm text-stone-500">
+            {steps.map((s) => (<li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 shrink-0"></span>{s}</li>))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mb-16 reveal">
+    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Dunhuang to Jiuquan: Route Comparison</h2>
+    <div class="rounded-xl border border-stone-200 overflow-hidden">
+      <table class="w-full text-sm">
+        <thead class="bg-stone-50 border-b border-stone-200">
+          <tr>
+            <th class="text-left px-5 py-3 font-medium text-stone-700">Method</th>
+            <th class="text-center px-5 py-3 font-medium text-stone-700">Duration</th>
+            <th class="text-center px-5 py-3 font-medium text-stone-700">Cost (CNY)</th>
+            <th class="text-center px-5 py-3 font-medium text-stone-700 hidden sm:table-cell">Frequency</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-stone-100">
+          {dunhuangToJiuquan.map((r) => (
+            <tr class="hover:bg-stone-50">
+              <td class="px-5 py-3 font-medium">{r.best ? <span class="text-mogao-600">{r.method}</span> : r.method}{r.best && <span class="ml-2 rounded-full bg-mogao-50 px-2 py-0.5 text-[10px] font-semibold text-mogao-600">Best</span>}</td>
+              <td class="text-center px-5 py-3 text-stone-600">{r.duration}</td>
+              <td class="text-center px-5 py-3 text-stone-600">{r.cost}</td>
+              <td class="text-center px-5 py-3 text-stone-500 text-xs hidden sm:table-cell">{r.freq}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-3 text-xs text-stone-400">The high-speed train is the clear winner for most travelers. Book on Trip.com, Ctrip, or at the station.</p>
+  </section>
+
+  <div class="bg-mogao-600 text-white rounded-2xl p-8 text-center reveal">
+    <h3 class="text-xl font-display font-semibold">Plan your route</h3>
+    <p class="mt-2 text-mogao-100 text-sm">Our trip planner helps you pick the best connections between cities.</p>
+    <a href="/#planner" class="inline-flex items-center gap-2 mt-5 px-5 py-3 bg-white text-mogao-700 rounded-xl text-sm font-semibold hover:bg-mogao-50 transition-colors">Build My Route</a>
+  </div>
+</div>
+</BaseLayout>
+

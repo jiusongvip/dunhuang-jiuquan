@@ -1,0 +1,212 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+
+const seasons = [
+  {
+    name: "Spring (Mar-May)",
+    temp: "5-28°C",
+    icon: "🌸",
+    items: [
+      { item: "Light jacket or windbreaker", why: "Temperature swings 15°C between day and night", essential: true },
+      { item: "Long pants and jeans", why: "Mornings are still cold; protects from sand", essential: true },
+      { item: "Short-sleeve shirts for daytime", why: "May afternoons reach 28°C", essential: false },
+      { item: "Sunscreen SPF 50+ PA++++", why: "Gobi sun is fierce even in spring", essential: true },
+      { item: "Sunglasses with UV protection", why: "Glare off sand dunes is intense", essential: true },
+      { item: "Scarf or buff (neck gaiter)", why: "Protection from occasional sandstorms in March-April", essential: true },
+      { item: "Comfortable walking shoes", why: "Dune climbing + walking on fortress walls", essential: true },
+      { item: "Lip balm with SPF", why: "Desert air has single-digit humidity", essential: true },
+      { item: "Light sweater or fleece", why: "For Mogao Caves (15°C inside year-round)", essential: false },
+      { item: "Rain jacket (lightweight)", why: "Rare rain in April-May, but possible", essential: false }
+    ]
+  },
+  {
+    name: "Summer (Jun-Aug)",
+    temp: "20-40°C",
+    icon: "☀️",
+    items: [
+      { item: "Lightweight, loose-fitting clothes", why: "Cotton or linen. Nothing tight in 40°C heat.", essential: true },
+      { item: "Wide-brimmed sun hat", why: "Baseball caps leave your neck exposed. Get full coverage.", essential: true },
+      { item: "Sunscreen SPF 50+ (reapply every 2h)", why: "You will sweat it off. Bring double what you think you need.", essential: true },
+      { item: "UV-protective arm sleeves", why: "Popular in China for a reason. Better than reapplying sunscreen.", essential: false },
+      { item: "Sunglasses (polarized)", why: "Reduces glare and eye strain in extreme brightness", essential: true },
+      { item: "Electrolyte powder or tablets", why: "Heat exhaustion risk is real. Add to bottled water.", essential: true },
+      { item: "Cooling towel", why: "Wet it, snap it, wear it around your neck. Works surprisingly well.", essential: false },
+      { item: "Light jacket for Mogao Caves", why: "Caves stay 15°C. The 25°C drop from outside feels freezing.", essential: true },
+      { item: "Sandals (for evenings only)", why: "Do not wear sandals on dunes — sand burns feet at midday.", essential: false },
+      { item: "Insect repellent", why: "Mosquitoes near Crescent Lake at dusk", essential: false }
+    ]
+  },
+  {
+    name: "Autumn (Sep-Oct)",
+    temp: "5-25°C",
+    icon: "🍂",
+    items: [
+      { item: "Layers: t-shirt + fleece + windbreaker", why: "Start cold, strip layers as day warms up. Most versatile system.", essential: true },
+      { item: "Warm hat for mornings", why: "October mornings can be 5°C. Wind chill on the Great Wall is real.", essential: true },
+      { item: "Sunscreen SPF 50+", why: "Autumn sun is still strong at Gobi Desert altitude", essential: true },
+      { item: "Comfortable hiking shoes", why: "Perfect season for walking. You will do more outdoor exploring than summer.", essential: true },
+      { item: "Sunglasses", why: "Low-angle autumn sun is blinding at sunrise/sunset", essential: true },
+      { item: "Lip balm and hand cream", why: "Humidity drops below 20% in October", essential: true },
+      { item: "Camera + tripod", why: "Autumn has the best light for photography. Golden hour is magic.", essential: false },
+      { item: "Thermos for hot water/tea", why: "Chinese hotels provide kettles. Carry hot tea for cold mornings.", essential: false }
+    ]
+  },
+  {
+    name: "Winter (Nov-Feb)",
+    temp: "-10 to 5°C",
+    icon: "❄️",
+    items: [
+      { item: "Thermal base layers (top + bottom)", why: "Non-negotiable. Uniqlo Heattech or equivalent.", essential: true },
+      { item: "Down jacket or heavy parka", why: "-10°C with Gobi wind is bitter. Hotel heating is good, outdoors is brutal.", essential: true },
+      { item: "Warm hat that covers ears", why: "Ears freeze first. Wind on Jiayuguan Fort walls is intense.", essential: true },
+      { item: "Insulated gloves", why: "Touchscreen-compatible if you want to take photos", essential: true },
+      { item: "Warm socks (wool, 2 pairs)", why: "Cold feet ruin any trip. Change socks midday if they get damp.", essential: true },
+      { item: "Insulated winter boots", why: "Sand freezes in winter. Regular sneakers are not warm enough.", essential: true },
+      { item: "Scarf or neck gaiter", why: "Pull up over your face in wind. Gobi winter wind is painful.", essential: true },
+      { item: "Moisturizer (heavy-duty)", why: "Central heating + desert dryness = cracked skin. Apply twice daily.", essential: true },
+      { item: "Sunscreen + sunglasses", why: "Snow on dunes reflects UV intensely. Yes, even in winter.", essential: true },
+      { item: "Power bank", why: "Phone batteries drain faster in cold. Keep it in an inner pocket.", essential: true }
+    ]
+  }
+];
+
+const alwaysBring = [
+  { item: "Passport (original, not a copy)", why: "Required for hotels, trains, and every attraction ticket" },
+  { item: "Chinese SIM card or eSIM", why: "Buy at Dunhuang Airport or install Airalo/Nomad before departure" },
+  { item: "Alipay app with linked Visa/Mastercard", why: "99% of payments in China are mobile. Cash is backup only." },
+  { item: "VPN installed and tested", why: "Install BEFORE entering China. Astrill and ExpressVPN work in Gansu." },
+  { item: "Offline maps (Maps.me or Apple Maps)", why: "Google Maps has location offset. Download Gansu offline maps." },
+  { item: "Ziploc bags (gallon size)", why: "Protect phone, passport, and camera from sand. Multiple uses." },
+  { item: "Reusable water bottle", why: "Buy bottled water and refill. 2-3L per person per day in summer." },
+  { item: "Basic first aid kit", why: "Band-aids, painkillers, anti-diarrheal. Pharmacies exist but language barrier is high." },
+  { item: "Hotel business card with Chinese address", why: "Show to taxi drivers. Single most useful item for getting around." },
+  { item: "Tissue packs (small)", why: "Public bathrooms rarely have toilet paper. Carry your own. Always." }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Dunhuang & Jiuquan Packing List 2026 | What to Pack for the Gobi Desert by Season",
+  "description": "Complete season-by-season packing list for Dunhuang and Jiuquan: what to wear in the Gobi Desert, essential gear, and 10 items every Silk Road traveler needs regardless of season."
+};
+---
+
+<BaseLayout
+  title="Dunhuang &amp; Jiuquan Packing List 2026 | What to Pack by Season"
+  description="Season-by-season packing list for the Gobi Desert: spring layers, summer survival gear, autumn photography kit, winter cold-weather essentials. 10 must-bring items for every Silk Road traveler."
+  author="Dunhuang &amp; Jiuquan Guide Team"
+  datePublished="2026-08-07"
+  dateModified="2026-08-07"
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <article class="py-12 md:py-20">
+    <div class="section-container max-w-3xl">
+      <header class="mb-8 reveal">
+        <SectionHeader
+          eyebrow="Packing Guide"
+          title="What to Pack for the Gobi Desert"
+          subtitle="Season-by-season packing list for Dunhuang and Jiuquan. Desert-tested, not generic travel advice. Includes the 10 items every Silk Road traveler needs."
+        />
+      </header>
+      <!-- Placeholder image - replace with real photography -->
+      <div class="mb-8 rounded-2xl overflow-hidden bg-stone-200">
+        <img src="/images/packing-list.webp" alt="Desert Travel Packing List" class="w-full h-auto object-cover" width="1200" height="600" loading="lazy" />
+      </div>
+
+      <!-- Always Bring -->
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-6">
+          10 Things Every Silk Road Traveler Needs
+        </h2>
+        <p class="text-stone-500 text-sm mb-5">Regardless of season, pack these. We have learned some of these the hard way.</p>
+        <div class="space-y-3">
+          {alwaysBring.map(({ item, why }, i) => (
+            <div class="bg-white rounded-xl border border-stone-200 p-4 hover:border-mogao-200 transition-colors">
+              <div class="flex items-start gap-3">
+                <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-mogao-100 text-xs font-bold text-mogao-700">{i + 1}</span>
+                <div>
+                  <p class="font-semibold text-stone-900 text-sm">{item}</p>
+                  <p class="text-xs text-stone-400 mt-0.5">{why}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Season by Season -->
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-6">
+          Season-by-Season Packing Lists
+        </h2>
+        <p class="text-stone-500 text-sm mb-6">Pick your travel season. Each list is built around the specific conditions you will face in the Gobi Desert. <span class="rounded-full bg-mogao-50 px-2 py-0.5 text-xs font-semibold text-mogao-600">Essential</span> items are marked — do not skip these.</p>
+
+        {seasons.map(({ name, temp, icon, items }) => (
+          <div class="mb-10 bg-stone-50 rounded-2xl border border-stone-200 overflow-hidden">
+            <div class="bg-white px-6 py-4 border-b border-stone-100 flex items-center gap-3">
+              <span class="text-2xl">{icon}</span>
+              <div>
+                <h3 class="font-semibold text-stone-900 text-lg">{name}</h3>
+                <p class="text-xs text-stone-400">Typical temperature range: {temp}</p>
+              </div>
+            </div>
+            <div class="p-4 md:p-6 space-y-2">
+              {items.map(({ item, why, essential }) => (
+                <div class="flex items-start gap-3 bg-white rounded-xl p-4 border border-stone-100 hover:border-mogao-200 transition-colors">
+                  <div class="shrink-0 mt-0.5">
+                    {essential ? (
+                      <span class="rounded-full bg-mogao-50 px-2 py-0.5 text-[10px] font-semibold text-mogao-600">Essential</span>
+                    ) : (
+                      <span class="rounded-full bg-stone-100 px-2 py-0.5 text-[10px] font-medium text-stone-400">Nice to have</span>
+                    )}
+                  </div>
+                  <div>
+                    <p class="font-semibold text-stone-900 text-sm">{item}</p>
+                    <p class="text-xs text-stone-400 mt-0.5">{why}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </section>
+
+      <!-- Desert Survival Tips -->
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-6">
+          Desert Survival Tips
+        </h2>
+        <div class="space-y-3">
+          <div class="bg-white rounded-xl border border-stone-200 p-5">
+            <h3 class="font-semibold text-stone-900">Hydration Rule</h3>
+            <p class="mt-1 text-sm text-stone-500">Drink <strong class="text-stone-700">500ml of water per hour</strong> when active outdoors in summer. If your urine is dark yellow, you are already dehydrated. Bottled water is cheap (CNY 2-3 for 500ml). Stock up at convenience stores.</p>
+          </div>
+          <div class="bg-white rounded-xl border border-stone-200 p-5">
+            <h3 class="font-semibold text-stone-900">Sand Management</h3>
+            <p class="mt-1 text-sm text-stone-500">Sand gets into <strong class="text-stone-700">everything:</strong> shoes, phone ports, camera lenses, zippers. Ziploc bags are your best friend. Shake out your shoes before putting them on. Clean your phone's charging port with a toothpick every evening.</p>
+          </div>
+          <div class="bg-white rounded-xl border border-stone-200 p-5">
+            <h3 class="font-semibold text-stone-900">Temperature Swings</h3>
+            <p class="mt-1 text-sm text-stone-500">The Gobi can swing <strong class="text-stone-700">20°C between day and night</strong> even in summer. Always carry a warm layer, even if it is 35°C when you leave your hotel. The 3-hour drive back from Yadan at 10 PM in a t-shirt and shorts is miserable.</p>
+          </div>
+          <div class="bg-white rounded-xl border border-stone-200 p-5">
+            <h3 class="font-semibold text-stone-900">Buy It There</h3>
+            <p class="mt-1 text-sm text-stone-500">You do not need to pack everything from home. Dunhuang has <strong class="text-stone-700">supermarkets, pharmacies, and outdoor shops</strong> near the city center. Sunscreen, insect repellent, basic medicines, and even warm layers are available. Save luggage space for things that are hard to find: specific medications, contact lens solution (hard to find), and your preferred brand of electrolyte tablets.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="mt-12 text-center reveal">
+        <a href="/guide" class="inline-flex items-center gap-2 rounded-xl bg-mogao-600 px-6 py-3 text-sm font-semibold text-white hover:bg-mogao-700 transition-all">
+          Back to Complete Guide
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+

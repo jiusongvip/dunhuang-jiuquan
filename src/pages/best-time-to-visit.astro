@@ -1,0 +1,84 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Best Time to Visit Dunhuang & Jiuquan (2026)","description":"Month-by-month guide: weather, crowds, festival dates, and honest best seasons for the Silk Road. Plan around Golden Week, summer heat, and winter deals.","datePublished":"2026-07-01","dateModified":"2026-08-07"}]};
+
+const seasons = [
+  { name: "Spring", period: "March-May", temp: "5-28C", rating: "Best", desc: "March is cold with occasional sandstorms. April warms up with wildflowers. May is ideal: 15-28C, clear skies, moderate crowds. The best spring month." },
+  { name: "Summer", period: "June-August", temp: "20-40C", rating: "Avoid if possible", desc: "June is still pleasant (20-30C). July and August are brutally hot (35-40C+), especially Dunhuang. Peak domestic tourism. Mogao Caves tickets sell out weeks ahead. Start activities by 7 AM and siesta midday." },
+  { name: "Autumn", period: "September-October", temp: "5-25C", rating: "Best", desc: "September is magnificent: 15-25C, golden light, clear skies. October equally good but avoid the first week (Golden Week, Oct 1-7). Best season overall for comfortable temperatures and manageable crowds after Oct 7." },
+  { name: "Winter", period: "November-February", temp: "-10 to 5C", rating: "Good for deals", desc: "Cold but sunny. Attractions nearly empty. Hotels half price. Mogao Caves often has availability. Snow on dunes is magical for photography. Avoid Chinese New Year week (dates vary)." }
+];
+
+const monthTable = [
+  ["January", "-12 to 0", "Very low", "Cold, empty", "Good for deals"],
+  ["February", "-8 to 5", "Low (except CNY)", "Cold snap", "Avoid CNY week"],
+  ["March", "-3 to 12", "Low", "Sandstorm risk", "Acceptable"],
+  ["April", "5 to 22", "Moderate", "Wildflowers bloom", "Good"],
+  ["May", "10 to 28", "Moderate", "Ideal weather", "Excellent"],
+  ["June", "16 to 32", "Moderate-high", "Warming up", "Very good"],
+  ["July", "20 to 38", "Very high", "Peak heat", "Avoid"],
+  ["August", "18 to 36", "Very high", "Peak heat", "Avoid"],
+  ["September", "12 to 27", "Moderate", "Golden light", "Excellent"],
+  ["October", "5 to 20", "High (Golden Week)", "Best season", "Excellent (after Oct 7)"],
+  ["November", "-4 to 10", "Low", "Cool, quiet", "Very good"],
+  ["December", "-10 to 2", "Very low", "Snow on dunes", "Good for deals"]
+];
+---
+
+<BaseLayout title="Best Time to Visit Dunhuang &amp; Jiuquan 2026 | Month-by-Month Guide" description="When to visit Dunhuang and Jiuquan: monthly weather, crowd levels, festival dates, and honest best seasons. Avoid Golden Week and summer heat." author="Dunhuang &amp; Jiuquan Guide Team" datePublished="2026-07-01" dateModified="2026-08-07">
+<slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+<div class="section-container max-w-3xl pb-20 md:pb-28">
+  <header class="pt-12 md:pt-20 mb-16 reveal">
+    <SectionHeader eyebrow="When to Go" title="Best Time to Visit Dunhuang &amp; Jiuquan" subtitle="Month-by-month weather, crowds, and honest advice on when to plan your Silk Road trip. Based on multiple visits across all seasons." />
+  </header>
+      <!-- Placeholder image - replace with real photography -->
+      <div class="mb-8 rounded-2xl overflow-hidden bg-stone-200">
+        <img src="/images/best-time-to-visit.webp" alt="Best Time to Visit Dunhuang" class="w-full h-auto object-cover" width="1200" height="600" loading="lazy" />
+      </div>
+
+  <section class="mb-16 reveal">
+    <div class="grid sm:grid-cols-3 gap-4 mb-10">
+      <div class="bg-mogao-50 rounded-2xl p-6 text-center border border-mogao-200"><p class="text-3xl mb-2">&#x2600;</p><p class="font-semibold text-mogao-700">Best Overall</p><p class="mt-1 text-sm text-stone-600">May-June &amp; September-October</p></div>
+      <div class="bg-amber-50 rounded-2xl p-6 text-center border border-amber-200"><p class="text-3xl mb-2">&#x26A0;</p><p class="font-semibold text-amber-700">Avoid</p><p class="mt-1 text-sm text-stone-600">Golden Week (Oct 1-7), CNY week</p></div>
+      <div class="bg-stone-100 rounded-2xl p-6 text-center border border-stone-200"><p class="text-3xl mb-2">&#x1F4B0;</p><p class="font-semibold text-stone-700">Cheapest</p><p class="mt-1 text-sm text-stone-600">November-February (except CNY)</p></div>
+    </div>
+  </section>
+
+  <section class="mb-16 reveal">
+    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Season-by-Season</h2>
+    <div class="space-y-4">
+      {seasons.map(({ name, period, temp, rating, desc }) => (
+        <div class="bg-white rounded-2xl border border-stone-200 p-6">
+          <div class="flex items-start justify-between gap-4"><div><h3 class="font-semibold text-stone-900">{name} <span class="text-xs font-normal text-stone-400">({period}, {temp})</span></h3><p class="mt-1 text-sm text-stone-500">{desc}</p></div><span class="shrink-0 rounded-full bg-mogao-50 px-3 py-1 text-xs font-semibold text-mogao-600">{rating}</span></div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mb-16 reveal">
+    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Month-by-Month Breakdown</h2>
+    <div class="rounded-xl border border-stone-200 overflow-hidden">
+      <table class="w-full text-sm">
+        <thead class="bg-stone-50 border-b border-stone-200">
+          <tr><th class="text-left px-5 py-3 font-medium text-stone-700">Month</th><th class="text-center px-5 py-3 font-medium text-stone-700">Temp (C)</th><th class="text-center px-5 py-3 font-medium text-stone-700">Crowds</th><th class="text-left px-5 py-3 font-medium text-stone-700 hidden sm:table-cell">Conditions</th><th class="text-left px-5 py-3 font-medium text-stone-700 hidden sm:table-cell">Verdict</th></tr>
+        </thead>
+        <tbody class="divide-y divide-stone-100">
+          {monthTable.map((row) => (
+            <tr class="hover:bg-stone-50"><td class="px-5 py-3 text-stone-700 font-medium">{row[0]}</td><td class="text-center px-5 py-3 text-stone-600">{row[1]}</td><td class="text-center px-5 py-3 text-stone-600">{row[2]}</td><td class="px-5 py-3 text-stone-500 hidden sm:table-cell">{row[3]}</td><td class="px-5 py-3 text-stone-500 hidden sm:table-cell">{row[4]}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="bg-mogao-600 text-white rounded-2xl p-8 text-center reveal">
+    <h3 class="text-xl font-display font-semibold">Pick your dates</h3>
+    <p class="mt-2 text-mogao-100 text-sm">Use our itinerary planner to build a trip around your preferred season.</p>
+    <a href="/itinerary" class="inline-flex items-center gap-2 mt-5 px-5 py-3 bg-white text-mogao-700 rounded-xl text-sm font-semibold hover:bg-mogao-50 transition-colors">Browse Itineraries</a>
+  </div>
+</div>
+</BaseLayout>
+

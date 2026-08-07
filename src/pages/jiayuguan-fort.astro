@@ -1,0 +1,250 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Jiayuguan Fort Guide 2026 | Great Wall Western Terminus, Ming Dynasty Fortress",
+      "description": "Complete guide to Jiayuguan Fort: the Ming Dynasty Great Wall western terminus. Combined ticket CNY 120 includes fort, museum, and Overhanging Great Wall. History, transport, best viewpoints, and practical tips for foreign visitors.",
+      "datePublished": "2026-07-15",
+      "dateModified": "2026-08-07",
+      "author": { "@type": "Person", "name": "Dunhuang & Jiuquan Guide Team" },
+      "image": "https://dunhuang-jiuquan.com/images/jiayuguan-fort.webp",
+      "publisher": { "@type": "Organization", "name": "Dunhuang & Jiuquan Guide", "url": "https://dunhuang-jiuquan.com" }
+    },
+    {
+      "@type": "LandmarksOrHistoricalBuildings",
+      "name": "Jiayuguan Fort (First Pass Under Heaven)",
+      "description": "The westernmost fortress of the Ming Dynasty Great Wall, built in 1372. Known as the First and Greatest Pass Under Heaven. Includes the fort, Great Wall Museum, and Overhanging Great Wall section.",
+      "touristType": ["History Buffs", "Photographers", "Cultural Travelers"],
+      "geo": { "@type": "GeoCoordinates", "latitude": 39.802, "longitude": 98.216 },
+      "address": { "@type": "PostalAddress", "addressLocality": "Jiayuguan", "addressRegion": "Gansu", "addressCountry": "CN" }
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Jiayuguan Fort Guide 2026 | Great Wall Western Terminus &amp; Ming Dynasty Fortress"
+  description="Complete guide to Jiayuguan Fort: the Ming Dynasty Great Wall western terminus. Combined ticket CNY 120 covers the fort, museum, and Overhanging Great Wall. History, viewpoints, and practical tips."
+  author="Dunhuang &amp; Jiuquan Guide Team"
+  datePublished="2026-07-15"
+  dateModified="2026-08-07"
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <article class="py-12 md:py-20">
+    <div class="section-container max-w-3xl">
+      <header class="mb-8 reveal">
+        <SectionHeader
+          eyebrow="Jiuquan Attraction"
+          title="Jiayuguan Fort: The Great Wall Western End"
+          subtitle="The complete guide: history, tickets, the Overhanging Great Wall, best viewpoints, and how to visit China's most dramatic fortress."
+        />
+      </header>
+
+      <!-- Hero Image -->
+      <div class="mb-16 rounded-2xl overflow-hidden">
+        <img
+          src="/images/jiayuguan-fort.webp"
+          alt="Jiayuguan Fort Great Wall western terminus, Ming Dynasty fortress, Gobi Desert, First Pass Under Heaven"
+          class="w-full h-auto object-cover"
+          width="1200"
+          height="1200"
+          loading="eager"
+          decoding="sync"
+          sizes="100vw"
+        />
+      </div>
+
+      <!-- Quick Facts -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-16">
+        <div class="bg-stone-50 rounded-xl p-4 text-center">
+          <p class="text-xs text-stone-400 uppercase tracking-wider font-semibold">Location</p>
+          <p class="mt-1 font-semibold text-stone-900 text-sm">6km W of Jiayuguan</p>
+        </div>
+        <div class="bg-stone-50 rounded-xl p-4 text-center">
+          <p class="text-xs text-stone-400 uppercase tracking-wider font-semibold">Combined Ticket</p>
+          <p class="mt-1 font-semibold text-stone-900 text-sm">CNY 120</p>
+        </div>
+        <div class="bg-stone-50 rounded-xl p-4 text-center">
+          <p class="text-xs text-stone-400 uppercase tracking-wider font-semibold">Built</p>
+          <p class="mt-1 font-semibold text-stone-900 text-sm">1372 (Ming Dynasty)</p>
+        </div>
+        <div class="bg-stone-50 rounded-xl p-4 text-center">
+          <p class="text-xs text-stone-400 uppercase tracking-wider font-semibold">Visit Duration</p>
+          <p class="mt-1 font-semibold text-stone-900 text-sm">3-5 hours</p>
+        </div>
+        <div class="bg-stone-50 rounded-xl p-4 text-center">
+          <p class="text-xs text-stone-400 uppercase tracking-wider font-semibold">Best Time</p>
+          <p class="mt-1 font-semibold text-stone-900 text-sm">8:00-10:00 AM</p>
+        </div>
+      </div>
+
+      <!-- What Is It -->
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-6">
+          What Is Jiayuguan Fort?
+        </h2>
+        <p class="text-stone-600 leading-relaxed mb-4">
+          Jiayuguan Fort is the <strong class="text-stone-800">westernmost fortress of the Ming Dynasty Great Wall</strong>, built in 1372 at a strategic choke point between the snow-capped Qilian Mountains to the south and the barren Gobi Desert to the north. Known as the <strong class="text-stone-800">"First and Greatest Pass Under Heaven" (天下第一雄关)</strong>, the fort controlled the narrow Hexi Corridor — the only passage between China and Central Asia — for over five centuries.
+        </p>
+        <p class="text-stone-600 leading-relaxed mb-4">
+          Unlike the more famous Badaling section near Beijing, Jiayuguan is an <strong class="text-stone-800">intact fortress complex</strong>, not just a wall section. It includes an inner city, outer city, moat, gate towers, and military barracks — a complete Ming Dynasty border defense system. Walking through the gates, you are tracing the exact steps of Silk Road traders, exiled officials, and Ming Dynasty soldiers who passed through this checkpoint on their way into or out of the Chinese empire.
+        </p>
+        <p class="text-stone-600 leading-relaxed">
+          The fort faces west — deliberately. Every brick was laid to face the frontier. On a clear day, you can see the <strong class="text-stone-800">Qilian Mountains' snow-capped peaks</strong> rising behind the fort's three-story gate tower, creating one of the most dramatic fortress backdrops in the world.
+        </p>
+      </section>
+
+      <!-- The Combined Ticket -->
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-6">
+          The Combined Ticket: What You Get for CNY 120
+        </h2>
+        <div class="space-y-4">
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-mogao-100 text-xs font-bold text-mogao-700">1</span>
+              <h3 class="font-semibold text-stone-900">Jiayuguan Fort</h3>
+            </div>
+            <p class="text-sm text-stone-500 ml-9">The main fortress. Inner city walls are 11 meters high. Three gate towers. Walk the full perimeter wall for views of the Gobi Desert on one side and the Qilian Mountains on the other. The west gate tower is the iconic photo spot. <strong class="text-stone-700">Allow 1.5-2 hours.</strong></p>
+          </div>
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-mogao-100 text-xs font-bold text-mogao-700">2</span>
+              <h3 class="font-semibold text-stone-900">Great Wall Museum</h3>
+            </div>
+            <p class="text-sm text-stone-500 ml-9">Located inside the fort complex. Covers the full history of the Great Wall from the Warring States period through the Ming Dynasty. Surprisingly well-curated with English signage. <strong class="text-stone-700">Good for context before or after walking the fort.</strong> Allow 30-45 minutes.</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-mogao-100 text-xs font-bold text-mogao-700">3</span>
+              <h3 class="font-semibold text-stone-900">Overhanging Great Wall (悬壁长城)</h3>
+            </div>
+            <p class="text-sm text-stone-500 ml-9">A dramatic section of the Great Wall that climbs steeply up the Qilian Mountains, 8 km north of the fort. The wall appears to hang off the mountainside. A challenging <strong class="text-stone-700">30-minute uphill climb</strong> with incredible panoramic views. Included in the combined ticket. <strong class="text-stone-700">Separate location — you need transport between sites.</strong> Allow 1-1.5 hours including the climb.</p>
+          </div>
+        </div>
+        <div class="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+          <p class="text-sm text-amber-800 font-semibold">Important: All three sites on one ticket, one day.</p>
+          <p class="mt-1 text-sm text-amber-700">The combined ticket is valid for one calendar day across all three sites. Start at the fort in the morning, visit the museum, then drive to the Overhanging Great Wall. Buying separately would cost CNY 180+, so the combined ticket saves you CNY 60 per person.</p>
+        </div>
+      </section>
+
+      <!-- Architecture & Layout -->
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-6">
+          Fort Architecture &amp; Best Viewpoints
+        </h2>
+        <div class="space-y-4">
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <h3 class="font-semibold text-stone-900">The West Gate Tower</h3>
+            <p class="mt-1 text-sm text-stone-500 leading-relaxed">The three-story gate tower facing the Gobi Desert is <strong class="text-stone-700">the single best photo spot.</strong> Shoot from the inner courtyard looking up for dramatic vertical compositions. Or walk outside the west gate and shoot back toward the tower with the Qilian Mountains behind. Morning light (8:00-10:00 AM) illuminates the tower face directly.</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <h3 class="font-semibold text-stone-900">The Perimeter Wall Walk</h3>
+            <p class="mt-1 text-sm text-stone-500 leading-relaxed">Climb onto the fortress walls and walk the full perimeter. The contrast between the <strong class="text-stone-700">fort's geometric precision</strong> (perfect right angles, symmetrical towers) and the <strong class="text-stone-700">untamed desert beyond</strong> is striking. On clear days, the snow line of the Qilian Mountains forms a white band across the southern horizon.</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <h3 class="font-semibold text-stone-900">The Overhanging Wall Ridge</h3>
+            <p class="mt-1 text-sm text-stone-500 leading-relaxed">After the steep 30-minute climb, the view from the top is <strong class="text-stone-700">one of the best panoramic vistas on the Silk Road.</strong> The wall snakes along the ridge, the Gobi spreads to the north, and the Qilian Mountains fill the southern horizon. Bring a wide-angle lens. The climb is steep but has handrails and rest platforms. <strong class="text-stone-700">Not suitable for those with mobility issues or fear of heights.</strong></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- History Deep Dive -->
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-6">
+          A Short History
+        </h2>
+        <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200">
+          <p class="text-stone-600 leading-relaxed mb-3">
+            Jiayuguan was built in <strong class="text-stone-800">1372</strong> under the Hongwu Emperor, founder of the Ming Dynasty, as the western anchor of China's border defenses. The site was chosen with precision: the Qilian Mountains and the Gobi Desert create a natural funnel here, forcing all overland traffic through a passage only <strong class="text-stone-800">15 kilometers wide</strong>.
+          </p>
+          <p class="text-stone-600 leading-relaxed mb-3">
+            For the next 500 years, every trader, diplomat, soldier, and exile entering or leaving China along the Silk Road had to pass through Jiayuguan's gates. The fort became synonymous with the edge of the Chinese world — <strong class="text-stone-800">to be sent "beyond Jiayuguan" was a sentence of exile</strong> into the unknown west. A legend says the fort's architect calculated the exact number of bricks needed so precisely that only <strong class="text-stone-800">one brick remained unused</strong> — it sits on a gate tower to this day.
+          </p>
+          <p class="text-stone-600 leading-relaxed">
+            In the 20th century, the fort's significance shifted from military to industrial when the <strong class="text-stone-800">Jiuquan Iron and Steel Company</strong> built a massive steel plant nearby, transforming Jiayuguan from a remote garrison town into a modern industrial city. Today it is one of China's most visited historical sites, though still far less crowded than the Badaling Great Wall near Beijing.
+          </p>
+        </div>
+      </section>
+
+      <!-- Practical Tips -->
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-6">
+          Practical Tips
+        </h2>
+        <ul class="space-y-3 text-stone-600">
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Go in the morning (8:00-10:00 AM).</strong> The fort faces west — morning light illuminates the gate tower face directly. Afternoon creates harsh backlight. Also cooler for walking the walls.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Budget 3-5 hours for all three sites.</strong> Fort (1.5-2h) + Museum (30 min) + Overhanging Wall (1-1.5h including drive). The Overhanging Wall is 8 km from the fort — taxi (CNY 30-40) or Didi works.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Stay in Jiayuguan, not Jiuquan.</strong> Jiayuguan is 20 km closer to the fort, has better hotels, more restaurants, and better tourist infrastructure. Jiuquan city center adds an unnecessary 40-minute round trip. <a href="/accommodation" class="text-mogao-600 hover:text-mogao-700 underline">See our accommodation guide.</a></span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Wear sturdy shoes for the Overhanging Wall.</strong> The climb involves steep, uneven steps. Sandals or flip-flops are dangerous. The wind at the top can be strong — secure hats and loose items.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Bring your passport.</strong> Tickets are linked to passport numbers. No passport = no entry. This is strictly enforced at all three sites.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Combine with Dunhuang by high-speed train.</strong> Jiayuguan/Jiuquan is a 2.5-hour train from Dunhuang. Many travelers do 3 days in Dunhuang then take the morning train, arriving in Jiayuguan with a full afternoon for the fort. <a href="/how-to-get-there" class="text-mogao-600 hover:text-mogao-700 underline">See transport options.</a></span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- CTA -->
+      <div class="bg-mogao-600 text-white rounded-2xl p-8 text-center reveal">
+        <h3 class="text-xl font-bold">Walk the Great Wall's western end</h3>
+        <p class="mt-2 text-mogao-100 text-sm">Our itinerary planner includes Jiayuguan Fort with exact timing and transport between sites.</p>
+        <div class="mt-5 flex flex-wrap justify-center gap-3">
+          <a href="/#planner" class="inline-flex items-center gap-2 px-5 py-3 bg-white text-mogao-700 rounded-xl text-sm font-semibold hover:bg-mogao-50 transition-colors">
+            Open Trip Planner
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="/tickets" class="inline-flex items-center gap-2 px-5 py-3 bg-mogao-700 text-white rounded-xl text-sm font-semibold hover:bg-mogao-800 transition-colors border border-mogao-500">
+            All Ticket Prices
+          </a>
+        </div>
+      </div>
+    </div>
+      <section class="mt-16 p-6 bg-stone-50 rounded-2xl border border-stone-200 reveal">
+        <h2 class="text-lg font-display font-semibold text-stone-900 mb-3">Sources &amp; References</h2>
+        <ul class="space-y-2 text-sm text-stone-600">
+          <li>&rarr; <a href="https://whc.unesco.org/en/list/438/" rel="external nofollow" target="_blank" class="text-mogao-600 hover:text-mogao-700 underline">UNESCO World Heritage: The Great Wall</a> — includes Jiayuguan Pass</li>
+          <li>&rarr; <a href="https://en.wikipedia.org/wiki/Jiayuguan_(pass)" rel="external nofollow" target="_blank" class="text-mogao-600 hover:text-mogao-700 underline">Jiayuguan Pass on Wikipedia</a> — historical background and architecture</li>
+          <li>&rarr; Ticket prices verified at Jiayuguan Fort ticket office, July 2026</li>
+        </ul>
+      </section>
+  
+  </article>
+</BaseLayout>
+
+

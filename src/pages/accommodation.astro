@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Article", "headline": "Where to Stay in Dunhuang & Jiuquan (2026)", "description": "Best areas and hotels in Dunhuang and Jiuquan: budget hostels to boutique Silk Road stays. Honest recommendations." }
+  ]
+};
+---
+
+<BaseLayout
+  title="Where to Stay in Dunhuang &amp; Jiuquan 2026 | Best Hotels &amp; Areas"
+  description="Honest accommodation guide for Dunhuang and Jiuquan: best neighborhoods, hotels from budget to luxury, and where to base yourself near Jiayuguan."
+  author="Dunhuang &amp; Jiuquan Guide Team"
+  datePublished="2026-07-01"
+  dateModified="2026-08-07"
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <article class="py-12 md:py-20">
+    <div class="section-container max-w-3xl">
+      <header class="mb-16 reveal">
+        <SectionHeader eyebrow="Accommodation" title="Where to Stay in Dunhuang &amp; Jiuquan" subtitle="Best areas, honest hotel recommendations, and where to base yourself for each city. No sponsored listings." />
+      </header>
+      <!-- Placeholder image - replace with real photography -->
+      <div class="mb-8 rounded-2xl overflow-hidden bg-stone-200">
+        <img src="/images/accommodation.webp" alt="Where to Stay in Dunhuang" class="w-full h-auto object-cover" width="1200" height="600" loading="lazy" />
+      </div>
+
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Dunhuang: Best Areas</h2>
+        <div class="space-y-4">
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <h3 class="font-semibold text-stone-900">City Center (near Night Market)</h3>
+            <p class="mt-1 text-sm text-stone-500">Most convenient location. Walking distance to Shazhou Night Market, restaurants, and bus stops. Hotels from CNY 150-800/night. Best for first-time visitors.</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <h3 class="font-semibold text-stone-900">Mingsha Mountain Area</h3>
+            <p class="mt-1 text-sm text-stone-500">Near Crescent Lake and sand dunes. Resort-style hotels with desert views. CNY 300-1200/night. Ideal for photographers and sunrise dune access.</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <h3 class="font-semibold text-stone-900">Near Dunhuang Station</h3>
+            <p class="mt-1 text-sm text-stone-500">Budget area 10 km from city center. CNY 80-200/night. Only for early train departures.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Jiuquan / Jiayuguan: Key Advice</h2>
+        <div class="bg-amber-50 rounded-2xl p-6 border border-amber-200 mb-6">
+          <p class="text-sm text-amber-800 font-semibold">Important</p>
+          <p class="mt-1 text-sm text-amber-700">Most travelers should stay in Jiayuguan (20 km from Jiuquan city), not Jiuquan itself. Jiayuguan has better hotels, more restaurants, and is closer to the fort. Jiuquan city center has limited tourist infrastructure.</p>
+        </div>
+        <div class="space-y-4">
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <h3 class="font-semibold text-stone-900">Jiayuguan Downtown</h3>
+            <p class="mt-1 text-sm text-stone-500">Best base. Hotels from CNY 150-600/night. 15-min taxi to Jiayuguan Fort. Good restaurant scene.</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <h3 class="font-semibold text-stone-900">Jiuquan City Center</h3>
+            <p class="mt-1 text-sm text-stone-500">Only if visiting Satellite Launch Center. Limited hotels (CNY 100-400). Fewer dining options.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="bg-mogao-600 text-white rounded-2xl p-8 text-center reveal">
+        <h3 class="text-xl font-display font-semibold">Book with confidence</h3>
+        <p class="mt-2 text-mogao-100 text-sm">Use Trip.com or Ctrip for reliable hotel bookings with English support.</p>
+        <a href="/#planner" class="inline-flex items-center gap-2 mt-5 px-5 py-3 bg-white text-mogao-700 rounded-xl text-sm font-semibold hover:bg-mogao-50 transition-colors">Plan My Stay</a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+

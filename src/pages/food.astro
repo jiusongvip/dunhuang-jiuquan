@@ -1,0 +1,86 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Article", "headline": "Dunhuang & Jiuquan Food Guide (2026)", "description": "What to eat in Dunhuang and Jiuquan: must-try Silk Road dishes, night market guide, halal food, and restaurant recommendations." }
+  ]
+};
+---
+
+<BaseLayout
+  title="Dunhuang &amp; Jiuquan Food Guide 2026 | What to Eat on the Silk Road"
+  description="Complete food guide: must-try Silk Road dishes, Shazhou Night Market tips, halal restaurants, and local specialties in Dunhuang and Jiuquan."
+  author="Dunhuang &amp; Jiuquan Guide Team"
+  datePublished="2026-07-01"
+  dateModified="2026-08-07"
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <article class="py-12 md:py-20">
+    <div class="section-container max-w-3xl">
+      <header class="mb-16 reveal">
+        <SectionHeader eyebrow="Food &amp; Drink" title="Dunhuang &amp; Jiuquan Food Guide" subtitle="What to eat along the Silk Road: must-try dishes, night market tips, and where to find the best lamb in Gansu." />
+      </header>
+      <!-- Placeholder image - replace with real photography -->
+      <div class="mb-8 rounded-2xl overflow-hidden bg-stone-200">
+        <img src="/images/food.webp" alt="Silk Road Food Guide" class="w-full h-auto object-cover" width="1200" height="600" loading="lazy" />
+      </div>
+
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Must-Try Dishes</h2>
+        <div class="space-y-4">
+          {[
+            { name: "Donkey Meat Noodles (Lvrou Huangmian)", desc: "Dunhuang's signature dish. Tender braised donkey meat over hand-pulled yellow noodles. Found everywhere." },
+            { name: "Lamb Soup (Yangrou Tang)", desc: "Rich, milky broth simmered with lamb bones for hours. Served with flatbread. A Gansu breakfast staple." },
+            { name: "Apricot Drink (Xingpi Shui)", desc: "Local Dunhuang specialty made from dried apricots. Sweet, slightly tart, incredibly refreshing in desert heat." },
+            { name: "Lamb Skewers (Yangrou Chuan)", desc: "Xinjiang-style grilled lamb skewers with cumin and chili. Ubiquitous at night markets. CNY 3-5 per skewer." },
+            { name: "Lanzhou Beef Noodles (Niurou Mian)", desc: "Hand-pulled noodles in clear beef broth with chili oil. Excellent versions throughout Gansu." },
+            { name: "Stuffed Buns (Baozi)", desc: "Steamed or pan-fried buns with lamb, beef, or vegetables. Cheap, filling, available everywhere." },
+          ].map(({ name, desc }) => (
+            <div class="bg-white rounded-2xl border border-stone-200 p-5">
+              <h3 class="font-semibold text-stone-900">{name}</h3>
+              <p class="mt-1 text-sm text-stone-500">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Shazhou Night Market</h2>
+        <p class="text-stone-600 leading-relaxed mb-4">Dunhuang's Shazhou Night Market (6 PM to midnight) is the region's best food destination. Rows of stalls sell grilled meats, noodles, dried fruits, and snacks. Divided into a food court section and a street food alley.</p>
+        <ul class="space-y-3 text-stone-600">
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span>Go early (6-7 PM) to avoid worst crowds. By 8 PM the market is packed.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span>Prices are displayed. Bargaining not expected for food. Cash accepted at most stalls.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span>Gansu has abundant halal options. Look for green signs with Arabic text or Hui Muslim-run restaurants.</span>
+          </li>
+        </ul>
+      </section>
+
+      <div class="bg-mogao-600 text-white rounded-2xl p-8 text-center reveal">
+        <h3 class="text-xl font-display font-semibold">Hungry for more?</h3>
+        <p class="mt-2 text-mogao-100 text-sm">Our itinerary planner includes food stops for every day of your trip.</p>
+        <a href="/#planner" class="inline-flex items-center gap-2 mt-5 px-5 py-3 bg-white text-mogao-700 rounded-xl text-sm font-semibold hover:bg-mogao-50 transition-colors">See Itineraries</a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+

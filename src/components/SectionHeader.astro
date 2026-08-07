@@ -1,0 +1,33 @@
+---
+export interface Props {
+  eyebrow: string;
+  title: string;
+  subtitle?: string;
+  center?: boolean;
+  dark?: boolean;
+  headingLevel?: "h1" | "h2";
+}
+
+const { eyebrow, title, subtitle, center = false, dark = false, headingLevel = "h1" } = Astro.props;
+---
+
+<div class={center ? "text-center" : "max-w-2xl"}>
+  <p class={`flex items-center gap-3 text-xs font-semibold tracking-[0.2em] uppercase mb-4 ${center ? "justify-center" : ""} ${dark ? "text-mogao-300" : "text-mogao-600"}`}>
+    <span class={`inline-block w-8 h-px ${dark ? "bg-mogao-300/70" : "bg-mogao-500/60"}`}></span>
+    {eyebrow}
+  </p>
+  {headingLevel === "h1" ? (
+    <h1 class={`font-display text-3xl md:text-4xl font-semibold leading-[1.08] tracking-tight ${dark ? "text-white" : "text-stone-900"}`}>
+      {title}
+    </h1>
+  ) : (
+    <h2 class={`font-display text-3xl md:text-4xl font-semibold leading-[1.08] tracking-tight ${dark ? "text-white" : "text-stone-900"}`}>
+      {title}
+    </h2>
+  )}
+  {subtitle && (
+    <p class={`mt-3 leading-relaxed ${dark ? "text-stone-300" : "text-stone-500"}`}>
+      {subtitle}
+    </p>
+  )}
+</div>

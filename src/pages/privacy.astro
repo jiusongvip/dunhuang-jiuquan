@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+---
+
+<BaseLayout
+  title="Privacy Policy | Dunhuang &amp; Jiuquan Guide"
+  description="Privacy policy for Dunhuang & Jiuquan Guide. How we handle your data, cookies, and analytics."
+>
+  <article class="py-12 md:py-20">
+    <div class="section-container max-w-3xl">
+      <header class="mb-16 reveal">
+        <SectionHeader eyebrow="Legal" title="Privacy Policy" subtitle="Last updated: August 7, 2026" />
+      </header>
+      <!-- Placeholder image - replace with real photography -->
+      <div class="mb-8 rounded-2xl overflow-hidden bg-stone-200">
+        <img src="/images/privacy.webp" alt="Privacy Policy" class="w-full h-auto object-cover" width="1200" height="600" loading="lazy" />
+      </div>
+
+      <div class="prose prose-stone max-w-none">
+        <h2>1. Information We Collect</h2>
+        <p>We use Google Analytics 4 to collect anonymous usage data including page views, time on site, and general geographic location (country/city level only). We do not collect personally identifiable information through this website.</p>
+        <h2>2. Cookies</h2>
+        <p>This site does not use marketing or tracking cookies. Google Analytics uses first-party cookies for basic session measurement.</p>
+        <h2>3. Affiliate Links</h2>
+        <p>This site does not use affiliate links or earn commissions from bookings. All recommendations are editorially independent.</p>
+        <h2>4. Contact</h2>
+        <p>For privacy-related inquiries, email <a href="mailto:hello@dunhuang-jiuquan.com" class="text-mogao-600">hello@dunhuang-jiuquan.com</a>.</p>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+

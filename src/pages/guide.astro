@@ -1,0 +1,144 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Dunhuang & Jiuquan Complete Travel Guide (2026)","description":"The ultimate Silk Road guide: Mogao Caves tickets, Jiayuguan Fort, transport guide, itineraries, budget breakdown, food, and practical advice for foreign travelers.","datePublished":"2026-06-01","dateModified":"2026-08-07"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many days for Dunhuang and Jiuquan?","acceptedAnswer":{"@type":"Answer","text":"Minimum 4 days: 2-3 in Dunhuang, 1-2 in Jiuquan. With 7 days add Zhangye."}},{"@type":"Question","name":"Dunhuang or Jiuquan?","acceptedAnswer":{"@type":"Answer","text":"Dunhuang for first-timers. Jiuquan for history and space enthusiasts."}}]}]};
+
+const quickFacts = [
+  { label: "Province", value: "Gansu" }, { label: "UNESCO Sites", value: "1 (Mogao)" }, { label: "Distance", value: "400 km apart" }, { label: "Train", value: "2.5 hours" },
+  { label: "Best Season", value: "May-Jun, Sep-Oct" }, { label: "Budget", value: "$40-200/day" }, { label: "Visa", value: "Required" }, { label: "Airports", value: "DNH / JGN" }
+];
+
+const dunhuangHighlights = [
+ { title: "Mogao Caves", desc: "UNESCO World Heritage Site with 492 caves of Buddhist murals spanning 1,000 years. The world's finest collection of Buddhist cave art. A-tickets (8 caves, CNY 238) must be booked 1-4 weeks ahead. English guides available. Photography forbidden inside. <a href='/mogao-caves' class='text-mogao-600 hover:text-mogao-700 underline'>Full Mogao guide →</a>" },
+  { title: "Crescent Lake & Singing Sand Dunes", desc: "A natural spring-fed lake surrounded by 250-meter dunes on the edge of Dunhuang. Walk, ride a camel (CNY 100), or sandboard. Best at sunrise or sunset when the dunes glow golden. Ticket valid for 3 days. <a href='/crescent-lake' class='text-mogao-600 hover:text-mogao-700 underline'>Full Crescent Lake guide →</a>" },
+  { title: "Yadan National Geopark", desc: "Surreal wind-carved rock formations 180 km northwest. Known as Ghost City. Best combined with Yumen Pass on a full-day trip (private driver CNY 600-800). Go at sunset for dramatic shadows and colors. <a href='/yadan-geopark' class='text-mogao-600 hover:text-mogao-700 underline'>Full Yadan guide →</a>" },
+  { title: "Yumen Pass & Han Great Wall", desc: "The Jade Gate — one of the most famous Silk Road frontier passes. Han Dynasty Great Wall remnants here are among China's oldest surviving wall sections. Combine with Yadan for a full-day west line trip." }
+];
+
+const jiuquanHighlights = [
+  { title: "Jiayuguan Fort", desc: "Westernmost fortress of the Ming Great Wall — the 'First and Greatest Pass Under Heaven.' Built 1372, remarkably preserved. Combined ticket (CNY 120) includes the fort, museum, and Overhanging Great Wall. Best in morning." },
+  { title: "Overhanging Great Wall", desc: "Dramatic Great Wall section climbing steeply up the Qilian Mountains. A challenging 30-minute uphill climb with incredible views of snow-capped peaks. Included in Jiayuguan combined ticket." },
+  { title: "Satellite Launch Center", desc: "China's primary spaceport — all crewed missions launch from here. Visitor center open to public (CNY 150, passport required, book ahead via tour operator). Rare chance to stand at an active space facility." },
+  { title: "Wei-Jin Dynasty Tombs", desc: "Underground 3rd-5th century brick tombs with remarkably preserved murals of Silk Road daily life (farming, feasting, hunting). Fewer visitors than Mogao but equally fascinating. CNY 80 with English guide." }
+];
+
+const foreignerScores = [
+  { name: "Mogao Caves", score: 4, note: "English guides. Foreigner booking path on Trip.com. Clear signage." },
+  { name: "Crescent Lake & Dunes", score: 3, note: "Ticket gate simple. Limited English signage. Camel handlers: no English." },
+  { name: "Jiayuguan Fort", score: 3, note: "English museum labels. Ticket process straightforward. Taxi from Jiayuguan easy." },
+  { name: "Yadan Geopark", score: 2, note: "No public transport. Must hire driver. Zero English on site. Remote location." },
+  { name: "Shazhou Night Market", score: 2, note: "Cash-only stalls. No English menus. Point at what looks good." },
+  { name: "Satellite Launch Center", score: 1, note: "Tour operator required. Chinese ID usually needed. Limited foreign access." }
+];
+
+const practicalTips = [
+  "Install Alipay before arriving and link your Visa/Mastercard. Cashless payments are nearly universal in China. Carry some RMB for night markets.",
+  "Install a VPN before entering China. Google, Instagram, WhatsApp are blocked. Astrill and ExpressVPN work reliably in Gansu.",
+  "Download offline maps. Google Maps has location offset. Apple Maps works on iPhones in China. Maps.me with offline Gansu maps is essential.",
+  "Pack layers. Gobi Desert has extreme temperature swings: 38C summer days, 15C at night. Spring and autumn need a warm jacket for mornings.",
+  "Carry your passport at all times. Required for train tickets, hotels, and attractions. Police checks are rare but legal.",
+  "Book Mogao Caves 1-4 weeks ahead in peak season (May-October). A-tickets sell out. Use WeChat mini-program, Trip.com, or hotel concierge."
+];
+---
+
+<BaseLayout title="Dunhuang &amp; Jiuquan Travel Guide 2026 | The Complete Silk Road Planner" description="The ultimate guide: Mogao Caves, Jiayuguan Fort, Crescent Lake, transport, itineraries, budgets, food, and practical advice for foreign travelers on the Silk Road." author="Dunhuang &amp; Jiuquan Guide Team" datePublished="2026-06-01" dateModified="2026-08-07">
+<slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+<div class="section-container max-w-3xl pb-20 md:pb-28">
+  <header class="pt-12 md:pt-20 mb-16 reveal">
+    <SectionHeader eyebrow="Complete Guide" title="Dunhuang &amp; Jiuquan: The Complete Guide" subtitle="Everything you need to plan your Silk Road journey. Attractions, logistics, food, safety, and honest advice from people who have been there." />
+  </header>
+      <!-- Placeholder image - replace with real photography -->
+      <div class="mb-8 rounded-2xl overflow-hidden bg-stone-200">
+        <img src="/images/guide.webp" alt="Silk Road Travel Planning Guide" class="w-full h-auto object-cover" width="1200" height="600" loading="lazy" />
+      </div>
+
+  <section class="mb-16 reveal">
+    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-4">What Are Dunhuang &amp; Jiuquan?</h2>
+    <p class="text-stone-600 leading-relaxed mb-4">Dunhuang and Jiuquan are two historic cities in <strong class="text-stone-800">Gansu Province, northwest China</strong>, sitting along the ancient Silk Road's Hexi Corridor. Dunhuang is an oasis city that hosted caravans for two millennia and is home to the <strong class="text-stone-800">Mogao Caves</strong>, a UNESCO World Heritage Site. Jiuquan, 400 km east, guards <strong class="text-stone-800">Jiayuguan Fort</strong> — the western terminus of the Ming Dynasty Great Wall — and hosts China's satellite launch center.</p>
+    <p class="text-stone-600 leading-relaxed">Connected by a 2.5-hour high-speed train, the two cities form the cultural heart of China's Silk Road. Dunhuang gives you art, desert dunes, and backpacker energy. Jiuquan gives you military history, space exploration, and a rawer, less-touristy Gansu. Most travelers visit both in one trip. This guide tells you how.</p>
+  </section>
+
+  <section class="mb-16 reveal">
+    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">At a Glance</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      {quickFacts.map(({ label, value }) => (
+        <div class="bg-stone-50 rounded-xl p-4 text-center"><p class="text-xs text-stone-400 uppercase tracking-wider font-semibold">{label}</p><p class="mt-1 font-semibold text-stone-900 text-sm">{value}</p></div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mb-16 reveal">
+    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Dunhuang Highlights</h2>
+    <div class="space-y-4">
+      {dunhuangHighlights.map(({ title, desc }) => (
+        <div class="bg-white rounded-2xl border border-stone-200 p-6"><h3 class="font-semibold text-stone-900">{title}</h3><p class="mt-1 text-sm text-stone-500" set:html={desc}></p></div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mb-16 reveal">
+    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Jiuquan Highlights</h2>
+    <div class="space-y-4">
+      {jiuquanHighlights.map(({ title, desc }) => (
+        <div class="bg-white rounded-2xl border border-stone-200 p-6"><h3 class="font-semibold text-stone-900">{title}</h3><p class="mt-1 text-sm text-stone-500">{desc}</p></div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mb-16 reveal">
+    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Foreigner Friendliness Score</h2>
+    <p class="text-stone-500 text-sm mb-5">How easy is each attraction for non-Chinese speakers? Rated 1 (difficult) to 5 (easy) based on English signage, booking accessibility, and transport options.</p>
+    <div class="space-y-2">
+      {foreignerScores.map(({ name, score, note }) => (
+        <div class="bg-white rounded-xl border border-stone-200 p-4 flex items-center gap-4">
+          <div class="flex gap-0.5 shrink-0">
+            {[1,2,3,4,5].map(n => (
+              <span class={`w-4 h-4 rounded-sm ${n <= score ? 'bg-mogao-500' : 'bg-stone-200'}`}></span>
+            ))}
+          </div>
+          <div class="flex-1 min-w-0">
+            <span class="font-semibold text-stone-800 text-sm">{name}</span>
+            <span class="text-xs text-stone-400 ml-2 hidden sm:inline">{note}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mb-16 reveal">
+    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Practical Tips for Foreign Travelers</h2>
+    <ul class="space-y-3 text-stone-600 mb-6">
+      {practicalTips.map((tip) => (
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center shrink-0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span>{tip}</span>
+        </li>
+      ))}
+    </ul>
+    <div class="grid sm:grid-cols-2 gap-3">
+      <a href="/survival-phrases" class="rounded-xl border border-mogao-200 bg-mogao-50/50 p-4 hover:border-mogao-300 transition-colors no-underline">
+        <p class="font-semibold text-mogao-700 text-sm">📖 Chinese Survival Phrases</p>
+        <p class="text-xs text-stone-500 mt-1">30 essential phrases with pinyin — show to locals</p>
+      </a>
+      <a href="/packing-list" class="rounded-xl border border-mogao-200 bg-mogao-50/50 p-4 hover:border-mogao-300 transition-colors no-underline">
+        <p class="font-semibold text-mogao-700 text-sm">🎒 Gobi Desert Packing List</p>
+        <p class="text-xs text-stone-500 mt-1">Season-by-season: what to bring and what to skip</p>
+      </a>
+    </div>
+  </section>
+
+  <div class="bg-mogao-600 text-white rounded-2xl p-8 text-center reveal">
+    <h3 class="text-xl font-display font-semibold">Ready to plan?</h3>
+    <p class="mt-2 text-mogao-100 text-sm">Use our itinerary planner or jump to specific guides.</p>
+    <div class="mt-5 flex flex-wrap justify-center gap-3">
+      <a href="/itinerary" class="inline-flex items-center gap-2 px-5 py-3 bg-white text-mogao-700 rounded-xl text-sm font-semibold hover:bg-mogao-50 transition-colors">Browse Itineraries</a>
+      <a href="/tickets" class="inline-flex items-center gap-2 px-5 py-3 bg-mogao-700 text-white rounded-xl text-sm font-semibold hover:bg-mogao-800 transition-colors border border-mogao-500">Ticket Prices</a>
+      <a href="/how-to-get-there" class="inline-flex items-center gap-2 px-5 py-3 bg-mogao-700 text-white rounded-xl text-sm font-semibold hover:bg-mogao-800 transition-colors border border-mogao-500">Transport Guide</a>
+    </div>
+  </div>
+</div>
+</BaseLayout>
+
+

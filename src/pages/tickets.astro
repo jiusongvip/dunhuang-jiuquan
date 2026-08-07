@@ -1,0 +1,174 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Dunhuang & Jiuquan Ticket Prices 2026","description":"Complete guide to ticket prices for all major Silk Road attractions: Mogao Caves, Crescent Lake, Jiayuguan Fort, Yadan Geopark. Prices verified July 2026.","datePublished":"2026-07-01","dateModified":"2026-08-07"}]};
+
+const dunhuangTickets = [
+  { ticket: "Mogao Caves (A-ticket)", peak: "CNY 238-258", offpeak: "CNY 140-160", note: "8 caves + 2 films. Book 1-4 weeks ahead in peak season" },
+  { ticket: "Mogao Caves (B-ticket)", peak: "CNY 100", offpeak: "CNY 100", note: "4 caves only. Sold when A-tickets are gone" },
+  { ticket: "Crescent Lake & Dunes", peak: "CNY 120", offpeak: "CNY 120", note: "Valid 3 days. Camel ride extra (CNY 100)" },
+  { ticket: "Yadan Geopark", peak: "CNY 120", offpeak: "CNY 100", note: "Includes shuttle bus. 180 km from Dunhuang" },
+  { ticket: "Yumen Pass", peak: "CNY 40", offpeak: "CNY 40", note: "Often combined with Yadan day trip" },
+  { ticket: "Dunhuang Museum", peak: "Free", offpeak: "Free", note: "Excellent Silk Road exhibits. Passport required for entry" },
+];
+
+const jiuquanTickets = [
+  { ticket: "Jiayuguan Fort (combined)", price: "CNY 120", note: "Includes fort + museum + Overhanging Great Wall. Valid one day" },
+  { ticket: "Overhanging Great Wall", price: "Included", note: "Included in Jiayuguan Fort combined ticket" },
+  { ticket: "Satellite Launch Center", price: "CNY 150", note: "Book ahead via tour operator. Passport required. No independent visits" },
+  { ticket: "Wei-Jin Dynasty Tombs", price: "CNY 80", note: "English guide included. Underground brick tombs with preserved murals" },
+  { ticket: "First Strategic Post", price: "CNY 30", note: "Ming Dynasty beacon tower. Panoramic Qilian Mountain views" },
+];
+
+const bookingGuide = [
+  { title: "WeChat Mini-Program (Official)", rank: "Best for Mogao Caves", pros: "Face-value pricing. Official channel. Choose exact time slot.", cons: "Chinese phone number required. Chinese-language interface.", tip: "Search for the official Mogao Caves name in WeChat. Morning slots (8:00-10:00) fill first. Book 2-4 weeks ahead in July-August." },
+  { title: "Trip.com / Ctrip", rank: "Best for Foreigners", pros: "English interface. Pay with international card. Clear cancellation policy.", cons: "5-15 percent markup. Limited time slots in peak season.", tip: "Good fallback if WeChat is too difficult. Book at least 2 weeks ahead in peak season. Check both Trip.com and Ctrip for availability." },
+  { title: "Hotel Concierge", rank: "Best for Convenience", pros: "Zero language hassle. They handle everything. Often face-value pricing.", cons: "Only available if staying in Dunhuang. Not all hotels offer this.", tip: "Ask at check-in. Mid-range and above hotels in Dunhuang city center can book Mogao Caves. Our go-to method when available." },
+  { title: "At the Gate", rank: "Works for Most Attractions", pros: "Face-value pricing. No service fee. Works for Crescent Lake, Jiayuguan.", cons: "Mogao A-tickets rarely available. Queues during holidays.", tip: "Fine for most attractions except Mogao Caves. Never rely on this for Mogao in peak season." },
+];
+
+const savingTips = [
+  { title: "Visit Dunhuang in winter (Dec-Feb)", body: "Mogao Caves tickets drop to CNY 140-160. Hotels are half price. The caves stay 15C inside year-round. Yadan Geopark may have reduced hours but is nearly empty.", saving: "Save CNY 100+ on Mogao" },
+  { title: "Use B-tickets if A-tickets sell out", body: "B-tickets give you 4 caves for CNY 100 vs A-ticket's 8 caves for CNY 238. You see fewer caves but pay less than half the price. Some A-ticket caves may be closed for preservation anyway — you might not miss them.", saving: "Save CNY 138 per person" },
+  { title: "Buy Jiayuguan combined ticket", body: "The CNY 120 combined ticket covers Jiayuguan Fort + Great Wall Museum + Overhanging Great Wall. Buying separately costs CNY 180+.", saving: "Save CNY 60 per person" },
+  { title: "Skip Yadan if budget is tight", body: "Yadan costs CNY 120 entry + CNY 200-400 for a private driver. At CNY 320-520 total, it's the most expensive day trip. Crescent Lake's dunes (CNY 120, 10 min from city) give a similar desert experience for less.", saving: "Save CNY 200-400 per person" },
+];
+---
+
+<BaseLayout title="Dunhuang &amp; Jiuquan Ticket Prices 2026 | Mogao Caves, Jiayuguan &amp; More" description="Complete guide to ticket prices for all major Silk Road attractions. Prices verified July 2026." author="Dunhuang &amp; Jiuquan Guide Team" datePublished="2026-07-01" dateModified="2026-08-07">
+<slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+<div class="section-container max-w-3xl pb-20 md:pb-28">
+  <header class="pt-12 md:pt-20 mb-16 reveal">
+    <SectionHeader eyebrow="Tickets &amp; Prices" title="Dunhuang &amp; Jiuquan Ticket Prices 2026" subtitle="Every ticket price verified at attraction gates in July 2026. Complete breakdown for Mogao Caves, Crescent Lake, Jiayuguan Fort, and more." />
+  </header>
+      <!-- Placeholder image - replace with real photography -->
+      <div class="mb-8 rounded-2xl overflow-hidden bg-stone-200">
+        <img src="/images/tickets.webp" alt="Attraction Tickets and Prices" class="w-full h-auto object-cover" width="1200" height="600" loading="lazy" />
+      </div>
+
+  <section id="dunhuang" class="mb-16 reveal">
+    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Dunhuang Attractions</h2>
+    <div class="rounded-xl border border-stone-200 overflow-hidden">
+      <table class="w-full text-sm">
+        <thead class="bg-stone-50 border-b border-stone-200">
+          <tr>
+            <th class="text-left px-5 py-3 font-medium text-stone-700">Attraction</th>
+            <th class="text-center px-5 py-3 font-medium text-stone-700 w-28">Peak<br/><span class="text-xs font-normal text-stone-400">May-Oct</span></th>
+            <th class="text-center px-5 py-3 font-medium text-stone-700 w-28">Off-peak<br/><span class="text-xs font-normal text-stone-400">Nov-Apr</span></th>
+            <th class="text-left px-5 py-3 font-medium text-stone-700 hidden sm:table-cell">Notes</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-stone-100">
+          {dunhuangTickets.map((r) => (
+            <tr class="hover:bg-stone-50">
+              <td class="px-5 py-3 text-stone-700 font-medium">{r.ticket}</td>
+              <td class="text-center px-5 py-3 text-stone-600">{r.peak}</td>
+              <td class="text-center px-5 py-3 text-stone-600">{r.offpeak}</td>
+              <td class="px-5 py-3 text-xs text-stone-400 hidden sm:table-cell">{r.note}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-3 text-xs text-stone-400">Prices verified at Dunhuang attractions, July 2026.</p>
+
+    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="rounded-xl border border-stone-200 bg-white p-5">
+        <h3 class="font-semibold text-stone-800 mb-2">Mogao Caves: Included</h3>
+        <ul class="space-y-1.5 text-sm text-stone-500">
+          <li class="flex gap-2"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 mt-0.5 text-mogao-500"><path d="M6 8l2 2 4-4"/></svg> A-ticket: 8 caves + 2 films + guided tour (75 min)</li>
+          <li class="flex gap-2"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 mt-0.5 text-mogao-500"><path d="M6 8l2 2 4-4"/></svg> B-ticket: 4 caves + guided tour (60 min)</li>
+          <li class="flex gap-2"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 mt-0.5 text-mogao-500"><path d="M6 8l2 2 4-4"/></svg> English guides available for all ticket types</li>
+        </ul>
+      </div>
+      <div class="rounded-xl border border-stone-200 bg-white p-5">
+        <h3 class="font-semibold text-stone-800 mb-2">NOT Included</h3>
+        <ul class="space-y-1.5 text-sm text-stone-500">
+          <li class="flex gap-2"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 mt-0.5 text-amber-500"><path d="M6 8l2 2 4-4"/></svg> Transport to caves (25 km, taxi CNY 40-60)</li>
+          <li class="flex gap-2"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 mt-0.5 text-amber-500"><path d="M6 8l2 2 4-4"/></svg> Special caves (CNY 150-200 extra per cave)</li>
+          <li class="flex gap-2"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 mt-0.5 text-amber-500"><path d="M6 8l2 2 4-4"/></svg> Photography strictly forbidden inside caves</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="jiuquan" class="mb-16 reveal">
+    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Jiuquan / Jiayuguan Attractions</h2>
+    <div class="rounded-xl border border-stone-200 overflow-hidden">
+      <table class="w-full text-sm">
+        <thead class="bg-stone-50 border-b border-stone-200">
+          <tr>
+            <th class="text-left px-5 py-3 font-medium text-stone-700">Attraction</th>
+            <th class="text-center px-5 py-3 font-medium text-stone-700 w-24">Price</th>
+            <th class="text-left px-5 py-3 font-medium text-stone-700 hidden sm:table-cell">Notes</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-stone-100">
+          {jiuquanTickets.map((r) => (
+            <tr class="hover:bg-stone-50">
+              <td class="px-5 py-3 text-stone-700 font-medium">{r.ticket}</td>
+              <td class="text-center px-5 py-3 text-stone-600">{r.price}</td>
+              <td class="px-5 py-3 text-xs text-stone-400 hidden sm:table-cell">{r.note}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-3 text-xs text-stone-400">Prices verified at Jiayuguan attractions, July 2026.</p>
+  </section>
+
+  <section id="booking" class="mb-16 reveal">
+    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">How to Book</h2>
+    <div class="space-y-4">
+      {bookingGuide.map((o, i) => (
+        <div class="rounded-xl border border-stone-200 bg-white p-5 md:p-6">
+          <div class="flex items-start gap-3">
+            <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-mogao-100 text-xs font-bold text-mogao-700">{i + 1}</span>
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-2">
+                <h3 class="font-semibold text-stone-800">{o.title}</h3>
+                <span class="rounded-full bg-mogao-50 px-2 py-0.5 text-[10px] font-semibold text-mogao-600">{o.rank}</span>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                <div><span class="font-medium text-mogao-600">Pros</span><p class="text-stone-500 mt-0.5">{o.pros}</p></div>
+                <div><span class="font-medium text-amber-600">Cons</span><p class="text-stone-500 mt-0.5">{o.cons}</p></div>
+              </div>
+              <p class="mt-3 text-xs text-stone-400 italic">{o.tip}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section id="save" class="mb-16 reveal">
+    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">4 Ways to Save Money</h2>
+    <div class="space-y-4">
+      {savingTips.map((t) => (
+        <div class="rounded-xl border border-stone-200 bg-white p-5">
+          <div class="flex items-start justify-between gap-4 mb-2">
+            <h3 class="font-semibold text-stone-800">{t.title}</h3>
+            <span class="shrink-0 rounded-full bg-green-50 px-2.5 py-0.5 text-xs font-semibold text-green-700">{t.saving}</span>
+          </div>
+          <p class="text-sm text-stone-500 leading-relaxed">{t.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <div class="mt-12 rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-800 reveal">
+    <strong>Passport reminder:</strong> All tickets are linked to your passport number. Bring your original passport. Photocopies and phone photos are not accepted at major attractions.
+  </div>
+
+  <div class="mt-16 pt-12 border-t border-stone-200 text-center reveal">
+    <p class="text-stone-500 text-sm mb-6">Got your tickets sorted? Now plan your route.</p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <a href="/guide" class="inline-flex items-center gap-2 rounded-xl bg-mogao-600 px-6 py-3 text-sm font-semibold text-white hover:bg-mogao-700 transition-all">Read Full Guide</a>
+      <a href="/itinerary" class="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 hover:border-stone-400 transition-all">Browse Itineraries</a>
+    </div>
+  </div>
+</div>
+</BaseLayout>
+

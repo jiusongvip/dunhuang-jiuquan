@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Dunhuang & Jiuquan Guide",
+  "description": "Get in touch with the Dunhuang & Jiuquan Guide team."
+};
+---
+
+<BaseLayout
+  title="Contact Dunhuang &amp; Jiuquan Guide | Get in Touch"
+  description="Questions about your Silk Road trip? Found an error? Want to collaborate? Reach the Dunhuang & Jiuquan Guide team."
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <article class="py-12 md:py-20">
+    <div class="section-container max-w-3xl">
+      <header class="mb-16 reveal">
+        <SectionHeader eyebrow="Contact" title="Get in Touch" subtitle="Questions, corrections, or collaboration inquiries. We read every message." center />
+      </header>
+      <!-- Placeholder image - replace with real photography -->
+      <div class="mb-8 rounded-2xl overflow-hidden bg-stone-200">
+        <img src="/images/contact.webp" alt="Contact Dunhuang Guide" class="w-full h-auto object-cover" width="1200" height="600" loading="lazy" />
+      </div>
+
+     <div class="bg-white rounded-2xl border border-stone-200 p-8 mb-10 reveal">
+       <h2 class="text-lg font-semibold text-stone-900 mb-4">Email Us</h2>
+        <p class="text-stone-600 mb-4">For trip planning questions, corrections, collaboration inquiries, or to report outdated information:</p>
+        <a href="mailto:hello@dunhuang-jiuquan.com" class="inline-flex items-center gap-2 text-mogao-600 font-semibold hover:text-mogao-700">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+          hello@dunhuang-jiuquan.com
+        </a>
+        <p class="mt-3 text-xs text-stone-400">We typically respond within 48 hours. Holidays may take longer.</p>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-stone-200 p-8 mb-10 reveal">
+        <h2 class="text-lg font-semibold text-stone-900 mb-4">Send a Message</h2>
+        <form action="https://formspree.io/f/your-form-id" method="POST" class="space-y-4">
+          <div>
+            <label for="name" class="block text-sm font-medium text-stone-700 mb-1">Name</label>
+            <input type="text" id="name" name="name" required class="w-full rounded-xl border border-stone-300 px-4 py-2.5 text-sm text-stone-800 focus:border-mogao-500 focus:ring-1 focus:ring-mogao-500 outline-none transition-colors" placeholder="Your name" />
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-stone-700 mb-1">Email</label>
+            <input type="email" id="email" name="email" required class="w-full rounded-xl border border-stone-300 px-4 py-2.5 text-sm text-stone-800 focus:border-mogao-500 focus:ring-1 focus:ring-mogao-500 outline-none transition-colors" placeholder="you@example.com" />
+          </div>
+          <div>
+            <label for="subject" class="block text-sm font-medium text-stone-700 mb-1">Subject</label>
+            <select id="subject" name="subject" class="w-full rounded-xl border border-stone-300 px-4 py-2.5 text-sm text-stone-800 focus:border-mogao-500 focus:ring-1 focus:ring-mogao-500 outline-none transition-colors">
+              <option value="">Select a topic</option>
+              <option value="trip-planning">Trip Planning Question</option>
+              <option value="correction">Report an Error or Outdated Info</option>
+              <option value="collaboration">Collaboration / Partnership</option>
+              <option value="feedback">General Feedback</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium text-stone-700 mb-1">Message</label>
+            <textarea id="message" name="message" rows="4" required class="w-full rounded-xl border border-stone-300 px-4 py-2.5 text-sm text-stone-800 focus:border-mogao-500 focus:ring-1 focus:ring-mogao-500 outline-none transition-colors resize-y" placeholder="Tell us what you need..."></textarea>
+          </div>
+          <button type="submit" class="inline-flex items-center gap-2 rounded-xl bg-mogao-600 px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-mogao-700 active:scale-[0.98]">
+            Send Message
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg>
+          </button>
+          <p class="text-xs text-stone-400">Your email is never shared. We reply within 48 hours.</p>
+        </form>
+      </div>
+
+      <div class="bg-stone-50 rounded-2xl p-8 reveal">
+        <h2 class="text-lg font-semibold text-stone-900 mb-4">Before You Write</h2>
+        <ul class="space-y-3 text-stone-600 text-sm">
+          <li class="flex items-start gap-2"><span class="mt-1 w-4 h-4 rounded-full bg-mogao-100 flex items-center justify-center shrink-0 text-mogao-600 text-xs">1</span> Check our <a href="/faq" class="text-mogao-600 hover:text-mogao-700 underline font-semibold">FAQ page</a> for instant answers.</li>
+          <li class="flex items-start gap-2"><span class="mt-1 w-4 h-4 rounded-full bg-mogao-100 flex items-center justify-center shrink-0 text-mogao-600 text-xs">2</span> Use our <a href="/#planner" class="text-mogao-600 hover:text-mogao-700 underline font-semibold">Trip Planner</a> for itinerary questions.</li>
+          <li class="flex items-start gap-2"><span class="mt-1 w-4 h-4 rounded-full bg-mogao-100 flex items-center justify-center shrink-0 text-mogao-600 text-xs">3</span> We cannot book tickets. See <a href="/tickets" class="text-mogao-600 hover:text-mogao-700 underline font-semibold">tickets guide</a>.</li>
+          <li class="flex items-start gap-2"><span class="mt-1 w-4 h-4 rounded-full bg-mogao-100 flex items-center justify-center shrink-0 text-mogao-600 text-xs">4</span> We typically respond within 48 hours. Holidays may take longer.</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+

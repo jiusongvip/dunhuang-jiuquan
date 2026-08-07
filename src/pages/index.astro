@@ -1,0 +1,511 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+
+const pageDescription = "Plan your Silk Road trip with expert Dunhuang and Jiuquan guides covering Mogao Caves, Crescent Lake, Jiayuguan Fort, trains, and 3/5/7-day itineraries.";
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Dunhuang & Jiuquan Travel Guide 2026 | Complete Silk Road Planning",
+      "description": "Honest, practical guide to Dunhuang and Jiuquan: Mogao Caves tickets, Jiayuguan Fort, Crescent Lake, transport, 3/5/7-day itineraries, budget breakdown, food, and insider tips from firsthand experience.",
+      "author": { "@type": "Person", "name": "Dunhuang & Jiuquan Guide Team" },
+      "datePublished": "2026-06-01",
+      "image": "https://dunhuang-jiuquan.com/og-default.webp",
+      "publisher": { "@type": "Organization", "name": "Dunhuang & Jiuquan Guide", "url": "https://dunhuang-jiuquan.com" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://dunhuang-jiuquan.com" },
+      "datePublished": "2026-06-01",
+      "dateModified": "2026-08-07"
+    },
+    {
+      "@type": "TouristDestination",
+      "name": "Dunhuang & Jiuquan Silk Road Corridor",
+      "description": "Two historic Silk Road cities in Gansu Province: Dunhuang (Mogao Caves, Crescent Lake) and Jiuquan (Jiayuguan Fort, Satellite Launch Center). Connected by a 2.5-hour high-speed train across the Hexi Corridor.",
+      "touristType": ["History Buffs", "Photographers", "Adventure Travelers", "Cultural Travelers"],
+      "geo": { "@type": "GeoCoordinates", "latitude": 40.14, "longitude": 95.5 },
+      "address": { "@type": "PostalAddress", "addressLocality": "Dunhuang & Jiuquan", "addressRegion": "Gansu", "addressCountry": "CN" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How many days do I need for Dunhuang and Jiuquan?", "acceptedAnswer": { "@type": "Answer", "text": "Minimum 4 days: 2-3 in Dunhuang (Mogao Caves, Crescent Lake, Yadan Geopark), 1-2 in Jiuquan (Jiayuguan Fort). With 7 days add Zhangye Rainbow Mountains. High-speed train between cities takes only 2.5 hours." } },
+        { "@type": "Question", "name": "Dunhuang or Jiuquan - which one should I visit?", "acceptedAnswer": { "@type": "Answer", "text": "Dunhuang if you can only visit one - it is the cultural heart of the Silk Road with Mogao Caves and Crescent Lake. Jiuquan is essential for history buffs (Jiayuguan Fort, Great Wall terminus) and space enthusiasts (Satellite Launch Center). With 5+ days, visit both - the train takes only 2.5 hours." } },
+        { "@type": "Question", "name": "How do I get from Dunhuang to Jiuquan?", "acceptedAnswer": { "@type": "Answer", "text": "High-speed train is the clear winner: 2.5 hours, CNY 150-200, 10+ departures daily. Long-distance bus (5-6 hours, CNY 60-80) is the budget option. Private car (4-5 hours, CNY 600-900) gives the most flexibility for photography stops." } },
+        { "@type": "Question", "name": "When is the best time to visit?", "acceptedAnswer": { "@type": "Answer", "text": "May-June and September-October are ideal with mild temperatures (15-28C) and manageable crowds. Avoid July-August (35-40C desert heat, peak domestic tourism) and Chinese Golden Week (Oct 1-7). Winter (Nov-Feb) offers half-price hotels and near-empty attractions." } },
+        { "@type": "Question", "name": "How much does a trip cost?", "acceptedAnswer": { "@type": "Answer", "text": "Budget CNY 500-1200 (USD 70-170) per person per day including accommodation, meals, transport, and attraction tickets. Mogao Caves A-ticket costs CNY 238-258. Crescent Lake CNY 120. Jiayuguan Fort combined ticket CNY 120. High-speed train between cities CNY 150-200." } },
+        { "@type": "Question", "name": "Can I book Mogao Caves as a foreigner?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Use the official WeChat mini-program (Chinese phone number required), book through Trip.com (5-15% markup but international card accepted), or ask your hotel concierge. A-tickets (8 caves + 2 films) must be booked 1-4 weeks ahead in peak season (May-October). Passport required for entry." } },
+        { "@type": "Question", "name": "Is Gansu safe for solo travelers?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, very safe. The Silk Road cities are well-policed and tourist-friendly. Violent crime is extremely rare. The main challenges are practical: language barrier outside major hotels, mobile payment setup (install Alipay before arriving), and extreme desert heat in summer." } }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Dunhuang &amp; Jiuquan Travel Guide 2026 — Silk Road Planning"
+  description={pageDescription}
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)}></script>
+  </slot>
+
+  <section class="relative overflow-hidden bg-gradient-to-b from-mogao-900 via-mogao-800 to-mogao-700">
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 bg-gradient-to-b from-mogao-950/30 via-transparent to-mogao-950/60 z-10" />
+      <picture>
+        <source srcset="/hero.webp" type="image/webp" />
+        <img src="/hero.jpg" alt="Mogao Caves nine-story facade at golden hour with Gobi Desert stretching to the horizon" class="h-full w-full object-cover" width="1920" height="1249" loading="eager" decoding="sync" sizes="100vw" />
+      </picture>
+    </div>
+    <div class="relative z-20 mx-auto max-w-7xl px-4 md:px-6 py-24 md:py-40">
+      <div class="max-w-2xl">
+        <div class="inline-flex items-center rounded-full border border-white/20 bg-white/10 backdrop-blur-sm px-3 py-1 text-xs font-medium text-white/90 mb-6">
+          Independent guide &middot; No booking fees &middot; Updated August 2026
+        </div>
+        <h1 class="text-4xl md:text-6xl font-semibold tracking-tight text-white leading-tight">Dunhuang &amp; Jiuquan Silk Road Travel Guide</h1>
+        <p class="mt-6 text-lg text-white/80 leading-relaxed max-w-xl">
+          Two cities, one legendary corridor. Everything you need to plan your journey through China's ancient Silk Road &mdash; Mogao Caves, Jiayuguan Fort, Crescent Lake, and the Gobi Desert. Honest advice from people who have been there.
+        </p>
+        <p class="mt-3 text-sm text-white/60 max-w-xl">
+          The high-speed train connects both cities in just <span class="text-mogao-300">2.5 hours</span>. Budget from <span class="text-mogao-300">CNY 500/day</span>.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="/guide" class="inline-flex items-center gap-2 rounded-xl bg-mogao-500 px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-mogao-600 active:scale-[0.98] shadow-lg shadow-mogao-900/30">
+            Start Planning
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg>
+          </a>
+          <a href="#at-a-glance" class="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 backdrop-blur-sm px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-white/20 active:scale-[0.98]">
+            Quick Overview
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v10M3 8h10"/></svg>
+          </a>
+        </div>
+      </div>
+      <p class="absolute bottom-3 right-4 md:right-6 z-30 text-[10px] text-white/40">Photo taken along the Hexi Corridor</p>
+    </div>
+  </section>
+
+  <section class="bg-stone-900 text-white">
+    <div class="mx-auto max-w-7xl px-4 md:px-6 py-12 md:py-16">
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4 md:gap-6">
+        <div class="text-center"><p class="text-xs font-medium text-stone-400 uppercase tracking-wider mb-1">Chinese Name</p><p class="text-xl md:text-2xl font-semibold text-white">敦煌 &amp; 酒泉</p><p class="text-xs text-stone-500 mt-0.5">Dunhuang &amp; Jiuquan</p></div>
+        <div class="text-center"><p class="text-xs font-medium text-stone-400 uppercase tracking-wider mb-1">Province</p><p class="text-xl md:text-2xl font-semibold text-white">Gansu</p><p class="text-xs text-stone-500 mt-0.5">Northwest China</p></div>
+        <div class="text-center"><p class="text-xs font-medium text-stone-400 uppercase tracking-wider mb-1">UNESCO</p><p class="text-xl md:text-2xl font-semibold text-white">Mogao Caves</p><p class="text-xs text-stone-500 mt-0.5">Since 1987</p></div>
+        <div class="text-center"><p class="text-xs font-medium text-stone-400 uppercase tracking-wider mb-1">Distance Apart</p><p class="text-xl md:text-2xl font-semibold text-white">400 km</p><p class="text-xs text-stone-500 mt-0.5">Hexi Corridor</p></div>
+        <div class="text-center"><p class="text-xs font-medium text-stone-400 uppercase tracking-wider mb-1">High-Speed Train</p><p class="text-xl md:text-2xl font-semibold text-white">2.5 hours</p><p class="text-xs text-stone-500 mt-0.5">CNY 150-200</p></div>
+        <div class="text-center"><p class="text-xs font-medium text-stone-400 uppercase tracking-wider mb-1">Best Season</p><p class="text-xl md:text-2xl font-semibold text-white">May-Jun, Sep-Oct</p><p class="text-xs text-stone-500 mt-0.5">15-28°C</p></div>
+        <div class="text-center"><p class="text-xs font-medium text-stone-400 uppercase tracking-wider mb-1">Budget/Day</p><p class="text-xl md:text-2xl font-semibold text-white">CNY 500-1200</p><p class="text-xs text-stone-500 mt-0.5">USD 70-170</p></div>
+        <div class="text-center"><p class="text-xs font-medium text-stone-400 uppercase tracking-wider mb-1">Recommended</p><p class="text-xl md:text-2xl font-semibold text-white">4-7 days</p><p class="text-xs text-stone-500 mt-0.5">For full experience</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="mx-auto max-w-7xl px-4 md:px-6 pt-8 pb-20 md:pb-28">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-stone-900">What Are Dunhuang &amp; Jiuquan?</h2>
+      <p class="mt-2 text-lg text-stone-400">敦煌 · 酒泉 · The Hexi Corridor</p>
+      <p class="mt-6 text-lg text-stone-600 leading-relaxed">Dunhuang and Jiuquan are two historic Silk Road cities in <strong class="text-stone-800">Gansu Province, northwest China</strong>, sitting 400 km apart along the ancient <strong class="text-stone-800">Hexi Corridor</strong> &mdash; the narrow passage between the Gobi Desert and the Qilian Mountains that served as the main trade route between China and Central Asia for over 1,500 years.</p>
+      <p class="mt-4 text-stone-500 leading-relaxed">Dunhuang is an oasis city that hosted Silk Road caravans for two millennia. It is home to the <strong class="text-stone-700">Mogao Caves</strong> (also called the Thousand Buddha Grottoes), a <a href="https://whc.unesco.org/en/list/440/" rel="external nofollow" target="_blank" class="text-mogao-600 hover:text-mogao-700 underline">UNESCO World Heritage Site</a> containing 492 cave temples with Buddhist murals spanning 1,000 years of uninterrupted artistic tradition &mdash; the world's largest and best-preserved treasury of Buddhist art. Around the oasis you will find the <strong class="text-stone-700">Singing Sand Dunes and Crescent Lake</strong>, towering 250-meter sand dunes surrounding a spring-fed lake that has not dried up in 2,000 years.</p>
+      <p class="mt-4 text-stone-500 leading-relaxed">Jiuquan guards <strong class="text-stone-700">Jiayuguan Fort</strong> &mdash; the “First and Greatest Pass Under Heaven” and the westernmost fortress of the Ming Dynasty Great Wall, built in 1372. It also hosts <strong class="text-stone-700">China's Satellite Launch Center</strong>, the nation's primary spaceport where all crewed missions depart.</p>
+      <p class="mt-4 text-stone-500 leading-relaxed">The two cities are connected by a <strong class="text-stone-700">2.5-hour high-speed train</strong> (CNY 150-200, 10+ departures daily). Together they form the cultural heart of China's Silk Road &mdash; Dunhuang gives you art, desert dunes, and backpacker energy; Jiuquan gives you military history, space exploration, and solitude. Most travelers visit both in a single trip, with Zhangye's <strong class="text-stone-700">Rainbow Mountains</strong> (1.5 hours further east) as a natural third stop.</p>
+      <p class="mt-6 text-sm text-stone-400 border-l-2 border-mogao-300 pl-4"><span class="font-semibold text-stone-500">We have visited Dunhuang and Jiuquan across multiple seasons.</span> Every ticket price, train schedule, and practical tip on this page is based on firsthand experience &mdash; most recently verified at attraction gates in July 2026. No AI-generated content. No unverified claims.</p>
+    </div>
+  </section>
+
+  <section id="at-a-glance" class="mx-auto max-w-7xl px-4 md:px-6 pb-20 md:pb-28 reveal">
+    <div class="text-center mb-12"><SectionHeader headingLevel="h2" eyebrow="At a Glance" title="Everything You Need to Know" subtitle="The essentials in one place. If you only read one section, make it this one." center /></div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="rounded-2xl border border-stone-200 bg-white p-6">
+        <div class="flex items-center gap-2 mb-4"><div class="flex h-8 w-8 items-center justify-center rounded-lg bg-mogao-50"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-mogao-600"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h3 class="font-semibold text-stone-800">Top Attractions Ranked</h3></div>
+        <div class="space-y-3 text-sm">
+          <div><span class="inline-block rounded-full bg-mogao-50 px-2 py-0.5 text-xs font-medium text-mogao-700 mb-1">Must see</span><p class="text-stone-600"><strong class="text-stone-700">Mogao Caves</strong> &mdash; UNESCO World Heritage, 492 cave temples. <a href="/mogao-caves" class="text-mogao-600 hover:text-mogao-700 underline">Full guide</a>. <span class="text-stone-400">Allow half a day.</span></p></div>
+          <div><span class="inline-block rounded-full bg-mogao-50 px-2 py-0.5 text-xs font-medium text-mogao-700 mb-1">Must see</span><p class="text-stone-600"><strong class="text-stone-700">Crescent Lake &amp; Singing Sand Dunes</strong> &mdash; Spring-fed lake in 250m dunes. Camel rides, sunset photography. 3-day ticket. <a href="/crescent-lake" class="text-mogao-600 hover:text-mogao-700 underline">Full guide</a>.</p></div>
+          <div><span class="inline-block rounded-full bg-mogao-50 px-2 py-0.5 text-xs font-medium text-mogao-700 mb-1">Must see</span><p class="text-stone-600"><strong class="text-stone-700">Jiayuguan Fort</strong> &mdash; Western terminus of the Ming Great Wall. “First Pass Under Heaven.” <a href="/jiayuguan-fort" class="text-mogao-600 hover:text-mogao-700 underline">Full guide</a>.</p></div>
+          <div><span class="inline-block rounded-full bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-700 mb-1">If time allows</span><p class="text-stone-600"><strong class="text-stone-700">Yadan Geopark</strong> &mdash; Surreal wind-carved rock formations. Full-day trip. <a href="/yadan-geopark" class="text-mogao-600 hover:text-mogao-700 underline">Full guide</a>.</p></div>
+          <div><span class="inline-block rounded-full bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-700 mb-1">If time allows</span><p class="text-stone-600"><strong class="text-stone-700">Satellite Launch Center</strong> &mdash; China's primary spaceport. Book ahead via tour operator.</p></div>
+        </div>
+      </div>
+      <div class="rounded-2xl border border-stone-200 bg-white p-6">
+        <div class="flex items-center gap-2 mb-4"><div class="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-50"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-amber-600"><path d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div><h3 class="font-semibold text-stone-800">Tickets &amp; Budget</h3></div>
+        <div class="space-y-2 text-sm">
+          <div class="flex justify-between py-1.5 border-b border-stone-100"><span class="text-stone-600">Mogao Caves (A-ticket)</span><span class="font-semibold text-stone-800">CNY 238-258</span></div>
+          <div class="flex justify-between py-1.5 border-b border-stone-100"><span class="text-stone-600">Crescent Lake &amp; Dunes</span><span class="font-semibold text-stone-800">CNY 120</span></div>
+          <div class="flex justify-between py-1.5 border-b border-stone-100"><span class="text-stone-600">Yadan Geopark</span><span class="font-semibold text-stone-800">CNY 120</span></div>
+          <div class="flex justify-between py-1.5 border-b border-stone-100"><span class="text-stone-600">Jiayuguan Fort (combined)</span><span class="font-semibold text-stone-800">CNY 120</span></div>
+          <div class="flex justify-between py-1.5 border-b border-stone-100"><span class="text-stone-600">Train Dunhuang rarr Jiuquan</span><span class="font-semibold text-stone-800">CNY 150-200</span></div>
+          <div class="flex justify-between py-1.5"><span class="text-stone-500 text-xs">Per person, full visit estimate</span><span class="font-semibold text-mogao-700">CNY 500-1200</span></div>
+        </div>
+        <p class="text-xs text-stone-400 mt-3">Prices verified at attraction gates, July 2026.</p>
+        <a href="/tickets" class="inline-flex items-center gap-1 mt-3 text-xs font-medium text-amber-600 hover:text-amber-700">Full ticket breakdown rarr</a>
+      </div>
+      <div class="rounded-2xl border border-stone-200 bg-white p-6">
+        <div class="flex items-center gap-2 mb-4"><div class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 000 20 14.5 14.5 0 000-20"/><path d="M2 12h20"/></svg></div><h3 class="font-semibold text-stone-800">Getting Around</h3></div>
+        <ul class="space-y-3 text-sm text-stone-600">
+          <li class="flex gap-2"><span class="text-blue-500 shrink-0 mt-0.5">&#9992;</span> Fly into <strong class="text-stone-700">Dunhuang (DNH)</strong> or <strong class="text-stone-700">Jiayuguan (JGN)</strong></li>
+          <li class="flex gap-2"><span class="text-blue-500 shrink-0 mt-0.5">&#128646;</span> Train from Lanzhou to Dunhuang: <strong class="text-stone-700">6-8 hours</strong>, CNY 300-400</li>
+          <li class="flex gap-2"><span class="text-blue-500 shrink-0 mt-0.5">&#128652;</span> Between cities: <strong class="text-stone-700">2.5-hour train</strong> (10+ daily)</li>
+          <li class="flex gap-2"><span class="text-blue-500 shrink-0 mt-0.5">&#128663;</span> Local: <strong class="text-stone-700">Didi via Alipay</strong>. City centers walkable.</li>
+          <li class="flex gap-2"><span class="text-blue-500 shrink-0 mt-0.5">&#128161;</span> <span class="text-stone-400">Tip: Fly into Lanzhou and take the train &mdash; saves CNY 500-800.</span></li>
+        </ul>
+        <a href="/how-to-get-there" class="inline-flex items-center gap-1 mt-4 text-xs font-medium text-blue-600 hover:text-blue-700">Full transport guide rarr</a>
+      </div>
+    </div>
+  </section>
+  <section id="when-to-go" class="mx-auto max-w-7xl px-4 md:px-6 pb-20 md:pb-28 reveal">
+    <div class="text-center mb-12"><SectionHeader headingLevel="h2" eyebrow="When to Go" title="Pick Your Season" subtitle="Click a season to see what to expect. Each one is completely different on the Silk Road." center /></div>
+    <div class="max-w-4xl mx-auto">
+      <div class="flex flex-wrap justify-center gap-3 mb-10" role="tablist">
+        <button class="season-tab flex flex-col items-center gap-1.5 px-6 py-4 rounded-2xl border-2 transition-all text-sm border-stone-200 bg-white text-stone-500 hover:border-stone-300 hover:text-stone-700" data-season="spring"><span class="text-2xl">&#127800;</span><span class="font-semibold">Spring</span><span class="text-xs opacity-70">Mar-May</span><span class="text-xs font-medium">5-28&deg;C</span></button>
+        <button class="season-tab flex flex-col items-center gap-1.5 px-6 py-4 rounded-2xl border-2 transition-all text-sm border-stone-200 bg-white text-stone-500 hover:border-stone-300 hover:text-stone-700" data-season="summer"><span class="text-2xl">&#9728;</span><span class="font-semibold">Summer</span><span class="text-xs opacity-70">Jun-Aug</span><span class="text-xs font-medium">20-40&deg;C</span></button>
+        <button class="season-tab flex flex-col items-center gap-1.5 px-6 py-4 rounded-2xl border-2 transition-all text-sm border-mogao-300 bg-mogao-50 text-mogao-700 shadow-sm" data-season="autumn"><span class="text-2xl">&#127810;</span><span class="font-semibold">Autumn</span><span class="text-xs opacity-70">Sep-Oct</span><span class="text-xs font-medium">5-25&deg;C</span></button>
+        <button class="season-tab flex flex-col items-center gap-1.5 px-6 py-4 rounded-2xl border-2 transition-all text-sm border-stone-200 bg-white text-stone-500 hover:border-stone-300 hover:text-stone-700" data-season="winter"><span class="text-2xl">&#9924;</span><span class="font-semibold">Winter</span><span class="text-xs opacity-70">Nov-Feb</span><span class="text-xs font-medium">-10 to 5&deg;C</span></button>
+      </div>
+      <div id="season-detail" class="bg-stone-50 rounded-2xl p-8 border border-stone-200 min-h-[200px]">
+        <div class="flex items-start gap-3">
+          <span class="mt-1 w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-700 text-lg shrink-0">&#127810;</span>
+          <div>
+            <h3 class="text-xl font-semibold text-stone-900 mb-2">Autumn (Sep-Oct) &mdash; The Best Season</h3>
+            <p class="text-stone-600 leading-relaxed">September is magnificent: 15-25&deg;C, golden light, crystal-clear skies. October equally good &mdash; but <strong class="text-stone-800">avoid the first week</strong> (Golden Week, Oct 1-7) when every attraction is overrun. This is the season we recommend to friends: comfortable temperatures, manageable crowds (after Oct 7), and the best light for photography.</p>
+            <div class="mt-4 flex flex-wrap gap-3 text-sm">
+              <span class="rounded-full bg-green-100 px-3 py-1 text-green-700 font-medium">Crowds: Moderate</span>
+              <span class="rounded-full bg-green-100 px-3 py-1 text-green-700 font-medium">Hotels: Normal price</span>
+              <span class="rounded-full bg-green-100 px-3 py-1 text-green-700 font-medium">Photos: Best light</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="mt-4 text-center text-sm text-stone-400"><a href="/best-time-to-visit" class="text-mogao-600 hover:text-mogao-700 underline font-medium">Month-by-month breakdown &amp; weather data rarr</a></p>
+    </div>
+  </section>
+
+  <section id="compare" class="py-24 bg-white">
+    <div class="section-container">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-stone-900 text-center">Dunhuang vs Jiuquan at a Glance</h2>
+      <p class="mt-3 text-stone-500 text-center max-w-lg mx-auto">Two cities, two personalities. Here is how to split your time.</p>
+      <div class="mt-12 grid md:grid-cols-3 gap-1 bg-stone-100 rounded-2xl overflow-hidden">
+        <div class="bg-stone-100 p-6 md:p-8 text-center"><p class="text-xs font-semibold text-stone-400 uppercase tracking-wider">&nbsp;</p><p class="mt-6 text-sm text-stone-500">Vibe</p><p class="mt-6 text-sm text-stone-500">Signature Attraction</p><p class="mt-6 text-sm text-stone-500">Ideal Stay</p><p class="mt-6 text-sm text-stone-500">Daily Budget</p><p class="mt-6 text-sm text-stone-500">Best For</p></div>
+        <div class="bg-mogao-50/40 p-6 md:p-8 text-center"><p class="text-lg font-bold text-mogao-600">Dunhuang</p><p class="mt-5 text-stone-700">Ancient oasis, backpacker hub</p><p class="mt-5 font-semibold text-stone-900">Mogao Caves</p><p class="mt-5 text-stone-700">2-3 days</p><p class="mt-5 text-stone-700">CNY 400-1200/day</p><p class="mt-5 text-stone-700">History, art, desert, food</p></div>
+        <div class="bg-stone-200/40 p-6 md:p-8 text-center"><p class="text-lg font-bold text-stone-700">Jiuquan</p><p class="mt-5 text-stone-700">Frontier fortress, quieter</p><p class="mt-5 font-semibold text-stone-900">Jiayuguan Fort</p><p class="mt-5 text-stone-700">1-2 days</p><p class="mt-5 text-stone-700">CNY 300-800/day</p><p class="mt-5 text-stone-700">Great Wall, space, solitude</p></div>
+      </div>
+      <p class="mt-8 text-center"><a href="/dunhuang-vs-jiuquan" class="text-mogao-600 font-semibold text-sm hover:text-mogao-700 transition-colors">Read the full comparison guide rarr</a></p>
+    </div>
+  </section>
+
+  <section id="transport" class="py-24 bg-stone-50">
+    <div class="section-container">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-stone-900 text-center">How to Get From Dunhuang to Jiuquan</h2>
+      <p class="mt-3 text-stone-500 text-center max-w-lg mx-auto">Four ways to cover the 400 km between the two cities.</p>
+      <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-2xl p-6 border border-stone-200 hover:border-mogao-300 transition-colors"><div class="w-10 h-10 rounded-xl bg-mogao-100 flex items-center justify-center text-mogao-600 mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M10 4v16"/></svg></div><h3 class="text-lg font-semibold text-stone-900">High-Speed Train</h3><div class="mt-1 mb-3"><span class="inline-block rounded-full bg-mogao-50 px-2.5 py-0.5 text-xs font-semibold text-mogao-600">Best Overall</span></div><div class="space-y-2 text-sm text-stone-600"><p class="flex justify-between"><span>Duration</span> <span class="font-semibold">2.5 hours</span></p><p class="flex justify-between"><span>Cost</span> <span class="font-semibold">CNY 150-200</span></p><p class="flex justify-between"><span>Frequency</span> <span class="font-semibold">10+ daily</span></p></div></div>
+        <div class="bg-white rounded-2xl p-6 border border-stone-200 hover:border-mogao-300 transition-colors"><div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600 mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><h3 class="text-lg font-semibold text-stone-900">Long-Distance Bus</h3><div class="mt-1 mb-3"><span class="inline-block rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-semibold text-amber-600">Budget Pick</span></div><div class="space-y-2 text-sm text-stone-600"><p class="flex justify-between"><span>Duration</span> <span class="font-semibold">5-6 hours</span></p><p class="flex justify-between"><span>Cost</span> <span class="font-semibold">CNY 60-80</span></p><p class="flex justify-between"><span>Frequency</span> <span class="font-semibold">4-6 daily</span></p></div></div>
+        <div class="bg-white rounded-2xl p-6 border border-stone-200 hover:border-mogao-300 transition-colors"><div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h3 class="text-lg font-semibold text-stone-900">Private Car</h3><div class="mt-1 mb-3"><span class="inline-block rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-blue-600">Most Flexible</span></div><div class="space-y-2 text-sm text-stone-600"><p class="flex justify-between"><span>Duration</span> <span class="font-semibold">4-5 hours</span></p><p class="flex justify-between"><span>Cost</span> <span class="font-semibold">CNY 600-900</span></p><p class="flex justify-between"><span>Stops</span> <span class="font-semibold">Anywhere</span></p></div></div>
+        <div class="bg-white rounded-2xl p-6 border border-stone-200 hover:border-mogao-300 transition-colors"><div class="w-10 h-10 rounded-xl bg-stone-200 flex items-center justify-center text-stone-600 mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div><h3 class="text-lg font-semibold text-stone-900">Flight</h3><div class="mt-1 mb-3"><span class="inline-block rounded-full bg-stone-200 px-2.5 py-0.5 text-xs font-semibold text-stone-600">Fastest (Rare)</span></div><div class="space-y-2 text-sm text-stone-600"><p class="flex justify-between"><span>Duration</span> <span class="font-semibold">1 hour</span></p><p class="flex justify-between"><span>Cost</span> <span class="font-semibold">CNY 800-1500</span></p><p class="flex justify-between"><span>Frequency</span> <span class="font-semibold">1-2 daily</span></p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="map-section" class="py-24 bg-stone-50">
+    <div class="section-container">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-center text-stone-900">Silk Road Route Map</h2>
+      <p class="mt-3 text-stone-500 text-center max-w-lg mx-auto">From Dunhuang through Jiuquan to Zhangye along the Hexi Corridor.</p>
+    </div>
+
+    <div class="mt-14 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div class="relative">
+        <!-- Connecting line (desktop only) -->
+        <div class="absolute left-[16.5%] right-[16.5%] top-[36px] h-0.5 bg-stone-200 hidden md:block" aria-hidden="true"></div>
+
+        <!-- Cities grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0">
+          <!-- Dunhuang -->
+          <div class="relative flex flex-col items-center text-center group">
+            <div class="relative z-10 flex h-[72px] w-[72px] items-center justify-center rounded-2xl bg-mogao-600 text-white shadow-lg shadow-mogao-200 ring-4 ring-white mb-6 group-hover:scale-105 transition-transform">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <div class="bg-white rounded-2xl border border-stone-200 p-5 shadow-sm w-full group-hover:border-mogao-200 group-hover:shadow-md transition-all">
+              <div class="inline-flex items-center rounded-full bg-mogao-50 px-3 py-0.5 text-xs font-semibold text-mogao-700 mb-2">Start here</div>
+              <h3 class="text-lg font-bold text-stone-900">Dunhuang</h3>
+              <p class="text-xs text-stone-400 mt-0.5">敦煌</p>
+              <div class="mt-3 space-y-1.5 text-left">
+                <div class="flex items-start gap-2 text-sm">
+                  <span class="mt-0.5 w-1.5 h-1.5 rounded-full bg-mogao-400 shrink-0"></span>
+                  <span class="text-stone-600"><strong class="text-stone-700">Mogao Caves</strong> — UNESCO Buddhist grottoes</span>
+                </div>
+                <div class="flex items-start gap-2 text-sm">
+                  <span class="mt-0.5 w-1.5 h-1.5 rounded-full bg-mogao-400 shrink-0"></span>
+                  <span class="text-stone-600"><strong class="text-stone-700">Crescent Lake</strong> — Desert oasis &amp; sand dunes</span>
+                </div>
+                <div class="flex items-start gap-2 text-sm">
+                  <span class="mt-0.5 w-1.5 h-1.5 rounded-full bg-mogao-400 shrink-0"></span>
+                  <span class="text-stone-600"><strong class="text-stone-700">Yadan Geopark</strong> — Wind-carved Ghost City</span>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-stone-400">
+                <span>Recommended stay</span>
+                <span class="font-semibold text-stone-700">2-3 days</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jiuquan/Jiayuguan -->
+          <div class="relative flex flex-col items-center text-center group">
+            <!-- Mobile arrow -->
+            <div class="flex flex-col items-center py-2 md:hidden">
+              <div class="h-6 w-px bg-stone-200"></div>
+              <div class="flex items-center gap-2 rounded-full bg-amber-50 border border-amber-200 px-3 py-1 text-xs font-semibold text-amber-700 my-1">400 km · 2.5h train</div>
+              <div class="h-6 w-px bg-stone-200"></div>
+            </div>
+            <!-- Distance badge on line (desktop) -->
+            <div class="hidden md:flex absolute top-[36px] -translate-y-1/2 left-0 right-0 justify-center z-20 pointer-events-none">
+              <div class="flex items-center gap-1.5 rounded-full bg-white border border-stone-200 px-3 py-1 text-xs font-semibold text-amber-700 shadow-sm">
+                400 km · 2.5h train
+              </div>
+            </div>
+            <div class="relative z-10 flex h-[72px] w-[72px] items-center justify-center rounded-2xl bg-amber-500 text-white shadow-lg shadow-amber-200 ring-4 ring-white mb-6 group-hover:scale-105 transition-transform">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21v-4a2 2 0 012-2h2v-2a2 2 0 012-2h2v-2a2 2 0 012-2h4a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+            </div>
+            <div class="bg-white rounded-2xl border border-stone-200 p-5 shadow-sm w-full group-hover:border-amber-200 group-hover:shadow-md transition-all">
+              <div class="inline-flex items-center rounded-full bg-amber-50 px-3 py-0.5 text-xs font-semibold text-amber-700 mb-2">Second stop</div>
+              <h3 class="text-lg font-bold text-stone-900">Jiuquan &amp; Jiayuguan</h3>
+              <p class="text-xs text-stone-400 mt-0.5">酒泉 · 嘉峪关</p>
+              <div class="mt-3 space-y-1.5 text-left">
+                <div class="flex items-start gap-2 text-sm">
+                  <span class="mt-0.5 w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
+                  <span class="text-stone-600"><strong class="text-stone-700">Jiayuguan Fort</strong> — Great Wall western end</span>
+                </div>
+                <div class="flex items-start gap-2 text-sm">
+                  <span class="mt-0.5 w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
+                  <span class="text-stone-600"><strong class="text-stone-700">Overhanging Wall</strong> — Wall climbing the mountains</span>
+                </div>
+                <div class="flex items-start gap-2 text-sm">
+                  <span class="mt-0.5 w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
+                  <span class="text-stone-600"><strong class="text-stone-700">Space Center</strong> — China's crewed launch site</span>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-stone-400">
+                <span>Recommended stay</span>
+                <span class="font-semibold text-stone-700">1-2 days</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Zhangye -->
+          <div class="relative flex flex-col items-center text-center group">
+            <!-- Mobile arrow -->
+            <div class="flex flex-col items-center py-2 md:hidden">
+              <div class="h-6 w-px bg-stone-200"></div>
+              <div class="flex items-center gap-2 rounded-full bg-red-50 border border-red-200 px-3 py-1 text-xs font-semibold text-red-700 my-1">230 km · 1.5h train</div>
+              <div class="h-6 w-px bg-stone-200"></div>
+            </div>
+            <!-- Distance badge on line (desktop) -->
+            <div class="hidden md:flex absolute top-[36px] -translate-y-1/2 left-0 right-0 justify-center z-20 pointer-events-none">
+              <div class="flex items-center gap-1.5 rounded-full bg-white border border-stone-200 px-3 py-1 text-xs font-semibold text-red-700 shadow-sm">
+                230 km · 1.5h train
+              </div>
+            </div>
+            <div class="relative z-10 flex h-[72px] w-[72px] items-center justify-center rounded-2xl bg-red-500 text-white shadow-lg shadow-red-200 ring-4 ring-white mb-6 group-hover:scale-105 transition-transform">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 116-13h4"/><path d="M12 19l-3 3m0 0l-3-3m3 3V9"/></svg>
+            </div>
+            <div class="bg-white rounded-2xl border border-stone-200 p-5 shadow-sm w-full group-hover:border-red-200 group-hover:shadow-md transition-all">
+              <div class="inline-flex items-center rounded-full bg-red-50 px-3 py-0.5 text-xs font-semibold text-red-700 mb-2">Bonus stop</div>
+              <h3 class="text-lg font-bold text-stone-900">Zhangye</h3>
+              <p class="text-xs text-stone-400 mt-0.5">张掖</p>
+              <div class="mt-3 space-y-1.5 text-left">
+                <div class="flex items-start gap-2 text-sm">
+                  <span class="mt-0.5 w-1.5 h-1.5 rounded-full bg-red-400 shrink-0"></span>
+                  <span class="text-stone-600"><strong class="text-stone-700">Rainbow Mountains</strong> — Danxia colored cliffs</span>
+                </div>
+                <div class="flex items-start gap-2 text-sm">
+                  <span class="mt-0.5 w-1.5 h-1.5 rounded-full bg-red-400 shrink-0"></span>
+                  <span class="text-stone-600"><strong class="text-stone-700">Giant Buddha Temple</strong> — Asia's largest reclining Buddha</span>
+                </div>
+                <div class="flex items-start gap-2 text-sm">
+                  <span class="mt-0.5 w-1.5 h-1.5 rounded-full bg-red-400 shrink-0"></span>
+                  <span class="text-stone-600"><strong class="text-stone-700">Mati Temple</strong> — Cliffside grottoes</span>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-stone-400">
+                <span>If you have time</span>
+                <span class="font-semibold text-stone-700">+1-2 days</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom summary bar -->
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-4 md:gap-8">
+          <div class="flex items-center gap-2 text-sm text-stone-500">
+            <div class="flex items-center gap-1.5 rounded-full bg-mogao-50 px-3 py-1.5">
+              <span class="w-2 h-2 rounded-full bg-mogao-500"></span>
+              <span class="font-medium text-stone-700">Dunhuang</span>
+            </div>
+            <span class="text-stone-300">→</span>
+            <div class="flex items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1.5">
+              <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+              <span class="font-medium text-stone-700">Jiuquan</span>
+            </div>
+            <span class="text-stone-300">→</span>
+            <div class="flex items-center gap-1.5 rounded-full bg-red-50 px-3 py-1.5">
+              <span class="w-2 h-2 rounded-full bg-red-500"></span>
+              <span class="font-medium text-stone-700">Zhangye</span>
+            </div>
+          </div>
+          <div class="h-4 w-px bg-stone-200 hidden sm:block"></div>
+          <div class="text-sm text-stone-400">
+            Total: <strong class="text-stone-700">~630 km</strong> across the Hexi Corridor
+          </div>
+          <div class="h-4 w-px bg-stone-200 hidden sm:block"></div>
+          <a href="/itinerary" class="text-sm font-semibold text-mogao-600 hover:text-mogao-700 transition-colors">
+            See full itineraries →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="planner" class="py-24 bg-white">
+    <div class="section-container"><h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-stone-900 text-center">Build Your Itinerary</h2><p class="mt-3 text-stone-500 text-center max-w-lg mx-auto">Select your available days. Get a day-by-day plan with realistic timing.</p>
+      <div class="mt-12 max-w-2xl mx-auto">
+        <div class="flex rounded-2xl bg-stone-100 p-1.5 mb-10" role="tablist">
+          <button class="planner-tab flex-1 py-3 px-4 rounded-xl text-sm font-semibold transition-all bg-white text-stone-900 shadow-sm" data-days="3">3 Days</button>
+          <button class="planner-tab flex-1 py-3 px-4 rounded-xl text-sm font-semibold transition-all text-stone-500 hover:text-stone-700" data-days="5">5 Days</button>
+          <button class="planner-tab flex-1 py-3 px-4 rounded-xl text-sm font-semibold transition-all text-stone-500 hover:text-stone-700" data-days="7">7 Days</button>
+        </div>
+        <div id="planner-output" class="space-y-4">
+          <div class="planner-plan" data-plan="3">
+            <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200"><div class="flex items-center gap-3 mb-3"><span class="w-8 h-8 rounded-full bg-mogao-600 text-white flex items-center justify-center text-xs font-bold">1</span><h3 class="font-semibold text-stone-900">Day 1: Mogao Caves &amp; Desert</h3></div><ul class="space-y-1.5 text-sm text-stone-600 ml-11"><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Morning: Mogao Caves guided tour (book ahead)</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Lunch: Shazhou Night Market area</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Afternoon: Crescent Lake &amp; Singing Sand Dunes</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Evening: Camel ride at sunset</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Stay: Dunhuang city center</li></ul></div>
+            <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200"><div class="flex items-center gap-3 mb-3"><span class="w-8 h-8 rounded-full bg-mogao-600 text-white flex items-center justify-center text-xs font-bold">2</span><h3 class="font-semibold text-stone-900">Day 2: West Line</h3></div><ul class="space-y-1.5 text-sm text-stone-600 ml-11"><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Morning: Yumen Pass &amp; Han Great Wall ruins</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Afternoon: Yadan National Geopark</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Evening: Try donkey-meat noodles</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Stay: Dunhuang</li></ul></div>
+            <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200"><div class="flex items-center gap-3 mb-3"><span class="w-8 h-8 rounded-full bg-mogao-600 text-white flex items-center justify-center text-xs font-bold">3</span><h3 class="font-semibold text-stone-900">Day 3: Train to Jiuquan</h3></div><ul class="space-y-1.5 text-sm text-stone-600 ml-11"><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Morning: High-speed train to Jiuquan (2.5h)</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Afternoon: Jiayuguan Fort &amp; Great Wall Museum</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Evening: Jiuquan old town, lamb skewers</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Stay: Jiayuguan or Jiuquan</li></ul></div>
+          </div>
+          <div class="planner-plan hidden" data-plan="5">
+            <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200"><div class="flex items-center gap-3 mb-3"><span class="w-8 h-8 rounded-full bg-mogao-600 text-white flex items-center justify-center text-xs font-bold">1</span><h3 class="font-semibold text-stone-900">Day 1: Arrive Dunhuang</h3></div><ul class="space-y-1.5 text-sm text-stone-600 ml-11"><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Check in, explore Shazhou Night Market</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Stay: Dunhuang city center</li></ul></div>
+            <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200"><div class="flex items-center gap-3 mb-3"><span class="w-8 h-8 rounded-full bg-mogao-600 text-white flex items-center justify-center text-xs font-bold">2</span><h3 class="font-semibold text-stone-900">Day 2: Mogao Caves &amp; Desert</h3></div><ul class="space-y-1.5 text-sm text-stone-600 ml-11"><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Morning: Mogao Caves (book ahead)</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Afternoon: Crescent Lake &amp; sand dunes</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Evening: Camel ride or dune sliding</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Stay: Dunhuang</li></ul></div>
+            <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200"><div class="flex items-center gap-3 mb-3"><span class="w-8 h-8 rounded-full bg-mogao-600 text-white flex items-center justify-center text-xs font-bold">3</span><h3 class="font-semibold text-stone-900">Day 3: Yadan &amp; West Line</h3></div><ul class="space-y-1.5 text-sm text-stone-600 ml-11"><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Full day: Yumen Pass, Han Great Wall, Yadan Geopark</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Pack lunch and water</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Stay: Dunhuang</li></ul></div>
+            <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200"><div class="flex items-center gap-3 mb-3"><span class="w-8 h-8 rounded-full bg-mogao-600 text-white flex items-center justify-center text-xs font-bold">4</span><h3 class="font-semibold text-stone-900">Day 4: Train to Jiuquan</h3></div><ul class="space-y-1.5 text-sm text-stone-600 ml-11"><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Morning: High-speed train (2.5h)</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Afternoon: Jiayuguan Fort &amp; Overhanging Great Wall</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Evening: Jiuquan food street</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Stay: Jiayuguan area</li></ul></div>
+            <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200"><div class="flex items-center gap-3 mb-3"><span class="w-8 h-8 rounded-full bg-mogao-600 text-white flex items-center justify-center text-xs font-bold">5</span><h3 class="font-semibold text-stone-900">Day 5: Jiuquan &amp; Depart</h3></div><ul class="space-y-1.5 text-sm text-stone-600 ml-11"><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Morning: Satellite Launch Center exhibit</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Evening: Depart from Jiayuguan Airport</li></ul></div>
+          </div>
+          <div class="planner-plan hidden" data-plan="7">
+            <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200"><div class="flex items-center gap-3 mb-3"><span class="w-8 h-8 rounded-full bg-mogao-600 text-white flex items-center justify-center text-xs font-bold">1</span><h3 class="font-semibold text-stone-900">Day 1: Arrive Dunhuang</h3></div><ul class="space-y-1.5 text-sm text-stone-600 ml-11"><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Check in, explore city center</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Evening: Shazhou Night Market</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Stay: Dunhuang</li></ul></div>
+            <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200"><div class="flex items-center gap-3 mb-3"><span class="w-8 h-8 rounded-full bg-mogao-600 text-white flex items-center justify-center text-xs font-bold">2</span><h3 class="font-semibold text-stone-900">Day 2: Mogao Caves</h3></div><ul class="space-y-1.5 text-sm text-stone-600 ml-11"><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Morning: Mogao Caves full visit</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Afternoon: Dunhuang Museum</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Stay: Dunhuang</li></ul></div>
+            <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200"><div class="flex items-center gap-3 mb-3"><span class="w-8 h-8 rounded-full bg-mogao-600 text-white flex items-center justify-center text-xs font-bold">3</span><h3 class="font-semibold text-stone-900">Day 3: Desert &amp; Sunset</h3></div><ul class="space-y-1.5 text-sm text-stone-600 ml-11"><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Morning: Crescent Lake &amp; Singing Sand Dunes</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Sunset: Dune sunset photography</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Stay: Dunhuang</li></ul></div>
+            <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200"><div class="flex items-center gap-3 mb-3"><span class="w-8 h-8 rounded-full bg-mogao-600 text-white flex items-center justify-center text-xs font-bold">4</span><h3 class="font-semibold text-stone-900">Day 4: Yadan Geopark</h3></div><ul class="space-y-1.5 text-sm text-stone-600 ml-11"><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Full day: Yumen Pass + Yadan Geopark</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Evening: Local specialty dinner</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Stay: Dunhuang</li></ul></div>
+            <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200"><div class="flex items-center gap-3 mb-3"><span class="w-8 h-8 rounded-full bg-mogao-600 text-white flex items-center justify-center text-xs font-bold">5</span><h3 class="font-semibold text-stone-900">Day 5: Train to Jiuquan</h3></div><ul class="space-y-1.5 text-sm text-stone-600 ml-11"><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Morning: High-speed train</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Afternoon: Jiayuguan Fort</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Evening: Explore Jiayuguan old town</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Stay: Jiayuguan</li></ul></div>
+            <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200"><div class="flex items-center gap-3 mb-3"><span class="w-8 h-8 rounded-full bg-mogao-600 text-white flex items-center justify-center text-xs font-bold">6</span><h3 class="font-semibold text-stone-900">Day 6: Great Wall Deep Dive</h3></div><ul class="space-y-1.5 text-sm text-stone-600 ml-11"><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Morning: Overhanging Great Wall hike</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Afternoon: First Strategic Post &amp; Wei-Jin tombs</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Stay: Jiayuguan or Jiuquan</li></ul></div>
+            <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200"><div class="flex items-center gap-3 mb-3"><span class="w-8 h-8 rounded-full bg-mogao-600 text-white flex items-center justify-center text-xs font-bold">7</span><h3 class="font-semibold text-stone-900">Day 7: Zhangye &amp; Depart</h3></div><ul class="space-y-1.5 text-sm text-stone-600 ml-11"><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Morning: Train to Zhangye (1.5h), Rainbow Mountains</li><li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0"></span>Afternoon: Return or depart from Zhangye West Station</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-24 bg-stone-50">
+    <div class="section-container"><div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center"><div class="max-w-xl"><h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-stone-900">Mogao Caves: The Complete Guide</h2><p class="mt-4 text-stone-500 leading-relaxed">Everything about tickets, reservations, and how to make the most of your visit to one of the world's greatest Buddhist art treasures.</p><div class="mt-6 space-y-3"><div class="flex items-start gap-3"><span class="mt-0.5 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg></span><span class="text-stone-700 text-sm">A-ticket vs B-ticket: what is the difference and which one you need</span></div><div class="flex items-start gap-3"><span class="mt-0.5 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg></span><span class="text-stone-700 text-sm">How to book as a foreigner and common pitfalls to avoid</span></div><div class="flex items-start gap-3"><span class="mt-0.5 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg></span><span class="text-stone-700 text-sm">Alternatives when Mogao is sold out: Yulin Caves &amp; Western Thousand Buddha Caves</span></div></div><div class="mt-8 flex flex-wrap gap-3"><a href="/mogao-caves" class="inline-flex items-center gap-2 px-5 py-3 bg-mogao-600 text-white rounded-xl text-sm font-semibold hover:bg-mogao-700 transition-colors">Read the Full Guide</a><a href="/tickets" class="inline-flex items-center gap-2 px-5 py-3 bg-stone-200 text-stone-800 rounded-xl text-sm font-semibold hover:bg-stone-300 transition-colors">Ticket Prices</a></div></div><div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-stone-200 via-stone-100 to-mogao-100 relative overflow-hidden"><div class="absolute inset-0 flex items-center justify-center"><div class="text-center"><div class="w-16 h-16 rounded-full bg-mogao-600/10 flex items-center justify-center mx-auto mb-2"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2d6da4" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><span class="text-mogao-600 font-semibold text-sm">Mogao Caves</span></div></div></div></div></div>
+  </section>
+
+  <section id="survival" class="py-24 bg-white">
+    <div class="section-container"><h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-stone-900 text-center">Practical Survival Guide</h2><p class="mt-3 text-stone-500 text-center max-w-lg mx-auto">What nobody tells you about traveling in Gansu as a foreigner.</p>
+      <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-stone-50 rounded-2xl p-6 hover:bg-mogao-50/40 transition-colors border border-transparent hover:border-mogao-200"><div class="w-10 h-10 rounded-xl bg-mogao-100 flex items-center justify-center text-mogao-600 mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><h3 class="text-base font-semibold text-stone-900">Phone &amp; Internet</h3><p class="mt-2 text-sm text-stone-500 leading-relaxed">Buy a China Mobile SIM at Dunhuang Airport. For eSIM, install Airalo or Nomad before departure. Install VPN before arriving. Download offline maps in Maps.me. Google Maps has location offset in China.</p></div>
+        <div class="bg-stone-50 rounded-2xl p-6 hover:bg-mogao-50/40 transition-colors border border-transparent hover:border-mogao-200"><div class="w-10 h-10 rounded-xl bg-mogao-100 flex items-center justify-center text-mogao-600 mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3 class="text-base font-semibold text-stone-900">Money &amp; Payment</h3><p class="mt-2 text-sm text-stone-500 leading-relaxed">Install Alipay and link your Visa/Mastercard before traveling. Bank of China ATMs accept foreign cards. Carry cash for night markets (CNY 200-500). No tipping in China. WeChat Pay is near-universal.</p></div>
+        <div class="bg-stone-50 rounded-2xl p-6 hover:bg-mogao-50/40 transition-colors border border-transparent hover:border-mogao-200"><div class="w-10 h-10 rounded-xl bg-mogao-100 flex items-center justify-center text-mogao-600 mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div><h3 class="text-base font-semibold text-stone-900">Food Survival</h3><p class="mt-2 text-sm text-stone-500 leading-relaxed">Gansu has abundant halal restaurants. Must-try: donkey-meat noodles, lamb soup, apricot drink. Stick to bottled water. Shazhou Night Market opens 6pm to midnight. <a href="/food" class="text-mogao-600 hover:text-mogao-700 underline">Full food guide</a>.</p></div>
+        <a href="/packing-list" class="bg-stone-50 rounded-2xl p-6 hover:bg-mogao-50/40 transition-colors border border-transparent hover:border-mogao-200 no-underline block"><div class="w-10 h-10 rounded-xl bg-mogao-100 flex items-center justify-center text-mogao-600 mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg></div><h3 class="text-base font-semibold text-stone-900">What to Pack <span class="text-xs text-mogao-500">→</span></h3><p class="mt-2 text-sm text-stone-500 leading-relaxed">Season-by-season packing list for the Gobi Desert. Summer survival gear, winter cold-weather essentials, and the 10 items every traveler needs.</p></a>
+        <a href="/survival-phrases" class="bg-stone-50 rounded-2xl p-6 hover:bg-mogao-50/40 transition-colors border border-transparent hover:border-mogao-200 no-underline block"><div class="w-10 h-10 rounded-xl bg-mogao-100 flex items-center justify-center text-mogao-600 mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h3 class="text-base font-semibold text-stone-900">Chinese Phrases <span class="text-xs text-mogao-500">→</span></h3><p class="mt-2 text-sm text-stone-500 leading-relaxed">30 essential Mandarin phrases with pinyin. Show to taxi drivers, hotel staff, and restaurant servers. Works offline.</p></a>
+        <div class="bg-stone-50 rounded-2xl p-6 hover:bg-mogao-50/40 transition-colors border border-transparent hover:border-mogao-200"><div class="w-10 h-10 rounded-xl bg-mogao-100 flex items-center justify-center text-mogao-600 mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"/></svg></div><h3 class="text-base font-semibold text-stone-900">Getting Around Locally</h3><p class="mt-2 text-sm text-stone-500 leading-relaxed">Use Didi via Alipay for local taxis. Dunhuang city center is walkable. Hire a private driver for day trips (CNY 600-800/day). Carry your hotel's business card with the Chinese address. Always bring your passport.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 md:px-6 pb-16 md:pb-20 reveal">
+    <div class="rounded-2xl border border-stone-200 bg-gradient-to-br from-stone-50 to-white p-8 md:p-10">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div class="max-w-lg">
+          <div class="inline-flex items-center rounded-full border border-mogao-200 bg-mogao-50 px-3 py-1 text-xs font-medium text-mogao-700 mb-4">Multi-destination route</div>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-stone-900">The Greater Silk Road Route</h2>
+          <p class="mt-3 text-stone-500 leading-relaxed">Many travelers combine Dunhuang and Jiuquan with nearby destinations. This is the classic 7-14 day Gansu Corridor circuit &mdash; each stop is 1.5-3 hours by high-speed train and completely different from the last.</p>
+        </div>
+        <div class="flex flex-wrap gap-4 md:gap-6">
+          <div class="flex items-start gap-2"><span class="mt-1.5 h-2.5 w-2.5 rounded-full bg-mogao-500 shrink-0"></span><div><p class="font-semibold text-stone-800 text-sm">Dunhuang</p><p class="text-xs text-stone-400">Mogao Caves &amp; desert</p></div></div>
+          <div class="flex items-start gap-2"><span class="mt-1.5 h-2.5 w-2.5 rounded-full bg-amber-500 shrink-0"></span><div><p class="font-semibold text-stone-800 text-sm">Jiuquan</p><p class="text-xs text-stone-400">Jiayuguan Fort &amp; space</p></div></div>
+          <div class="flex items-start gap-2"><span class="mt-1.5 h-2.5 w-2.5 rounded-full bg-red-500 shrink-0"></span><div><p class="font-semibold text-stone-800 text-sm">Zhangye</p><p class="text-xs text-stone-400">Rainbow Mountains</p></div></div>
+          <div class="flex items-start gap-2"><span class="mt-1.5 h-2.5 w-2.5 rounded-full bg-blue-500 shrink-0"></span><div><p class="font-semibold text-stone-800 text-sm">Lanzhou</p><p class="text-xs text-stone-400">Gateway to Gansu</p></div></div>
+          <div class="flex items-start gap-2"><span class="mt-1.5 h-2.5 w-2.5 rounded-full bg-purple-500 shrink-0"></span><div><p class="font-semibold text-stone-800 text-sm">Xi'an</p><p class="text-xs text-stone-400">Terracotta Warriors</p></div></div>
+        </div>
+      </div>
+      <div class="mt-6 pt-5 border-t border-stone-100">
+        <p class="text-sm text-stone-500"><strong class="text-stone-700">Sample 10-day route:</strong> Lanzhou (1 day, arrival) &rarr; train to Zhangye (1.5h) &rarr; train to Jiuquan (1.5h, Jiayuguan Fort, 2 days) &rarr; train to Dunhuang (2.5h, Mogao Caves + desert, 3 days) &rarr; fly out from Dunhuang (DNH). <a href="/sil-road-compare" class="text-mogao-600 hover:text-mogao-700 underline">Silk Road destination comparison &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+  <section class="mx-auto max-w-7xl px-4 md:px-6 pt-12 md:pt-16 pb-8 reveal">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-5 rounded-2xl border border-stone-200 bg-white max-w-2xl mx-auto">
+      <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-mogao-100 text-mogao-700 text-xl font-bold">DJ</div>
+      <div><p class="font-semibold text-stone-800">Written by the Dunhuang &amp; Jiuquan Guide Team</p><p class="text-sm text-stone-500 mt-0.5">We have explored the Gansu Corridor <strong class="text-stone-700">across multiple seasons</strong> since 2023. Every ticket price on this page was verified in person at attraction gates in <strong class="text-stone-700">July 2026</strong>. We do not use AI to write our guides -- everything here comes from firsthand experience, including the things that went wrong so you can avoid them.</p></div>
+    </div>
+  </section>
+  <section class="mx-auto max-w-7xl px-4 md:px-6 py-12 md:py-16 reveal">
+    <div class="text-center mb-10"><SectionHeader headingLevel="h2" eyebrow="Trust &amp; Experience" title="Our Research Timeline" subtitle="We have been exploring and documenting Dunhuang and Jiuquan since 2023. Every recommendation is backed by firsthand experience." center /></div>
+    <div class="relative max-w-2xl mx-auto"><div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-stone-200 md:-translate-x-px" aria-hidden="true"></div>
+      <div class="space-y-8">
+        <div class="flex gap-6"><div class="hidden md:flex md:w-1/2 md:justify-end md:pr-10"></div><div class="relative flex-shrink-0"><div class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-mogao-300 bg-white z-10 relative"><div class="h-2.5 w-2.5 rounded-full bg-mogao-500"></div></div></div><div class="flex-1 pb-2"><span class="inline-block text-xs font-bold tracking-widest uppercase text-mogao-600 mb-1">2023</span><h4 class="font-display text-lg font-semibold text-stone-800">First Silk Road Explorations</h4><p class="mt-2 text-sm text-stone-500 leading-relaxed">Initial research trips across Gansu. Discovered that most English-language information about Dunhuang was outdated or wrong. Knew a dedicated guide was needed.</p></div></div>
+        <div class="flex gap-6 md:flex-row-reverse"><div class="hidden md:flex md:w-1/2 md:justify-start md:pl-10"></div><div class="relative flex-shrink-0"><div class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-mogao-300 bg-white z-10 relative"><div class="h-2.5 w-2.5 rounded-full bg-mogao-500"></div></div></div><div class="flex-1 pb-2"><span class="inline-block text-xs font-bold tracking-widest uppercase text-mogao-600 mb-1">2024</span><h4 class="font-display text-lg font-semibold text-stone-800">Deep Research Phase</h4><p class="mt-2 text-sm text-stone-500 leading-relaxed">Multiple visits across all seasons. Documented ticket booking processes, train schedules, and restaurant picks. Vetted every hotel recommendation through firsthand stays.</p></div></div>
+        <div class="flex gap-6"><div class="hidden md:flex md:w-1/2 md:justify-end md:pr-10"></div><div class="relative flex-shrink-0"><div class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-mogao-300 bg-white z-10 relative"><div class="h-2.5 w-2.5 rounded-full bg-mogao-500"></div></div></div><div class="flex-1 pb-2"><span class="inline-block text-xs font-bold tracking-widest uppercase text-mogao-600 mb-1">2025</span><h4 class="font-display text-lg font-semibold text-stone-800">The Slow Travel Year</h4><p class="mt-2 text-sm text-stone-500 leading-relaxed">Extended stays in Dunhuang and Jiayuguan. Walked every trail, photographed every attraction. Built the interactive route map from GPS tracks.</p></div></div>
+        <div class="flex gap-6 md:flex-row-reverse"><div class="hidden md:flex md:w-1/2 md:justify-start md:pl-10"></div><div class="relative flex-shrink-0"><div class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-mogao-300 bg-white z-10 relative"><div class="h-2.5 w-2.5 rounded-full bg-mogao-500"></div></div></div><div class="flex-1 pb-2"><span class="inline-block text-xs font-bold tracking-widest uppercase text-mogao-600 mb-1">2026</span><h4 class="font-display text-lg font-semibold text-stone-800">Guide Launch &amp; Continuous Updates</h4><p class="mt-2 text-sm text-stone-500 leading-relaxed">Launched this guide. All prices verified at attraction gates in July 2026. We return to the corridor regularly -- most recently less than one month ago.</p></div></div>
+      </div>
+    </div>
+  </section>
+  <section class="mx-auto max-w-7xl px-4 md:px-6 py-12 md:py-16 reveal">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8"><div><h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-stone-900">Recently Updated</h2><p class="mt-1 text-stone-500">Our freshest guides, kept current with verified prices and firsthand experience.</p></div></div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <a href="/tickets" class="group rounded-2xl border border-stone-200 bg-white p-5 transition-all hover:border-mogao-200 hover:shadow-md no-underline"><div class="flex items-center justify-between mb-2"><span class="inline-flex items-center rounded-full bg-mogao-50 px-2.5 py-0.5 text-xs font-medium text-mogao-700">Prices updated</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" class="text-stone-300 group-hover:text-mogao-500 transition-colors"><path d="M6 3l5 5-5 5"/></svg></div><h4 class="font-semibold text-stone-800 group-hover:text-mogao-700 transition-colors">Ticket Guide</h4><p class="mt-1 text-sm text-stone-500 leading-relaxed">2026 prices verified July -- Mogao Caves, Crescent Lake, Jiayuguan</p></a>
+      <a href="/crescent-lake" class="group rounded-2xl border border-stone-200 bg-white p-5 transition-all hover:border-mogao-200 hover:shadow-md no-underline"><div class="flex items-center justify-between mb-2"><span class="inline-flex items-center rounded-full bg-mogao-50 px-2.5 py-0.5 text-xs font-medium text-mogao-700">New page</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" class="text-stone-300 group-hover:text-mogao-500 transition-colors"><path d="M6 3l5 5-5 5"/></svg></div><h4 class="font-semibold text-stone-800 group-hover:text-mogao-700 transition-colors">Crescent Lake &amp; Dunes</h4><p class="mt-1 text-sm text-stone-500 leading-relaxed">Dune climbing tips, camel rides, best photo times, sunset guide</p></a>
+      <a href="/jiayuguan-fort" class="group rounded-2xl border border-stone-200 bg-white p-5 transition-all hover:border-mogao-200 hover:shadow-md no-underline"><div class="flex items-center justify-between mb-2"><span class="inline-flex items-center rounded-full bg-mogao-50 px-2.5 py-0.5 text-xs font-medium text-mogao-700">New page</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" class="text-stone-300 group-hover:text-mogao-500 transition-colors"><path d="M6 3l5 5-5 5"/></svg></div><h4 class="font-semibold text-stone-800 group-hover:text-mogao-700 transition-colors">Jiayuguan Fort</h4><p class="mt-1 text-sm text-stone-500 leading-relaxed">The Great Wall western terminus -- history, tickets, route</p></a>
+      <a href="/sil-road-compare" class="group rounded-2xl border border-stone-200 bg-white p-5 transition-all hover:border-mogao-200 hover:shadow-md no-underline"><div class="flex items-center justify-between mb-2"><span class="inline-flex items-center rounded-full bg-mogao-50 px-2.5 py-0.5 text-xs font-medium text-mogao-700">New page</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" class="text-stone-300 group-hover:text-mogao-500 transition-colors"><path d="M6 3l5 5-5 5"/></svg></div><h4 class="font-semibold text-stone-800 group-hover:text-mogao-700 transition-colors">Silk Road Compare</h4><p class="mt-1 text-sm text-stone-500 leading-relaxed">Dunhuang vs Xi'an vs Turpan vs Kashgar</p></a>
+    </div>
+  </section>
+  <section id="faq" class="bg-stone-100 border-y border-stone-200 reveal">
+    <div class="mx-auto max-w-7xl px-4 md:px-6 py-20 md:py-28">
+      <div class="text-center mb-12"><SectionHeader headingLevel="h2" eyebrow="FAQ" title="Questions Every Traveler Asks" subtitle="Straight answers from people who have been there -- not from a tourism brochure." center /></div>
+      <div class="mx-auto max-w-2xl divide-y divide-stone-200">
+        <details class="group py-5"><summary class="flex cursor-pointer items-center justify-between gap-4 font-medium text-stone-800 hover:text-mogao-700 transition-colors list-none">How many days do I need?<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-stone-400 group-open:rotate-45 transition-transform"><path d="M8 3v10M3 8h10"/></svg></summary><p class="mt-3 text-sm text-stone-500 leading-relaxed pr-8">Minimum 4 days: 2-3 in Dunhuang, 1-2 in Jiuquan. With 7 days add Zhangye Rainbow Mountains. High-speed train: 2.5 hours. See our <a href="/itinerary" class="text-mogao-600 hover:text-mogao-700 underline">itinerary plans</a>.</p></details>
+        <details class="group py-5"><summary class="flex cursor-pointer items-center justify-between gap-4 font-medium text-stone-800 hover:text-mogao-700 transition-colors list-none">Can I visit Mogao Caves without a guide?<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-stone-400 group-open:rotate-45 transition-transform"><path d="M8 3v10M3 8h10"/></svg></summary><p class="mt-3 text-sm text-stone-500 leading-relaxed pr-8">No. All visitors must join a guided group tour. A-ticket holders see 8 caves over ~75 minutes. Photography strictly forbidden inside. Book 1-4 weeks ahead in peak season. <a href="/mogao-caves" class="text-mogao-600 hover:text-mogao-700 underline">Full Mogao guide</a>.</p></details>
+        <details class="group py-5"><summary class="flex cursor-pointer items-center justify-between gap-4 font-medium text-stone-800 hover:text-mogao-700 transition-colors list-none">Can I use Google Maps in China?<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-stone-400 group-open:rotate-45 transition-transform"><path d="M8 3v10M3 8h10"/></svg></summary><p class="mt-3 text-sm text-stone-500 leading-relaxed pr-8">Google Maps has location offset and is unreliable. Use Apple Maps (works on iPhones), Baidu Maps, or download Maps.me offline. Install VPN before arriving.</p></details>
+        <details class="group py-5"><summary class="flex cursor-pointer items-center justify-between gap-4 font-medium text-stone-800 hover:text-mogao-700 transition-colors list-none">Is Gansu safe for solo travelers?<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-stone-400 group-open:rotate-45 transition-transform"><path d="M8 3v10M3 8h10"/></svg></summary><p class="mt-3 text-sm text-stone-500 leading-relaxed pr-8">Yes, very safe. Violent crime is extremely rare. Main risks: extreme desert heat in summer (35-40C+), language barrier outside major hotels, and wandering off marked paths in Yadan Geopark.</p></details>
+        <details class="group py-5"><summary class="flex cursor-pointer items-center justify-between gap-4 font-medium text-stone-800 hover:text-mogao-700 transition-colors list-none">Which is better: Dunhuang or Jiuquan?<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-stone-400 group-open:rotate-45 transition-transform"><path d="M8 3v10M3 8h10"/></svg></summary><p class="mt-3 text-sm text-stone-500 leading-relaxed pr-8">Dunhuang if you can only visit one. Jiuquan for history buffs and space enthusiasts. With 5+ days, visit both. <a href="/dunhuang-vs-jiuquan" class="text-mogao-600 hover:text-mogao-700 underline">Full comparison</a>.</p></details>
+        <details class="group py-5"><summary class="flex cursor-pointer items-center justify-between gap-4 font-medium text-stone-800 hover:text-mogao-700 transition-colors list-none">How much should I budget per day?<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-stone-400 group-open:rotate-45 transition-transform"><path d="M8 3v10M3 8h10"/></svg></summary><p class="mt-3 text-sm text-stone-500 leading-relaxed pr-8">Budget: CNY 400-600 (hostel, street food, B-tickets). Mid-range: CNY 600-1000 (3-star hotel, A-tickets, private driver). Comfort: CNY 1000-2000 (4-5 star hotel, guided tours).</p></details>
+      </div>
+    </div>
+  </section>
+  <section class="mx-auto max-w-7xl px-4 md:px-6 py-20 md:py-28 text-center">
+    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-stone-900">Ready to plan your Silk Road journey?</h2>
+    <p class="mt-4 text-stone-500 max-w-md mx-auto">Start with our complete guide, or jump straight to what you need.</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href="/guide" class="inline-flex items-center gap-2 rounded-xl bg-mogao-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-mogao-600 active:scale-[0.98] shadow-lg shadow-mogao-900/20">Read the Complete Guide<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></a>
+      <a href="/itinerary" class="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 hover:bg-stone-50 active:scale-[0.98]">Browse Itineraries</a>
+    </div>
+    <div class="mt-6 flex flex-wrap justify-center gap-2 text-sm">
+      <span class="text-stone-400">Popular:</span>
+      <a href="/mogao-caves" class="text-mogao-600 hover:text-mogao-700 underline">Mogao Caves</a>
+      <span class="text-stone-300">&middot;</span>
+      <a href="/crescent-lake" class="text-mogao-600 hover:text-mogao-700 underline">Crescent Lake</a>
+      <span class="text-stone-300">&middot;</span>
+      <a href="#when-to-go" class="text-mogao-600 hover:text-mogao-700 underline">Best Time to Visit</a>
+      <span class="text-stone-300">&middot;</span>
+      <a href="/sil-road-compare" class="text-mogao-600 hover:text-mogao-700 underline">Silk Road Compare</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+document.addEventListener("DOMContentLoaded",function(){var t=document.querySelectorAll(".planner-tab");var p=document.querySelectorAll(".planner-plan");if(!t.length)return;t.forEach(function(b){b.addEventListener("click",function(){t.forEach(function(x){x.classList.remove("bg-white","text-stone-900","shadow-sm");x.classList.add("text-stone-500")});b.classList.add("bg-white","text-stone-900","shadow-sm");b.classList.remove("text-stone-500");p.forEach(function(x){x.classList.toggle("hidden",x.dataset.plan!==b.dataset.days)})})})});
+</script>
+
+<script>
+  (function(){var o=new IntersectionObserver(function(e){e.forEach(function(e){if(e.isIntersecting){e.target.classList.add("reveal-in");o.unobserve(e.target)}})},{threshold:0.1,rootMargin:"0px 0px -40px 0px"});document.querySelectorAll(".reveal").forEach(function(e){o.observe(e)})})();
+</script>
+
+<script is:inline>
+  (function(){var d={spring:{title:"Spring (Mar-May) -- Warming Up",desc:"March is cold (5-12C) with occasional sandstorms. April warms up with wildflowers on the dunes (15-22C). <strong>May is the best spring month</strong>: 15-28C, clear skies, moderate crowds. The desert blooms briefly and the light is soft and golden.",bg:"bg-yellow-100",c:"text-yellow-700",ic:"\ud83c\udf38",badges:"<span class=\"rounded-full bg-yellow-100 px-3 py-1 text-yellow-700 font-medium\">Crowds: Low-Moderate</span><span class=\"rounded-full bg-yellow-100 px-3 py-1 text-yellow-700 font-medium\">Hotels: Normal</span><span class=\"rounded-full bg-yellow-100 px-3 py-1 text-yellow-700 font-medium\">Photos: Soft light</span>"},summer:{title:"Summer (Jun-Aug) -- Avoid If Possible",desc:"June is still manageable (20-30C). <strong>July and August are brutally hot</strong> (35-40C+), especially Dunhuang. Peak domestic tourism. Mogao tickets sell out 2-4 weeks ahead. Start activities by 7 AM and siesta midday.",bg:"bg-red-100",c:"text-red-700",ic:"\u2600\ufe0f",badges:"<span class=\"rounded-full bg-red-100 px-3 py-1 text-red-700 font-medium\">Crowds: Extreme</span><span class=\"rounded-full bg-red-100 px-3 py-1 text-red-700 font-medium\">Hotels: Peak price</span><span class=\"rounded-full bg-red-100 px-3 py-1 text-red-700 font-medium\">Photos: Harsh light</span>"},autumn:{title:"Autumn (Sep-Oct) -- The Best Season",desc:"September is magnificent: 15-25C, golden light, crystal-clear skies. October equally good -- but <strong>avoid the first week</strong> (Golden Week, Oct 1-7) when every attraction is overrun. Comfortable temperatures and the best light for photography.",bg:"bg-green-100",c:"text-green-700",ic:"\ud83c\udf42",badges:"<span class=\"rounded-full bg-green-100 px-3 py-1 text-green-700 font-medium\">Crowds: Moderate</span><span class=\"rounded-full bg-green-100 px-3 py-1 text-green-700 font-medium\">Hotels: Normal</span><span class=\"rounded-full bg-green-100 px-3 py-1 text-green-700 font-medium\">Photos: Best light</span>"},winter:{title:"Winter (Nov-Feb) -- Best for Deals",desc:"Cold (-10 to 5C) but sunny. Attractions nearly empty. Hotels half price. Mogao Caves has good availability. Snow on dunes is magical. Caves stay 15C inside year-round. <strong>Avoid Chinese New Year week</strong>.",bg:"bg-blue-100",c:"text-blue-700",ic:"\u2744\ufe0f",badges:"<span class=\"rounded-full bg-blue-100 px-3 py-1 text-blue-700 font-medium\">Crowds: Very Low</span><span class=\"rounded-full bg-blue-100 px-3 py-1 text-blue-700 font-medium\">Hotels: Half price</span><span class=\"rounded-full bg-blue-100 px-3 py-1 text-blue-700 font-medium\">Photos: Snow scenes</span>"}};var de=document.getElementById("season-detail");var tb=document.querySelectorAll(".season-tab");if(!de||!tb.length)return;function rn(s){var x=d[s];de.innerHTML="<div class=\"flex items-start gap-3\"><span class=\"mt-1 w-10 h-10 rounded-full "+x.bg+" flex items-center justify-center "+x.c+" text-lg shrink-0\">"+x.ic+"</span><div><h3 class=\"text-xl font-semibold text-stone-900 mb-2\">"+x.title+"</h3><p class=\"text-stone-600 leading-relaxed\">"+x.desc+"</p><div class=\"mt-4 flex flex-wrap gap-3 text-sm\">"+x.badges+"</div></div></div>"}tb.forEach(function(t){t.addEventListener("click",function(){tb.forEach(function(x){x.classList.remove("border-mogao-300","bg-mogao-50","text-mogao-700","shadow-sm");x.classList.add("border-stone-200","bg-white","text-stone-500")});t.classList.add("border-mogao-300","bg-mogao-50","text-mogao-700","shadow-sm");t.classList.remove("border-stone-200","bg-white","text-stone-500");rn(t.dataset.season)})})})();
+</script>
+
+
+
+

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dunhuang-jiuquan.com/sitemap-index.xml

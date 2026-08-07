@@ -1,0 +1,277 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Crescent Lake & Singing Sand Dunes Guide 2026 | Dunhuang Desert Oasis",
+      "description": "Complete guide to Crescent Lake and Mingsha Sand Dunes in Dunhuang: tickets, camel rides, sandboarding, sunset photography, best times to visit, and practical tips for foreign travelers.",
+      "datePublished": "2026-07-15",
+      "dateModified": "2026-08-07",
+      "author": { "@type": "Person", "name": "Dunhuang & Jiuquan Guide Team" },
+      "image": "https://dunhuang-jiuquan.com/images/crescent-lake.webp",
+      "publisher": { "@type": "Organization", "name": "Dunhuang & Jiuquan Guide", "url": "https://dunhuang-jiuquan.com" }
+    },
+    {
+      "@type": "TouristAttraction",
+      "name": "Crescent Lake and Singing Sand Dunes (Mingsha Mountain)",
+      "description": "A crescent-shaped spring-fed lake surrounded by 250-meter singing sand dunes in Dunhuang, active for over 2,000 years. Features camel rides, sandboarding, and desert sunset views.",
+      "touristType": ["Adventure Travelers", "Photographers", "Family Travelers"],
+      "geo": { "@type": "GeoCoordinates", "latitude": 40.086, "longitude": 94.669 },
+      "address": { "@type": "PostalAddress", "addressLocality": "Dunhuang", "addressRegion": "Gansu", "addressCountry": "CN" }
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Crescent Lake &amp; Singing Sand Dunes Guide 2026 | Dunhuang Desert Oasis"
+  description="Complete guide to Crescent Lake and Mingsha Sand Dunes in Dunhuang: tickets (CNY 120, 3-day validity), camel rides, sandboarding, sunset photography, and insider tips for foreign visitors."
+  author="Dunhuang &amp; Jiuquan Guide Team"
+  datePublished="2026-07-15"
+  dateModified="2026-08-07"
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <article class="py-12 md:py-20">
+    <div class="section-container max-w-3xl">
+      <header class="mb-8 reveal">
+        <SectionHeader
+          eyebrow="Dunhuang Attraction"
+          title="Crescent Lake and Singing Sand Dunes"
+          subtitle="Everything you need to know: tickets, camel rides, sandboarding, best photo times, and how to avoid the crowds at Dunhuang's most famous desert landscape."
+        />
+      </header>
+
+      <!-- Hero Image -->
+      <div class="mb-16 rounded-2xl overflow-hidden">
+        <img
+          src="/images/crescent-lake.webp"
+          alt="Crescent Moon Lake oasis surrounded by Singing Sand Dunes, Mingsha Mountain desert landscape, Dunhuang"
+          class="w-full h-auto object-cover"
+          width="1200"
+          height="1200"
+          loading="eager"
+          decoding="sync"
+          sizes="100vw"
+        />
+      </div>
+
+      <!-- Quick Facts -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-16">
+        <div class="bg-stone-50 rounded-xl p-4 text-center">
+          <p class="text-xs text-stone-400 uppercase tracking-wider font-semibold">Location</p>
+          <p class="mt-1 font-semibold text-stone-900 text-sm">5km S of Dunhuang</p>
+        </div>
+        <div class="bg-stone-50 rounded-xl p-4 text-center">
+          <p class="text-xs text-stone-400 uppercase tracking-wider font-semibold">Entry Fee</p>
+          <p class="mt-1 font-semibold text-stone-900 text-sm">CNY 120</p>
+        </div>
+        <div class="bg-stone-50 rounded-xl p-4 text-center">
+          <p class="text-xs text-stone-400 uppercase tracking-wider font-semibold">Ticket Valid</p>
+          <p class="mt-1 font-semibold text-stone-900 text-sm">3 days</p>
+        </div>
+        <div class="bg-stone-50 rounded-xl p-4 text-center">
+          <p class="text-xs text-stone-400 uppercase tracking-wider font-semibold">Opening Hours</p>
+          <p class="mt-1 font-semibold text-stone-900 text-sm">6:00 AM - 7:30 PM</p>
+        </div>
+        <div class="bg-stone-50 rounded-xl p-4 text-center">
+          <p class="text-xs text-stone-400 uppercase tracking-wider font-semibold">Visit Duration</p>
+          <p class="mt-1 font-semibold text-stone-900 text-sm">2-4 hours</p>
+        </div>
+      </div>
+
+      <!-- What Is It -->
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-6">
+          What Are the Singing Sand Dunes &amp; Crescent Lake?
+        </h2>
+        <p class="text-stone-600 leading-relaxed mb-4">
+          Mingsha Mountain (鸣沙山) is a <strong class="text-stone-800">40-kilometer-long dune system</strong> on the southern edge of Dunhuang. The dunes reach heights of <strong class="text-stone-800">250 meters</strong> and produce a distinctive humming sound when wind blows across the sand — hence the name "Singing Sands." On calm days, you can hear the dunes resonate with a low, rumbling tone.
+        </p>
+        <p class="text-stone-600 leading-relaxed mb-4">
+          Nestled at the base of these dunes is <strong class="text-stone-800">Crescent Lake (月牙泉)</strong>, a natural spring-fed pool shaped like a crescent moon. Despite sitting in one of the driest regions on Earth, the lake has <strong class="text-stone-800">never dried up in over 2,000 years</strong>. For Silk Road travelers, this oasis was a lifesaving water source after crossing the Gobi Desert. Today, the contrast of turquoise water against golden sand dunes is one of the most photographed scenes in China.
+        </p>
+        <p class="text-stone-600 leading-relaxed">
+          The site is only <strong class="text-stone-800">5 kilometers from Dunhuang city center</strong> — a 10-minute taxi ride (CNY 10-15). This makes it the most accessible desert experience on the entire Silk Road. Unlike Yadan Geopark (3+ hours away), you can visit Crescent Lake on a whim, return for sunset, and even come back the next morning with the same ticket.
+        </p>
+      </section>
+
+      <!-- Ticket Info -->
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-6">
+          Tickets &amp; What's Included
+        </h2>
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="rounded-xl border border-mogao-200 bg-mogao-50/50 p-5">
+            <h3 class="font-semibold text-mogao-700 mb-2">Included in CNY 120</h3>
+            <ul class="space-y-1.5 text-sm text-stone-600">
+              <li class="flex gap-2"><span class="text-mogao-500 shrink-0 mt-0.5">&#10003;</span> Entry to the scenic area</li>
+              <li class="flex gap-2"><span class="text-mogao-500 shrink-0 mt-0.5">&#10003;</span> Access to Crescent Lake viewing platforms</li>
+              <li class="flex gap-2"><span class="text-mogao-500 shrink-0 mt-0.5">&#10003;</span> Dune climbing (wooden ladder path available)</li>
+              <li class="flex gap-2"><span class="text-mogao-500 shrink-0 mt-0.5">&#10003;</span> <strong>3-day re-entry</strong> with same ticket</li>
+            </ul>
+          </div>
+          <div class="rounded-xl border border-amber-200 bg-amber-50/50 p-5">
+            <h3 class="font-semibold text-amber-700 mb-2">Extra Costs (On-site)</h3>
+            <ul class="space-y-1.5 text-sm text-stone-600">
+              <li class="flex gap-2"><span class="text-amber-500 shrink-0 mt-0.5">&#8226;</span> Camel ride: <strong>CNY 100</strong> (~40 min)</li>
+              <li class="flex gap-2"><span class="text-amber-500 shrink-0 mt-0.5">&#8226;</span> Sandboarding: <strong>CNY 20-30</strong></li>
+              <li class="flex gap-2"><span class="text-amber-500 shrink-0 mt-0.5">&#8226;</span> ATV / dune buggy: <strong>CNY 150-300</strong></li>
+              <li class="flex gap-2"><span class="text-amber-500 shrink-0 mt-0.5">&#8226;</span> Shoe covers (orange booties): <strong>CNY 15</strong></li>
+              <li class="flex gap-2"><span class="text-amber-500 shrink-0 mt-0.5">&#8226;</span> Glider / microlight flight: <strong>CNY 380-680</strong></li>
+            </ul>
+          </div>
+        </div>
+        <div class="p-4 bg-stone-50 rounded-xl border border-stone-200">
+          <p class="text-sm text-stone-600"><strong class="text-stone-800">The 3-day ticket is excellent value.</strong> Go once in late afternoon for dune climbing and sunset, then return the next morning for sunrise photography with near-empty dunes. No need to book in advance — buy at the gate with your passport. English signage is limited but the ticket process is straightforward.</p>
+        </div>
+      </section>
+
+      <!-- Activities -->
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-6">
+          Activities at the Dunes
+        </h2>
+        <div class="space-y-4">
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <h3 class="font-semibold text-stone-900 text-lg">Camel Riding (CNY 100)</h3>
+            <p class="mt-1 text-sm text-stone-500 leading-relaxed">The most iconic experience. A caravan of camels takes you along a ~40-minute loop up to a dune ridge with panoramic views of Crescent Lake and the surrounding desert. <strong class="text-stone-700">The handlers stop at a photo point</strong> where you can take pictures. Camels kneel for mounting/disembarking — surprisingly easy even if you have never ridden one. Cash only for this activity. Go before 4 PM to avoid the longest queues.</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <h3 class="font-semibold text-stone-900 text-lg">Dune Climbing</h3>
+            <p class="mt-1 text-sm text-stone-500 leading-relaxed">The main dune (accessed via a wooden ladder path) takes <strong class="text-stone-700">20-30 minutes to climb</strong>. The ladder makes it manageable even in sand, but it is still physically demanding at 250 meters. The view from the ridge is worth every step — Crescent Lake spreads below you like a turquoise jewel, and the dune sea stretches to the horizon. <strong class="text-stone-700">Do this at sunset.</strong> Bring water. The descent is the fun part — you can run/slide down in minutes.</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <h3 class="font-semibold text-stone-900 text-lg">Sandboarding (CNY 20-30)</h3>
+            <p class="mt-1 text-sm text-stone-500 leading-relaxed">Rent a sandboard at the base of the dunes. <strong class="text-stone-700">The boards work best on steeper slopes</strong> — you will need to wax the bottom before each run (wax provided). It is more like sledding than snowboarding. The climb back up is the real workout. Fun for 30-45 minutes. Kids love this.</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <h3 class="font-semibold text-stone-900 text-lg">Sunset Photography</h3>
+            <p class="mt-1 text-sm text-stone-500 leading-relaxed">The golden hour here is legendary. Position yourself on the <strong class="text-stone-700">eastern ridge looking west</strong> for the classic shot of Crescent Lake backed by glowing dunes. Arrive by 5 PM, climb the dune by 6 PM, and wait for the magic between 6:30-7:30 PM (times vary by season). Bring a tripod if you want to shoot the transition from golden hour to blue hour. <a href="/photography" class="text-mogao-600 hover:text-mogao-700 underline">See our photography guide for exact spots and lens recommendations.</a></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Best Time & Crowds -->
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-6">
+          Best Time to Visit &amp; Crowd Strategy
+        </h2>
+        <div class="space-y-4">
+          <div class="bg-white rounded-2xl border border-stone-200 p-5">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="font-semibold text-stone-900">Sunrise (6:00-7:30 AM)</h3>
+                <p class="mt-1 text-sm text-stone-500">Near-empty dunes. Soft golden light on the eastern face. <strong class="text-stone-700">Best for photography and solitude.</strong> Cold in winter — bring layers. The ticket office opens at 6 AM.</p>
+              </div>
+              <span class="shrink-0 rounded-full bg-mogao-50 px-3 py-1 text-xs font-semibold text-mogao-600">Best</span>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl border border-stone-200 p-5">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="font-semibold text-stone-900">Late Afternoon (4:00-6:00 PM)</h3>
+                <p class="mt-1 text-sm text-stone-500">Arrive, do activities while it is still light. Camels, sandboarding, and the climb up. <strong class="text-stone-700">Good balance of light and manageable crowds.</strong></p>
+              </div>
+              <span class="shrink-0 rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-600">Good</span>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl border border-stone-200 p-5">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="font-semibold text-stone-900">Sunset (6:30-7:30 PM)</h3>
+                <p class="mt-1 text-sm text-stone-500">Most popular time. The dunes turn deep orange. <strong class="text-stone-700">Spectacular but crowded.</strong> Climb the dune by 6 PM to secure a good spot. Stay 30 minutes after sunset for blue hour.</p>
+              </div>
+              <span class="shrink-0 rounded-full bg-red-50 px-3 py-1 text-xs font-semibold text-red-600">Crowded</span>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl border border-stone-200 p-5">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="font-semibold text-stone-900">Midday (10 AM - 3 PM)</h3>
+                <p class="mt-1 text-sm text-stone-500">Harsh light, hotter sand, worst for photos. <strong class="text-stone-700">Avoid in summer.</strong> Only do this if it is your only available time slot — wear a hat and sunscreen.</p>
+              </div>
+              <span class="shrink-0 rounded-full bg-stone-100 px-3 py-1 text-xs font-semibold text-stone-500">Avoid</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Practical Tips -->
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-6">
+          Practical Tips
+        </h2>
+        <ul class="space-y-3 text-stone-600">
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Rent the orange shoe covers (CNY 15).</strong> Sand will get into your shoes within minutes. The bootie-style covers go up to your knees and actually work. They look silly — everyone wears them.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Bring a Ziploc bag for your phone.</strong> Drop it in the sand once and fine grit will scratch the screen. Also useful for your passport.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Summer visitors: go at sunrise or after 5 PM.</strong> The sand can reach 60&deg;C+ at midday in July and August. If you must go during the day, the wooden walkways are slightly cooler than bare sand.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Water and sunscreen are essential.</strong> There is a small shop near the entrance but prices are inflated. Bring at least 1 liter of water per person. SPF 50+, reapply every 2 hours.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Camel ride tip: sit in the front of the camel.</strong> The back position sways more. Hold the handle firmly when the camel stands up (front legs first — it lurches forward). No need to tip the handler.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Combine with Mogao Caves in one day.</strong> Mogao in the morning (book the 8 AM slot), lunch, rest during midday heat, then Crescent Lake from 4 PM to sunset. This is the classic Dunhuang day.</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- CTA -->
+      <div class="bg-mogao-600 text-white rounded-2xl p-8 text-center reveal">
+        <h3 class="text-xl font-bold">Plan your desert day</h3>
+        <p class="mt-2 text-mogao-100 text-sm">Our itinerary planner helps you slot Crescent Lake into the perfect Dunhuang day — paired with Mogao Caves in the morning.</p>
+        <div class="mt-5 flex flex-wrap justify-center gap-3">
+          <a href="/#planner" class="inline-flex items-center gap-2 px-5 py-3 bg-white text-mogao-700 rounded-xl text-sm font-semibold hover:bg-mogao-50 transition-colors">
+            Open Trip Planner
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="/itinerary" class="inline-flex items-center gap-2 px-5 py-3 bg-mogao-700 text-white rounded-xl text-sm font-semibold hover:bg-mogao-800 transition-colors border border-mogao-500">
+            Browse Itineraries
+          </a>
+        </div>
+      </div>
+    </div>      <section class="mt-16 p-6 bg-stone-50 rounded-2xl border border-stone-200 reveal">
+        <h2 class="text-lg font-display font-semibold text-stone-900 mb-3">Sources &amp; References</h2>
+        <ul class="space-y-2 text-sm text-stone-600">
+          <li>&rarr; <a href="https://en.wikipedia.org/wiki/Crescent_Lake_(Dunhuang)" rel="external nofollow" target="_blank" class="text-mogao-600 hover:text-mogao-700 underline">Crescent Lake on Wikipedia</a> — geological formation and history</li>
+          <li>&rarr; <a href="https://en.wikipedia.org/wiki/Mingsha_Shan" rel="external nofollow" target="_blank" class="text-mogao-600 hover:text-mogao-700 underline">Mingsha Mountain (Singing Sand Dunes) on Wikipedia</a></li>
+          <li>&rarr; Ticket prices verified at Crescent Lake ticket office, July 2026</li>
+        </ul>
+      </section>
+  
+  </article>
+</BaseLayout>
+
+

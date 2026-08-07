@@ -1,0 +1,274 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Yadan National Geopark Guide 2026 | Dunhuang Ghost City & West Line Day Trip",
+      "description": "Complete guide to Yadan National Geopark near Dunhuang: wind-carved rock formations, Ghost City, how to get there (private car only), tickets (CNY 120), best sunset photo times, and how to combine with Yumen Pass for the perfect west line day trip.",
+      "datePublished": "2026-07-20",
+      "dateModified": "2026-08-07",
+      "author": { "@type": "Person", "name": "Dunhuang & Jiuquan Guide Team" },
+      "image": "https://dunhuang-jiuquan.com/images/yadan-geopark.webp",
+      "publisher": { "@type": "Organization", "name": "Dunhuang & Jiuquan Guide", "url": "https://dunhuang-jiuquan.com" }
+    },
+    {
+      "@type": "TouristAttraction",
+      "name": "Yadan National Geopark (Dunhuang Ghost City)",
+      "description": "A surreal landscape of wind-carved yardang rock formations in the Gobi Desert, 180km northwest of Dunhuang. Known as Ghost City for the eerie sounds created by wind through the rock formations. Best visited at sunset.",
+      "touristType": ["Adventure Travelers", "Photographers", "Nature Enthusiasts"],
+      "geo": { "@type": "GeoCoordinates", "latitude": 40.529, "longitude": 93.202 },
+      "address": { "@type": "PostalAddress", "addressLocality": "Dunhuang", "addressRegion": "Gansu", "addressCountry": "CN" }
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Yadan National Geopark Guide 2026 | Dunhuang Ghost City &amp; West Line"
+  description="Complete guide to Yadan National Geopark: surreal wind-carved rock formations near Dunhuang. Tickets (CNY 120), how to get there (private car), why sunset is essential, and how to combine with Yumen Pass."
+  author="Dunhuang &amp; Jiuquan Guide Team"
+  datePublished="2026-07-20"
+  dateModified="2026-08-07"
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <article class="py-12 md:py-20">
+    <div class="section-container max-w-3xl">
+      <header class="mb-8 reveal">
+        <SectionHeader
+          eyebrow="Dunhuang Day Trip"
+          title="Yadan National Geopark: Ghost City of the Gobi"
+          subtitle="Everything you need to know: the surreal wind-carved formations, why sunset is the only time to go, how to hire a driver, and how to make this the highlight of your Dunhuang trip."
+        />
+      </header>
+
+      <!-- Hero Image -->
+      <div class="mb-16 rounded-2xl overflow-hidden">
+        <img
+          src="/images/yadan-geopark.webp"
+          alt="Yadan National Geopark wind carved rock formations, Ghost City, Gobi Desert surreal yardang landscape, Dunhuang"
+          class="w-full h-auto object-cover"
+          width="1200"
+          height="1200"
+          loading="eager"
+          decoding="sync"
+          sizes="100vw"
+        />
+      </div>
+
+      <!-- Quick Facts -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-16">
+        <div class="bg-stone-50 rounded-xl p-4 text-center">
+          <p class="text-xs text-stone-400 uppercase tracking-wider font-semibold">Location</p>
+          <p class="mt-1 font-semibold text-stone-900 text-sm">180km NW of Dunhuang</p>
+        </div>
+        <div class="bg-stone-50 rounded-xl p-4 text-center">
+          <p class="text-xs text-stone-400 uppercase tracking-wider font-semibold">Entry Fee</p>
+          <p class="mt-1 font-semibold text-stone-900 text-sm">CNY 120</p>
+        </div>
+        <div class="bg-stone-50 rounded-xl p-4 text-center">
+          <p class="text-xs text-stone-400 uppercase tracking-wider font-semibold">Getting There</p>
+          <p class="mt-1 font-semibold text-stone-900 text-sm">Private car only</p>
+        </div>
+        <div class="bg-stone-50 rounded-xl p-4 text-center">
+          <p class="text-xs text-stone-400 uppercase tracking-wider font-semibold">Drive Time</p>
+          <p class="mt-1 font-semibold text-stone-900 text-sm">3 hours each way</p>
+        </div>
+        <div class="bg-stone-50 rounded-xl p-4 text-center">
+          <p class="text-xs text-stone-400 uppercase tracking-wider font-semibold">Best Time</p>
+          <p class="mt-1 font-semibold text-stone-900 text-sm">Sunset (essential)</p>
+        </div>
+      </div>
+
+      <!-- What Is It -->
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-6">
+          What Is Yadan Geopark?
+        </h2>
+        <p class="text-stone-600 leading-relaxed mb-4">
+          Yadan National Geopark, also called <strong class="text-stone-800">Ghost City (魔鬼城)</strong>, is a 400-square-kilometer landscape of wind-carved rock formations in the heart of the Gobi Desert, 180 kilometers northwest of Dunhuang. The name <em>Yadan</em> comes from the Uyghur word for "steep mound" — and the formations here are exactly that: mesas, pillars, and towers sculpted by millions of years of wind erosion into shapes that resemble a ghostly abandoned city.
+        </p>
+        <p class="text-stone-600 leading-relaxed mb-4">
+          This is not a quick stop. At 3 hours' drive each way, Yadan is a <strong class="text-stone-800">full-day commitment</strong> from Dunhuang. But the payoff — if you time it right — is one of the most otherworldly landscapes in China. At sunset, the low-angle light paints the rock formations in deep oranges, purples, and reds against the vast emptiness of the Gobi. The silence here is absolute. It feels like standing on another planet.
+        </p>
+        <p class="text-stone-600 leading-relaxed">
+          Yadan is typically combined with <strong class="text-stone-800">Yumen Pass (Jade Gate, CNY 40)</strong> on what locals call the "West Line" (西线) day trip. Most drivers will take you to both — Yumen Pass in the early afternoon, Yadan for sunset. <strong class="text-stone-700">Do not go in the morning.</strong> Without the golden hour light, Yadan is just interesting rock formations. With it, it is unforgettable.
+        </p>
+
+        <div class="mt-6 p-4 bg-red-50 border border-red-200 rounded-xl">
+          <p class="text-sm text-red-800 font-semibold">Honest Advice</p>
+          <p class="mt-1 text-sm text-red-700">If your budget is tight, skip Yadan. At CNY 120 entry + CNY 600-800 for a private driver, it is the most expensive day trip in Dunhuang. Crescent Lake's dunes (CNY 120, 10 min from town) give a similar desert experience for far less money. Yadan is worth it if you have the time and budget — but it is not essential.</p>
+        </div>
+      </section>
+
+      <!-- The Formations -->
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-6">
+          The Main Formations
+        </h2>
+        <p class="text-stone-500 text-sm mb-4">A shuttle bus loops through the park with designated stops. You can get off at any stop and catch the next bus. Here are the formations worth spending time at:</p>
+        <div class="space-y-4">
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <h3 class="font-semibold text-stone-900">Fleet of Ships (舰队出海)</h3>
+            <p class="mt-1 text-sm text-stone-500 leading-relaxed">The most photogenic formation. A long line of mesas aligned north-south that, from the right angle, look like a fleet of battleships sailing across the desert. <strong class="text-stone-700">Best at sunset</strong> when the formations cast long shadows. Use a telephoto lens (70-200mm) to compress the "fleet." This is where you want to be for the last 30 minutes before sunset.</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <h3 class="font-semibold text-stone-900">The Sphinx (狮身人面像)</h3>
+            <p class="mt-1 text-sm text-stone-500 leading-relaxed">A natural rock formation that genuinely resembles the Egyptian Sphinx — a lion's body with a human-like head. The resemblance is uncanny. Best photographed from the designated viewing platform with a standard zoom lens.</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <h3 class="font-semibold text-stone-900">Peacock (孔雀)</h3>
+            <p class="mt-1 text-sm text-stone-500 leading-relaxed">A tall, slender pillar that fans out at the top like a peacock displaying its feathers. One of the tallest individual formations in the park. Good for silhouette shots against the sunset sky.</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <h3 class="font-semibold text-stone-900">Mongolian Yurts (蒙古包)</h3>
+            <p class="mt-1 text-sm text-stone-500 leading-relaxed">Rounded dome-shaped formations that look like traditional Mongolian tents scattered across the desert floor. Interesting for wide-angle landscape shots showing the scale of the park.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- How to Get There -->
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-6">
+          How to Get There (Private Car Only)
+        </h2>
+        <p class="text-stone-600 leading-relaxed mb-4">
+          There is <strong class="text-stone-800">no public transport to Yadan Geopark.</strong> You must hire a private car with driver. This is non-negotiable.
+        </p>
+        <div class="space-y-4">
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <h3 class="font-semibold text-stone-900">Option 1: Hotel-Arrange Driver</h3>
+            <p class="mt-1 text-sm text-stone-500"><strong class="text-stone-700">CNY 600-800 for the full day.</strong> Most hotels in Dunhuang can arrange a driver. Tell them "West Line" (西线) — they know the route: Dunhuang → Yumen Pass → Yadan → back. Price includes waiting time at both sites. Pay in cash at the end of the day. This is the easiest option with zero Chinese required.</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <h3 class="font-semibold text-stone-900">Option 2: Didi / Ride-Hailing</h3>
+            <p class="mt-1 text-sm text-stone-500"><strong class="text-stone-700">CNY 700-900.</strong> Use the Didi app (inside Alipay) to book a "charter" trip. More expensive but you can see the price upfront and pay via the app. Make sure to select a round trip. Not all Didi drivers will accept a Yadan trip — it is a 6+ hour commitment.</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-stone-200 p-6">
+            <h3 class="font-semibold text-stone-900">Option 3: Join a Group</h3>
+            <p class="mt-1 text-sm text-stone-500"><strong class="text-stone-700">CNY 200-300 per person.</strong> Some hostels and tour agencies organize shared minivan trips. Cheaper but you are locked into their schedule — which rarely stays for sunset. If sunset photography is your goal, <strong class="text-stone-700">do not join a group trip.</strong> They typically leave Yadan by 4 PM to get back for dinner.</p>
+          </div>
+        </div>
+        <div class="mt-4 p-4 bg-stone-50 rounded-xl border border-stone-200">
+          <p class="text-sm text-stone-600"><strong class="text-stone-800">Recommended schedule:</strong> Leave Dunhuang at 11 AM → Yumen Pass (1 PM, 1 hour) → drive to Yadan (arrive 3 PM) → explore the formations → sunset at 6-7 PM (season dependent) → drive back (arrive Dunhuang ~10 PM). Pack lunch, snacks, and at least 2 liters of water per person. There are <strong class="text-stone-700">no food or drink vendors</strong> at Yadan — only a small shop at the entrance with limited options.</p>
+        </div>
+      </section>
+
+      <!-- Yumen Pass Combo -->
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-6">
+          Combining with Yumen Pass (Jade Gate)
+        </h2>
+        <p class="text-stone-600 leading-relaxed mb-4">
+          Yumen Pass (玉门关, CNY 40) sits on the route to Yadan, about 90 km from Dunhuang. It was one of the <strong class="text-stone-800">most famous frontier passes on the Silk Road</strong> — the gate through which caravans entered and left China for over 1,500 years. Today, little remains: a weathered earthen fortress and remnants of the Han Dynasty Great Wall.
+        </p>
+        <div class="bg-white rounded-2xl border border-stone-200 p-6">
+          <h3 class="font-semibold text-stone-900">Is Yumen Pass worth it?</h3>
+          <p class="mt-1 text-sm text-stone-500 leading-relaxed">Honestly — <strong class="text-stone-700">it depends on your interest in history.</strong> If the idea of standing at a 2,000-year-old Silk Road checkpoint moves you, it is worth the stop. The Han Dynasty Great Wall remnants here are among the oldest surviving wall sections in China. If you are mainly here for dramatic landscapes, skip Yumen and head straight to Yadan for more time at the formations. Your driver will likely include Yumen Pass in the route anyway since it is on the way — you can decide at the gate.</p>
+        </div>
+      </section>
+
+      <!-- Photography Tips -->
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-6">
+          Photography Tips
+        </h2>
+        <ul class="space-y-3 text-stone-600">
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Sunset is the only time worth shooting.</strong> Midday light flattens the formations. The golden hour (last 60-90 minutes before sunset) transforms them. Plan your day around being at the Fleet of Ships formation for sunset.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Bring a tripod.</strong> The transition from golden hour to blue hour (20-30 minutes after sunset) produces stunning deep blue skies with orange horizon glow. You need a tripod for these low-light shots. <a href="/photography" class="text-mogao-600 hover:text-mogao-700 underline">Full photography guide with lens recommendations.</a></span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Telephoto compression is key.</strong> Use a 70-200mm lens to compress the formations against each other. The Fleet of Ships formation especially benefits from telephoto compression.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Protect your camera from sand.</strong> Wind picks up in the late afternoon. Keep your camera in a bag when not shooting. Do not change lenses in the open — fine Gobi dust gets into everything. Bring a rocket blower.</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Practical Tips -->
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-6">
+          Practical Tips
+        </h2>
+        <ul class="space-y-3 text-stone-600">
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-red-600"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Pack all food and water.</strong> There is one tiny shop at the entrance with overpriced snacks and drinks. Bring your own lunch, snacks, and at least 2 liters of water per person. The drive is 6+ hours round trip with no convenience stores along the way.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-red-600"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Stay on marked paths.</strong> The park is vast and disorienting. Cell signal is weak to nonexistent in most areas. Wandering off into the formations is dangerous — people have gotten lost. Stay on the shuttle bus route and designated viewing areas.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Summer visitors: leave early, siesta in the car.</strong> The drive has no shade. Temperatures inside the car can exceed 40&deg;C. Leave Dunhuang by 7 AM, do Yumen Pass before the midday heat, arrive at Yadan by 3 PM. Rest in the air-conditioned visitor center until the light improves.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Ask your driver to stay for sunset.</strong> Some drivers will want to leave early to avoid driving back in the dark. Confirm this arrangement before you book. Paying a small tip (CNY 50-100) for the late return is standard and appreciated.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Bring layers. Desert at night gets cold fast.</strong> Even in summer, temperatures can drop to 15&deg;C after sunset. The 3-hour drive back is chilly. Pack a light jacket regardless of season.</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- CTA -->
+      <div class="bg-mogao-600 text-white rounded-2xl p-8 text-center reveal">
+        <h3 class="text-xl font-bold">Plan your West Line day</h3>
+        <p class="mt-2 text-mogao-100 text-sm">Our complete guide and itinerary planner helps you budget for the driver, time your visit, and combine it with the rest of your Silk Road trip.</p>
+        <div class="mt-5 flex flex-wrap justify-center gap-3">
+          <a href="/itinerary" class="inline-flex items-center gap-2 px-5 py-3 bg-white text-mogao-700 rounded-xl text-sm font-semibold hover:bg-mogao-50 transition-colors">
+            Browse Itineraries
+          </a>
+          <a href="/tickets" class="inline-flex items-center gap-2 px-5 py-3 bg-mogao-700 text-white rounded-xl text-sm font-semibold hover:bg-mogao-800 transition-colors border border-mogao-500">
+            All Ticket Prices
+          </a>
+        </div>
+      </div>
+    </div>      <section class="mt-16 p-6 bg-stone-50 rounded-2xl border border-stone-200 reveal">
+        <h2 class="text-lg font-display font-semibold text-stone-900 mb-3">Sources &amp; References</h2>
+        <ul class="space-y-2 text-sm text-stone-600">
+          <li>&rarr; <a href="https://whc.unesco.org/en/tentativelists/5520/" rel="external nofollow" target="_blank" class="text-mogao-600 hover:text-mogao-700 underline">UNESCO Tentative List: Yardang Landform</a> — Dunhuang Yardang National Geopark</li>
+          <li>&rarr; <a href="https://en.wikipedia.org/wiki/Yardang" rel="external nofollow" target="_blank" class="text-mogao-600 hover:text-mogao-700 underline">Yardang on Wikipedia</a> — geological explanation of wind-carved formations</li>
+          <li>&rarr; Ticket prices verified at Yadan Geopark entrance, July 2026</li>
+        </ul>
+      </section>
+  
+  </article>
+</BaseLayout>
+
+

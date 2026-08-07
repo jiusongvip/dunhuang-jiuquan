@@ -1,0 +1,268 @@
+---
+import "../styles/global.css";
+
+export interface Props {
+  mapPage?: boolean;
+  title: string;
+  description: string;
+  ogImage?: string;
+  ogType?: string;
+  noindex?: boolean;
+  author?: string;
+  datePublished?: string;
+  dateModified?: string;
+}
+
+const {
+  mapPage = false,
+  title,
+  description,
+  ogImage = "/og-default.webp",
+  ogType = "website",
+  noindex = false,
+  author = "",
+  datePublished = "",
+  dateModified = datePublished,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href.replace(/\/$/, "");
+const robotsContent = noindex ? "noindex, follow" : "index, follow";
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Dunhuang & Jiuquan Guide",
+  "url": "https://dunhuang-jiuquan.com",
+  "description": "Independent Silk Road travel guide to Dunhuang and Jiuquan. Honest advice, no booking fees.",
+  "logo": "https://dunhuang-jiuquan.com/favicon.svg",
+  "email": "hello@dunhuang-jiuquan.com",
+  "foundingDate": "2026"
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Dunhuang & Jiuquan Guide Team",
+  "url": "https://dunhuang-jiuquan.com/about/",
+  "jobTitle": "Travel Writers & Silk Road Researchers",
+  "worksFor": { "@type": "Organization", "name": "Dunhuang & Jiuquan Guide" }
+};
+
+// BreadcrumbList
+const pageLabels: Record<string, string> = {
+  "guide": "Complete Guide",
+  "tickets": "Tickets & Prices",
+  "how-to-get-there": "How to Get There",
+  "best-time-to-visit": "Best Time to Visit",
+  "accommodation": "Where to Stay",
+  "food": "Food Guide",
+  "itinerary": "Itineraries",
+  "nearby-attractions": "Nearby Attractions",
+  "faq": "FAQ",
+  "about": "About",
+  "contact": "Contact",
+  "privacy": "Privacy",
+  "dunhuang-vs-jiuquan": "Dunhuang vs Jiuquan",
+  "mogao-caves": "Mogao Caves Guide",
+};
+
+let breadcrumbSchema = "";
+let crumbs: { name: string; item: string }[] = [];
+const pathParts = Astro.url.pathname.split('/').filter(Boolean);
+if (pathParts.length > 0) {
+  const baseUrl = "/";
+  const items = [{ "@type": "ListItem", "position": 1, "name": "Home", "item": baseUrl }];
+  crumbs.push({ name: "Home", item: "/" });
+  let itemUrl = "";
+  for (let i = 0; i < pathParts.length; i++) {
+    const part = pathParts[i];
+    const name = pageLabels[part] ?? part.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
+    itemUrl += "/" + part;
+    items.push({ "@type": "ListItem", "position": (i + 2), "name": name, "item": itemUrl });
+    crumbs.push({ name, item: itemUrl });
+  }
+  breadcrumbSchema = JSON.stringify({ "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": items });
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robotsContent} />
+    {!noindex && <link rel="canonical" href={canonicalURL} />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    {!noindex && <>
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Dunhuang & Jiuquan Guide" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site).href} />
+    </>}
+
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
+    {!noindex && breadcrumbSchema && (
+      <script type="application/ld+json" set:html={breadcrumbSchema}></script>
+    )}
+
+    <!-- Google Analytics 4 — replace G-XXXXXXXXXX with your Measurement ID -->
+    {import.meta.env.PROD && import.meta.env.GA_MEASUREMENT_ID && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.GA_MEASUREMENT_ID}`}></script>
+        <script set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${import.meta.env.GA_MEASUREMENT_ID}');`}></script>
+      </>
+    )}
+
+    {mapPage && (
+      <>
+        <!-- Leaflet CSS/JS for map pages -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+      </>
+    )}
+
+    <slot name="head" />
+  </head>
+  <body class="min-h-[100dvh] bg-stone-50 text-stone-800 antialiased">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-mogao-600 focus:text-white focus:rounded-lg focus:outline-none">Skip to content</a>
+
+    <header class="fixed top-0 inset-x-0 z-50 h-16 border-b border-stone-200/80 bg-stone-50/90 backdrop-blur-md">
+      <nav class="section-container flex items-center justify-between h-full">
+        <a href="/" class="flex items-center gap-2 font-semibold text-stone-800 text-base tracking-tight no-underline">
+          <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-mogao-600 text-white text-sm font-bold">D</span>
+          Dunhuang &amp; Jiuquan
+        </a>
+       <div class="hidden md:flex items-center gap-1">
+          <a href="/guide" class="rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition-colors hover:text-mogao-700 hover:bg-mogao-50">Plan</a>
+          <a href="/mogao-caves" class="rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition-colors hover:text-mogao-700 hover:bg-mogao-50">Mogao</a>
+          <a href="/jiayuguan-fort" class="rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition-colors hover:text-mogao-700 hover:bg-mogao-50">Jiayuguan</a>
+          <a href="/itinerary" class="rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition-colors hover:text-mogao-700 hover:bg-mogao-50">Itineraries</a>
+          <a href="/tickets" class="rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition-colors hover:text-mogao-700 hover:bg-mogao-50">Tickets</a>
+          <a href="/faq" class="rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition-colors hover:text-mogao-700 hover:bg-mogao-50">Tips</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content" class="pt-16">
+      {!noindex && crumbs.length > 0 && (
+        <nav aria-label="Breadcrumb" class="section-container py-3">
+          <ol class="flex flex-wrap items-center gap-1.5 text-xs text-stone-400">
+            {crumbs.map((c, i) => (
+              <li class="flex items-center gap-1.5">
+                {i > 0 && <span aria-hidden="true" class="text-stone-300">/</span>}
+                {i < crumbs.length - 1 ? (
+                  <a href={c.item} class="hover:text-mogao-600 transition-colors">{c.name}</a>
+                ) : (
+                  <span class="text-stone-500 font-medium" aria-current="page">{c.name}</span>
+                )}
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+
+      {author && (
+        <div class="section-container max-w-3xl pt-6">
+          <div class="flex items-center gap-4 text-sm text-stone-400 border-b border-stone-100 pb-6 mb-2">
+            <span>By <strong class="text-stone-600">{author}</strong></span>
+            {datePublished && (
+              <>
+                <span class="text-stone-200">|</span>
+                <span>Published {datePublished}</span>
+              </>
+            )}
+            {dateModified && dateModified !== datePublished && (
+              <>
+                <span class="text-stone-200">|</span>
+                <span>Updated {dateModified}</span>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+      <slot />
+    </main>
+
+    <footer class="border-t border-stone-200 bg-stone-100">
+      <div class="section-container py-16">
+        <div class="grid grid-cols-2 md:grid-cols-6 gap-8 md:gap-10">
+          <div class="col-span-2 md:col-span-1">
+            <a href="/" class="flex items-center gap-2 font-semibold text-stone-800 text-lg tracking-tight no-underline mb-4">
+              <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-mogao-600 text-white text-sm font-bold">D</span>
+              Dunhuang &amp; Jiuquan
+            </a>
+            <p class="text-sm text-stone-500 leading-relaxed">
+              Your independent Silk Road travel guide. Honest advice, no booking fees.
+            </p>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-stone-700 mb-4">Plan</p>
+            <div class="flex flex-col gap-2">
+              <a href="/guide" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Complete Guide</a>
+              <a href="/best-time-to-visit" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Best Time to Visit</a>
+              <a href="/how-to-get-there" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">How to Get There</a>
+              <a href="/itinerary" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Itineraries</a>
+            </div>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-stone-700 mb-4">Explore</p>
+            <div class="flex flex-col gap-2">
+             <a href="/dunhuang-vs-jiuquan" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Dunhuang vs Jiuquan</a>
+              <a href="/mogao-caves" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Mogao Caves</a>
+              <a href="/crescent-lake" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Crescent Lake</a>
+              <a href="/jiayuguan-fort" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Jiayuguan Fort</a>
+              <a href="/yadan-geopark" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Yadan Geopark</a>
+             <a href="/sil-road-compare" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Silk Road Compare</a>
+              <a href="/photography" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Photography Guide</a>
+             <a href="/nearby-attractions" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Nearby Attractions</a>
+              <a href="/food" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Food Guide</a>
+            </div>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-stone-700 mb-4">Practical</p>
+            <div class="flex flex-col gap-2">
+              <a href="/tickets" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Tickets &amp; Prices</a>
+              <a href="/accommodation" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Where to Stay</a>
+              <a href="/packing-list" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Packing List</a>
+              <a href="/survival-phrases" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Chinese Phrases</a>
+              <a href="/faq" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">FAQ</a>
+            </div>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-stone-700 mb-4">More</p>
+            <div class="flex flex-col gap-2">
+              <a href="/about" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">About</a>
+              <a href="/contact" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Contact</a>
+              <a href="/privacy" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Privacy Policy</a>
+            </div>
+          </div>
+          <div>
+           <p class="text-sm font-semibold text-stone-700 mb-4">Resources</p>
+           <div class="flex flex-col gap-2">
+              <a href="/sil-road-compare" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Compare</a>
+              <a href="/#map-section" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Route Map</a>
+              <a href="/#planner" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Trip Planner</a>
+            </div>
+          </div>
+        </div>
+        <div class="mt-12 pt-8 border-t border-stone-200 text-center text-sm text-stone-400">
+          <p>Dunhuang &amp; Jiuquan Guide &copy; 2026. An independent travel resource.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+

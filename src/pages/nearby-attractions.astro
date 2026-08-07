@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Article", "headline": "Nearby Attractions Beyond Dunhuang & Jiuquan", "description": "Extend your Silk Road trip: Zhangye Rainbow Mountains, Mati Temple, and more destinations within reach." }
+  ]
+};
+---
+
+<BaseLayout
+  title="Nearby Attractions: Beyond Dunhuang &amp; Jiuquan | Zhangye &amp; More"
+  description="Extend your Silk Road trip: Zhangye Rainbow Mountains, Mati Temple, Qilian Mountains — destinations within easy reach of Dunhuang and Jiuquan."
+  author="Dunhuang &amp; Jiuquan Guide Team"
+  datePublished="2026-07-15"
+  dateModified="2026-08-07"
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <article class="py-12 md:py-20">
+    <div class="section-container max-w-3xl">
+      <header class="mb-16 reveal">
+        <SectionHeader eyebrow="Beyond the Route" title="Nearby Attractions Worth Extending Your Trip" subtitle="The best Silk Road destinations within easy reach: Zhangye, Mati Temple, and hidden gems." />
+      </header>
+      <!-- Placeholder image - replace with real photography -->
+      <div class="mb-8 rounded-2xl overflow-hidden bg-stone-200">
+        <img src="/images/nearby-attractions.webp" alt="Nearby Attractions Beyond Dunhuang" class="w-full h-auto object-cover" width="1200" height="600" loading="lazy" />
+      </div>
+
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Zhangye: Rainbow Mountains (1.5h from Jiuquan)</h2>
+        <p class="text-stone-600 leading-relaxed mb-4">Zhangye Danxia National Geopark is arguably Gansu's most photogenic destination. Striped sandstone formations in vivid reds, oranges, yellows, and greens — a geological phenomenon that looks unreal in person. Best at sunrise or late afternoon.</p>
+        <div class="bg-stone-50 rounded-2xl p-6">
+          <p class="text-sm text-stone-600"><strong class="text-stone-900">Getting there:</strong> 1.5-hour high-speed train from Jiuquan/Jiayuguan to Zhangye West (CNY 80-120). 40-min taxi to geopark entrance.</p>
+          <p class="text-sm text-stone-600 mt-2"><strong class="text-stone-900">Ticket:</strong> CNY 75 including shuttle bus. Open 6:30-18:30.</p>
+        </div>
+      </section>
+
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Mati Temple (1h from Zhangye)</h2>
+        <p class="text-stone-600 leading-relaxed mb-4">A stunning cliffside Buddhist temple complex carved into a sheer mountain face. Contains grottoes with murals dating to the 4th-5th century. Far fewer tourists than Mogao, and you can get much closer to the artwork.</p>
+      </section>
+
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Qilian Mountains</h2>
+        <p class="text-stone-600 leading-relaxed mb-4">The snow-capped range visible from Jiayuguan Fort. Summer lower slopes are lush grasslands where Tibetan nomads graze yaks. Accessible by car from Zhangye or Jiayuguan for multi-day hiking or horseback trips.</p>
+      </section>
+
+      <div class="bg-mogao-600 text-white rounded-2xl p-8 text-center reveal">
+        <h3 class="text-xl font-display font-semibold">Extend your trip</h3>
+        <p class="mt-2 text-mogao-100 text-sm">Our 7-day itinerary includes Zhangye. Use the planner to customize.</p>
+        <a href="/itinerary" class="inline-flex items-center gap-2 mt-5 px-5 py-3 bg-white text-mogao-700 rounded-xl text-sm font-semibold hover:bg-mogao-50 transition-colors">View Itineraries</a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
