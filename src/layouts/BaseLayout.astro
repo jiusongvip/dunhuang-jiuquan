@@ -168,13 +168,9 @@ const articleSchema = pageHasArticle
       <script type="application/ld+json" set:html={breadcrumbSchema}></script>
     )}
 
-    <!-- Google Analytics 4 — replace G-XXXXXXXXXX with your Measurement ID -->
-    {import.meta.env.PROD && import.meta.env.GA_MEASUREMENT_ID && (
-      <>
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.GA_MEASUREMENT_ID}`}></script>
-        <script set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${import.meta.env.GA_MEASUREMENT_ID}');`}></script>
-      </>
-    )}
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1MZZDDKFX"></script>
+    <script set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-Y1MZZDDKFX');`}></script>
 
     {mapPage && (
       <>
