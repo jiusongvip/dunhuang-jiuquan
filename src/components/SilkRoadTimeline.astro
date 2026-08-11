@@ -1,0 +1,100 @@
+---
+interface Props {
+  heading?: string;
+  subtitle?: string;
+}
+
+const {
+  heading = "2,000 Years of Silk Road History",
+  subtitle = "Dunhuang and Jiuquan did not appear in a single dynasty — the corridor carried caravans, monks, and armies across two millennia. Here is what happened, and what remains.",
+} = Astro.props;
+
+const eras = [
+  {
+    years: "206 BC – 220 AD",
+    title: "Han Dynasty",
+    text: "Emperor Wu opens the Hexi Corridor. Dunhuang is founded (111 BC) as the empire's western gateway; the Han Great Wall reaches Yumen Pass.",
+  },
+  {
+    years: "366 AD",
+    title: "Mogao Begins",
+    text: "Monk Le Zun carves the first cave at Mogao (366 AD). Over the next thousand years, 700+ caves follow.",
+  },
+  {
+    years: "618 – 907",
+    title: "Tang Golden Age",
+    text: "The golden age of Dunhuang art: merchants, pilgrims, and artists fill Mogao with its finest murals. Cave 45 and the nine-story facade (Cave 96) date here.",
+  },
+  {
+    years: "1036 – 1226",
+    title: "Western Xia & Mongol",
+    text: "Tibetan-influenced murals under the Western Xia and Mongols. Marco Polo passes through in 1272.",
+  },
+  {
+    years: "1372",
+    title: "Ming Great Wall",
+    text: "The Ming raise Jiayuguan Fort — the 'Greatest Pass Under Heaven' — end of the Great Wall. Trade shifts to the sea; the corridor's star fades.",
+  },
+  {
+    years: "1900",
+    title: "The Library Cave",
+    text: "Cave 17 reveals 50,000+ manuscripts hidden for 900 years. Stein and Pelliot follow, carrying thousands of scrolls to Europe.",
+  },
+  {
+    years: "1943 – today",
+    title: "Modern Recovery",
+    text: "The Dunhuang Academy is founded. 1987: Mogao becomes a UNESCO World Heritage Site. 2019: high-speed rail arrives in Gansu.",
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: heading,
+  itemListElement: eras.map((e, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: `${e.years} — ${e.title}`,
+  })),
+};
+---
+
+<section id="history-timeline" class="py-16 md:py-24 bg-white reveal">
+  <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  <div class="section-container">
+    <div class="text-center mb-12">
+      <p class="flex items-center justify-center gap-3 text-xs font-semibold tracking-[0.2em] uppercase text-mogao-600 mb-4">
+        <span class="inline-block h-px w-8 bg-mogao-500/60"></span>
+        Corridor History &middot; 走廊历史
+        <span class="inline-block h-px w-8 bg-mogao-500/60"></span>
+      </p>
+      <h2 class="font-display text-3xl md:text-4xl font-semibold tracking-tight text-stone-900">
+        {heading}
+      </h2>
+      <p class="mt-3 text-stone-500 max-w-2xl mx-auto leading-relaxed">{subtitle}</p>
+    </div>
+    <div class="relative max-w-5xl mx-auto mb-12"><figure class="rounded-2xl overflow-hidden border border-stone-200 shadow-sm"><img src="/images/mogao-caves.webp" alt="Mogao Caves cliff face where Buddhist grottoes were carved over a thousand years" width="1254" height="1254" loading="lazy" decoding="async" class="w-full aspect-[16/5] object-cover" /><figcaption class="py-2.5 px-4 bg-white text-xs text-stone-400 text-center">The Mogao cliff — caves carved continuously from 366 AD to the Tang golden age</figcaption></figure></div>
+    <div class="relative max-w-3xl mx-auto">
+      <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-stone-200 md:-translate-x-px" aria-hidden="true"></div>
+      <div class="space-y-8">
+        {eras.map((e, i) => (
+          <div class={`flex gap-6 ${i % 2 === 0 ? "" : "md:flex-row-reverse"}`}>
+            <div class="hidden md:flex md:w-1/2"></div>
+            <div class="relative flex-shrink-0">
+              <div class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-mogao-300 bg-white z-10 relative">
+                <div class="h-2.5 w-2.5 rounded-full bg-mogao-500"></div>
+              </div>
+            </div>
+            <div class={i % 2 === 0 ? "flex-1 pb-2" : "flex-1 pb-2 md:text-right"}>
+              <span class="inline-block text-xs font-bold tracking-widest uppercase text-mogao-600 mb-1 bg-mogao-50 px-2 py-0.5 rounded-full">
+                {e.years}
+              </span>
+              <h3 class="font-display text-lg font-semibold text-stone-800">{e.title}</h3>
+              <p class="mt-2 text-sm text-stone-500 leading-relaxed">{e.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

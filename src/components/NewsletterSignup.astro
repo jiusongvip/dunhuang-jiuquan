@@ -1,0 +1,82 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const { title = "Get updates when we verify new prices", subtitle = "No spam. No ads. Just updated ticket prices, new routes, and seasonal tips for Dunhuang & Jiuquan — a few times a year." } = Astro.props;
+---
+
+<section id="newsletter" class="py-16 md:py-20 mx-auto max-w-7xl px-4 md:px-6">
+  <div class="max-w-2xl mx-auto rounded-2xl border border-stone-200 bg-gradient-to-br from-stone-50 to-white p-8 md:p-10 text-center shadow-sm">
+    <div class="inline-flex items-center rounded-full border border-mogao-200 bg-mogao-50 px-3 py-1 text-xs font-medium text-mogao-700 mb-5">Newsletter &middot; 订阅</div>
+    <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-tight text-stone-900">{title}</h2>
+    <p class="mt-3 text-stone-500 text-sm leading-relaxed max-w-lg mx-auto">{subtitle}</p>
+    <form
+      id="newsletter-form"
+      class="mt-6 flex flex-col sm:flex-row gap-2 max-w-md mx-auto"
+      data-netlify="true"
+      name="newsletter"
+      method="POST"
+      action="/#newsletter"
+    >
+      <input type="hidden" name="form-name" value="newsletter" />
+      <input
+        type="email"
+        id="nl-email"
+        name="email"
+        placeholder="your@email.com"
+        autocomplete="email"
+        required
+        class="flex-1 px-4 py-3 border border-stone-200 rounded-xl bg-white text-stone-800 text-sm focus:outline-none focus:border-mogao-400 focus:ring-2 focus:ring-mogao-100 transition"
+      />
+      <button
+        type="submit"
+        class="px-6 py-3 bg-mogao-600 text-white text-sm font-semibold rounded-xl hover:bg-mogao-700 transition-colors whitespace-nowrap"
+      >
+        Subscribe
+      </button>
+    </form>
+    <p id="nl-msg" class="text-xs text-stone-400 mt-3">No spam. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<script is:inline>
+document.addEventListener("DOMContentLoaded", function () {
+  var form = document.getElementById("newsletter-form");
+  var msg = document.getElementById("nl-msg");
+  if (!form || !msg) return;
+  form.addEventListener("submit", function (e) {
+    var email = document.getElementById("nl-email").value.trim();
+    if (!email || email.indexOf("@") < 1) {
+      msg.textContent = "Please enter a valid email address.";
+      msg.className = "text-xs text-red-600 mt-2 font-medium";
+      e.preventDefault();
+      return;
+    }
+    msg.textContent = "Sending...";
+    msg.className = "text-xs text-stone-400 mt-2";
+    var data = new URLSearchParams(new FormData(form));
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: data.toString(),
+    })
+      .then(function (res) {
+        if (res.ok) {
+          msg.textContent = "Thanks! We will be in touch soon.";
+          msg.className = "text-xs text-green-600 mt-2 font-medium";
+          document.getElementById("nl-email").value = "";
+        } else {
+          msg.textContent = "Something went wrong. Please try again or email us.";
+          msg.className = "text-xs text-red-600 mt-2 font-medium";
+        }
+      })
+      .catch(function () {
+        msg.textContent = "Something went wrong. Please try again or email us.";
+        msg.className = "text-xs text-red-600 mt-2 font-medium";
+      });
+    e.preventDefault();
+  });
+});
+</script>

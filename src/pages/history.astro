@@ -1,0 +1,159 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import RelatedLinks from "../components/RelatedLinks.astro";
+import NewsletterSignup from "../components/NewsletterSignup.astro";
+
+const periods = [
+  {
+    years: "206 BC – 220 AD",
+    title: "Han Dynasty — the corridor is opened",
+    text: "Emperor Wu of Han sends Zhang Qian west in 138 BC and, after two exploratory campaigns, the Hexi Corridor comes under Han control around 111 BC. Dunhuang (an oasis, \"blazing beacon\") is garrisoned, giving the empire a gateway to Central Asia. Han Great Wall watchtowers and beacons push as far west as Yumen Pass.",
+    remains: "Han Great Wall rammed-earth remnants west of Yumen Pass.",
+  },
+  {
+    years: "366 AD",
+    title: "Mogao is founded",
+    text: "Monk Le Zun receives a vision of golden light and carves the first cave temple into the Mingsha cliff. Over the following centuries the site grows to more than 700 caves. Dunhuang becomes the primary religious crossroads between India, Tibet, Central Asia and the Chinese capitals.",
+    remains: "Over 490 surviving caves now listed as a UNESCO World Heritage Site (1987).",
+  },
+  {
+    years: "618 – 907",
+    title: "Tang Golden Age",
+    text: "Dunhuang reaches its richest period. Tang patronage funds the finest murals: the flying apsara, the extensive sutra illustrations in caves 45, 96, and 130. The famous paper cache later hiding the Library Cave (Cave 17) begins accumulating manuscripts. The Tang also staff official garrison protocol.",
+    remains: "Cave 45 (Tang sculpture) and the nine-story facade begun as a Tang tower.",
+  },
+  {
+    years: "1036 – 1226",
+    title: "Western Xia and the Mongol years",
+    text: "The Western Xia (Tangut) took Dunhuang in 1036 and added its own synthesis of Tibetan, Uighur and Chinese styles. When the Mongols conquer the corridor in 1226, Marco Polo passes through Dunhuang and Shazhou on his way to the court of Kublai Khan.",
+    remains: "Western Xia-era Tangut murals in several Mogao caves.",
+  },
+  {
+    years: "1372",
+    title: "Ming fortification — Jiayuguan is built",
+    text: "The Ming manage the corridor tightly, and in 1372 the fortress of Jiayuguan goes up as the western terminus of the Great Wall. Named the 'First and Greatest Pass Under Heaven', it stands guard over what the empire considers the limit of Chinese control. Trade shifts to maritime routes, and Dunhuang's star recedes but the garrison service remains.",
+    remains: "Jiayuguan Fort, built 1372 and restored.",
+  },
+  {
+    years: "1900",
+    title: "The Library Cave (Cave 17)",
+    text: "A Daoist caretaker, Wang Yuanlu, hits a hidden chamber behind a painted wall — 50,000 manuscripts and paintings sealed 900 years earlier have survived with the dry desert air. Western explorers follow: Aurel Stein (1907) and Paul Pelliot (1908) take thousands of scrolls to London and Paris, shocking the academic world with a lost chapter of the Silk Road.",
+    remains: "The Library Cave preserved at Mogao; manuscripts now in the National Library (Beijing), the British Library (London), and the bibliothèque (Paris).",
+  },
+  {
+    years: "1943 – today",
+    title: "Modern recovery — the Academy era",
+    text: "The Dunhuang Academy (敦煌研究院) is formalized in 1943 to protect, document, and restore the caves. In 1987 Mogao is inscribed as a UNESCO World Heritage Site. The 2010s bring replica halls and the Digital Dunhuang archive, and by 2019 high-speed rail finally reaches Gansu, turning a two-day and road trip into a 5.5h trip for the traveler.",
+    remains: "Every current travel page you will read about the corridor.",
+  },
+];
+
+const faqs = [
+  { q: "Why is Dunhuang called the 'beacon' (Dhun) on the Silk Road?", a: "The name Dunhuang means 'blazing beacon' — a reference to the beacon towers Han soldiers lit across the desert to signal the empire's frontier. The oasis marked both safety and the point where trade routes converged." },
+  { q: "When were all Mogao caves built?", a: "Cave-cutting began in 366 AD and continued for about 1,000 years through the Yuan dynasty." },
+  { q: "Are Dunhuang and Jiuquan separate cities on the old route?", a: "Yes. Dunhuang was the western art-and-oasis hub of the silk routes. Jiuquan (and its modern neighbor Jiayuguan) guarded the eastern corridor exit, where the Ming Great Wall headed. The 400 km between them is the heart of the Hexi Corridor." },
+  { q: "Did the Library Cave discovery loot Dunhuang?", a: "The manuscripts officially stayed split: more than half went west to London, Paris, and Tokyo after Stein/Pelliot/Otani visits; the largest modern collection is now at China's National Library. Its academic value turned Dunhuang into a worldwide field study." },
+  { q: "What connects the launch center to the historic route?", a: "The Jiuquan Satellite Launch Center sits up the same Gobi corridor. The dry, wide desert that made trade practical in antiquity also makes rocket logistics convenient in the modern era." },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      headline: "Dunhuang and Jiuquan History: 2,000 Years on the Silk Road Corridor",
+      description: "From Han garrison to the Library Cave and the modern Academy era — the corridor history that shaped Dunhuang and Jiuquan's monuments, and what remains of each period.",
+      author: { "@type": "Person", name: "Dunhuang & Jiuquan Guide Team" },
+      datePublished: "2026-08-07",
+      image: "https://dunhuang-jiuquan.com/og-default.webp",
+      publisher: { "@type": "Organization", name: "Dunhuang & Jiuquan Guide", url: "https://dunhuang-jiuquan.com" },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Dunhuang and Jiuquan History | 2,000 Years on the Silk Road Corridor"
+  description="The history of Dunhuang and Jiuquan from Han garrison to the Library Cave and the modern Academy era — with what each period left for travelers today. Verifiable sources and honest notes."
+  ogType="article"
+  ogImage="/images/about.webp"
+  ogImageWidth="1536"
+  ogImageHeight="1024"
+  ogImageAlt="Dunhuang Silk Road history timeline"
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <article class="py-12 md:py-20">
+    <div class="section-container max-w-4xl">
+      <header class="mb-12 reveal">
+        <SectionHeader
+          eyebrow="Corridor History"
+          title="2,000 Years of History on the Silk Road"
+          subtitle="An honest readable timeline of what happened between Dunhuang and Jiuquan, and how each era's evidence reaches you — often as one surviving wall or a library scroll."
+        />
+      </header>
+
+      <div class="space-y-10">
+        {periods.map((p, i) => (
+          <section class="reveal">
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+              <span class="inline-block text-xs font-bold tracking-widest uppercase text-mogao-600 bg-mogao-50 px-2.5 py-1 rounded-full">{p.years}</span>
+              <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-stone-900">{p.title}</h2>
+            </div>
+            <p class="text-stone-600 leading-relaxed">{p.text}</p>
+            <p class="mt-3 text-sm text-stone-500 border-l-2 border-mogao-200 pl-4">
+              <strong class="text-stone-700">What remains today:</strong> {p.remains}
+            </p>
+          </section>
+        ))}
+      </div>
+
+      <div class="mt-14">
+        <h2 class="text-2xl font-bold tracking-tight text-stone-900 mb-6">History FAQ</h2>
+        <div class="space-y-3">
+          {faqs.map((f) => (
+            <details class="group bg-white rounded-2xl border border-stone-200">
+              <summary class="flex items-center justify-between px-6 py-5 cursor-pointer text-left font-semibold text-stone-900 list-none">
+                {f.q}
+                <svg class="w-5 h-5 shrink-0 text-stone-400 group-open:rotate-180 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="px-6 pb-5 text-stone-600 text-sm leading-relaxed">{f.a}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+
+      <div class="mt-12 p-6 bg-stone-50 rounded-2xl border border-stone-200 reveal">
+        <h2 class="text-lg font-semibold text-stone-900 mb-2">Sources</h2>
+        <ul class="space-y-2 text-sm text-stone-600">
+          <li>&rarr; <a href="https://whc.unesco.org/en/list/440/" rel="external nofollow" target="_blank" class="text-mogao-600 hover:text-mogao-700 underline">UNESCO World Heritage: Mogao Caves</a></li>
+          <li>&rarr; <a href="https://en.wikipedia.org/wiki/Mogao_Caves" rel="external nofollow" target="_blank" class="text-mogao-600 hover:text-mogao-700 underline">Mogao Caves on Wikipedia</a></li>
+          <li>&rarr; Dunhuang Academy historical and conservation records</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <RelatedLinks
+    title="Continue exploring"
+    links={[
+      { href: "/mogao-caves", label: "Visit the Mogao caves" },
+      { href: "/jiayuguan-fort", label: "Jiayuguan Fort (1372)" },
+      { href: "/museums", label: "Silk Road museums" },
+      { href: "/guide", label: "Complete guide" },
+      { href: "/itinerary", label: "History-focused itinerary" },
+    ]}
+  />
+  <NewsletterSignup />
+</BaseLayout>

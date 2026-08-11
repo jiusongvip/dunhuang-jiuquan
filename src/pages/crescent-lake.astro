@@ -1,42 +1,39 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
-
-const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Article",
-      "headline": "Crescent Lake & Singing Sand Dunes Guide 2026 | Dunhuang Desert Oasis",
-      "description": "Complete guide to Crescent Lake and Mingsha Sand Dunes in Dunhuang: tickets, camel rides, sandboarding, sunset photography, best times to visit, and practical tips for foreign travelers.",
-      "datePublished": "2026-07-15",
-      "dateModified": "2026-08-07",
-      "author": { "@type": "Person", "name": "Dunhuang & Jiuquan Guide Team" },
-      "image": "https://dunhuang-jiuquan.com/images/crescent-lake.webp",
-      "publisher": { "@type": "Organization", "name": "Dunhuang & Jiuquan Guide", "url": "https://dunhuang-jiuquan.com" }
-    },
-    {
-      "@type": "TouristAttraction",
-      "name": "Crescent Lake and Singing Sand Dunes (Mingsha Mountain)",
-      "description": "A crescent-shaped spring-fed lake surrounded by 250-meter singing sand dunes in Dunhuang, active for over 2,000 years. Features camel rides, sandboarding, and desert sunset views.",
-      "touristType": ["Adventure Travelers", "Photographers", "Family Travelers"],
-      "geo": { "@type": "GeoCoordinates", "latitude": 40.086, "longitude": 94.669 },
-      "address": { "@type": "PostalAddress", "addressLocality": "Dunhuang", "addressRegion": "Gansu", "addressCountry": "CN" }
-    }
-  ]
-};
+import AttractionSchema from "../components/AttractionSchema.astro";
 ---
 
 <BaseLayout
   title="Crescent Lake &amp; Singing Sand Dunes Guide 2026 | Dunhuang Desert Oasis"
   description="Complete guide to Crescent Lake and Mingsha Sand Dunes in Dunhuang: tickets (CNY 120, 3-day validity), camel rides, sandboarding, sunset photography, and insider tips for foreign visitors."
+  ogImage="/images/crescent-lake.webp"
+  ogImageWidth="1254"
+  ogImageHeight="1254"
+  ogImageAlt="Crescent Moon Lake oasis surrounded by Singing Sand Dunes in Dunhuang"
   author="Dunhuang &amp; Jiuquan Guide Team"
   datePublished="2026-07-15"
   dateModified="2026-08-07"
 >
   <slot name="head">
-    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
-  </slot>
+    <AttractionSchema
+      name="Crescent Lake and Singing Sand Dunes"
+      slug="crescent-lake"
+      description="A spring-fed oasis lake surrounded by 250-meter Singing Sand Dunes on the edge of Dunhuang. Tickets CNY 120, valid for 3 days."
+      image="/images/crescent-lake.webp"
+      latitude="40.087"
+      longitude="94.668"
+      locality="Dunhuang"
+      region="Gansu"
+      country="CN"
+      ticketPrice="120"
+      priceCurrency="CNY"
+      faqs={[
+        { q: "How much does Crescent Lake cost?", a: "CNY 120 per person, and the ticket is valid for 3 days so you can visit more than once during one trip." },
+        { q: "Is Crescent Lake open at night?", a: "The park typically opens around 6:00 AM and closes between 7:30 PM and 9 PM by season. Sunset hours are the most popular for photography." },
+        { q: "Should I ride a camel at the Singing Sand Dunes?", a: "Camel rides cost around CNY 100. Sit near the front and hold the handle firmly when the camel stands. No tipping required." },
+      ]}
+    />
 
   <article class="py-12 md:py-20">
     <div class="section-container max-w-3xl">

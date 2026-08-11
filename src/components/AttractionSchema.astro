@@ -1,0 +1,78 @@
+---
+interface Props {
+  name: string;
+  slug: string;
+  description: string;
+  image?: string;
+  latitude?: number;
+  longitude?: number;
+  locality?: string;
+  region?: string;
+  country?: string;
+  ticketPrice?: string;
+  priceCurrency?: string;
+  openingHours?: string;
+  faqs?: { q: string; a: string }[];
+}
+
+const site = "https://dunhuang-jiuquan.com";
+const {
+  name,
+  slug,
+  description,
+  image = "/og-default.webp",
+  latitude,
+  longitude,
+  locality = "Dunhuang",
+  region = "Gansu",
+  country = "CN",
+  ticketPrice,
+  priceCurrency = "CNY",
+  openingHours,
+  faqs = [],
+} = Astro.props;
+
+const attraction = {
+  "@context": "https://schema.org",
+  "@type": "TouristAttraction",
+  name,
+  description,
+  url: `${site}/${slug}`,
+  image: new URL(image, site).href,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: locality,
+    addressRegion: region,
+    addressCountry: country,
+  },
+  ...(latitude && longitude
+    ? { geo: { "@type": "GeoCoordinates", latitude, longitude } }
+    : {}),
+  ...(ticketPrice
+    ? {
+        offers: {
+          "@type": "Offer",
+          price: ticketPrice,
+          priceCurrency,
+        },
+      }
+    : {}),
+  ...(openingHours ? { openingHours } : {}),
+};
+
+const schemaArray = [attraction];
+
+if (faqs.length > 0) {
+  schemaArray.push({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  });
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schemaArray)}></script>

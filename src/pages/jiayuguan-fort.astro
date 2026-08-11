@@ -1,42 +1,39 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
-
-const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Article",
-      "headline": "Jiayuguan Fort Guide 2026 | Great Wall Western Terminus, Ming Dynasty Fortress",
-      "description": "Complete guide to Jiayuguan Fort: the Ming Dynasty Great Wall western terminus. Combined ticket CNY 120 includes fort, museum, and Overhanging Great Wall. History, transport, best viewpoints, and practical tips for foreign visitors.",
-      "datePublished": "2026-07-15",
-      "dateModified": "2026-08-07",
-      "author": { "@type": "Person", "name": "Dunhuang & Jiuquan Guide Team" },
-      "image": "https://dunhuang-jiuquan.com/images/jiayuguan-fort.webp",
-      "publisher": { "@type": "Organization", "name": "Dunhuang & Jiuquan Guide", "url": "https://dunhuang-jiuquan.com" }
-    },
-    {
-      "@type": "LandmarksOrHistoricalBuildings",
-      "name": "Jiayuguan Fort (First Pass Under Heaven)",
-      "description": "The westernmost fortress of the Ming Dynasty Great Wall, built in 1372. Known as the First and Greatest Pass Under Heaven. Includes the fort, Great Wall Museum, and Overhanging Great Wall section.",
-      "touristType": ["History Buffs", "Photographers", "Cultural Travelers"],
-      "geo": { "@type": "GeoCoordinates", "latitude": 39.802, "longitude": 98.216 },
-      "address": { "@type": "PostalAddress", "addressLocality": "Jiayuguan", "addressRegion": "Gansu", "addressCountry": "CN" }
-    }
-  ]
-};
+import AttractionSchema from "../components/AttractionSchema.astro";
 ---
 
 <BaseLayout
   title="Jiayuguan Fort Guide 2026 | Great Wall Western Terminus &amp; Ming Dynasty Fortress"
   description="Complete guide to Jiayuguan Fort: the Ming Dynasty Great Wall western terminus. Combined ticket CNY 120 covers the fort, museum, and Overhanging Great Wall. History, viewpoints, and practical tips."
+  ogImage="/images/jiayuguan-fort.webp"
+  ogImageWidth="1254"
+  ogImageHeight="1254"
+  ogImageAlt="Jiayuguan Fort, the western terminus of the Ming Great Wall, with Qilian Mountains behind"
   author="Dunhuang &amp; Jiuquan Guide Team"
   datePublished="2026-07-15"
   dateModified="2026-08-07"
 >
   <slot name="head">
-    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
-  </slot>
+    <AttractionSchema
+      name="Jiayuguan Fort"
+      slug="jiayuguan-fort"
+      description="The First and Greatest Pass Under Heaven, westernmost fortress of the Ming Great Wall built in 1372. Combined ticket CNY 120 includes the fort, museum, and Overhanging Great Wall."
+      image="/images/jiayuguan-fort.webp"
+      latitude="39.801"
+      longitude="98.217"
+      locality="Jiayuguan"
+      region="Gansu"
+      country="CN"
+      ticketPrice="120"
+      priceCurrency="CNY"
+      faqs={[
+        { q: "How much does Jiayuguan Fort cost?", a: "The combined ticket costs CNY 120 and includes the fort, the Great Wall Museum, and the Overhanging Great Wall. Tickets are linked to your passport number." },
+        { q: "Which city should I stay in, Jiayuguan or Jiuquan?", a: "Stay in Jiayuguan. It is 20 km closer to the fort, has better hotels and restaurants, and avoids a 40-minute round trip from Jiuquan city center." },
+        { q: "Is the Overhanging Great Wall worth climbing?", a: "Yes. It is included in the combined ticket and offers dramatic views of the Qilian Mountains. Allow 30-45 minutes for the steep climb and wear sturdy shoes." },
+      ]}
+    />
 
   <article class="py-12 md:py-20">
     <div class="section-container max-w-3xl">

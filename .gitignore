@@ -2,6 +2,9 @@
 dist/
 .astro/
 
+# Logs
+*.log
+
 # Dependencies
 node_modules/
 

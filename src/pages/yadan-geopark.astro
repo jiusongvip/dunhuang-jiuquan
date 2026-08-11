@@ -1,42 +1,39 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
-
-const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Article",
-      "headline": "Yadan National Geopark Guide 2026 | Dunhuang Ghost City & West Line Day Trip",
-      "description": "Complete guide to Yadan National Geopark near Dunhuang: wind-carved rock formations, Ghost City, how to get there (private car only), tickets (CNY 120), best sunset photo times, and how to combine with Yumen Pass for the perfect west line day trip.",
-      "datePublished": "2026-07-20",
-      "dateModified": "2026-08-07",
-      "author": { "@type": "Person", "name": "Dunhuang & Jiuquan Guide Team" },
-      "image": "https://dunhuang-jiuquan.com/images/yadan-geopark.webp",
-      "publisher": { "@type": "Organization", "name": "Dunhuang & Jiuquan Guide", "url": "https://dunhuang-jiuquan.com" }
-    },
-    {
-      "@type": "TouristAttraction",
-      "name": "Yadan National Geopark (Dunhuang Ghost City)",
-      "description": "A surreal landscape of wind-carved yardang rock formations in the Gobi Desert, 180km northwest of Dunhuang. Known as Ghost City for the eerie sounds created by wind through the rock formations. Best visited at sunset.",
-      "touristType": ["Adventure Travelers", "Photographers", "Nature Enthusiasts"],
-      "geo": { "@type": "GeoCoordinates", "latitude": 40.529, "longitude": 93.202 },
-      "address": { "@type": "PostalAddress", "addressLocality": "Dunhuang", "addressRegion": "Gansu", "addressCountry": "CN" }
-    }
-  ]
-};
+import AttractionSchema from "../components/AttractionSchema.astro";
 ---
 
 <BaseLayout
   title="Yadan National Geopark Guide 2026 | Dunhuang Ghost City &amp; West Line"
   description="Complete guide to Yadan National Geopark: surreal wind-carved rock formations near Dunhuang. Tickets (CNY 120), how to get there (private car), why sunset is essential, and how to combine with Yumen Pass."
+  ogImage="/images/yadan-geopark.webp"
+  ogImageWidth="1254"
+  ogImageHeight="1254"
+  ogImageAlt="Wind-carved yardang rock formations of Yadan Geopark at sunset, Dunhuang"
   author="Dunhuang &amp; Jiuquan Guide Team"
   datePublished="2026-07-20"
   dateModified="2026-08-07"
 >
   <slot name="head">
-    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
-  </slot>
+    <AttractionSchema
+      name="Yadan National Geopark"
+      slug="yadan-geopark"
+      description="Surreal wind-carved rock formations 180 km northwest of Dunhuang, known as Ghost City. Accessible only by private car; best visited at sunset."
+      image="/images/yadan-geopark.webp"
+      latitude="40.547"
+      longitude="93.066"
+      locality="Dunhuang"
+      region="Gansu"
+      country="CN"
+      ticketPrice="120"
+      priceCurrency="CNY"
+      faqs={[
+        { q: "How much does Yadan Geopark cost?", a: "CNY 120 admission plus a shuttle bus fee of CNY 70. The park is only reachable by private car — allow CNY 600-800 for a full-day west line driver." },
+        { q: "Is Yadan Geopark worth the long drive?", a: "Yes, if you time it right. The drive is 180 km each way, but the surreal wind-carved formations at sunset are among the most dramatic landscapes on the Silk Road. Ask your driver to stay until after sunset." },
+        { q: "Can I visit Yadan Geopark by public transport?", a: "No. There is no public transport to the park. Hire a private driver in Dunhuang for the full-day west line trip, combining Yumen Pass and Han Great Wall with Yadan." },
+      ]}
+    />
 
   <article class="py-12 md:py-20">
     <div class="section-container max-w-3xl">

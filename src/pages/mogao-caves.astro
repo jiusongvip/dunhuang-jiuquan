@@ -1,11 +1,36 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import AttractionSchema from "../components/AttractionSchema.astro";
 ---
 
 <BaseLayout
   title="Mogao Caves Guide 2026 | Tickets, Reservations & Tips for Foreigners"
   description="Complete guide to visiting Mogao Caves in Dunhuang. A-ticket vs B-ticket, how to book as a foreigner, best time to visit, what to expect, alternatives when sold out, and practical tips."
+  ogImage="/images/mogao-caves.webp"
+  ogImageWidth="1254"
+  ogImageHeight="1254"
+  ogImageAlt="Mogao Caves Buddhist grotto entrance at the Dunhuang UNESCO site"
 >
+  <slot name="head">
+    <AttractionSchema
+      name="Mogao Caves"
+      slug="mogao-caves"
+      description="UNESCO World Heritage Site with 492 caves of Buddhist murals and sculptures in Dunhuang, Gansu. The world's largest and best-preserved treasury of Buddhist art."
+      image="/images/mogao-caves.webp"
+      latitude="40.036"
+      longitude="94.809"
+      locality="Dunhuang"
+      region="Gansu"
+      country="CN"
+      ticketPrice="238"
+      priceCurrency="CNY"
+      faqs={[
+        { q: "Can I visit Mogao Caves without a guide?", a: "No. All visitors join a guided group tour. A-ticket holders visit 8 caves over approximately 75 minutes. Photography is strictly forbidden inside the caves." },
+        { q: "How do I book Mogao Caves as a foreigner?", a: "Use the official WeChat mini-program (Chinese phone number required), book through Trip.com, or ask your hotel concierge. A-tickets must be booked 1-4 weeks ahead in peak season (May-October). Passport required for entry." },
+        { q: "What is the difference between A-ticket and B-ticket?", a: "A-ticket (CNY 238-258) covers 8 caves plus 2 films at the Digital Exhibition Center. B-ticket covers 4 caves with no films and is only sold when A-tickets are sold out." },
+      ]}
+    />
+  </slot>
 
   <article class="pt-24 pb-24">
     <div class="section-container max-w-3xl">

@@ -1,11 +1,16 @@
 ---
 import "../styles/global.css";
+import "@fontsource-variable/geist";
+import "@fontsource-variable/fraunces";
 
 export interface Props {
   mapPage?: boolean;
   title: string;
   description: string;
   ogImage?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
+  ogImageAlt?: string;
   ogType?: string;
   noindex?: boolean;
   author?: string;
@@ -18,6 +23,9 @@ const {
   title,
   description,
   ogImage = "/og-default.webp",
+  ogImageWidth = 1672,
+  ogImageHeight = 941,
+  ogImageAlt = "",
   ogType = "website",
   noindex = false,
   author = "",
@@ -27,6 +35,12 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href.replace(/\/$/, "");
 const robotsContent = noindex ? "noindex, follow" : "index, follow";
+const ogImageURL = new URL(ogImage, Astro.site).href;
+const ogImageMeta = {
+  width: ogImageWidth,
+  height: ogImageHeight,
+  alt: ogImageAlt || title,
+};
 
 const orgSchema = {
   "@context": "https://schema.org",
@@ -46,6 +60,16 @@ const personSchema = {
   "url": "https://dunhuang-jiuquan.com/about/",
   "jobTitle": "Travel Writers & Silk Road Researchers",
   "worksFor": { "@type": "Organization", "name": "Dunhuang & Jiuquan Guide" }
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Dunhuang & Jiuquan Guide",
+  "url": "https://dunhuang-jiuquan.com",
+  "inLanguage": "en",
+  "description": "Independent Silk Road travel guide covering Dunhuang and Jiuquan.",
+  "publisher": { "@type": "Organization", "name": "Dunhuang & Jiuquan Guide", "url": "https://dunhuang-jiuquan.com" }
 };
 
 // BreadcrumbList
@@ -83,6 +107,23 @@ if (pathParts.length > 0) {
   }
   breadcrumbSchema = JSON.stringify({ "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": items });
 }
+
+// Optional Article schema used when a page supplies author + published dates
+const pageHasArticle = Boolean(author && datePublished);
+const articleSchema = pageHasArticle
+  ? JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "mainEntityOfPage": { "@type": "WebPage", "@id": canonicalURL },
+      "author": { "@type": "Person", "name": author },
+      "publisher": { "@type": "Organization", "name": "Dunhuang & Jiuquan Guide", "url": "https://dunhuang-jiuquan.com" },
+      "datePublished": datePublished,
+      "dateModified": dateModified || datePublished,
+      "image": ogImageURL,
+    })
+  : "";
 ---
 
 <!doctype html>
@@ -90,6 +131,7 @@ if (pathParts.length > 0) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1e4a72" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content={robotsContent} />
@@ -100,7 +142,10 @@ if (pathParts.length > 0) {
     {!noindex && <>
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content={String(ogImageMeta.width)} />
+    <meta property="og:image:height" content={String(ogImageMeta.height)} />
+    <meta property="og:image:alt" content={ogImageMeta.alt} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:type" content={ogType} />
     <meta property="og:locale" content="en_US" />
@@ -109,11 +154,16 @@ if (pathParts.length > 0) {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(ogImage, Astro.site).href} />
+    <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content={ogImageMeta.alt} />
     </>}
 
     <script type="application/ld+json" set:html={JSON.stringify(orgSchema)}></script>
     <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
+    {pageHasArticle && (
+      <script type="application/ld+json" set:html={articleSchema}></script>
+    )}
     {!noindex && breadcrumbSchema && (
       <script type="application/ld+json" set:html={breadcrumbSchema}></script>
     )}
@@ -130,7 +180,7 @@ if (pathParts.length > 0) {
       <>
         <!-- Leaflet CSS/JS for map pages -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+        <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
       </>
     )}
 
@@ -196,8 +246,7 @@ if (pathParts.length > 0) {
       <slot />
     </main>
 
-    <footer class="border-t border-stone-200 bg-stone-100">
-      <div class="section-container py-16">
+    <footer class="border-t border-stone-200 bg-stone-100">      <div class="section-container py-16">
         <div class="grid grid-cols-2 md:grid-cols-6 gap-8 md:gap-10">
           <div class="col-span-2 md:col-span-1">
             <a href="/" class="flex items-center gap-2 font-semibold text-stone-800 text-lg tracking-tight no-underline mb-4">
@@ -225,6 +274,8 @@ if (pathParts.length > 0) {
               <a href="/crescent-lake" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Crescent Lake</a>
               <a href="/jiayuguan-fort" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Jiayuguan Fort</a>
               <a href="/yadan-geopark" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Yadan Geopark</a>
+             <a href="/museums" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Museums</a>
+              <a href="/history" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">History</a>
              <a href="/sil-road-compare" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Silk Road Compare</a>
               <a href="/photography" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Photography Guide</a>
              <a href="/nearby-attractions" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Nearby Attractions</a>
@@ -263,6 +314,9 @@ if (pathParts.length > 0) {
         </div>
       </div>
     </footer>
+    <script is:inline>
+      (function(){var o=new IntersectionObserver(function(e){e.forEach(function(e){if(e.isIntersecting){e.target.classList.add("reveal-in");o.unobserve(e.target)}})},{threshold:0.1,rootMargin:"0px 0px -40px 0px"});document.querySelectorAll(".reveal").forEach(function(e){o.observe(e)})})();
+    </script>
   </body>
 </html>
 
