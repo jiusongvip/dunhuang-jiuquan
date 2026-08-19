@@ -3,8 +3,8 @@ import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://dunhuang-jiuquan.com",
-  trailingSlash: "never",
+  site: "https://www.dunhuang-jiuquan.com",
+  trailingSlash: "always",
   vite: {
     plugins: [tailwindcss()],
   },

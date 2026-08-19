@@ -33,7 +33,9 @@ const {
   dateModified = datePublished,
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site).href.replace(/\/$/, "");
+const canonicalURL = Astro.url.pathname === "/"
+  ? new URL("/", Astro.site).href.replace(/\/$/, "")
+  : new URL(Astro.url.pathname, Astro.site).href;
 const robotsContent = noindex ? "noindex, follow" : "index, follow";
 const ogImageURL = new URL(ogImage, Astro.site).href;
 const ogImageMeta = {
@@ -46,9 +48,9 @@ const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Dunhuang & Jiuquan Guide",
-  "url": "https://dunhuang-jiuquan.com",
+  "url": "https://www.dunhuang-jiuquan.com",
   "description": "Independent Silk Road travel guide to Dunhuang and Jiuquan. Honest advice, no booking fees.",
-  "logo": "https://dunhuang-jiuquan.com/favicon.svg",
+  "logo": "https://www.dunhuang-jiuquan.com/favicon.svg",
   "email": "hello@dunhuang-jiuquan.com",
   "foundingDate": "2026"
 };
@@ -57,7 +59,7 @@ const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Dunhuang & Jiuquan Guide Team",
-  "url": "https://dunhuang-jiuquan.com/about/",
+  "url": "https://www.dunhuang-jiuquan.com/about/",
   "jobTitle": "Travel Writers & Silk Road Researchers",
   "worksFor": { "@type": "Organization", "name": "Dunhuang & Jiuquan Guide" }
 };
@@ -66,10 +68,10 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Dunhuang & Jiuquan Guide",
-  "url": "https://dunhuang-jiuquan.com",
+  "url": "https://www.dunhuang-jiuquan.com",
   "inLanguage": "en",
   "description": "Independent Silk Road travel guide covering Dunhuang and Jiuquan.",
-  "publisher": { "@type": "Organization", "name": "Dunhuang & Jiuquan Guide", "url": "https://dunhuang-jiuquan.com" }
+  "publisher": { "@type": "Organization", "name": "Dunhuang & Jiuquan Guide", "url": "https://www.dunhuang-jiuquan.com" }
 };
 
 // BreadcrumbList
@@ -118,7 +120,7 @@ const articleSchema = pageHasArticle
       "description": description,
       "mainEntityOfPage": { "@type": "WebPage", "@id": canonicalURL },
       "author": { "@type": "Person", "name": author },
-      "publisher": { "@type": "Organization", "name": "Dunhuang & Jiuquan Guide", "url": "https://dunhuang-jiuquan.com" },
+      "publisher": { "@type": "Organization", "name": "Dunhuang & Jiuquan Guide", "url": "https://www.dunhuang-jiuquan.com" },
       "datePublished": datePublished,
       "dateModified": dateModified || datePublished,
       "image": ogImageURL,
@@ -192,12 +194,12 @@ const articleSchema = pageHasArticle
           Dunhuang &amp; Jiuquan
         </a>
        <div class="hidden md:flex items-center gap-1">
-          <a href="/guide" class="rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition-colors hover:text-mogao-700 hover:bg-mogao-50">Plan</a>
-          <a href="/mogao-caves" class="rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition-colors hover:text-mogao-700 hover:bg-mogao-50">Mogao</a>
-          <a href="/jiayuguan-fort" class="rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition-colors hover:text-mogao-700 hover:bg-mogao-50">Jiayuguan</a>
-          <a href="/itinerary" class="rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition-colors hover:text-mogao-700 hover:bg-mogao-50">Itineraries</a>
-          <a href="/tickets" class="rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition-colors hover:text-mogao-700 hover:bg-mogao-50">Tickets</a>
-          <a href="/faq" class="rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition-colors hover:text-mogao-700 hover:bg-mogao-50">Tips</a>
+          <a href="/guide/" class="rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition-colors hover:text-mogao-700 hover:bg-mogao-50">Plan</a>
+          <a href="/mogao-caves/" class="rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition-colors hover:text-mogao-700 hover:bg-mogao-50">Mogao</a>
+          <a href="/jiayuguan-fort/" class="rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition-colors hover:text-mogao-700 hover:bg-mogao-50">Jiayuguan</a>
+          <a href="/itinerary/" class="rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition-colors hover:text-mogao-700 hover:bg-mogao-50">Itineraries</a>
+          <a href="/tickets/" class="rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition-colors hover:text-mogao-700 hover:bg-mogao-50">Tickets</a>
+          <a href="/faq/" class="rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition-colors hover:text-mogao-700 hover:bg-mogao-50">Tips</a>
         </div>
       </nav>
     </header>
@@ -256,50 +258,50 @@ const articleSchema = pageHasArticle
           <div>
             <p class="text-sm font-semibold text-stone-700 mb-4">Plan</p>
             <div class="flex flex-col gap-2">
-              <a href="/guide" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Complete Guide</a>
-              <a href="/best-time-to-visit" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Best Time to Visit</a>
-              <a href="/how-to-get-there" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">How to Get There</a>
-              <a href="/itinerary" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Itineraries</a>
+              <a href="/guide/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Complete Guide</a>
+              <a href="/best-time-to-visit/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Best Time to Visit</a>
+              <a href="/how-to-get-there/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">How to Get There</a>
+              <a href="/itinerary/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Itineraries</a>
             </div>
           </div>
           <div>
             <p class="text-sm font-semibold text-stone-700 mb-4">Explore</p>
             <div class="flex flex-col gap-2">
-             <a href="/dunhuang-vs-jiuquan" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Dunhuang vs Jiuquan</a>
-              <a href="/mogao-caves" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Mogao Caves</a>
-              <a href="/crescent-lake" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Crescent Lake</a>
-              <a href="/jiayuguan-fort" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Jiayuguan Fort</a>
-              <a href="/yadan-geopark" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Yadan Geopark</a>
-             <a href="/museums" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Museums</a>
-              <a href="/history" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">History</a>
-             <a href="/sil-road-compare" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Silk Road Compare</a>
-              <a href="/photography" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Photography Guide</a>
-             <a href="/nearby-attractions" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Nearby Attractions</a>
-              <a href="/food" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Food Guide</a>
+             <a href="/dunhuang-vs-jiuquan/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Dunhuang vs Jiuquan</a>
+              <a href="/mogao-caves/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Mogao Caves</a>
+              <a href="/crescent-lake/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Crescent Lake</a>
+              <a href="/jiayuguan-fort/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Jiayuguan Fort</a>
+              <a href="/yadan-geopark/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Yadan Geopark</a>
+             <a href="/museums/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Museums</a>
+              <a href="/history/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">History</a>
+             <a href="/sil-road-compare/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Silk Road Compare</a>
+              <a href="/photography/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Photography Guide</a>
+             <a href="/nearby-attractions/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Nearby Attractions</a>
+              <a href="/food/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Food Guide</a>
             </div>
           </div>
           <div>
             <p class="text-sm font-semibold text-stone-700 mb-4">Practical</p>
             <div class="flex flex-col gap-2">
-              <a href="/tickets" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Tickets &amp; Prices</a>
-              <a href="/accommodation" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Where to Stay</a>
-              <a href="/packing-list" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Packing List</a>
-              <a href="/survival-phrases" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Chinese Phrases</a>
-              <a href="/faq" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">FAQ</a>
+              <a href="/tickets/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Tickets &amp; Prices</a>
+              <a href="/accommodation/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Where to Stay</a>
+              <a href="/packing-list/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Packing List</a>
+              <a href="/survival-phrases/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Chinese Phrases</a>
+              <a href="/faq/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">FAQ</a>
             </div>
           </div>
           <div>
             <p class="text-sm font-semibold text-stone-700 mb-4">More</p>
             <div class="flex flex-col gap-2">
-              <a href="/about" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">About</a>
-              <a href="/contact" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Contact</a>
-              <a href="/privacy" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Privacy Policy</a>
+              <a href="/about/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">About</a>
+              <a href="/contact/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Contact</a>
+              <a href="/privacy/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Privacy Policy</a>
             </div>
           </div>
           <div>
            <p class="text-sm font-semibold text-stone-700 mb-4">Resources</p>
            <div class="flex flex-col gap-2">
-              <a href="/sil-road-compare" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Compare</a>
+              <a href="/sil-road-compare/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Compare</a>
               <a href="/#map-section" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Route Map</a>
               <a href="/#planner" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Trip Planner</a>
             </div>
