@@ -103,7 +103,7 @@ if (pathParts.length > 0) {
   for (let i = 0; i < pathParts.length; i++) {
     const part = pathParts[i];
     const name = pageLabels[part] ?? part.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
-    itemUrl += "/" + part;
+    itemUrl += "/" + part + "/";
     items.push({ "@type": "ListItem", "position": (i + 2), "name": name, "item": itemUrl });
     crumbs.push({ name, item: itemUrl });
   }
