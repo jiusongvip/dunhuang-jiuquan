@@ -54,7 +54,11 @@ const orgSchema = {
   "description": "Independent Silk Road travel guide to Dunhuang and Jiuquan. Honest advice, no booking fees.",
   "logo": "https://www.dunhuang-jiuquan.com/favicon.svg",
   "email": "hello@dunhuang-jiuquan.com",
-  "foundingDate": "2026"
+  "foundingDate": "2026",
+  "sameAs": [
+    "https://github.com/jiusongvip/dunhuang-jiuquan",
+    "https://www.dunhuang-jiuquan.com/about/"
+  ]
 };
 
 const personSchema = {
@@ -90,6 +94,7 @@ const pageLabels: Record<string, string> = {
   "about": "About",
   "contact": "Contact",
   "privacy": "Privacy",
+  "terms": "Terms of Use",
   "dunhuang-vs-jiuquan": "Dunhuang vs Jiuquan",
   "mogao-caves": "Mogao Caves Guide",
 };
@@ -300,6 +305,7 @@ const articleSchema = pageHasArticle
               <a href="/about/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">About</a>
               <a href="/contact/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Contact</a>
               <a href="/privacy/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Privacy Policy</a>
+              <a href="/terms/" class="text-sm text-stone-500 hover:text-mogao-700 transition-colors">Terms of Use</a>
             </div>
           </div>
           <div>
