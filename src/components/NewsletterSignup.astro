@@ -37,7 +37,7 @@ const { title = "Get updates when we verify new prices", subtitle = "No spam. No
         Subscribe
       </button>
     </form>
-    <p id="nl-msg" class="text-xs text-stone-400 mt-3">No spam. Unsubscribe anytime.</p>
+    <p id="nl-msg" class="text-xs text-stone-500 mt-3">No spam. Unsubscribe anytime.</p>
   </div>
 </section>
 
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
     msg.textContent = "Sending...";
-    msg.className = "text-xs text-stone-400 mt-2";
+    msg.className = "text-xs text-stone-500 mt-2";
     var data = new URLSearchParams(new FormData(form));
     fetch("/", {
       method: "POST",
