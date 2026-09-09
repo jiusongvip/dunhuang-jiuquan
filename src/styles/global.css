@@ -57,7 +57,8 @@
     transition: none;
   }
 }
-.reveal { opacity: 1;
+.reveal {
+  opacity: 0;
   transform: translateY(22px);
   transition: opacity 0.7s ease-out, transform 0.7s ease-out;
 }
