@@ -177,8 +177,8 @@ const articleSchema = pageHasArticle
       <script type="application/ld+json" set:html={breadcrumbSchema}></script>
     )}
 
-    <!-- Google tag (gtag.js) — injected after load so analytics never competes with LCP on slow mobile networks -->
-    <script set:html={`window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-Y1MZZDDKFX';document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-Y1MZZDDKFX');});`}></script>
+    <!-- Google tag (gtag.js) — loaded on idle so the 170KB script never competes with first paint / LCP -->
+    <script set:html={`(function(){var f=function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-Y1MZZDDKFX';document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-Y1MZZDDKFX');};if('requestIdleCallback' in window){requestIdleCallback(f,{timeout:8000})}else{setTimeout(f,3500)}})();`}></script>
 
     {mapPage && (
       <>
@@ -248,7 +248,7 @@ const articleSchema = pageHasArticle
       <slot />
     </main>
 
-    <footer class="border-t border-stone-200 bg-stone-100">      <div class="section-container py-16">
+    <footer cv-auto class="border-t border-stone-200 bg-stone-100">      <div class="section-container py-16">
         <div class="grid grid-cols-2 md:grid-cols-6 gap-8 md:gap-10">
           <div class="col-span-2 md:col-span-1">
             <a href="/" class="flex items-center gap-2 font-semibold text-stone-800 text-lg tracking-tight no-underline mb-4">
