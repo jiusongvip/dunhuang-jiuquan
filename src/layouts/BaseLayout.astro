@@ -138,7 +138,7 @@ const articleSchema = pageHasArticle
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1e4a72" />
-    <style is:inline set:html={`@font-face{font-family:'Geist Variable';font-style:normal;font-display:swap;font-weight:100 900;src:url(${geistInlineWoff2}) format('woff2-variations');}`}></style>
+    <style is:inline set:html={`@font-face{font-family:'Geist Variable';font-style:normal;font-display:optional;font-weight:100 900;src:url(${geistInlineWoff2}) format('woff2-variations');}`}></style>
     <slot name="head" />
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -146,7 +146,6 @@ const articleSchema = pageHasArticle
     {!noindex && <link rel="canonical" href={canonicalURL} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-
     {!noindex && <>
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -165,16 +164,6 @@ const articleSchema = pageHasArticle
     <meta name="twitter:image" content={ogImageURL} />
     <meta name="twitter:image:alt" content={ogImageMeta.alt} />
     </>}
-
-    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)}></script>
-    <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
-    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
-    {pageHasArticle && (
-      <script type="application/ld+json" set:html={articleSchema}></script>
-    )}
-    {!noindex && breadcrumbSchema && (
-      <script type="application/ld+json" set:html={breadcrumbSchema}></script>
-    )}
 
     <!-- Google tag (gtag.js) — loaded on idle so the 170KB script never competes with first paint / LCP -->
     <script set:html={`(function(){var f=function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-Y1MZZDDKFX';document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-Y1MZZDDKFX');};if('requestIdleCallback' in window){requestIdleCallback(f,{timeout:8000})}else{setTimeout(f,3500)}})();`}></script>
@@ -316,6 +305,16 @@ const articleSchema = pageHasArticle
         </div>
       </div>
     </footer>
+    <!-- JSON-LD schemas at end of body — inert data, keeps ~10KB out of the paint-blocking head -->
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
+    {pageHasArticle && (
+      <script type="application/ld+json" set:html={articleSchema}></script>
+    )}
+    {!noindex && breadcrumbSchema && (
+      <script type="application/ld+json" set:html={breadcrumbSchema}></script>
+    )}
     <script is:inline>
       (function(){var mq=window.matchMedia("(min-width: 769px) and (prefers-reduced-motion: no-preference)");if(!mq.matches)return;var o=new IntersectionObserver(function(e){e.forEach(function(e){if(e.isIntersecting){e.target.classList.add("reveal-in");o.unobserve(e.target)}})},{threshold:0.1,rootMargin:"0px 0px -40px 0px"});document.querySelectorAll(".reveal").forEach(function(e){o.observe(e)})})();
     </script>
