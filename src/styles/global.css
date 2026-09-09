@@ -66,3 +66,9 @@
   transform: translateY(0);
 }
 
+/* Skip layout/paint for below-fold sections until near viewport */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}
+
