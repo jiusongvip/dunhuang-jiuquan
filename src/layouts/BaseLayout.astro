@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import geistInlineWoff2 from "@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?inline";
+import geistWoff2 from "@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url";
 
 export interface Props {
   mapPage?: boolean;
@@ -138,7 +138,8 @@ const articleSchema = pageHasArticle
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1e4a72" />
-    <style is:inline set:html={`@font-face{font-family:'Geist Variable';font-style:normal;font-display:swap;font-weight:100 900;src:url(${geistInlineWoff2}) format('woff2-variations');}`}></style>
+    <link rel="preload" as="font" type="font/woff2" href={geistWoff2} crossorigin fetchpriority="high" />
+    <style is:inline set:html={`@font-face{font-family:'Geist Variable';font-style:normal;font-display:swap;font-weight:100 900;src:url(${geistWoff2}) format('woff2-variations');}`}></style>
     <slot name="head" />
     <title>{title}</title>
     <meta name="description" content={description} />
