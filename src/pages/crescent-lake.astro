@@ -15,7 +15,7 @@ import AttractionSchema from "../components/AttractionSchema.astro";
   datePublished="2026-07-15"
   dateModified="2026-08-07"
 >
-  <slot name="head">
+  <Fragment slot="head">
     <AttractionSchema
       name="Crescent Lake and Singing Sand Dunes"
       slug="crescent-lake"
@@ -34,6 +34,7 @@ import AttractionSchema from "../components/AttractionSchema.astro";
         { q: "Should I ride a camel at the Singing Sand Dunes?", a: "Camel rides cost around CNY 100. Sit near the front and hold the handle firmly when the camel stands. No tipping required." },
       ]}
     />
+  </Fragment>
 
   <article class="py-12 md:py-20">
     <div class="section-container max-w-3xl">

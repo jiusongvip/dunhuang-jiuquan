@@ -14,9 +14,9 @@ const schema = {
   title="About Dunhuang &amp; Jiuquan Guide | Our Story &amp; Mission"
   description="Why we built this independent Silk Road travel guide to Dunhuang and Jiuquan. Honest advice from real travelers — no booking fees, no sponsored content."
 >
-  <slot name="head">
+  <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
-  </slot>
+  </Fragment>
 
   <article class="py-12 md:py-20">
     <div class="section-container max-w-3xl">

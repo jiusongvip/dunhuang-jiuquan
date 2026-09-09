@@ -51,6 +51,12 @@
 }
 
 /* Scroll reveal animation — matches zhangjiajie pattern */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transform: none;
+    transition: none;
+  }
+}
 .reveal { opacity: 1;
   transform: translateY(22px);
   transition: opacity 0.7s ease-out, transform 0.7s ease-out;
@@ -60,14 +66,3 @@
   transform: translateY(0);
 }
 
-/* Marquee animation */
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-.marquee-track {
-  animation: marquee 28s linear infinite;
-}
-.marquee-track:hover {
-  animation-play-state: paused;
-}

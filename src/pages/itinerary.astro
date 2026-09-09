@@ -45,7 +45,7 @@ const itineraries = [
 ---
 
 <BaseLayout title="Dunhuang &amp; Jiuquan Itineraries 2026 | 3, 5 &amp; 7 Day Plans" description="Field-tested Silk Road itineraries with realistic timing, budgets, and honest day-by-day tips: 3-day express, classic 5-day, and in-depth 7-day plans." author="Dunhuang &amp; Jiuquan Guide Team" datePublished="2026-07-15" dateModified="2026-08-07">
-<slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+<Fragment slot="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></Fragment>
 
 <div class="section-container max-w-3xl pb-20 md:pb-28">
   <header class="pt-12 md:pt-20 mb-16 reveal">
@@ -93,7 +93,7 @@ const itineraries = [
 
   <div class="pt-12 border-t border-stone-200 text-center reveal">
     <p class="text-stone-500 text-sm mb-6">Want a custom plan? Use our interactive trip planner on the homepage.</p>
-    <a href="/#planner" class="inline-flex items-center gap-2 rounded-xl bg-mogao-600 px-6 py-3 text-sm font-semibold text-white hover:bg-mogao-700 transition-all">Open Trip Planner</a>
+    <a href="/#planner" class="inline-flex items-center gap-2 rounded-xl bg-mogao-600 px-6 py-3 text-sm font-semibold text-white hover:bg-mogao-700 transition">Open Trip Planner</a>
   </div>
 </div>
 </BaseLayout>

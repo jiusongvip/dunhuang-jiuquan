@@ -11,7 +11,7 @@ import AttractionSchema from "../components/AttractionSchema.astro";
   ogImageHeight="1254"
   ogImageAlt="Mogao Caves Buddhist grotto entrance at the Dunhuang UNESCO site"
 >
-  <slot name="head">
+  <Fragment slot="head">
     <AttractionSchema
       name="Mogao Caves"
       slug="mogao-caves"
@@ -30,7 +30,7 @@ import AttractionSchema from "../components/AttractionSchema.astro";
         { q: "What is the difference between A-ticket and B-ticket?", a: "A-ticket (CNY 238-258) covers 8 caves plus 2 films at the Digital Exhibition Center. B-ticket covers 4 caves with no films and is only sold when A-tickets are sold out." },
       ]}
     />
-  </slot>
+  </Fragment>
 
   <article class="pt-24 pb-24">
     <div class="section-container max-w-3xl">

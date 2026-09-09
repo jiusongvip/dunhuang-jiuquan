@@ -15,7 +15,7 @@ import AttractionSchema from "../components/AttractionSchema.astro";
   datePublished="2026-07-20"
   dateModified="2026-08-07"
 >
-  <slot name="head">
+  <Fragment slot="head">
     <AttractionSchema
       name="Yadan National Geopark"
       slug="yadan-geopark"
@@ -34,6 +34,7 @@ import AttractionSchema from "../components/AttractionSchema.astro";
         { q: "Can I visit Yadan Geopark by public transport?", a: "No. There is no public transport to the park. Hire a private driver in Dunhuang for the full-day west line trip, combining Yumen Pass and Han Great Wall with Yadan." },
       ]}
     />
+  </Fragment>
 
   <article class="py-12 md:py-20">
     <div class="section-container max-w-3xl">

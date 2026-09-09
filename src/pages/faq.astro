@@ -44,9 +44,9 @@ const schema = {
   title="Dunhuang &amp; Jiuquan FAQ 2026 | Frequently Asked Questions"
   description="Honest answers to common questions about visiting Dunhuang and Jiuquan: how many days, visas, Mogao booking, safety, budget, maps, VPN, and best seasons."
 >
-  <slot name="head">
+  <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
-  </slot>
+  </Fragment>
 
   <article class="py-12 md:py-20">
     <div class="section-container max-w-3xl">

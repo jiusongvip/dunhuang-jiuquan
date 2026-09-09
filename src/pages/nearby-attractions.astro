@@ -17,9 +17,9 @@ const schema = {
   datePublished="2026-07-15"
   dateModified="2026-08-07"
 >
-  <slot name="head">
+  <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
-  </slot>
+  </Fragment>
 
   <article class="py-12 md:py-20">
     <div class="section-container max-w-3xl">

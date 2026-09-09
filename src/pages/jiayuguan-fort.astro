@@ -15,7 +15,7 @@ import AttractionSchema from "../components/AttractionSchema.astro";
   datePublished="2026-07-15"
   dateModified="2026-08-07"
 >
-  <slot name="head">
+  <Fragment slot="head">
     <AttractionSchema
       name="Jiayuguan Fort"
       slug="jiayuguan-fort"
@@ -34,6 +34,7 @@ import AttractionSchema from "../components/AttractionSchema.astro";
         { q: "Is the Overhanging Great Wall worth climbing?", a: "Yes. It is included in the combined ticket and offers dramatic views of the Qilian Mountains. Allow 30-45 minutes for the steep climb and wear sturdy shoes." },
       ]}
     />
+  </Fragment>
 
   <article class="py-12 md:py-20">
     <div class="section-container max-w-3xl">

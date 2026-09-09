@@ -37,7 +37,7 @@ const savingTips = [
 ---
 
 <BaseLayout title="Dunhuang &amp; Jiuquan Ticket Prices 2026 | Mogao Caves &amp; More" description="2026 ticket prices for all major Silk Road sights: Mogao Caves A/B tickets, Crescent Lake, Jiayuguan Fort, Yadan Geopark. All verified July 2026 at the gates." author="Dunhuang &amp; Jiuquan Guide Team" datePublished="2026-07-01" dateModified="2026-08-07">
-<slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+<Fragment slot="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></Fragment>
 
 <div class="section-container max-w-3xl pb-20 md:pb-28">
   <header class="pt-12 md:pt-20 mb-16 reveal">
@@ -165,8 +165,8 @@ const savingTips = [
   <div class="mt-16 pt-12 border-t border-stone-200 text-center reveal">
     <p class="text-stone-500 text-sm mb-6">Got your tickets sorted? Now plan your route.</p>
     <div class="flex flex-wrap justify-center gap-3">
-      <a href="/guide/" class="inline-flex items-center gap-2 rounded-xl bg-mogao-600 px-6 py-3 text-sm font-semibold text-white hover:bg-mogao-700 transition-all">Read Full Guide</a>
-      <a href="/itinerary/" class="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 hover:border-stone-400 transition-all">Browse Itineraries</a>
+      <a href="/guide/" class="inline-flex items-center gap-2 rounded-xl bg-mogao-600 px-6 py-3 text-sm font-semibold text-white hover:bg-mogao-700 transition">Read Full Guide</a>
+      <a href="/itinerary/" class="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 hover:border-stone-400 transition">Browse Itineraries</a>
     </div>
   </div>
 </div>

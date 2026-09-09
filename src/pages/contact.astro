@@ -14,9 +14,9 @@ const schema = {
   title="Contact Dunhuang &amp; Jiuquan Guide | Get in Touch"
   description="Questions about your Silk Road trip, corrections, or collaboration inquiries? Email the Dunhuang &amp; Jiuquan Guide team — we reply to every message within days."
 >
-  <slot name="head">
+  <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
-  </slot>
+  </Fragment>
 
   <article class="py-12 md:py-20">
     <div class="section-container max-w-3xl">
@@ -64,7 +64,7 @@ const schema = {
             <label for="message" class="block text-sm font-medium text-stone-700 mb-1">Message</label>
             <textarea id="message" name="message" rows="4" required class="w-full rounded-xl border border-stone-300 px-4 py-2.5 text-sm text-stone-800 focus:border-mogao-500 focus:ring-1 focus:ring-mogao-500 outline-none transition-colors resize-y" placeholder="Tell us what you need..."></textarea>
           </div>
-          <button type="submit" class="inline-flex items-center gap-2 rounded-xl bg-mogao-600 px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-mogao-700 active:scale-[0.98]">
+          <button type="submit" class="inline-flex items-center gap-2 rounded-xl bg-mogao-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-mogao-700 active:scale-[0.98]">
             Send Message
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg>
           </button>

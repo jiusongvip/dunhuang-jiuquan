@@ -67,9 +67,9 @@ const schema = {
   ogImageHeight="1024"
   ogImageAlt="Dunhuang Silk Road museum guide"
 >
-  <slot name="head">
+  <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
-  </slot>
+  </Fragment>
 
   <article class="py-12 md:py-20">
     <div class="section-container max-w-4xl">
