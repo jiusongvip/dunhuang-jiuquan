@@ -48,6 +48,103 @@
   .section-container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
+  /* Extracted utility patterns — 1:1 rewrites of the exact class strings */
+  .u-dot {
+    @apply mt-1.5 w-1.5 h-1.5 rounded-full bg-mogao-400 flex-shrink-0;
+  }
+  .u-badge-icon {
+    @apply mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center flex-shrink-0;
+  }
+  .u-h2 {
+    @apply text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-6;
+  }
+  .u-link {
+    @apply text-mogao-600 hover:text-mogao-700 underline;
+  }
+  .u-li {
+    @apply flex items-start gap-2;
+  }
+  .u-li3 {
+    @apply flex items-start gap-3;
+  }
+  .u-card {
+    @apply bg-white rounded-2xl border border-stone-200 p-6;
+  }
+  .u-nav-link {
+    @apply text-sm text-stone-600 hover:text-mogao-700 transition-colors;
+  }
+  .u-strong {
+    @apply font-semibold text-stone-900;
+  }
+  .u-chip-num {
+    @apply w-8 h-8 rounded-full bg-mogao-600 text-white flex items-center justify-center text-xs font-bold;
+  }
+  .u-h3 {
+    @apply text-2xl font-display font-semibold text-stone-900 mb-6;
+  }
+  .u-eyebrow {
+    @apply text-xs text-stone-500 uppercase tracking-wider font-semibold;
+  }
+  .u-box {
+    @apply bg-stone-50 rounded-2xl p-6 border border-stone-200;
+  }
+  .u-btn-solid {
+    @apply inline-flex items-center gap-2 px-5 py-3 bg-mogao-700 text-white rounded-xl text-sm font-semibold hover:bg-mogao-800 transition;
+  }
+  .u-btn-solid2 {
+    @apply inline-flex items-center gap-2 px-5 py-3 bg-mogao-600 text-white rounded-xl text-sm font-semibold hover:bg-mogao-700 transition-colors;
+  }
+  .u-btn-solid3 {
+    @apply inline-flex items-center gap-2 px-5 py-3 bg-mogao-700 text-white rounded-xl text-sm font-semibold hover:bg-mogao-800 transition-colors border border-mogao-500;
+  }
+  .u-btn-ghost {
+    @apply inline-flex items-center gap-2 px-5 py-3 bg-stone-200 text-stone-800 rounded-xl text-sm font-semibold hover:bg-stone-300 transition-colors;
+  }
+  .u-btn-outline {
+    @apply inline-flex items-center gap-2 px-5 py-3 bg-white text-mogao-700 rounded-xl text-sm font-semibold hover:bg-mogao-50 transition-colors;
+  }
+  .u-btn-outline2 {
+    @apply inline-flex items-center gap-2 mt-5 px-5 py-3 bg-white text-mogao-700 rounded-xl text-sm font-semibold hover:bg-mogao-50 transition-colors;
+  }
+  .u-img {
+    @apply w-full h-auto object-cover;
+  }
+  .u-pill {
+    @apply rounded-full bg-stone-100 px-2.5 py-0.5;
+  }
+  .u-td-note {
+    @apply px-4 py-3 text-stone-500 text-xs;
+  }
+  .u-h3 {
+    @apply text-2xl font-display font-semibold text-stone-900 mb-6;
+  }
+  .u-stat {
+    @apply bg-stone-50 rounded-xl p-4 text-center;
+  }
+  .u-figure {
+    @apply mb-8 rounded-2xl overflow-hidden bg-stone-200;
+  }
+  .u-p1 {
+    @apply mt-1 text-sm text-stone-500 leading-relaxed;
+  }
+  .u-p2 {
+    @apply mt-1 text-sm text-stone-500;
+  }
+  .u-list-indent {
+    @apply space-y-1.5 text-sm text-stone-600 ml-11;
+  }
+  .u-p3 {
+    @apply text-stone-600 leading-relaxed mb-4;
+  }
+  .u-p4 {
+    @apply mt-2 text-sm text-stone-500 leading-relaxed;
+  }
+  .u-prose-wrap {
+    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+  .u-cta-card {
+    @apply bg-mogao-600 text-white rounded-2xl p-8 text-center;
+  }
 }
 
 /* Scroll reveal animation — matches zhangjiajie pattern */

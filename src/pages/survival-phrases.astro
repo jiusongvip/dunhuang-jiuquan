@@ -75,7 +75,7 @@ const schema = {
   </Fragment>
 
   <article class="py-12 md:py-20">
-    <div class="section-container max-w-3xl">
+    <div class="u-prose-wrap">
       <header class="mb-8 reveal">
         <SectionHeader
           eyebrow="Language Aid"
@@ -84,8 +84,8 @@ const schema = {
         />
       </header>
       <!-- Placeholder image - replace with real photography -->
-      <div class="mb-8 rounded-2xl overflow-hidden bg-stone-200">
-        <img src="/images/survival-phrases.webp?v=2" alt="Chinese Survival Phrases" class="w-full h-auto object-cover" width="1200" height="600" loading="lazy" />
+      <div class="u-figure">
+        <img src="/images/survival-phrases.webp?v=2" alt="Chinese Survival Phrases" class="u-img" width="1200" height="600" loading="lazy" />
       </div>
 
       <div class="bg-amber-50 rounded-2xl p-5 border border-amber-200 mb-12 reveal">
@@ -100,7 +100,7 @@ const schema = {
             {items.map(({ en, zh, py, tip }) => (
               <div class="bg-white rounded-xl border border-stone-200 p-4 hover:border-stone-300 transition-colors">
                 <div class="flex items-start justify-between gap-4 mb-1">
-                  <p class="font-semibold text-stone-900 text-sm">{en}</p>
+                  <p class="u-strong text-sm">{en}</p>
                   <span class="shrink-0 text-xs text-stone-500 font-mono">{py}</span>
                 </div>
                 <p class="text-lg text-mogao-700 font-medium mb-1">{zh}</p>

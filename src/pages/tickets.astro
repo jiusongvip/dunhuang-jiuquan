@@ -39,17 +39,17 @@ const savingTips = [
 <BaseLayout title="Dunhuang &amp; Jiuquan Ticket Prices 2026 | Mogao Caves &amp; More" description="2026 ticket prices for all major Silk Road sights: Mogao Caves A/B tickets, Crescent Lake, Jiayuguan Fort, Yadan Geopark. All verified July 2026 at the gates." author="Dunhuang &amp; Jiuquan Guide Team" datePublished="2026-07-01" dateModified="2026-08-07">
 <Fragment slot="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></Fragment>
 
-<div class="section-container max-w-3xl pb-20 md:pb-28">
+<div class="u-prose-wrap pb-20 md:pb-28">
   <header class="pt-12 md:pt-20 mb-16 reveal">
     <SectionHeader eyebrow="Tickets &amp; Prices" title="Dunhuang &amp; Jiuquan Ticket Prices 2026" subtitle="Every ticket price verified at attraction gates in July 2026. Complete breakdown for Mogao Caves, Crescent Lake, Jiayuguan Fort, and more." />
   </header>
       <!-- Placeholder image - replace with real photography -->
-      <div class="mb-8 rounded-2xl overflow-hidden bg-stone-200">
-        <img src="/images/tickets.webp?v=2" alt="Attraction Tickets and Prices" class="w-full h-auto object-cover" width="1200" height="600" loading="lazy" />
+      <div class="u-figure">
+        <img src="/images/tickets.webp?v=2" alt="Attraction Tickets and Prices" class="u-img" width="1200" height="600" loading="lazy" />
       </div>
 
   <section id="dunhuang" class="mb-16 reveal">
-    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Dunhuang Attractions</h2>
+    <h2 class="text-2xl font-display u-strong mb-6">Dunhuang Attractions</h2>
     <div class="rounded-xl border border-stone-200 overflow-hidden">
       <table class="w-full text-sm">
         <thead class="bg-stone-50 border-b border-stone-200">
@@ -95,7 +95,7 @@ const savingTips = [
   </section>
 
   <section id="jiuquan" class="mb-16 reveal">
-    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Jiuquan / Jiayuguan Attractions</h2>
+    <h2 class="text-2xl font-display u-strong mb-6">Jiuquan / Jiayuguan Attractions</h2>
     <div class="rounded-xl border border-stone-200 overflow-hidden">
       <table class="w-full text-sm">
         <thead class="bg-stone-50 border-b border-stone-200">
@@ -120,11 +120,11 @@ const savingTips = [
   </section>
 
   <section id="booking" class="mb-16 reveal">
-    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">How to Book</h2>
+    <h2 class="text-2xl font-display u-strong mb-6">How to Book</h2>
     <div class="space-y-4">
       {bookingGuide.map((o, i) => (
         <div class="rounded-xl border border-stone-200 bg-white p-5 md:p-6">
-          <div class="flex items-start gap-3">
+          <div class="u-li3">
             <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-mogao-100 text-xs font-bold text-mogao-700">{i + 1}</span>
             <div class="flex-1">
               <div class="flex items-center gap-2 mb-2">
@@ -144,7 +144,7 @@ const savingTips = [
   </section>
 
   <section id="save" class="mb-16 reveal">
-    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">4 Ways to Save Money</h2>
+    <h2 class="text-2xl font-display u-strong mb-6">4 Ways to Save Money</h2>
     <div class="space-y-4">
       {savingTips.map((t) => (
         <div class="rounded-xl border border-stone-200 bg-white p-5">

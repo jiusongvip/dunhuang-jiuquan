@@ -19,26 +19,26 @@ const schema = {
   </Fragment>
 
   <article class="py-12 md:py-20">
-    <div class="section-container max-w-3xl">
+    <div class="u-prose-wrap">
       <header class="mb-16 reveal">
         <SectionHeader eyebrow="About Us" title="Why We Built This Guide" subtitle="Honest Silk Road travel advice from people who have been there. No AI, no sponsors, no booking commissions." />
       </header>
       <!-- Placeholder image - replace with real photography -->
-      <div class="mb-8 rounded-2xl overflow-hidden bg-stone-200">
-        <img src="/images/about.webp?v=2" alt="About Dunhuang and Jiuquan Guide" class="w-full h-auto object-cover" width="1200" height="600" loading="lazy" />
+      <div class="u-figure">
+        <img src="/images/about.webp?v=2" alt="About Dunhuang and Jiuquan Guide" class="u-img" width="1200" height="600" loading="lazy" />
       </div>
 
       <section class="mb-16 reveal">
-        <h2 class="text-2xl font-display font-semibold text-stone-900 mb-4">Our Story</h2>
-        <p class="text-stone-600 leading-relaxed mb-4">We are a small team of travel writers and Silk Road specialists who have collectively spent years exploring Gansu Province. We started this guide in 2026 after noticing that most English-language information about Dunhuang and Jiuquan was outdated, written by people who had never visited, or buried in TripAdvisor forum threads.</p>
-        <p class="text-stone-600 leading-relaxed mb-4">Every recommendation on this site comes from firsthand experience. We have booked Mogao Caves tickets as foreigners. We have taken the high-speed train between Dunhuang and Jiuquan. We have eaten at Shazhou Night Market until we could not eat anymore. We make mistakes so you do not have to.</p>
+        <h2 class="text-2xl font-display u-strong mb-4">Our Story</h2>
+        <p class="u-p3">We are a small team of travel writers and Silk Road specialists who have collectively spent years exploring Gansu Province. We started this guide in 2026 after noticing that most English-language information about Dunhuang and Jiuquan was outdated, written by people who had never visited, or buried in TripAdvisor forum threads.</p>
+        <p class="u-p3">Every recommendation on this site comes from firsthand experience. We have booked Mogao Caves tickets as foreigners. We have taken the high-speed train between Dunhuang and Jiuquan. We have eaten at Shazhou Night Market until we could not eat anymore. We make mistakes so you do not have to.</p>
         <p class="mt-6 text-sm text-stone-500 border-l-2 border-mogao-300 pl-4">
           <span class="font-semibold text-stone-500">What we promise:</span> No AI-generated content. No sponsored listings. Every price verified at attraction gates. Written by humans who have been there.
         </p>
       </section>
 
      <section class="mb-16 reveal">
-        <h2 class="text-2xl font-display font-semibold text-stone-900 mb-4">What Makes This Guide Different</h2>
+        <h2 class="text-2xl font-display u-strong mb-4">What Makes This Guide Different</h2>
         <div class="space-y-4 text-stone-600 leading-relaxed">
           <p><strong class="text-stone-800">Every price is verified at the gate.</strong> We do not copy prices from other websites. Every ticket price on this site was checked in person at attraction entrances — most recently in July 2026. When prices change, we update within days, not months.</p>
           <p><strong class="text-stone-800">No AI-generated content.</strong> Every paragraph on this site was written by humans who have been to these places. We describe specific caves we have entered, specific train carriages we have sat in, specific meals we have eaten — not generic observations scraped from the internet.</p>
@@ -49,7 +49,7 @@ const schema = {
 
       
       <section class="mb-16 reveal">
-        <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Meet the Team</h2>
+        <h2 class="text-2xl font-display u-strong mb-6">Meet the Team</h2>
         <div class="space-y-6">
           <div class="flex gap-4 p-5 rounded-2xl border border-stone-200 bg-white">
             <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-mogao-100 text-mogao-700 text-xl font-bold">LJ</div>
@@ -70,7 +70,7 @@ const schema = {
         </div>
       </section>
       <section class="mb-16 reveal">
-        <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Our Visit Timeline</h2>
+        <h2 class="text-2xl font-display u-strong mb-6">Our Visit Timeline</h2>
         <div class="space-y-6">
           {[
             { year: "2023", title: "First Silk Road Explorations", desc: "Initial research trips across Gansu. Discovered that most online English information about Dunhuang was outdated or wrong." },
@@ -87,7 +87,7 @@ const schema = {
               <div class="flex-1">
                 <span class="inline-block text-xs font-bold tracking-widest uppercase text-mogao-600 mb-1">{year}</span>
                 <h3 class="font-display text-lg font-semibold text-stone-800">{title}</h3>
-                <p class="mt-2 text-sm text-stone-500 leading-relaxed">{desc}</p>
+                <p class="u-p4">{desc}</p>
               </div>
             </div>
           ))}

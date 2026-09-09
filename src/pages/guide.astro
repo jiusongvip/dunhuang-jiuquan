@@ -45,50 +45,50 @@ const practicalTips = [
 <BaseLayout title="Dunhuang &amp; Jiuquan Travel Guide 2026 | Complete Planner" description="The complete Silk Road guide: Mogao Caves, Jiayuguan Fort, Crescent Lake, transport, itineraries, budgets, food, and honest tips for foreign travelers." author="Dunhuang &amp; Jiuquan Guide Team" datePublished="2026-06-01" dateModified="2026-08-07">
 <Fragment slot="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></Fragment>
 
-<div class="section-container max-w-3xl pb-20 md:pb-28">
+<div class="u-prose-wrap pb-20 md:pb-28">
   <header class="pt-12 md:pt-20 mb-16 reveal">
     <SectionHeader eyebrow="Complete Guide" title="Dunhuang &amp; Jiuquan: The Complete Guide" subtitle="Everything you need to plan your Silk Road journey. Attractions, logistics, food, safety, and honest advice from people who have been there." />
   </header>
       <!-- Placeholder image - replace with real photography -->
-      <div class="mb-8 rounded-2xl overflow-hidden bg-stone-200">
-        <img src="/images/guide.webp?v=2" alt="Silk Road Travel Planning Guide" class="w-full h-auto object-cover" width="1200" height="600" loading="lazy" />
+      <div class="u-figure">
+        <img src="/images/guide.webp?v=2" alt="Silk Road Travel Planning Guide" class="u-img" width="1200" height="600" loading="lazy" />
       </div>
 
   <section class="mb-16 reveal">
-    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-4">What Are Dunhuang &amp; Jiuquan?</h2>
-    <p class="text-stone-600 leading-relaxed mb-4">Dunhuang and Jiuquan are two historic cities in <strong class="text-stone-800">Gansu Province, northwest China</strong>, sitting along the ancient Silk Road's Hexi Corridor. Dunhuang is an oasis city that hosted caravans for two millennia and is home to the <strong class="text-stone-800">Mogao Caves</strong>, a UNESCO World Heritage Site. Jiuquan, 400 km east, guards <strong class="text-stone-800">Jiayuguan Fort</strong> — the western terminus of the Ming Dynasty Great Wall — and hosts China's satellite launch center.</p>
+    <h2 class="text-2xl font-display u-strong mb-4">What Are Dunhuang &amp; Jiuquan?</h2>
+    <p class="u-p3">Dunhuang and Jiuquan are two historic cities in <strong class="text-stone-800">Gansu Province, northwest China</strong>, sitting along the ancient Silk Road's Hexi Corridor. Dunhuang is an oasis city that hosted caravans for two millennia and is home to the <strong class="text-stone-800">Mogao Caves</strong>, a UNESCO World Heritage Site. Jiuquan, 400 km east, guards <strong class="text-stone-800">Jiayuguan Fort</strong> — the western terminus of the Ming Dynasty Great Wall — and hosts China's satellite launch center.</p>
     <p class="text-stone-600 leading-relaxed">Connected by a 2.5-hour high-speed train, the two cities form the cultural heart of China's Silk Road. Dunhuang gives you art, desert dunes, and backpacker energy. Jiuquan gives you military history, space exploration, and a rawer, less-touristy Gansu. Most travelers visit both in one trip. This guide tells you how.</p>
   </section>
 
   <section class="mb-16 reveal">
-    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">At a Glance</h2>
+    <h2 class="text-2xl font-display u-strong mb-6">At a Glance</h2>
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
       {quickFacts.map(({ label, value }) => (
-        <div class="bg-stone-50 rounded-xl p-4 text-center"><p class="text-xs text-stone-500 uppercase tracking-wider font-semibold">{label}</p><p class="mt-1 font-semibold text-stone-900 text-sm">{value}</p></div>
+        <div class="u-stat"><p class="u-eyebrow">{label}</p><p class="mt-1 u-strong text-sm">{value}</p></div>
       ))}
     </div>
   </section>
 
   <section class="mb-16 reveal">
-    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Dunhuang Highlights</h2>
+    <h2 class="text-2xl font-display u-strong mb-6">Dunhuang Highlights</h2>
     <div class="space-y-4">
       {dunhuangHighlights.map(({ title, desc }) => (
-        <div class="bg-white rounded-2xl border border-stone-200 p-6"><h3 class="font-semibold text-stone-900">{title}</h3><p class="mt-1 text-sm text-stone-500" set:html={desc}></p></div>
+        <div class="u-card"><h3 class="u-strong">{title}</h3><p class="u-p2" set:html={desc}></p></div>
       ))}
     </div>
   </section>
 
   <section class="mb-16 reveal">
-    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Jiuquan Highlights</h2>
+    <h2 class="text-2xl font-display u-strong mb-6">Jiuquan Highlights</h2>
     <div class="space-y-4">
       {jiuquanHighlights.map(({ title, desc }) => (
-        <div class="bg-white rounded-2xl border border-stone-200 p-6"><h3 class="font-semibold text-stone-900">{title}</h3><p class="mt-1 text-sm text-stone-500">{desc}</p></div>
+        <div class="u-card"><h3 class="u-strong">{title}</h3><p class="u-p2">{desc}</p></div>
       ))}
     </div>
   </section>
 
   <section class="mb-16 reveal">
-    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Foreigner Friendliness Score</h2>
+    <h2 class="text-2xl font-display u-strong mb-6">Foreigner Friendliness Score</h2>
     <p class="text-stone-500 text-sm mb-5">How easy is each attraction for non-Chinese speakers? Rated 1 (difficult) to 5 (easy) based on English signage, booking accessibility, and transport options.</p>
     <div class="space-y-2">
       {foreignerScores.map(({ name, score, note }) => (
@@ -108,10 +108,10 @@ const practicalTips = [
   </section>
 
   <section class="mb-16 reveal">
-    <h2 class="text-2xl font-display font-semibold text-stone-900 mb-6">Practical Tips for Foreign Travelers</h2>
+    <h2 class="text-2xl font-display u-strong mb-6">Practical Tips for Foreign Travelers</h2>
     <ul class="space-y-3 text-stone-600 mb-6">
       {practicalTips.map((tip) => (
-        <li class="flex items-start gap-3">
+        <li class="u-li3">
           <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center shrink-0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg></span>
           <span>{tip}</span>
         </li>
@@ -129,13 +129,13 @@ const practicalTips = [
     </div>
   </section>
 
-  <div class="bg-mogao-600 text-white rounded-2xl p-8 text-center reveal">
+  <div class="u-cta-card reveal">
     <h3 class="text-xl font-display font-semibold">Ready to plan?</h3>
     <p class="mt-2 text-mogao-100 text-sm">Use our itinerary planner or jump to specific guides.</p>
     <div class="mt-5 flex flex-wrap justify-center gap-3">
-      <a href="/itinerary/" class="inline-flex items-center gap-2 px-5 py-3 bg-white text-mogao-700 rounded-xl text-sm font-semibold hover:bg-mogao-50 transition-colors">Browse Itineraries</a>
-      <a href="/tickets/" class="inline-flex items-center gap-2 px-5 py-3 bg-mogao-700 text-white rounded-xl text-sm font-semibold hover:bg-mogao-800 transition-colors border border-mogao-500">Ticket Prices</a>
-      <a href="/how-to-get-there/" class="inline-flex items-center gap-2 px-5 py-3 bg-mogao-700 text-white rounded-xl text-sm font-semibold hover:bg-mogao-800 transition-colors border border-mogao-500">Transport Guide</a>
+      <a href="/itinerary/" class="u-btn-outline">Browse Itineraries</a>
+      <a href="/tickets/" class="u-btn-solid3">Ticket Prices</a>
+      <a href="/how-to-get-there/" class="u-btn-solid3">Transport Guide</a>
     </div>
   </div>
 </div>
