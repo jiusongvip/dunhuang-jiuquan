@@ -7,9 +7,9 @@
   "public/images/faq.webp": 100584,
   "public/images/food.webp": 117632,
   "public/images/guide.webp": 48216,
-  "public/images/hero-1200.webp": 64666,
-  "public/images/hero-480.webp": 14354,
-  "public/images/hero-768.webp": 34284,
+  "public/images/hero-1200.webp": 63056,
+  "public/images/hero-480.webp": 13684,
+  "public/images/hero-768.webp": 31342,
   "public/images/how-to-get-there.webp": 74838,
   "public/images/itinerary.webp": 66960,
   "public/images/jiayuguan-fort.webp": 110076,
@@ -96,5 +96,6 @@
   "public/images/responsive/yadan-geopark-360.webp": 6134,
   "public/images/responsive/how-to-get-there-card-768.webp": 18344,
   "public/images/responsive/mogao-caves-card-768.webp": 32800,
-  "public/images/responsive/tickets-card-768.webp": 43436
+  "public/images/responsive/tickets-card-768.webp": 43436,
+  "public/images/hero-1672.webp": 135610
 }

@@ -3,7 +3,6 @@ import "../styles/global.css";
 import "@fontsource-variable/geist";
 import "@fontsource-variable/fraunces";
 import geistLatinWoff2 from "@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url";
-import frauncesLatinWoff2 from "@fontsource-variable/fraunces/files/fraunces-latin-wght-normal.woff2?url";
 
 export interface Props {
   mapPage?: boolean;
@@ -142,7 +141,6 @@ const articleSchema = pageHasArticle
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1e4a72" />
     <link rel="preload" as="font" type="font/woff2" href={geistLatinWoff2} crossorigin fetchpriority="low" />
-    <link rel="preload" as="font" type="font/woff2" href={frauncesLatinWoff2} crossorigin fetchpriority="low" />
     <slot name="head" />
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -180,9 +178,8 @@ const articleSchema = pageHasArticle
       <script type="application/ld+json" set:html={breadcrumbSchema}></script>
     )}
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1MZZDDKFX"></script>
-    <script set:html={`window.addEventListener('load',function(){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-Y1MZZDDKFX');});`}></script>
+    <!-- Google tag (gtag.js) — injected after load so analytics never competes with LCP on slow mobile networks -->
+    <script set:html={`window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-Y1MZZDDKFX';document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-Y1MZZDDKFX');});`}></script>
 
     {mapPage && (
       <>
@@ -322,7 +319,7 @@ const articleSchema = pageHasArticle
       </div>
     </footer>
     <script is:inline>
-      (function(){var o=new IntersectionObserver(function(e){e.forEach(function(e){if(e.isIntersecting){e.target.classList.add("reveal-in");o.unobserve(e.target)}})},{threshold:0.1,rootMargin:"0px 0px -40px 0px"});document.querySelectorAll(".reveal").forEach(function(e){o.observe(e)})})();
+      (function(){var mq=window.matchMedia("(min-width: 769px) and (prefers-reduced-motion: no-preference)");if(!mq.matches)return;var o=new IntersectionObserver(function(e){e.forEach(function(e){if(e.isIntersecting){e.target.classList.add("reveal-in");o.unobserve(e.target)}})},{threshold:0.1,rootMargin:"0px 0px -40px 0px"});document.querySelectorAll(".reveal").forEach(function(e){o.observe(e)})})();
     </script>
   </body>
 </html>
