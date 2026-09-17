@@ -2,23 +2,79 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 
-const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    { "@type": "Article", "headline": "Dunhuang & Jiuquan Food Guide (2026)", "description": "What to eat in Dunhuang and Jiuquan: must-try Silk Road dishes, night market guide, halal food, and restaurant recommendations." }
-  ]
-};
+const faqs = [
+  {
+    q: "What food is Dunhuang famous for?",
+    a: "Donkey meat yellow noodles (驴肉黄面) are the signature dish — a Dunhuang intangible cultural heritage item. Also look for hu yang men bing (胡羊焖饼, braised lamb with flatbread), lamb soup with vermicelli, apricot juice (杏皮水) and Lanzhou beef noodles. The Shazhou Night Market is the single best place to try most of them in one evening.",
+  },
+  {
+    q: "Is there halal food in Dunhuang?",
+    a: "Yes. Gansu has a large Hui Muslim population, so halal food is easy to find. Look for green signs with Arabic script or the characters 清真 on the shopfront. Most lamb and beef dishes are halal by default, and the night market has several dedicated halal stalls.",
+  },
+  {
+    q: "How much does food cost in Dunhuang?",
+    a: "Budget CNY 40-60 per person for a full meal at the night market, CNY 15-30 for a bowl of noodles at a local shop, and CNY 5-10 for a drink. Two people can eat very well at the Shazhou Night Market for around CNY 80 total. Prices are displayed and bargaining is not expected.",
+  },
+  {
+    q: "Can I eat well in Dunhuang as a vegetarian?",
+    a: "It is possible but requires effort. Gansu cooking is lamb- and wheat-based, and many dishes use meat stock even when the meat is not visible. Reliable options are hand-pulled noodles ordered without meat (ask for 素面), steamed vegetable buns, stir-fried greens, and the night market's fruit and dried-fruit stalls. Carry a translation card explaining your diet.",
+  },
+];
+
+const restaurants = [
+  {
+    name: "Shunzhang Huangmian Guan (顺张黄面馆)",
+    known: "Donkey meat yellow noodles",
+    price: "CNY 20-40",
+    note: "The benchmark local shop, founded in the late Qing dynasty — well over a century of the same dish. The braised donkey meat is the standout. Expect a queue at meal times; go before noon or after 2 PM.",
+  },
+  {
+    name: "Daji Jianglvrou Huangmian (达记酱驴肉黄面)",
+    known: "Braised donkey meat with noodles",
+    price: "CNY 25-40",
+    note: "A China \"Famous Snack\" award holder and the locals' everyday pick. Bigger portions and chewier hand-pulled noodles. The donkey meat regularly sells out by early afternoon, so this is a lunch stop, not a dinner one.",
+  },
+  {
+    name: "Guohui (国辉)",
+    known: "Hu yang men bing — braised lamb with flatbread",
+    price: "CNY 30-50",
+    note: "The local go-to for the flatbread dish. Chunks of slow-braised lamb served over torn flatbread that soaks up the sauce — one portion easily feeds two. Order it with a bowl of lamb soup.",
+  },
+  {
+    name: "Xiajia Hezhi (夏家合汁)",
+    known: "Lamb he zhi breakfast soup",
+    price: "CNY 15-25",
+    note: "Breakfast only, and it closes when the pot runs out. Bone broth with lamb, radish and vermicelli — the Dunhuang morning ritual. Cheaper than anything near the attractions.",
+  },
+];
+
+const priceGuide = [
+  { item: "Bowl of donkey meat yellow noodles", cost: "CNY 20-28" },
+  { item: "Hu yang men bing (feeds 1-2)", cost: "CNY 30-40" },
+  { item: "Lamb soup / lamb soup with vermicelli", cost: "CNY 15-28" },
+  { item: "Lamb skewers (per skewer)", cost: "CNY 3-5" },
+  { item: "Apricot juice (杏皮水)", cost: "CNY 5-10" },
+  { item: "Lanzhou beef noodles", cost: "CNY 12-20" },
+  { item: "Night market dinner, per person", cost: "CNY 40-60" },
+  { item: "Night market dinner for two", cost: "CNY 70-90" },
+];
 ---
 
 <BaseLayout
-  title="Dunhuang &amp; Jiuquan Food Guide 2026 | What to Eat on the Silk Road"
-  description="Complete food guide: must-try Silk Road dishes, Shazhou Night Market tips, halal restaurants, and local specialties in Dunhuang and Jiuquan."
+  title="Dunhuang Restaurants &amp; Food Guide 2026: What to Eat, Where"
+  description="Where to eat in Dunhuang: the best restaurants, Shazhou Night Market street food, halal options, must-try dishes and what they cost."
   author="Dunhuang &amp; Jiuquan Guide Team"
   datePublished="2026-07-01"
-  dateModified="2026-08-07"
+  dateModified="2026-09-16"
 >
   <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        { "@type": "Article", "headline": "Dunhuang Restaurants & Food Guide 2026: What to Eat, Where", "description": "Where to eat in Dunhuang: the best restaurants, Shazhou Night Market street food, halal options, must-try dishes and what they cost.", "datePublished": "2026-07-01", "dateModified": "2026-09-16" },
+        { "@type": "FAQPage", "mainEntity": faqs.map((f) => ({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } })) }
+      ]
+    })}></script>
   </Fragment>
 
   <article class="py-12 md:py-20">
@@ -26,6 +82,12 @@ const schema = {
       <header class="mb-16 reveal">
         <SectionHeader eyebrow="Food &amp; Drink" title="Dunhuang &amp; Jiuquan Food Guide" subtitle="What to eat along the Silk Road: must-try dishes, night market tips, and where to find the best lamb in Gansu." />
       </header>
+
+      <!-- Lead answer — direct response to "dunhuang restaurants" intent, rendered without reveal -->
+      <p class="text-lg text-stone-700 leading-relaxed mb-10">
+        Dunhuang's food is <strong class="text-stone-900">lamb and hand-pulled wheat, cooked simply and eaten loudly</strong>. The signature dish is donkey meat yellow noodles (驴肉黄面), a local heritage recipe. Two century-old noodle shops serve it; everything else worth eating is at the Shazhou Night Market. Budget <strong class="text-stone-900">CNY 40-60 per person</strong> for a full night market dinner.
+      </p>
+
       <!-- Placeholder image - replace with real photography -->
       <div class="u-figure">
         <img src="/images/food.webp?v=2" alt="Silk Road Food Guide" class="u-img" width="1200" height="600" loading="lazy" />
@@ -35,12 +97,14 @@ const schema = {
         <h2 class="text-2xl font-display u-strong mb-6">Must-Try Dishes</h2>
         <div class="space-y-4">
           {[
-            { name: "Donkey Meat Noodles (Lvrou Huangmian)", desc: "Dunhuang's signature dish. Tender braised donkey meat over hand-pulled yellow noodles. Found everywhere." },
-            { name: "Lamb Soup (Yangrou Tang)", desc: "Rich, milky broth simmered with lamb bones for hours. Served with flatbread. A Gansu breakfast staple." },
-            { name: "Apricot Drink (Xingpi Shui)", desc: "Local Dunhuang specialty made from dried apricots. Sweet, slightly tart, incredibly refreshing in desert heat." },
-            { name: "Lamb Skewers (Yangrou Chuan)", desc: "Xinjiang-style grilled lamb skewers with cumin and chili. Ubiquitous at night markets. CNY 3-5 per skewer." },
-            { name: "Lanzhou Beef Noodles (Niurou Mian)", desc: "Hand-pulled noodles in clear beef broth with chili oil. Excellent versions throughout Gansu." },
-            { name: "Stuffed Buns (Baozi)", desc: "Steamed or pan-fried buns with lamb, beef, or vegetables. Cheap, filling, available everywhere." },
+            { name: "Donkey Meat Yellow Noodles (驴肉黄面)", desc: "Dunhuang's signature dish and a recognised local intangible cultural heritage item. Hand-pulled yellow noodles under braised donkey meat in a dark, savoury sauce. The noodles should be springy — if they are soft and claggy, the shop is using machine-pressed dough. CNY 20-28." },
+            { name: "Hu Yang Men Bing (胡羊焖饼)", desc: "The dish locals actually order most. Chunks of slow-braised lamb served over torn flatbread that soaks up the sauce until it is soft but still chewy. One portion usually feeds two. Best at the night market or at a dedicated lamb restaurant. CNY 30-40." },
+            { name: "Lamb Soup with Vermicelli (羊肉粉汤)", desc: "Milky bone broth simmered for hours, poured over lamb, radish and glass noodles, finished with coriander and chilli oil. The standard night market warm-up. CNY 25-30." },
+            { name: "Apricot Drink (杏皮水)", desc: "Dunhuang's local soft drink, made from dried Li Guang apricots. Sweet, faintly tart, and genuinely refreshing after a day in the dunes. Sold everywhere, cheapest at the night market. CNY 5-10." },
+            { name: "Lamb Skewers (羊肉串)", desc: "Xinjiang-style grilled lamb with cumin and chilli, cooked over charcoal. Ubiquitous at night markets and the cheapest way to eat well. CNY 3-5 per skewer." },
+            { name: "Lanzhou Beef Noodles (牛肉面)", desc: "Hand-pulled noodles in clear beef broth with chilli oil and sliced beef. Lanzhou is next door along the corridor, and the versions in Gansu are excellent and cheap. CNY 12-20." },
+            { name: "Lamb He Zhi (羊肉合汁)", desc: "A Dunhuang breakfast-only soup: bone broth with lamb, radish and vermicelli. Locals eat it standing at a counter before 9 AM. Rarely found after that. CNY 15-25." },
+            { name: "Stuffed Buns (包子)", desc: "Steamed or pan-fried buns with lamb, beef or vegetables. Cheap, filling, and the safest option if you are unsure about a menu. CNY 2-5 each." },
           ].map(({ name, desc }) => (
             <div class="bg-white rounded-2xl border border-stone-200 p-5">
               <h3 class="u-strong">{name}</h3>
@@ -52,27 +116,113 @@ const schema = {
 
       <section class="mb-16 reveal">
         <h2 class="text-2xl font-display u-strong mb-6">Shazhou Night Market</h2>
-        <p class="u-p3">Dunhuang's Shazhou Night Market (6 PM to midnight) is the region's best food destination. Rows of stalls sell grilled meats, noodles, dried fruits, and snacks. Divided into a food court section and a street food alley.</p>
+        <p class="u-p3">Dunhuang's Shazhou Night Market (沙洲夜市) is the region's best food destination, and for most visitors it is the highlight of the trip. Stalls set up from around 7 PM and trade until well past midnight. It is split into a covered food court and a street food alley — the alley is where the charcoal grills are.</p>
         <ul class="space-y-3 text-stone-600">
           <li class="u-li3">
             <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center shrink-0">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
             </span>
-            <span>Go early (6-7 PM) to avoid worst crowds. By 8 PM the market is packed.</span>
+            <span><strong class="text-stone-900">Arrive between 7 and 8 PM.</strong> Not all stalls are open before 7 PM, and by 9 PM the alleys are shoulder to shoulder. The sweet spot is early evening while everything is fired up but not yet rammed.</span>
           </li>
           <li class="u-li3">
             <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center shrink-0">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
             </span>
-            <span>Prices are displayed. Bargaining not expected for food. Cash accepted at most stalls.</span>
+            <span><strong class="text-stone-900">Choose fixed stalls over wandering vendors.</strong> The market is officially managed and prices are displayed, but touts working the entrances are not part of it. Pick a permanent pitch with a queue of locals and you will not be overcharged.</span>
           </li>
           <li class="u-li3">
             <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center shrink-0">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
             </span>
-            <span>Gansu has abundant halal options. Look for green signs with Arabic text or Hui Muslim-run restaurants.</span>
+            <span><strong class="text-stone-900">Gansu has abundant halal options.</strong> Look for green signs with Arabic script or the characters 清真. Most lamb and beef dishes are halal by default, and several stalls are run by Hui Muslim families.</span>
+          </li>
+          <li class="u-li3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong class="text-stone-900">Order by pointing.</strong> Few stalls have English menus. Point at what someone else is eating, or photograph a dish you liked and show it. Nobody minds — it happens all evening.</span>
           </li>
         </ul>
+      </section>
+
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl font-display u-strong mb-6">Best Restaurants in Dunhuang</h2>
+        <p class="u-p3">Four places worth planning around, all in or near the city centre. Prices are approximate and portion sizes are generous — two people can usually share.</p>
+        <div class="space-y-4">
+          {restaurants.map(({ name, known, price, note }) => (
+            <div class="bg-white rounded-2xl border border-stone-200 p-5">
+              <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+                <h3 class="u-strong">{name}</h3>
+                <span class="text-xs font-semibold text-mogao-700 bg-mogao-50 px-2 py-0.5 rounded-full">{price}</span>
+              </div>
+              <p class="text-sm font-medium text-stone-700 mb-1">{known}</p>
+              <p class="u-p2">{note}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-xs text-stone-500 mt-4">Prices compiled from local listings and traveller reports, late 2026. Opening hours and availability change seasonally — call ahead or ask your hotel to confirm.</p>
+      </section>
+
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl font-display u-strong mb-6">Halal &amp; Vegetarian Options</h2>
+        <p class="u-p3"><strong class="text-stone-800">Halal is easy.</strong> Gansu is home to a large Hui Muslim community, and the corridor has been Muslim-travelled for a thousand years. Restaurants display green signage with Arabic script, or the characters 清真, meaning halal. Lamb and beef dominate the cuisine anyway, so you rarely need to look far.</p>
+        <p class="u-p3"><strong class="text-stone-800">Vegetarian is harder but workable.</strong> The local diet is built on lamb and wheat, and many "vegetable" dishes are cooked in meat stock. What reliably works:</p>
+        <ul class="space-y-3 text-stone-600">
+          <li class="u-li3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span>Hand-pulled noodles ordered plain — ask for <strong class="text-stone-900">素面 (sù miàn)</strong> and confirm no meat broth.</span>
+          </li>
+          <li class="u-li3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span>Vegetable and mushroom stuffed buns, stir-fried greens, and cold dishes (凉菜) from the night market deli stalls.</span>
+          </li>
+          <li class="u-li3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span>Dried and fresh fruit — Li Guang apricots, melon and grapes are Gansu specialities. Useful when nothing else fits.</span>
+          </li>
+          <li class="u-li3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-mogao-100 flex items-center justify-center shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-mogao-600"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span>Carry a written card explaining your diet in Chinese. <a href="/survival-phrases/" class="u-link">Our survival phrases page</a> has the basics.</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl font-display u-strong mb-6">What Does Food Cost in Dunhuang?</h2>
+        <p class="text-stone-600 leading-relaxed mb-5">Food is one of the cheapest parts of a Gansu trip. Prices are displayed at stalls and restaurants, and bargaining is not expected for food.</p>
+        <div class="rounded-2xl border border-stone-200 bg-white overflow-hidden">
+          {priceGuide.map(({ item, cost }) => (
+            <div class="flex justify-between gap-4 px-5 py-3 border-b border-stone-100 last:border-b-0">
+              <span class="text-sm text-stone-600">{item}</span>
+              <span class="text-sm font-semibold text-stone-800 shrink-0">{cost}</span>
+            </div>
+          ))}
+        </div>
+        <p class="text-xs text-stone-500 mt-3">Approximate, late 2026. Expect to pay 20-30% more inside hotel restaurants and at the attraction gates.</p>
+      </section>
+
+      <!-- FAQ — visible content backing the FAQPage schema above -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-display u-strong mb-6">Frequently Asked Questions</h2>
+        <div class="space-y-3">
+          {faqs.map((f) => (
+            <details class="group bg-white rounded-2xl border border-stone-200">
+              <summary class="flex items-center justify-between px-6 py-5 cursor-pointer text-left u-strong list-none">
+                {f.q}
+                <svg class="w-5 h-5 shrink-0 text-stone-500 group-open:rotate-180 transition-transform" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="px-6 pb-5 text-stone-600 text-sm leading-relaxed">{f.a}</div>
+            </details>
+          ))}
+        </div>
       </section>
 
       <div class="u-cta-card reveal">
@@ -83,4 +233,3 @@ const schema = {
     </div>
   </article>
 </BaseLayout>
-

@@ -2,7 +2,14 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 
-const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Best Time to Visit Dunhuang & Jiuquan (2026)","description":"Month-by-month guide: weather, crowds, festival dates, and honest best seasons for the Silk Road. Plan around Golden Week, summer heat, and winter deals.","datePublished":"2026-07-01","dateModified":"2026-08-07"}]};
+const faqs = [
+  { q: "What is the best month to visit Dunhuang?", a: "May and September are the two best months: roughly 15-28C, clear skies, and moderate crowds. April, June and October are close behind. July and August are brutally hot (35-40C) and coincide with peak domestic tourism, so Mogao Caves tickets sell out weeks ahead." },
+  { q: "How hot does it get in Dunhuang in summer?", a: "July and August regularly reach 35-40C in the afternoon, and the sand at Crescent Lake gets far hotter. It is manageable if you start at 7 AM, rest indoors through midday, and go out again from 5 PM. June and early September are much more comfortable." },
+  { q: "What is Golden Week and should I avoid it?", a: "Golden Week is China's National Day holiday, 1-7 October. Attractions across the country fill with domestic tourists, hotel prices roughly double, and Mogao Caves tickets disappear. Visiting Dunhuang in the first week of October is possible but not recommended — the rest of October is excellent." },
+  { q: "Is Dunhuang worth visiting in winter?", a: "Yes, if you can handle -10 to 5C. Attractions are nearly empty, hotels drop to roughly half price, Mogao Caves usually has same-week availability, and snow on the Singing Sand Dunes is genuinely spectacular for photography. The main trade-off is shortened daylight and some seasonal closures." },
+];
+
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Best Time to Visit Dunhuang & Jiuquan 2026: Month by Month","description":"Month-by-month guide: weather, crowds, festival dates, and honest best seasons for the Silk Road. Plan around Golden Week, summer heat, and winter deals.","datePublished":"2026-07-01","dateModified":"2026-09-17"},{"@type":"FAQPage","mainEntity":faqs.map((f)=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))}]};
 
 const seasons = [
   { name: "Spring", period: "March-May", temp: "5-28C", rating: "Best", desc: "March is cold with occasional sandstorms. April warms up with wildflowers. May is ideal: 15-28C, clear skies, moderate crowds. The best spring month." },
@@ -27,13 +34,19 @@ const monthTable = [
 ];
 ---
 
-<BaseLayout title="Best Time to Visit Dunhuang &amp; Jiuquan 2026 | Month-by-Month Guide" description="When to visit Dunhuang and Jiuquan: monthly weather, crowd levels, festival dates, and honest best seasons. Avoid Golden Week and summer heat." author="Dunhuang &amp; Jiuquan Guide Team" datePublished="2026-07-01" dateModified="2026-08-07">
+<BaseLayout title="Best Time to Visit Dunhuang &amp; Jiuquan 2026: Month by Month" description="When to visit Dunhuang and Jiuquan: monthly weather, crowd levels, festival dates, and honest best seasons. Avoid Golden Week and summer heat." author="Dunhuang &amp; Jiuquan Guide Team" datePublished="2026-07-01" dateModified="2026-09-17">
 <Fragment slot="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></Fragment>
 
 <div class="u-prose-wrap pb-20 md:pb-28">
   <header class="pt-12 md:pt-20 mb-16 reveal">
     <SectionHeader eyebrow="When to Go" title="Best Time to Visit Dunhuang &amp; Jiuquan" subtitle="Month-by-month weather, crowds, and honest advice on when to plan your Silk Road trip. Based on multiple visits across all seasons." />
   </header>
+
+  <!-- Lead answer — direct response to search intent, rendered without reveal -->
+  <p class="text-lg text-stone-700 leading-relaxed mb-10">
+    The short answer: <strong class="text-stone-900">go in May or September</strong>. Both give 15-28C, clear desert skies and manageable crowds. <strong class="text-stone-900">Avoid July and August</strong> (35-40C plus peak domestic tourism) and <strong class="text-stone-900">avoid 1-7 October</strong>, when Golden Week roughly doubles hotel prices and clears out Mogao Caves tickets. Winter is cold but genuinely rewarding if you want the sites to yourself.
+  </p>
+
       <!-- Placeholder image - replace with real photography -->
       <div class="u-figure">
         <img src="/images/best-time-to-visit.webp?v=2" alt="Best Time to Visit Dunhuang" class="u-img" width="1200" height="600" loading="lazy" />
@@ -71,6 +84,22 @@ const monthTable = [
           ))}
         </tbody>
       </table>
+    </div>
+  </section>
+
+  <!-- FAQ — visible content backing the FAQPage schema above -->
+  <section class="mb-16">
+    <h2 class="text-2xl font-display u-strong mb-6">Frequently Asked Questions</h2>
+    <div class="space-y-3">
+      {faqs.map((f) => (
+        <details class="group bg-white rounded-2xl border border-stone-200">
+          <summary class="flex items-center justify-between px-6 py-5 cursor-pointer text-left u-strong list-none">
+            {f.q}
+            <svg class="w-5 h-5 shrink-0 text-stone-500 group-open:rotate-180 transition-transform" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="px-6 pb-5 text-stone-600 text-sm leading-relaxed">{f.a}</div>
+        </details>
+      ))}
     </div>
   </section>
 

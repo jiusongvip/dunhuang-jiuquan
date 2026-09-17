@@ -2,11 +2,38 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import AttractionSchema from "../components/AttractionSchema.astro";
+
+const faqs = [
+  {
+    q: "How much is the Crescent Lake ticket?",
+    a: "CNY 120 per person, valid for 3 days, and it covers both Crescent Lake and the Mingsha Singing Sand Dunes. Camel rides (CNY 100) and sandboarding (CNY 20-30) cost extra on site.",
+  },
+  {
+    q: "Is Crescent Lake worth visiting?",
+    a: "Yes — it is the single most iconic image of Dunhuang, a spring-fed lake that has survived in the desert for 2,000 years. Go at sunset rather than midday: the light is better, the sand is cooler, and the tour groups have left.",
+  },
+  {
+    q: "How do I get to Crescent Lake from Dunhuang?",
+    a: "It is 5 km south of the city centre. City bus 3 goes there for CNY 1-2, or a taxi costs CNY 15-20 and takes about 15 minutes. Most hotels will also arrange a drop-off and pick-up.",
+  },
+  {
+    q: "What time is sunset at Crescent Lake?",
+    a: "Roughly 19:30-21:00 in summer and 18:00-19:00 in autumn. Arrive 90 minutes early to climb the dunes and find a spot — the best vantage point fills up fast.",
+  },
+  {
+    q: "Should I ride a camel at the Mingsha Sand Dunes?",
+    a: "It is a 40-minute loop for around CNY 100. Worth doing once for the experience, but the dunes are equally spectacular on foot and you avoid the queues. Sit near the front of the camel — the back position sways more.",
+  },
+  {
+    q: "Is Crescent Lake open at night?",
+    a: "The park typically opens around 6:00 AM and closes between 7:30 PM and 9 PM depending on the season. Sunset hours are the most popular for photography and are included in your ticket.",
+  },
+];
 ---
 
 <BaseLayout
-  title="Crescent Lake &amp; Singing Sand Dunes Guide 2026 | Dunhuang"
-  description="Crescent Lake &amp; Mingsha Sand Dunes guide, Dunhuang: tickets (CNY 120, 3-day validity), camel rides, sandboarding, sunset photography, and insider tips."
+  title="Crescent Lake &amp; Mingsha Singing Sand Dunes, Dunhuang 2026"
+  description="Crescent Lake (Crescent Moon Lake) and the Mingsha Singing Sand Dunes, Dunhuang: CNY 120 ticket, camel rides, sandboarding, sunset timing and crowd strategy."
   ogImage="/images/crescent-lake.webp?v=2"
   ogImageWidth="1254"
   ogImageHeight="1254"
@@ -28,11 +55,7 @@ import AttractionSchema from "../components/AttractionSchema.astro";
       country="CN"
       ticketPrice="120"
       priceCurrency="CNY"
-      faqs={[
-        { q: "How much does Crescent Lake cost?", a: "CNY 120 per person, and the ticket is valid for 3 days so you can visit more than once during one trip." },
-        { q: "Is Crescent Lake open at night?", a: "The park typically opens around 6:00 AM and closes between 7:30 PM and 9 PM by season. Sunset hours are the most popular for photography." },
-        { q: "Should I ride a camel at the Singing Sand Dunes?", a: "Camel rides cost around CNY 100. Sit near the front and hold the handle firmly when the camel stands. No tipping required." },
-      ]}
+      faqs={faqs}
     />
   </Fragment>
 
@@ -59,6 +82,11 @@ import AttractionSchema from "../components/AttractionSchema.astro";
           sizes="100vw"
         />
       </div>
+
+      <!-- Lead answer — direct response to search intent, rendered without reveal -->
+      <p class="text-lg text-stone-700 leading-relaxed mb-12">
+        Crescent Lake (月牙泉), also called <strong class="text-stone-900">Crescent Moon Lake</strong>, is a <strong class="text-stone-900">spring-fed oasis at the foot of the Mingsha Singing Sand Dunes</strong>, 5 km south of Dunhuang city centre. One <strong class="text-stone-900">CNY 120 ticket covers both</strong> and is valid for 3 days. Go for sunset, when the dunes turn gold, the sand cools, and the tour groups thin out.
+      </p>
 
       <!-- Quick Facts -->
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-16">
@@ -258,6 +286,22 @@ import AttractionSchema from "../components/AttractionSchema.astro";
           <a href="/itinerary/" class="u-btn-solid3">
             Browse Itineraries
           </a>
+        </div>
+      </div>
+
+      <!-- FAQ — visible content backing the FAQPage schema above -->
+      <div class="mt-14">
+        <h2 class="text-2xl font-bold tracking-tight text-stone-900 mb-6">Frequently Asked Questions</h2>
+        <div class="space-y-3">
+          {faqs.map((f) => (
+            <details class="group bg-white rounded-2xl border border-stone-200">
+              <summary class="flex items-center justify-between px-6 py-5 cursor-pointer text-left u-strong list-none">
+                {f.q}
+                <svg class="w-5 h-5 shrink-0 text-stone-500 group-open:rotate-180 transition-transform" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="px-6 pb-5 text-stone-600 text-sm leading-relaxed">{f.a}</div>
+            </details>
+          ))}
         </div>
       </div>
     </div>      <section class="mt-16 p-6 bg-stone-50 rounded-2xl border border-stone-200 reveal">

@@ -84,16 +84,54 @@ const alwaysBring = [
   { item: "Tissue packs (small)", why: "Public bathrooms rarely have toilet paper. Carry your own. Always." }
 ];
 
+// Single source of truth for this page's FAQ: feeds both the FAQPage JSON-LD and
+// the visible accordion. Every answer restates something already established in
+// the sections above, so the marked-up text and the visible text cannot diverge.
+const faqs = [
+  {
+    q: "What should I wear inside the Mogao Caves?",
+    a: "Bring a light jacket or fleece even in summer. The caves are kept at around 15°C year-round to protect the pigments, so the drop from a 35°C+ summer afternoon feels freezing. This is the single most commonly forgotten item.",
+  },
+  {
+    q: "How much water should I drink in the Gobi Desert?",
+    a: "Drink 500ml of water per hour when active outdoors in summer. If your urine is dark yellow, you are already dehydrated. Bottled water is cheap in Dunhuang at CNY 2-3 for 500ml, so stock up at convenience stores rather than carrying it all from home.",
+  },
+  {
+    q: "Can I buy sunscreen and other essentials in Dunhuang?",
+    a: "Yes. Dunhuang has supermarkets, pharmacies and outdoor shops near the city centre, and you can buy sunscreen, insect repellent, basic medicines and even warm layers there. Save your luggage space for things that are genuinely hard to find: specific prescription medications and contact lens solution.",
+  },
+  {
+    q: "Do I need special shoes for the sand dunes?",
+    a: "Comfortable walking shoes are essential, because you will be climbing dunes and walking the fortress walls. Avoid sandals on the dunes specifically - sand gets hot enough at midday to burn your feet. Shake your shoes out before putting them on, and keep Ziploc bags handy for phone ports and camera lenses.",
+  },
+  {
+    q: "How cold does it get at night in the Gobi Desert?",
+    a: "The Gobi can swing 20°C between day and night even in summer. Always carry a warm layer even if it is 35°C when you leave your hotel - the three-hour drive back from Yadan Geopark at 10 PM in a t-shirt is genuinely miserable.",
+  },
+];
+
 const schema = {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Dunhuang & Jiuquan Packing List 2026 | What to Pack for the Gobi Desert by Season",
-  "description": "Complete season-by-season packing list for Dunhuang and Jiuquan: what to wear in the Gobi Desert, essential gear, and 10 items every Silk Road traveler needs regardless of season."
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Dunhuang & Jiuquan Packing List 2026 | What to Pack for the Gobi Desert by Season",
+      "description": "Complete season-by-season packing list for Dunhuang and Jiuquan: what to wear in the Gobi Desert, essential gear, and 10 items every Silk Road traveler needs regardless of season."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a },
+      }))
+    }
+  ]
 };
 ---
 
 <BaseLayout
-  title="Dunhuang &amp; Jiuquan Packing List 2026 | What to Pack by Season"
+  title="Dunhuang &amp; Jiuquan Packing List 2026: What to Pack"
   description="Season-by-season packing list for the Gobi Desert: spring layers, summer heat gear, autumn photography kit, winter essentials, plus 10 must-bring items."
   author="Dunhuang &amp; Jiuquan Guide Team"
   datePublished="2026-08-07"
@@ -116,6 +154,11 @@ const schema = {
       <div class="u-figure">
         <img src="/images/packing-list.webp?v=2" alt="Desert Travel Packing List" class="u-img" width="1200" height="600" loading="lazy" />
       </div>
+
+      <!-- Lead answer — direct response to search intent, rendered without reveal -->
+      <p class="text-lg text-stone-700 leading-relaxed mb-10">
+        Packing for Dunhuang and Jiuquan comes down to <strong class="text-stone-900">three things: sun, sand and a 20°C temperature swing</strong>. Bring SPF 50+ sunscreen, sunglasses and a scarf whatever the season, plus a warm layer for the Mogao Caves, which sit at around 15°C year-round. You do not need to carry everything from home &mdash; Dunhuang has supermarkets, pharmacies and outdoor shops near the city centre.
+      </p>
 
       <!-- Always Bring -->
       <section class="mb-16 reveal">
@@ -197,6 +240,26 @@ const schema = {
             <h3 class="u-strong">Buy It There</h3>
             <p class="u-p2">You do not need to pack everything from home. Dunhuang has <strong class="text-stone-700">supermarkets, pharmacies, and outdoor shops</strong> near the city center. Sunscreen, insect repellent, basic medicines, and even warm layers are available. Save luggage space for things that are hard to find: specific medications, contact lens solution (hard to find), and your preferred brand of electrolyte tablets.</p>
           </div>
+        </div>
+      </section>
+
+      <!-- FAQ — visible content backing the FAQPage schema above.
+           Deliberately not using .reveal: this is SEO-critical content and
+           .reveal starts at opacity:0 on desktop. -->
+      <section class="mb-16">
+        <h2 class="u-h2">
+          Packing Questions Travelers Ask
+        </h2>
+        <div class="space-y-3">
+          {faqs.map((f) => (
+            <details class="group bg-white rounded-xl border border-stone-200">
+              <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer text-left u-strong list-none">
+                {f.q}
+                <svg class="w-5 h-5 shrink-0 text-stone-500 group-open:rotate-180 transition-transform" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="px-5 pb-4 text-stone-600 text-sm leading-relaxed">{f.a}</div>
+            </details>
+          ))}
         </div>
       </section>
 

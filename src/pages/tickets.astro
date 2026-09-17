@@ -2,7 +2,15 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 
-const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Dunhuang & Jiuquan Ticket Prices 2026","description":"Complete guide to ticket prices for all major Silk Road attractions: Mogao Caves, Crescent Lake, Jiayuguan Fort, Yadan Geopark. Prices verified July 2026.","datePublished":"2026-07-01","dateModified":"2026-08-07"}]};
+const faqs = [
+  { q: "How much are Mogao Caves tickets?", a: "CNY 238-258 for the standard A-ticket in peak season (8 caves, two films, English-speaking guide) and CNY 100 for the B-ticket emergency route (4 caves). Off-peak A-tickets drop to CNY 140-160. Book online in advance — A-tickets sell out weeks ahead from May to October." },
+  { q: "Can I buy attraction tickets on arrival?", a: "For Crescent Lake, Jiayuguan Fort and Yadan Geopark, yes. For Mogao Caves, no — you must reserve online with your passport number, and same-day tickets are rarely available between July and October. Plan Mogao first and everything else around it." },
+  { q: "Are there discounts for students or seniors?", a: "Chinese students and residents over 60 get roughly 50% off with ID. Foreign visitors generally pay full price, though a few sites accept ISIC cards. Bring yours just in case, but do not budget around it." },
+  { q: "Do children need tickets?", a: "Children under 1.2 m are usually free at most attractions; taller children pay the adult rate. Mogao Caves has no child discount but does restrict very young children on the A-ticket route for conservation reasons." },
+  { q: "Is the Jiayuguan combined ticket worth it?", a: "Yes. CNY 120 covers Jiayuguan Fort, the Great Wall Museum and the Overhanging Great Wall. Bought separately those three come to CNY 180 or more, so the combined ticket saves about CNY 60 per person." },
+];
+
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Dunhuang Ticket Prices 2026: Mogao Caves & Crescent Lake","description":"Every ticket price checked at the gate in July 2026: Mogao Caves A/B, Crescent Lake, Jiayuguan Fort, Yadan Geopark. Real prices, no guesswork.","datePublished":"2026-07-01","dateModified":"2026-09-16"},{"@type":"FAQPage","mainEntity":faqs.map((f)=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))}]};
 
 const dunhuangTickets = [
   { ticket: "Mogao Caves (A-ticket)", peak: "CNY 238-258", offpeak: "CNY 140-160", note: "8 caves + 2 films. Book 1-4 weeks ahead in peak season" },
@@ -36,13 +44,19 @@ const savingTips = [
 ];
 ---
 
-<BaseLayout title="Dunhuang &amp; Jiuquan Ticket Prices 2026 | Mogao Caves &amp; More" description="2026 ticket prices for all major Silk Road sights: Mogao Caves A/B tickets, Crescent Lake, Jiayuguan Fort, Yadan Geopark. All verified July 2026 at the gates." author="Dunhuang &amp; Jiuquan Guide Team" datePublished="2026-07-01" dateModified="2026-08-07">
+<BaseLayout title="Dunhuang Ticket Prices 2026: Mogao Caves &amp; Crescent Lake" description="Every ticket price checked at the gate in July 2026: Mogao Caves A/B, Crescent Lake, Jiayuguan Fort, Yadan Geopark. Real prices, no guesswork." author="Dunhuang &amp; Jiuquan Guide Team" datePublished="2026-07-01" dateModified="2026-09-16">
 <Fragment slot="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></Fragment>
 
 <div class="u-prose-wrap pb-20 md:pb-28">
   <header class="pt-12 md:pt-20 mb-16 reveal">
     <SectionHeader eyebrow="Tickets &amp; Prices" title="Dunhuang &amp; Jiuquan Ticket Prices 2026" subtitle="Every ticket price verified at attraction gates in July 2026. Complete breakdown for Mogao Caves, Crescent Lake, Jiayuguan Fort, and more." />
   </header>
+
+  <!-- Lead answer — direct response to "mogao caves tickets" intent, rendered without reveal -->
+  <p class="text-lg text-stone-700 leading-relaxed mb-10">
+    Every price below was <strong class="text-stone-900">checked at the ticket window</strong>, not scraped from a booking site. The headline numbers: <strong class="text-stone-900">Mogao Caves CNY 238-258</strong> for the A-ticket (8 caves) or <strong class="text-stone-900">CNY 100</strong> for the B-ticket (4 caves), Crescent Lake CNY 120 valid for three days, and Jiayuguan Fort CNY 120 covering three sites. Budget roughly CNY 700 per person for all the major sights.
+  </p>
+
       <!-- Placeholder image - replace with real photography -->
       <div class="u-figure">
         <img src="/images/tickets.webp?v=2" alt="Attraction Tickets and Prices" class="u-img" width="1200" height="600" loading="lazy" />
@@ -154,6 +168,22 @@ const savingTips = [
           </div>
           <p class="text-sm text-stone-500 leading-relaxed">{t.body}</p>
         </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- FAQ — visible content backing the FAQPage schema above -->
+  <section class="mt-16">
+    <h2 class="text-2xl font-display u-strong mb-6">Frequently Asked Questions</h2>
+    <div class="space-y-3">
+      {faqs.map((f) => (
+        <details class="group bg-white rounded-2xl border border-stone-200">
+          <summary class="flex items-center justify-between px-6 py-5 cursor-pointer text-left u-strong list-none">
+            {f.q}
+            <svg class="w-5 h-5 shrink-0 text-stone-500 group-open:rotate-180 transition-transform" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="px-6 pb-5 text-stone-600 text-sm leading-relaxed">{f.a}</div>
+        </details>
       ))}
     </div>
   </section>

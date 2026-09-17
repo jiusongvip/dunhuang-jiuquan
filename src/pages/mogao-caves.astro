@@ -1,10 +1,36 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import AttractionSchema from "../components/AttractionSchema.astro";
+
+// Single source of truth: the same array feeds the AttractionSchema FAQPage markup
+// and the visible FAQ accordion at the bottom of this page. Every answer below is
+// grounded in facts already stated elsewhere on the page.
+const faqs = [
+  {
+    q: "Can I visit Mogao Caves without a guide?",
+    a: "No. All visitors join a guided group tour. A-ticket holders visit 8 caves over approximately 75 minutes. Photography is strictly forbidden inside the caves.",
+  },
+  {
+    q: "How do I book Mogao Caves as a foreigner?",
+    a: "Use the official WeChat mini-program (Chinese phone number required), book through Trip.com, or ask your hotel concierge. A-tickets must be booked 1-4 weeks ahead in peak season (May-October). Passport required for entry.",
+  },
+  {
+    q: "What is the difference between A-ticket and B-ticket?",
+    a: "A-ticket (CNY 238-258) covers 8 caves plus 2 films at the Digital Exhibition Center. B-ticket covers 4 caves with no films and is only sold when A-tickets are sold out.",
+  },
+  {
+    q: "How much do Mogao Caves tickets cost?",
+    a: "An A-ticket costs CNY 238-258 and includes 8 caves plus the two films at the Digital Exhibition Center. The B-ticket covers 4 caves with no films, and is only released once A-tickets have sold out. Book as early as possible for July, August and Golden Week.",
+  },
+  {
+    q: "Can I take photos inside the Mogao Caves?",
+    a: "No. Photography is strictly forbidden inside the caves. All visitors join a guided group, and the caves are kept dark to protect the pigments. Guides carry flashlights so you can see the murals.",
+  },
+];
 ---
 
 <BaseLayout
-  title="Mogao Caves Guide 2026 | Tickets &amp; Tips for Foreigners"
+  title="Mogao Caves, Dunhuang 2026: Tickets &amp; Foreigner Booking"
   description="Guide to visiting Mogao Caves, Dunhuang: A-ticket vs B-ticket, how to book as a foreigner, best times, what to expect, and alternatives when tickets sell out."
   ogImage="/images/mogao-caves.webp?v=2"
   ogImageWidth="1254"
@@ -24,11 +50,7 @@ import AttractionSchema from "../components/AttractionSchema.astro";
       country="CN"
       ticketPrice="238"
       priceCurrency="CNY"
-      faqs={[
-        { q: "Can I visit Mogao Caves without a guide?", a: "No. All visitors join a guided group tour. A-ticket holders visit 8 caves over approximately 75 minutes. Photography is strictly forbidden inside the caves." },
-        { q: "How do I book Mogao Caves as a foreigner?", a: "Use the official WeChat mini-program (Chinese phone number required), book through Trip.com, or ask your hotel concierge. A-tickets must be booked 1-4 weeks ahead in peak season (May-October). Passport required for entry." },
-        { q: "What is the difference between A-ticket and B-ticket?", a: "A-ticket (CNY 238-258) covers 8 caves plus 2 films at the Digital Exhibition Center. B-ticket covers 4 caves with no films and is only sold when A-tickets are sold out." },
-      ]}
+      faqs={faqs}
     />
   </Fragment>
 
@@ -47,6 +69,11 @@ import AttractionSchema from "../components/AttractionSchema.astro";
       <div class="mb-16 rounded-2xl overflow-hidden">
         <img src="/images/mogao-caves.webp?v=2" alt="Mogao Caves nine-story temple facade with ancient Buddhist grottoes carved into desert cliff, Dunhuang" class="u-img" width="1200" height="1200" loading="eager" decoding="sync" sizes="100vw" />
       </div>
+
+      <!-- Lead answer — direct response to search intent, rendered without reveal -->
+      <p class="text-lg text-stone-700 leading-relaxed mb-12">
+        Mogao Caves (莫高窟) is a <strong class="text-stone-900">UNESCO World Heritage Site of 492 painted Buddhist caves</strong>, 25 km southeast of Dunhuang. An <strong class="text-stone-900">A-ticket (CNY 238-258) covers 8 caves plus two films</strong> at the Digital Exhibition Center, and every visit is by guided group &mdash; photography inside is forbidden. A-tickets sell out 2-4 weeks ahead in July, August and Golden Week, so book as early as you can.
+      </p>
 
       <!-- Quick Facts -->
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
@@ -216,6 +243,22 @@ import AttractionSchema from "../components/AttractionSchema.astro";
           </li>
         </ul>
       </section>
+
+      <!-- FAQ — visible content backing the FAQPage schema above -->
+      <div class="mt-14">
+        <h2 class="text-2xl font-bold tracking-tight text-stone-900 mb-6">Frequently Asked Questions</h2>
+        <div class="space-y-3">
+          {faqs.map((f) => (
+            <details class="group bg-white rounded-2xl border border-stone-200">
+              <summary class="flex items-center justify-between px-6 py-5 cursor-pointer text-left u-strong list-none">
+                {f.q}
+                <svg class="w-5 h-5 shrink-0 text-stone-500 group-open:rotate-180 transition-transform" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="px-6 pb-5 text-stone-600 text-sm leading-relaxed">{f.a}</div>
+            </details>
+          ))}
+        </div>
+      </div>
 
       <!-- CTA -->
       <div class="bg-mogao-600 text-white rounded-2xl p-8 text-center">

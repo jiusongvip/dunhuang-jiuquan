@@ -2,11 +2,38 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import AttractionSchema from "../components/AttractionSchema.astro";
+
+const faqs = [
+  {
+    q: "Is Jiayuguan Fort part of the Great Wall of China?",
+    a: "Yes. Jiayuguan is the western terminus of the Ming Great Wall, built in 1372. From here the wall runs east for more than 6,000 km to Shanhaiguan on the coast, which is why the fort is called the \"First and Greatest Pass Under Heaven\".",
+  },
+  {
+    q: "How much does Jiayuguan Fort cost?",
+    a: "The combined ticket costs CNY 120 and includes the fort, the Great Wall Museum, and the Overhanging Great Wall. Tickets are linked to your passport number, so bring it with you.",
+  },
+  {
+    q: "How do I get to Jiayuguan Fort from Dunhuang?",
+    a: "Take the high-speed train from Dunhuang to Jiayuguan South (about 2 hours, CNY 100-150), then a 20-minute taxi to the fort for CNY 30-40. Driving takes 4-5 hours.",
+  },
+  {
+    q: "How long do you need at Jiayuguan Fort?",
+    a: "Allow 2-3 hours for the fort and the Great Wall Museum, plus 1-1.5 hours if you climb the Overhanging Great Wall. Budget 3-5 hours in total, since the Overhanging Wall is a separate site 8 km away.",
+  },
+  {
+    q: "Which city should I stay in, Jiayuguan or Jiuquan?",
+    a: "Stay in Jiayuguan. It is 20 km closer to the fort, has better hotels and restaurants, and avoids a 40-minute round trip from Jiuquan city centre.",
+  },
+  {
+    q: "Is the Overhanging Great Wall worth climbing?",
+    a: "Yes. It is included in the combined ticket and offers dramatic views of the Qilian Mountains. Allow 30-45 minutes for the steep climb and wear sturdy shoes — sandals are genuinely unsafe here.",
+  },
+];
 ---
 
 <BaseLayout
-  title="Jiayuguan Fort Guide 2026 | Great Wall Western Terminus"
-  description="Guide to Jiayuguan Fort, western terminus of the Ming Great Wall: combined ticket CNY 120 covers fort, museum, and Overhanging Great Wall. History and tips."
+  title="Jiayuguan Fort & Great Wall of China — Western End (2026)"
+  description="The Great Wall of China's western end. One CNY 120 ticket covers Jiayuguan Fort, the Great Wall Museum and the Overhanging Great Wall — plus the best viewpoints."
   ogImage="/images/jiayuguan-fort.webp?v=2"
   ogImageWidth="1254"
   ogImageHeight="1254"
@@ -28,11 +55,7 @@ import AttractionSchema from "../components/AttractionSchema.astro";
       country="CN"
       ticketPrice="120"
       priceCurrency="CNY"
-      faqs={[
-        { q: "How much does Jiayuguan Fort cost?", a: "The combined ticket costs CNY 120 and includes the fort, the Great Wall Museum, and the Overhanging Great Wall. Tickets are linked to your passport number." },
-        { q: "Which city should I stay in, Jiayuguan or Jiuquan?", a: "Stay in Jiayuguan. It is 20 km closer to the fort, has better hotels and restaurants, and avoids a 40-minute round trip from Jiuquan city center." },
-        { q: "Is the Overhanging Great Wall worth climbing?", a: "Yes. It is included in the combined ticket and offers dramatic views of the Qilian Mountains. Allow 30-45 minutes for the steep climb and wear sturdy shoes." },
-      ]}
+      faqs={faqs}
     />
   </Fragment>
 
@@ -41,7 +64,7 @@ import AttractionSchema from "../components/AttractionSchema.astro";
       <header class="mb-8 reveal">
         <SectionHeader
           eyebrow="Jiuquan Attraction"
-          title="Jiayuguan Fort: The Great Wall Western End"
+          title="Jiayuguan Fort: The Great Wall of China's Western End"
           subtitle="The complete guide: history, tickets, the Overhanging Great Wall, best viewpoints, and how to visit China's most dramatic fortress."
         />
       </header>
@@ -59,6 +82,11 @@ import AttractionSchema from "../components/AttractionSchema.astro";
           sizes="100vw"
         />
       </div>
+
+      <!-- Lead answer — direct response to search intent, rendered without reveal -->
+      <p class="text-lg text-stone-700 leading-relaxed mb-12">
+        Jiayuguan Fort (嘉峪关) is the <strong class="text-stone-900">westernmost pass of the Ming Great Wall</strong> &mdash; the Ming dynasty fortress built in 1372 at the narrowest point of the Hexi Corridor. It is a 20-minute drive from Jiayuguan city centre, costs <strong class="text-stone-900">CNY 120</strong> as a combined ticket with the Great Wall Museum and the Overhanging Great Wall, and takes 2-3 hours to visit properly.
+      </p>
 
       <!-- Quick Facts -->
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-16">
@@ -230,6 +258,22 @@ import AttractionSchema from "../components/AttractionSchema.astro";
           <a href="/tickets/" class="u-btn-solid3">
             All Ticket Prices
           </a>
+        </div>
+      </div>
+
+      <!-- FAQ — visible content backing the FAQPage schema above -->
+      <div class="mt-14">
+        <h2 class="text-2xl font-bold tracking-tight text-stone-900 mb-6">Frequently Asked Questions</h2>
+        <div class="space-y-3">
+          {faqs.map((f) => (
+            <details class="group bg-white rounded-2xl border border-stone-200">
+              <summary class="flex items-center justify-between px-6 py-5 cursor-pointer text-left u-strong list-none">
+                {f.q}
+                <svg class="w-5 h-5 shrink-0 text-stone-500 group-open:rotate-180 transition-transform" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="px-6 pb-5 text-stone-600 text-sm leading-relaxed">{f.a}</div>
+            </details>
+          ))}
         </div>
       </div>
     </div>

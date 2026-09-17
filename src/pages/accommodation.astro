@@ -2,23 +2,55 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 
-const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    { "@type": "Article", "headline": "Where to Stay in Dunhuang & Jiuquan (2026)", "description": "Best areas and hotels in Dunhuang and Jiuquan: budget hostels to boutique Silk Road stays. Honest recommendations." }
-  ]
-};
+const faqs = [
+  {
+    q: "Where should I stay in Dunhuang?",
+    a: "Stay near the city centre around Shazhou Night Market. It is walkable to restaurants, roughly 15 minutes by taxi to both Mogao Caves and Crescent Lake, and has the widest choice of hotels. The Mingsha dune area is quieter with desert views but has far fewer dining options.",
+  },
+  {
+    q: "Is Jiayuguan or Jiuquan better for hotels?",
+    a: "Jiayuguan. It is 20 km closer to Jiayuguan Fort, has a wider range of mid-range hotels and a better restaurant scene. Jiuquan city centre is cheaper but adds a 40-minute round trip to the fort.",
+  },
+  {
+    q: "How much do hotels cost in Dunhuang?",
+    a: "Hostels and guesthouses run CNY 60-120, mid-range hotels CNY 150-350, and upscale or desert-resort properties CNY 500-1200. Prices roughly double during the July-October peak season and over the National Day holiday (1-7 October).",
+  },
+  {
+    q: "Do hotels in Dunhuang accept foreign guests?",
+    a: "Most mid-range and upscale hotels do, and they will register your passport for you. A few budget guesthouses are not licensed to host foreign nationals — if you book independently, confirm before paying. Booking through Trip.com or Ctrip with an English-language listing avoids the problem entirely.",
+  },
+];
+
+const priceBands = [
+  { band: "Hostels & guesthouses", range: "CNY 60-120", note: "Dorms and simple private rooms. Best near the night market." },
+  { band: "Mid-range hotels", range: "CNY 150-350", note: "The sweet spot — clean, English-capable front desk, central." },
+  { band: "Comfort & boutique", range: "CNY 350-600", note: "Larger rooms, better breakfast, often with dune views." },
+  { band: "Desert resorts", range: "CNY 500-1200", note: "Mingsha Mountain area. Desert views, sunrise dune access." },
+];
+
+const baseCompare = [
+  { factor: "Distance to Jiayuguan Fort", jiayuguan: "15-20 min taxi", jiuquan: "40-50 min each way" },
+  { factor: "Restaurant choice", jiayuguan: "Good", jiuquan: "Limited" },
+  { factor: "Typical hotel price", jiayuguan: "CNY 150-600", jiuquan: "CNY 100-400" },
+  { factor: "Best for", jiayuguan: "Almost everyone", jiuquan: "Satellite Launch Center visits" },
+];
 ---
 
 <BaseLayout
-  title="Where to Stay in Dunhuang &amp; Jiuquan 2026 | Best Hotels &amp; Areas"
-  description="Honest accommodation guide for Dunhuang and Jiuquan: best neighborhoods, hotels from budget to luxury, and where to base yourself near Jiayuguan."
+  title="Where to Stay in Dunhuang &amp; Jiuquan 2026: Hotels by Area"
+  description="Where to stay in Dunhuang and Jiuquan: the best neighbourhoods, hotel price bands from hostels to desert resorts, and whether to base in Jiayuguan or Jiuquan."
   author="Dunhuang &amp; Jiuquan Guide Team"
   datePublished="2026-07-01"
   dateModified="2026-08-07"
 >
   <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        { "@type": "Article", "headline": "Where to Stay in Dunhuang & Jiuquan 2026: Best Areas", "description": "Where to stay in Dunhuang and Jiuquan: the best neighbourhoods, hotel price bands from hostels to desert resorts, and whether to base in Jiayuguan or Jiuquan.", "datePublished": "2026-07-01", "dateModified": "2026-09-16" },
+        { "@type": "FAQPage", "mainEntity": faqs.map((f) => ({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } })) }
+      ]
+    })}></script>
   </Fragment>
 
   <article class="py-12 md:py-20">
@@ -26,6 +58,12 @@ const schema = {
       <header class="mb-16 reveal">
         <SectionHeader eyebrow="Accommodation" title="Where to Stay in Dunhuang &amp; Jiuquan" subtitle="Best areas, honest hotel recommendations, and where to base yourself for each city. No sponsored listings." />
       </header>
+
+      <!-- Lead answer — direct response to "dunhuang hotel" intent, rendered without reveal -->
+      <p class="text-lg text-stone-700 leading-relaxed mb-10">
+        Base yourself in <strong class="text-stone-900">central Dunhuang near Shazhou Night Market</strong> for the widest choice of hotels and the easiest access to both Mogao Caves and Crescent Lake. For the Jiayuguan area, stay <strong class="text-stone-900">in Jiayuguan city, not Jiuquan</strong> — it is 20 km closer to the fort and has the better restaurant scene. Expect CNY 150-350 for a good mid-range room.
+      </p>
+
       <!-- Placeholder image - replace with real photography -->
       <div class="u-figure">
         <img src="/images/accommodation.webp?v=2" alt="Where to Stay in Dunhuang" class="u-img" width="1200" height="600" loading="lazy" />
@@ -64,6 +102,54 @@ const schema = {
             <h3 class="u-strong">Jiuquan City Center</h3>
             <p class="u-p2">Only if visiting Satellite Launch Center. Limited hotels (CNY 100-400). Fewer dining options.</p>
           </div>
+        </div>
+      </section>
+
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl font-display u-strong mb-6">Hotel Price Bands</h2>
+        <p class="text-stone-600 leading-relaxed mb-5">What your money buys in Dunhuang. Prices are for a double room in low season — add 50-100% from July to early October and over the National Day holiday.</p>
+        <div class="space-y-3">
+          {priceBands.map(({ band, range, note }) => (
+            <div class="bg-white rounded-2xl border border-stone-200 p-5">
+              <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <h3 class="u-strong">{band}</h3>
+                <span class="text-xs font-semibold text-mogao-700 bg-mogao-50 px-2 py-0.5 rounded-full">{range}</span>
+              </div>
+              <p class="u-p2">{note}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="mb-16 reveal">
+        <h2 class="text-2xl font-display u-strong mb-6">Jiayuguan or Jiuquan: Where Should You Base Yourself?</h2>
+        <div class="rounded-2xl border border-stone-200 bg-white overflow-hidden">
+          <div class="grid grid-cols-3 gap-3 px-5 py-3 bg-stone-50 border-b border-stone-200 text-xs font-semibold text-stone-500 uppercase tracking-wide">
+            <span></span><span>Jiayuguan</span><span>Jiuquan</span>
+          </div>
+          {baseCompare.map(({ factor, jiayuguan, jiuquan }) => (
+            <div class="grid grid-cols-3 gap-3 px-5 py-3 border-b border-stone-100 last:border-b-0 text-sm">
+              <span class="text-stone-600">{factor}</span>
+              <span class="font-semibold text-stone-800">{jiayuguan}</span>
+              <span class="text-stone-600">{jiuquan}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- FAQ — visible content backing the FAQPage schema above -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-display u-strong mb-6">Frequently Asked Questions</h2>
+        <div class="space-y-3">
+          {faqs.map((f) => (
+            <details class="group bg-white rounded-2xl border border-stone-200">
+              <summary class="flex items-center justify-between px-6 py-5 cursor-pointer text-left u-strong list-none">
+                {f.q}
+                <svg class="w-5 h-5 shrink-0 text-stone-500 group-open:rotate-180 transition-transform" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="px-6 pb-5 text-stone-600 text-sm leading-relaxed">{f.a}</div>
+            </details>
+          ))}
         </div>
       </section>
 

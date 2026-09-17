@@ -45,16 +45,31 @@ const museums = [
   },
 ];
 
+const faqs = [
+  { q: "Are museums in Dunhuang free?", a: "Dunhuang Museum is free but requires passport registration at the entrance. The Great Wall Museum in Jiayuguan is included in the CNY 120 combined fort ticket. The Mogao replica-cave halls charge separately." },
+  { q: "Which Dunhuang museum should I prioritise?", a: "Dunhuang Museum if you want the corridor's history in one hour, and the Mogao replica halls if Mogao Caves A-tickets have sold out — the replicas are painted to full scale and photography is allowed, which it is not in the real caves." },
+  { q: "Do I need to book museums in advance?", a: "For Dunhuang Museum, no — walk in with your passport. Gansu Provincial Museum in Lanzhou does require a WeChat reservation and a Chinese phone number, and it books out on weekends and holidays." },
+  { q: "How long do the museums take?", a: "Dunhuang Museum takes 1.5-2 hours, the Great Wall Museum about 45 minutes, and the Mogao replica halls 1-1.5 hours. Gansu Provincial Museum needs half a day if you want to see the Silk Road galleries properly." },
+];
+
 const schema = {
   "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  name: "Dunhuang & Jiuquan Museum Guide",
-  description: "The best museums in Dunhuang, Jiayuguan and Lanzhou for Silk Road history and art — with tickets, hours, and which are worth the journey.",
-  mainEntity: museums.map((m) => ({
-    "@type": "Museum",
-    name: m.name,
-    description: m.body,
-  })),
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      name: "Dunhuang & Jiuquan Museum Guide",
+      description: "The best museums in Dunhuang, Jiayuguan and Lanzhou for Silk Road history and art — with tickets, hours, and which are worth the journey.",
+      mainEntity: museums.map((m) => ({
+        "@type": "Museum",
+        name: m.name,
+        description: m.body,
+      })),
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+    },
+  ],
 };
 ---
 
@@ -81,6 +96,11 @@ const schema = {
         />
       </header>
 
+      <!-- Lead answer — direct response to search intent, rendered without reveal -->
+      <p class="text-lg text-stone-700 leading-relaxed mb-10">
+        There are two museums genuinely worth your time: <strong class="text-stone-900">Dunhuang Museum</strong> (free, passport required, 1.5-2 hours) for the corridor's history in one place, and the <strong class="text-stone-900">Mogao replica caves</strong>, which matter most if Mogao Caves A-tickets have sold out — the replicas are full-scale and photography is allowed. The <strong class="text-stone-900">Great Wall Museum</strong> comes free with the Jiayuguan combined ticket.
+      </p>
+
       <div class="space-y-6">
         {museums.map((m, i) => (
           <section class="u-card md:p-8 reveal">
@@ -103,6 +123,22 @@ const schema = {
           If you only see one museum, make it the <strong>Dunhuang Museum first</strong> — it is free and sets up everything you will see at Mogao. If your Mogao A-ticket already includes the replica gallery, spend the saved time inside the Great Wall Museum in Jiayuguan.
         </p>
       </div>
+
+      <!-- FAQ — visible content backing the FAQPage schema above -->
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold tracking-tight text-stone-900 mb-6">Frequently Asked Questions</h2>
+        <div class="space-y-3">
+          {faqs.map((f) => (
+            <details class="group bg-white rounded-2xl border border-stone-200">
+              <summary class="flex items-center justify-between px-6 py-5 cursor-pointer text-left u-strong list-none">
+                {f.q}
+                <svg class="w-5 h-5 shrink-0 text-stone-500 group-open:rotate-180 transition-transform" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="px-6 pb-5 text-stone-600 text-sm leading-relaxed">{f.a}</div>
+            </details>
+          ))}
+        </div>
+      </section>
 
       <div class="mt-12 p-6 bg-amber-50 rounded-2xl border border-amber-200 reveal">
         <h2 class="text-lg u-strong mb-2">Before you go</h2>

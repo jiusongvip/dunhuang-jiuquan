@@ -2,15 +2,28 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 
-const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Dunhuang & Jiuquan Photography Guide 2026 | Best Photo Spots","description":"Complete photography guide for Dunhuang and Jiuquan: best sunrise/sunset spots, Mogao Caves exterior angles, Crescent Lake dune compositions, Jiayuguan Fort golden hour, Yadan Geopark timing, and practical camera tips for the Gobi Desert.","datePublished":"2026-08-01","dateModified":"2026-08-07","author":{"@type":"Person","name":"Dunhuang & Jiuquan Guide Team"}}]};
+const faqs = [
+  { q: "Where is the best place to photograph the Silk Road?", a: "The nine-story facade at Mogao Caves in the morning and the Crescent Lake dunes at sunset are the two defining shots. Jiayuguan Fort is best at 9:30-10:30 AM when the gate tower is front-lit, and Yadan Geopark is only worth photographing in the last hour before sunset." },
+  { q: "What time is golden hour in Dunhuang?", a: "Roughly 06:30-08:00 and 19:30-21:00 in summer, shifting to about 08:00-09:30 and 17:30-19:00 in autumn. Dunhuang sits far west within China's single time zone, so sunrise and sunset are both unusually late by the clock." },
+  { q: "Can I take photos inside the Mogao Caves?", a: "No. Photography and video are banned inside every cave to protect the pigments, and staff enforce it strictly. You may photograph the exterior facade, the plaza and the surrounding cliff freely — and there is a replica cave where photography is allowed." },
+  { q: "How do I protect camera gear from sand in the Gobi?", a: "Use a sealed bag or a rain cover even on clear days, change lenses indoors or inside a vehicle, and never change a lens in open desert wind. Bring a blower bulb rather than a cloth — wiping sand across a lens or sensor causes scratches." },
+];
+
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Dunhuang Photography Guide 2026: 8 Best Photo Spots & Times","description":"Complete photography guide for Dunhuang and Jiuquan: best sunrise/sunset spots, Mogao Caves exterior angles, Crescent Lake dune compositions, Jiayuguan Fort golden hour, Yadan Geopark timing, and practical camera tips for the Gobi Desert.","datePublished":"2026-08-01","dateModified":"2026-09-17","author":{"@type":"Person","name":"Dunhuang & Jiuquan Guide Team"}},{"@type":"FAQPage","mainEntity":faqs.map((f)=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))}]};
 ---
 
-<BaseLayout title="Dunhuang &amp; Jiuquan Photography Guide 2026 | Best Photo Spots" description="Best photo spots in Dunhuang and Jiuquan: Mogao Caves, Crescent Lake dunes, Jiayuguan Fort, Yadan. Exact locations, best times, and desert camera tips." author="Dunhuang &amp; Jiuquan Guide Team" datePublished="2026-08-01" dateModified="2026-08-07">
+<BaseLayout title="Dunhuang Photography Guide 2026: 8 Best Photo Spots &amp; Times" description="Best photo spots in Dunhuang and Jiuquan: Mogao Caves, Crescent Lake dunes, Jiayuguan Fort, Yadan. Exact locations, best times, and desert camera tips." author="Dunhuang &amp; Jiuquan Guide Team" datePublished="2026-08-01" dateModified="2026-09-17">
 <Fragment slot="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></Fragment>
 
 <article class="py-12 md:py-20">
 <div class="u-prose-wrap">
 <header class="mb-16 reveal"><SectionHeader eyebrow="Photography Guide" title="Best Photo Spots on the Silk Road" subtitle="Where, when, and how to capture Dunhuang and Jiuquan at their most photogenic. Exact locations, best times of day, and camera tips for the desert." /></header>
+
+<!-- Lead answer — direct response to search intent, rendered without reveal -->
+<p class="text-lg text-stone-700 leading-relaxed mb-10">
+  The Silk Road rewards <strong class="text-stone-900">timing more than gear</strong>. Two shots define the trip: the <strong class="text-stone-900">nine-story Mogao facade at 8:00-9:30 AM</strong>, and <strong class="text-stone-900">Crescent Lake at sunset</strong> when the dunes turn gold. Jiayuguan Fort is front-lit mid-morning; Yadan Geopark is only worth the 180 km drive in the final hour of light. A 24-70mm lens and a polarizer cover almost everything.
+</p>
+
       <!-- Placeholder image - replace with real photography -->
       <div class="u-figure">
         <img src="/images/photography.webp?v=2" alt="Silk Road Photography Guide" class="u-img" width="1200" height="600" loading="lazy" />
@@ -179,6 +192,22 @@ const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","he
         <tr class="hover:bg-stone-50"><td class="px-5 py-3 text-stone-700 font-medium">Shazhou Night Market</td><td class="px-5 py-3 text-stone-600">7:00-9:00 PM</td><td class="px-5 py-3 text-stone-500 text-xs hidden sm:table-cell">All year</td></tr>
       </tbody>
     </table>
+  </div>
+</section>
+
+<!-- FAQ — visible content backing the FAQPage schema above -->
+<section class="mb-16">
+  <h2 class="u-h2">Frequently Asked Questions</h2>
+  <div class="space-y-3">
+    {faqs.map((f) => (
+      <details class="group bg-white rounded-2xl border border-stone-200">
+        <summary class="flex items-center justify-between px-6 py-5 cursor-pointer text-left u-strong list-none">
+          {f.q}
+          <svg class="w-5 h-5 shrink-0 text-stone-500 group-open:rotate-180 transition-transform" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="px-6 pb-5 text-stone-600 text-sm leading-relaxed">{f.a}</div>
+      </details>
+    ))}
   </div>
 </section>
 

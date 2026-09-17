@@ -6,14 +6,71 @@ import ComparisonTable from "../components/ComparisonTable.astro";
 import RelatedLinks from "../components/RelatedLinks.astro";
 import NewsletterSignup from "../components/NewsletterSignup.astro";
 
-const pageDescription = "Plan your Silk Road trip with expert Dunhuang and Jiuquan guides covering Mogao Caves, Crescent Lake, Jiayuguan Fort, trains, and 3/5/7-day itineraries.";
+const pageDescription = "Dunhuang and Jiuquan, Gansu — the heart of China's Silk Road. Mogao Caves, Crescent Lake, Jiayuguan Fort, train routes and 3/5/7-day itineraries.";
+
+// Single source of truth for the homepage FAQ.
+// The same array feeds both the FAQPage JSON-LD and the visible accordion further
+// down the page, so the marked-up Q&A can never drift out of sync with what a
+// visitor actually sees (Google requires the two to match).
+const homeFaqs = [
+  {
+    q: "How many days do I need for Dunhuang and Jiuquan?",
+    a: "Minimum 4 days: 2-3 in Dunhuang (Mogao Caves, Crescent Lake, Yadan Geopark), 1-2 in Jiuquan (Jiayuguan Fort). With 7 days add Zhangye Rainbow Mountains. High-speed train between cities takes only 2.5 hours.",
+    link: "/itinerary/",
+    linkLabel: "Itineraries",
+  },
+  {
+    q: "Dunhuang or Jiuquan - which one should I visit?",
+    a: "Dunhuang if you can only visit one - it is the cultural heart of the Silk Road with Mogao Caves and Crescent Lake. Jiuquan is essential for history buffs (Jiayuguan Fort, Great Wall terminus) and space enthusiasts (Satellite Launch Center). With 5+ days, visit both - the train takes only 2.5 hours.",
+    link: "/dunhuang-vs-jiuquan/",
+    linkLabel: "Compare the two cities",
+  },
+  {
+    q: "How do I get from Dunhuang to Jiuquan?",
+    a: "High-speed train is the clear winner: 2.5 hours, CNY 150-200, 10+ departures daily. Long-distance bus (5-6 hours, CNY 60-80) is the budget option. Private car (4-5 hours, CNY 600-900) gives the most flexibility for photography stops.",
+    link: "/how-to-get-there/",
+    linkLabel: "Full transport guide",
+  },
+  {
+    q: "When is the best time to visit Dunhuang and Jiuquan?",
+    a: "May-June and September-October are ideal with mild temperatures (15-28C) and manageable crowds. Avoid July-August (35-40C desert heat, peak domestic tourism) and Chinese Golden Week (Oct 1-7). Winter (Nov-Feb) offers half-price hotels and near-empty attractions.",
+    link: "/best-time-to-visit/",
+    linkLabel: "Month by month",
+  },
+  {
+    q: "How much does a trip cost?",
+    a: "Budget CNY 500-1200 (USD 70-170) per person per day including accommodation, meals, transport, and attraction tickets. Mogao Caves A-ticket costs CNY 238-258. Crescent Lake CNY 120. Jiayuguan Fort combined ticket CNY 120. High-speed train between cities CNY 150-200.",
+    link: "/tickets/",
+    linkLabel: "Ticket prices",
+  },
+  {
+    q: "Can I book Mogao Caves as a foreigner?",
+    a: "Yes. Use the official WeChat mini-program (Chinese phone number required), book through Trip.com (5-15% markup but international card accepted), or ask your hotel concierge. A-tickets (8 caves + 2 films) must be booked 1-4 weeks ahead in peak season (May-October). Passport required for entry.",
+    link: "/mogao-caves/",
+    linkLabel: "Mogao Caves guide",
+  },
+  {
+    q: "Can I visit Mogao Caves without a guide?",
+    a: "No. All visitors join a guided group tour. A-ticket holders visit 8 caves over approximately 75 minutes. Photography is strictly forbidden inside the caves.",
+    link: "/mogao-caves/",
+    linkLabel: "What to expect inside",
+  },
+  {
+    q: "Is Gansu safe for solo travelers?",
+    a: "Yes, very safe. The Silk Road cities are well-policed and tourist-friendly. Violent crime is extremely rare. The main challenges are practical: language barrier outside major hotels, mobile payment setup (install Alipay before arriving), and extreme desert heat in summer.",
+  },
+  {
+    q: "Can I use Google Maps in China?",
+    a: "Google Maps has a location offset in mainland China and is unreliable for navigation. Use Apple Maps, Amap (Gaode), or Baidu Maps instead, or download offline Maps.me before you arrive. A VPN is required to reach Google services at all.",
+  },
+];
 
 const orgSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Article",
-      "headline": "Dunhuang & Jiuquan Travel Guide 2026 | Complete Silk Road Planning",
+      "headline": "Dunhuang & Jiuquan, Gansu, China: Silk Road Guide 2026",
       "description": "Honest, practical guide to Dunhuang and Jiuquan: Mogao Caves tickets, Jiayuguan Fort, Crescent Lake, transport, 3/5/7-day itineraries, budget breakdown, food, and insider tips from firsthand experience.",
       "author": { "@type": "Person", "name": "Dunhuang & Jiuquan Guide Team" },
       "datePublished": "2026-06-01",
@@ -32,22 +89,18 @@ const orgSchema = {
     },
     {
       "@type": "FAQPage",
-      "mainEntity": [
-        { "@type": "Question", "name": "How many days do I need for Dunhuang and Jiuquan?", "acceptedAnswer": { "@type": "Answer", "text": "Minimum 4 days: 2-3 in Dunhuang (Mogao Caves, Crescent Lake, Yadan Geopark), 1-2 in Jiuquan (Jiayuguan Fort). With 7 days add Zhangye Rainbow Mountains. High-speed train between cities takes only 2.5 hours." } },
-        { "@type": "Question", "name": "Dunhuang or Jiuquan - which one should I visit?", "acceptedAnswer": { "@type": "Answer", "text": "Dunhuang if you can only visit one - it is the cultural heart of the Silk Road with Mogao Caves and Crescent Lake. Jiuquan is essential for history buffs (Jiayuguan Fort, Great Wall terminus) and space enthusiasts (Satellite Launch Center). With 5+ days, visit both - the train takes only 2.5 hours." } },
-        { "@type": "Question", "name": "How do I get from Dunhuang to Jiuquan?", "acceptedAnswer": { "@type": "Answer", "text": "High-speed train is the clear winner: 2.5 hours, CNY 150-200, 10+ departures daily. Long-distance bus (5-6 hours, CNY 60-80) is the budget option. Private car (4-5 hours, CNY 600-900) gives the most flexibility for photography stops." } },
-        { "@type": "Question", "name": "When is the best time to visit?", "acceptedAnswer": { "@type": "Answer", "text": "May-June and September-October are ideal with mild temperatures (15-28C) and manageable crowds. Avoid July-August (35-40C desert heat, peak domestic tourism) and Chinese Golden Week (Oct 1-7). Winter (Nov-Feb) offers half-price hotels and near-empty attractions." } },
-        { "@type": "Question", "name": "How much does a trip cost?", "acceptedAnswer": { "@type": "Answer", "text": "Budget CNY 500-1200 (USD 70-170) per person per day including accommodation, meals, transport, and attraction tickets. Mogao Caves A-ticket costs CNY 238-258. Crescent Lake CNY 120. Jiayuguan Fort combined ticket CNY 120. High-speed train between cities CNY 150-200." } },
-        { "@type": "Question", "name": "Can I book Mogao Caves as a foreigner?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Use the official WeChat mini-program (Chinese phone number required), book through Trip.com (5-15% markup but international card accepted), or ask your hotel concierge. A-tickets (8 caves + 2 films) must be booked 1-4 weeks ahead in peak season (May-October). Passport required for entry." } },
-        { "@type": "Question", "name": "Is Gansu safe for solo travelers?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, very safe. The Silk Road cities are well-policed and tourist-friendly. Violent crime is extremely rare. The main challenges are practical: language barrier outside major hotels, mobile payment setup (install Alipay before arriving), and extreme desert heat in summer." } }
-      ]
+      "mainEntity": homeFaqs.map((f) => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a },
+      }))
     }
   ]
 };
 ---
 
 <BaseLayout
-  title="Dunhuang &amp; Jiuquan Travel Guide 2026 — Silk Road Planning"
+  title="Dunhuang &amp; Jiuquan, Gansu, China: Silk Road Guide 2026"
   description={pageDescription}
 >
   <Fragment slot="head">
@@ -135,6 +188,13 @@ const orgSchema = {
     </div>
   </section>
 
+  <!-- Lead answer — geographic context for "dunhuang jiuquan gansu china" intent -->
+  <section class="mx-auto max-w-7xl px-4 md:px-6 pt-12 md:pt-16">
+    <p class="mx-auto max-w-3xl text-center text-lg text-stone-700 leading-relaxed">
+      Dunhuang and Jiuquan are two cities in <strong class="text-stone-900">Gansu Province, China</strong>, linked by the Hexi Corridor &mdash; the narrow Silk Road passage between the Qilian Mountains and the Gobi Desert. Dunhuang holds the <a href="/mogao-caves/" class="u-link">Mogao Caves</a> and <a href="/crescent-lake/" class="u-link">Crescent Lake</a>; Jiuquan, together with neighbouring Jiayuguan, holds the <a href="/jiayuguan-fort/" class="u-link">western end of the Great Wall</a>. A high-speed train connects the two cities in 2.5 hours.
+    </p>
+  </section>
+
   <section cv-auto id="at-a-glance" class="mx-auto max-w-7xl px-4 md:px-6 pb-20 md:pb-28 reveal">
     <div class="text-center mb-12"><SectionHeader headingLevel="h2" eyebrow="At a Glance" title="Everything You Need to Know" subtitle="The essentials, in one place." center /></div>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -160,11 +220,11 @@ const orgSchema = {
           <div class="flex justify-between py-1.5 border-b border-stone-100"><span class="text-stone-600">Crescent Lake &amp; Dunes</span><span class="font-semibold text-stone-800">CNY 120</span></div>
           <div class="flex justify-between py-1.5 border-b border-stone-100"><span class="text-stone-600">Yadan Geopark</span><span class="font-semibold text-stone-800">CNY 120</span></div>
           <div class="flex justify-between py-1.5 border-b border-stone-100"><span class="text-stone-600">Jiayuguan Fort (combined)</span><span class="font-semibold text-stone-800">CNY 120</span></div>
-          <div class="flex justify-between py-1.5 border-b border-stone-100"><span class="text-stone-600">Train Dunhuang rarr Jiuquan</span><span class="font-semibold text-stone-800">CNY 150-200</span></div>
+          <div class="flex justify-between py-1.5 border-b border-stone-100"><span class="text-stone-600">Train Dunhuang &rarr; Jiuquan</span><span class="font-semibold text-stone-800">CNY 150-200</span></div>
           <div class="flex justify-between py-1.5"><span class="text-stone-500 text-xs">Per person, full visit estimate</span><span class="font-semibold text-mogao-700">CNY 500-1200</span></div>
         </div>
         <p class="text-xs text-stone-500 mt-3">Prices verified at attraction gates, July 2026.</p>
-        <a href="/tickets/" class="inline-flex items-center gap-1 mt-3 text-xs font-medium text-amber-700 hover:text-amber-800">Full ticket breakdown rarr</a>
+        <a href="/tickets/" class="inline-flex items-center gap-1 mt-3 text-xs font-medium text-amber-700 hover:text-amber-800">Full ticket breakdown &rarr;</a>
         </div>
       </div>
       <div class="rounded-2xl border border-stone-200 bg-white overflow-hidden">
@@ -178,7 +238,7 @@ const orgSchema = {
           <li class="flex gap-2"><span class="text-blue-500 shrink-0 mt-0.5">&#128663;</span> Local: <strong class="text-stone-700">Didi</strong>. Centers walkable.</li>
           <li class="flex gap-2"><span class="text-blue-500 shrink-0 mt-0.5">&#128161;</span> <span class="text-stone-500">Tip: fly to Lanzhou, train to Dunhuang &mdash; saves CNY 500-800.</span></li>
         </ul>
-        <a href="/how-to-get-there/" class="inline-flex items-center gap-1 mt-4 text-xs font-medium text-blue-600 hover:text-blue-700">Full transport guide rarr</a>
+        <a href="/how-to-get-there/" class="inline-flex items-center gap-1 mt-4 text-xs font-medium text-blue-600 hover:text-blue-700">Full transport guide &rarr;</a>
         </div>
       </div>
     </div>
@@ -207,7 +267,7 @@ const orgSchema = {
           </div>
         </div>
       </div>
-      <p class="mt-4 text-center text-sm text-stone-500"><a href="/best-time-to-visit/" class="u-link font-medium">Month-by-month breakdown &amp; weather data rarr</a></p>
+      <p class="mt-4 text-center text-sm text-stone-500"><a href="/best-time-to-visit/" class="u-link font-medium">Month-by-month breakdown &amp; weather data &rarr;</a></p>
     </div>
       </div>
       <div class="lg:sticky lg:top-24">
@@ -232,7 +292,7 @@ const orgSchema = {
         <div class="bg-mogao-50/40 p-6 md:p-8 text-center"><p class="text-lg font-bold text-mogao-600">Dunhuang</p><div class="mt-5 rounded-xl overflow-hidden border border-mogao-100"><img src="/images/mogao-caves.webp?v=2" alt="Mogao Caves grotto entrance, the signature attraction of Dunhuang" width="400" height="400" loading="lazy" decoding="async" class="w-full aspect-square object-cover"  srcset="/images/responsive/mogao-caves-480.webp?v=2 480w, /images/responsive/mogao-caves-640.webp?v=2 640w, /images/responsive/mogao-caves-768.webp?v=2 768w" sizes="(max-width: 640px) calc(100vw - 5rem), 45vw" /></div><p class="mt-5 text-stone-700">Ancient oasis, backpacker hub</p><p class="mt-5 u-strong">Mogao Caves</p><p class="mt-5 text-stone-700">2-3 days</p><p class="mt-5 text-stone-700">CNY 400-1200/day</p><p class="mt-5 text-stone-700">History, art, desert, food</p></div>
         <div class="bg-stone-200/40 p-6 md:p-8 text-center"><p class="text-lg font-bold text-stone-700">Jiuquan</p><div class="mt-5 rounded-xl overflow-hidden border border-stone-200"><img src="/images/jiayuguan-fort.webp?v=2" alt="Jiayuguan Fort tower, the signature attraction of Jiuquan" width="400" height="400" loading="lazy" decoding="async" class="w-full aspect-square object-cover"  srcset="/images/responsive/jiayuguan-fort-480.webp?v=2 480w, /images/responsive/jiayuguan-fort-640.webp?v=2 640w, /images/responsive/jiayuguan-fort-768.webp?v=2 768w" sizes="(max-width: 640px) calc(100vw - 5rem), 45vw" /></div><p class="mt-5 text-stone-700">Frontier fortress, quieter</p><p class="mt-5 u-strong">Jiayuguan Fort</p><p class="mt-5 text-stone-700">1-2 days</p><p class="mt-5 text-stone-700">CNY 300-800/day</p><p class="mt-5 text-stone-700">Great Wall, space, solitude</p></div>
       </div>
-      <p class="mt-8 text-center"><a href="/dunhuang-vs-jiuquan/" class="text-mogao-600 font-semibold text-sm hover:text-mogao-700 transition-colors">Read the full comparison guide rarr</a></p>
+      <p class="mt-8 text-center"><a href="/dunhuang-vs-jiuquan/" class="text-mogao-600 font-semibold text-sm hover:text-mogao-700 transition-colors">Read the full comparison guide &rarr;</a></p>
     </div>
   </section>
 
@@ -588,12 +648,18 @@ const orgSchema = {
       <div class="text-center mb-12"><SectionHeader headingLevel="h2" eyebrow="FAQ" title="Questions Every Traveler Asks" subtitle="Straight answers, from the road." center /></div>
       <div class="grid lg:grid-cols-[1fr_360px] gap-10 items-start max-w-5xl mx-auto">
       <div class="mx-auto max-w-2xl divide-y divide-stone-200">
-        <details class="group py-5"><summary class="flex cursor-pointer items-center justify-between gap-4 font-medium text-stone-800 hover:text-mogao-700 transition-colors list-none">How many days do I need?<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-stone-500 group-open:rotate-45 transition-transform" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg></summary><p class="mt-3 text-sm text-stone-600 leading-relaxed pr-8">Minimum 4 days: 2-3 in Dunhuang, 1-2 in Jiuquan. With 7, add Zhangye. <a href="/itinerary/" class="u-link">Itineraries</a>.</p></details>
-        <details class="group py-5"><summary class="flex cursor-pointer items-center justify-between gap-4 font-medium text-stone-800 hover:text-mogao-700 transition-colors list-none">Can I visit Mogao Caves without a guide?<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-stone-500 group-open:rotate-45 transition-transform" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg></summary><p class="mt-3 text-sm text-stone-600 leading-relaxed pr-8">No &mdash; everyone joins a guided group. A-ticket: 8 caves over ~75 minutes. Photography banned inside. Book 1-4 weeks ahead in peak season. <a href="/mogao-caves/" class="u-link">Guide</a>.</p></details>
-        <details class="group py-5"><summary class="flex cursor-pointer items-center justify-between gap-4 font-medium text-stone-800 hover:text-mogao-700 transition-colors list-none">Can I use Google Maps in China?<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-stone-500 group-open:rotate-45 transition-transform" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg></summary><p class="mt-3 text-sm text-stone-600 leading-relaxed pr-8">It has a location offset &mdash; unreliable. Use Apple Maps, Baidu, or offline Maps.me. VPN first.</p></details>
-        <details class="group py-5"><summary class="flex cursor-pointer items-center justify-between gap-4 font-medium text-stone-800 hover:text-mogao-700 transition-colors list-none">Is Gansu safe for solo travelers?<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-stone-500 group-open:rotate-45 transition-transform" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg></summary><p class="mt-3 text-sm text-stone-600 leading-relaxed pr-8">Very safe. Real risks are practical: summer heat (35-40C+), language outside hotels, marked paths at Yadan.</p></details>
-        <details class="group py-5"><summary class="flex cursor-pointer items-center justify-between gap-4 font-medium text-stone-800 hover:text-mogao-700 transition-colors list-none">Which is better: Dunhuang or Jiuquan?<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-stone-500 group-open:rotate-45 transition-transform" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg></summary><p class="mt-3 text-sm text-stone-600 leading-relaxed pr-8">Dunhuang, if you can only pick one. Jiuquan for history and space. With 5+ days, do both. <a href="/dunhuang-vs-jiuquan/" class="u-link">Compare</a>.</p></details>
-        <details class="group py-5"><summary class="flex cursor-pointer items-center justify-between gap-4 font-medium text-stone-800 hover:text-mogao-700 transition-colors list-none">How much should I budget per day?<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-stone-500 group-open:rotate-45 transition-transform" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg></summary><p class="mt-3 text-sm text-stone-600 leading-relaxed pr-8">CNY 400-600 budget (hostel, street food, B-tickets); CNY 600-1000 mid-range; CNY 1000-2000 comfort.</p></details>
+        {homeFaqs.map((f) => (
+          <details class="group py-5">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 font-medium text-stone-800 hover:text-mogao-700 transition-colors list-none">
+              {f.q}
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-stone-500 group-open:rotate-45 transition-transform" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg>
+            </summary>
+            <p class="mt-3 text-sm text-stone-600 leading-relaxed pr-8">
+              {f.a}
+              {f.link && <> <a href={f.link} class="u-link">{f.linkLabel}</a></>}
+            </p>
+          </details>
+        ))}
       </div>
       <div class="hidden lg:block space-y-4 lg:sticky lg:top-24">
         <figure class="rounded-2xl overflow-hidden border border-stone-200 shadow-sm"><img src="/images/faq.webp?v=2" alt="Traveler reading a guidebook beside the Singing Sand Dunes in Dunhuang" width="800" height="533" loading="lazy" decoding="async" class="w-full aspect-[4/3] object-cover"  srcset="/images/responsive/faq-480.webp?v=2 480w, /images/responsive/faq-768.webp?v=2 768w, /images/responsive/faq-1024.webp?v=2 1024w" sizes="(max-width: 768px) 100vw, 896px" /><figcaption class="py-3 px-4 bg-white text-xs text-stone-500">Quick answers, straight from the Gobi</figcaption></figure>

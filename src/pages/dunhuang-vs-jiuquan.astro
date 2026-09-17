@@ -1,11 +1,37 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const faqs = [
+  {
+    q: "Is Jiuquan worth visiting?",
+    a: "Yes, if you care about the Great Wall or China's space programme. Jiuquan and neighbouring Jiayuguan hold the western terminus of the Ming Great Wall, the Overhanging Great Wall, the Wei-Jin tomb murals and the Satellite Launch Center. If none of those interest you, you can skip it and stay in Dunhuang.",
+  },
+  {
+    q: "How far is Jiuquan from Dunhuang?",
+    a: "About 400 km, or 2.5 hours on the high-speed train (CNY 150-200, ten or more departures daily). By road it is 4-5 hours. Jiayuguan Fort is a further 20 km from Jiuquan city, which is why most travelers base themselves in Jiayuguan instead.",
+  },
+  {
+    q: "Can I visit both Dunhuang and Jiuquan in four days?",
+    a: "Yes. Three days in Dunhuang (Mogao Caves, Crescent Lake, and a west line day trip) then the morning train to Jiayuguan, arriving with a full afternoon for the fort. Four days is tight but workable; five is comfortable.",
+  },
+  {
+    q: "Which city is cheaper?",
+    a: "Jiuquan and Jiayuguan are slightly cheaper for hotels and food, but the difference is small — roughly CNY 300-800 per day against CNY 400-1200 in Dunhuang. Dunhuang's higher prices come from demand and its concentration of attractions.",
+  },
+];
 ---
 
 <BaseLayout
   title="Dunhuang vs Jiuquan: Which Silk Road City to Visit? (2026)"
   description="Honest comparison of Dunhuang and Jiuquan: attractions, costs, food, accessibility, best time to visit, and how to split days between both Silk Road cities."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((f) => ({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } }))
+    })}></script>
+  </Fragment>
 
   <article class="pt-24 pb-24">
     <div class="u-prose-wrap">
@@ -17,6 +43,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           An honest, practical comparison for Silk Road travelers. Which city deserves more of your time? How should you split your itinerary? Answered with real traveler priorities.
         </p>
       </header>
+
+      <!-- Lead answer — direct response to search intent, rendered without reveal -->
+      <p class="text-lg text-stone-700 leading-relaxed mb-12">
+        <strong class="text-stone-900">Pick Dunhuang if you can only visit one city; add Jiuquan if you have 5 or more days.</strong> Dunhuang holds the headline sights &mdash; Mogao Caves and Crescent Lake &mdash; while Jiuquan pairs Jiayuguan Fort, the western terminus of the Ming Great Wall, with China's space history. The high-speed train between them takes only 2.5 hours, so visiting both costs you half a day of travel.
+      </p>
 
       <!-- Full Comparison Table -->
       <section class="mb-16">
@@ -119,6 +150,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </div>
+
+      <!-- FAQ — visible content backing the FAQPage schema above -->
+      <section class="mb-16">
+        <h2 class="u-h2">Frequently Asked Questions</h2>
+        <div class="space-y-3">
+          {faqs.map((f) => (
+            <details class="group bg-white rounded-2xl border border-stone-200">
+              <summary class="flex items-center justify-between px-6 py-5 cursor-pointer text-left u-strong list-none">
+                {f.q}
+                <svg class="w-5 h-5 shrink-0 text-stone-500 group-open:rotate-180 transition-transform" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="px-6 pb-5 text-stone-600 text-sm leading-relaxed">{f.a}</div>
+            </details>
+          ))}
+        </div>
+      </section>
     </div>      <section class="mt-16 p-6 bg-stone-50 rounded-2xl border border-stone-200 reveal">
         <h2 class="text-lg font-display u-strong mb-3">Sources &amp; References</h2>
         <ul class="space-y-2 text-sm text-stone-600">

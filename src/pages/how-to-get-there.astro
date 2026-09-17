@@ -2,7 +2,23 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 
-const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"How to Get to Dunhuang & Jiuquan (2026)","description":"Complete transportation guide: flights, high-speed trains, buses, private cars. Routes from Lanzhou, Xi'an, Beijing, and within Gansu Province.","datePublished":"2026-07-01","dateModified":"2026-08-07"}]};
+const faqs = [
+  { q: "Is there a high-speed train to Dunhuang?", a: "Yes. Dunhuang has a high-speed rail station on the Lanzhou-Xinjiang line, with direct services from Lanzhou (about 6-8 hours), Xining, Zhangye and Jiayuguan (about 2.5 hours). There is no high-speed line from Beijing or Shanghai yet — from those cities you either fly or take an overnight sleeper." },
+  { q: "How far is Dunhuang railway station from the city centre?", a: "About 10 km, roughly 20 minutes and CNY 25-30 by taxi. City bus No. 3 also runs the route for CNY 2. Most hotels are within a short walk of the night market, so the total journey is quick." },
+  { q: "Should I fly or take the train to Dunhuang?", a: "Fly if you are coming from Beijing, Shanghai, Guangzhou or Chengdu — the train takes 20+ hours. Take the train if you are already in Gansu or Qinghai; the Hexi Corridor scenery between Zhangye and Dunhuang is part of the experience, and the fares are far lower." },
+  { q: "Do I need to book train tickets in advance?", a: "Yes, especially from May to October. Chinese rail tickets open for sale roughly 15 days before departure and popular Dunhuang services sell out quickly. Book through Trip.com or Ctrip with your passport number — your passport is your ticket at the gate." },
+];
+
+const stationInfo = [
+  { label: "Dunhuang Railway Station", value: "10 km from city centre" },
+  { label: "Taxi to city centre", value: "CNY 25-30, ~20 min" },
+  { label: "City bus to centre", value: "Bus No. 3, CNY 2" },
+  { label: "Dunhuang Airport (DNH)", value: "13 km from city centre" },
+  { label: "Airport shuttle", value: "CNY 10" },
+  { label: "Airport taxi", value: "CNY 30-40" },
+];
+
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"How to Get to Dunhuang by Train & Plane (2026 Gansu Guide)","description":"Every way to reach Dunhuang and Jiuquan: flights, high-speed trains, buses, private cars. Routes from Lanzhou, Xi'an, Beijing, and between the two cities.","datePublished":"2026-07-01","dateModified":"2026-09-16"},{"@type":"FAQPage","mainEntity":faqs.map((f)=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))}]};
 
 const dunhuangOptions = [
   { method: "By Air", duration: "2-4 hours from major cities", cost: "CNY 500-2000", steps: ["Dunhuang Mogao International Airport (DNH) has domestic flights from Beijing, Xi'an, Lanzhou, Chengdu, and Urumqi", "Most international travelers fly into Lanzhou (LHW) and connect by train (6-8 hours)", "Airport is 13 km from Dunhuang city center. Airport shuttle bus CNY 10, taxi CNY 30-40"] },
@@ -18,13 +34,19 @@ const dunhuangToJiuquan = [
 ];
 ---
 
-<BaseLayout title="How to Get to Dunhuang &amp; Jiuquan 2026 | Complete Transport Guide" description="Every way to reach Dunhuang and Jiuquan: flights, high-speed trains, buses, private cars. Routes from Lanzhou, Xi'an, Beijing, and between the two cities." author="Dunhuang &amp; Jiuquan Guide Team" datePublished="2026-07-01" dateModified="2026-08-07">
+<BaseLayout title="How to Get to Dunhuang by Train &amp; Plane (2026 Gansu Guide)" description="Every way to reach Dunhuang: flights, high-speed trains, buses and private cars, plus station and airport transfers. Routes from Lanzhou, Xining and Beijing." author="Dunhuang &amp; Jiuquan Guide Team" datePublished="2026-07-01" dateModified="2026-09-16">
 <Fragment slot="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></Fragment>
 
 <div class="u-prose-wrap pb-20 md:pb-28">
   <header class="pt-12 md:pt-20 mb-16 reveal">
     <SectionHeader eyebrow="Transportation" title="How to Get to Dunhuang &amp; Jiuquan" subtitle="Every way to reach the Silk Road: flights, trains, buses, and driving routes. Pros and cons for each option, with current prices." />
   </header>
+
+  <!-- Lead answer — direct response to "how to get to dunhuang" intent, rendered without reveal -->
+  <p class="text-lg text-stone-700 leading-relaxed mb-10">
+    The practical answer: <strong class="text-stone-900">fly into Dunhuang (DNH) if you are coming from Beijing, Shanghai or Chengdu, and take the high-speed train if you are already in Gansu or Qinghai</strong>. Dunhuang's rail station sits on the Lanzhou-Xinjiang high-speed line, 6-8 hours from Lanzhou and 2.5 hours from Jiayuguan. From the station to the city centre is 20 minutes and about CNY 30.
+  </p>
+
       <!-- Placeholder image - replace with real photography -->
       <div class="u-figure">
         <img src="/images/how-to-get-there.webp?v=2" alt="How to Get to Dunhuang and Jiuquan" class="u-img" width="1200" height="600" loading="lazy" />
@@ -69,6 +91,33 @@ const dunhuangToJiuquan = [
       </table>
     </div>
     <p class="mt-3 text-xs text-stone-500">The high-speed train is the clear winner for most travelers. Book on Trip.com, Ctrip, or at the station.</p>
+  </section>
+
+  <section class="mb-16 reveal">
+    <h2 class="text-2xl font-display u-strong mb-6">Dunhuang Railway Station &amp; Airport: Practical Info</h2>
+    <p class="text-stone-600 leading-relaxed mb-5">Both the rail station and the airport sit outside the city. Neither is walkable, but transfers are cheap and quick, and the city centre itself is compact.</p>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+      {stationInfo.map(({ label, value }) => (
+        <div class="u-stat"><p class="u-eyebrow">{label}</p><p class="mt-1 u-strong text-sm">{value}</p></div>
+      ))}
+    </div>
+    <p class="mt-4 text-xs text-stone-500">Your passport is your train ticket — there is no separate paper ticket to collect. Allow 30 minutes before departure for security and passport checks.</p>
+  </section>
+
+  <!-- FAQ — visible content backing the FAQPage schema above -->
+  <section class="mb-16">
+    <h2 class="text-2xl font-display u-strong mb-6">Frequently Asked Questions</h2>
+    <div class="space-y-3">
+      {faqs.map((f) => (
+        <details class="group bg-white rounded-2xl border border-stone-200">
+          <summary class="flex items-center justify-between px-6 py-5 cursor-pointer text-left u-strong list-none">
+            {f.q}
+            <svg class="w-5 h-5 shrink-0 text-stone-500 group-open:rotate-180 transition-transform" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="px-6 pb-5 text-stone-600 text-sm leading-relaxed">{f.a}</div>
+        </details>
+      ))}
+    </div>
   </section>
 
   <div class="u-cta-card reveal">

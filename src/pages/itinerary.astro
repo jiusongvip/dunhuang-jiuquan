@@ -2,7 +2,33 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 
-const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Dunhuang & Jiuquan Itineraries: 3, 5 & 7 Day Plans (2026)","description":"Flexible Silk Road itineraries with field-tested timing and budgets: 3-day express, classic 5-day, and in-depth 7-day plans.","datePublished":"2026-07-15","dateModified":"2026-08-07"}]};
+// Single source of truth for this page's FAQ: feeds both the FAQPage JSON-LD and
+// the visible accordion. Every answer restates facts already given in the
+// day-by-day plans above, so the marked-up text and the visible text stay identical.
+const faqs = [
+  {
+    q: "How many days do I need for Dunhuang and Jiuquan?",
+    a: "Three days covers Dunhuang alone. Five days is the classic route and the one we recommend to first-time visitors: it adds Jiayuguan Fort and the western end of the Great Wall. Seven days extends the corridor to Zhangye and the Rainbow Mountains.",
+  },
+  {
+    q: "How much does a Dunhuang and Jiuquan trip cost?",
+    a: "Roughly CNY 800-1200 per person for the 3-day plan, CNY 1500-2200 for the classic 5-day route, and CNY 2200-3200 for the 7-day version. That covers accommodation, meals, attraction tickets and transport between cities, but not your flight or train into Dunhuang.",
+  },
+  {
+    q: "Do I need to hire a private driver in Dunhuang?",
+    a: "For the west line, yes. Yumen Pass and Yadan Geopark have no public transport, so you need a private driver at around CNY 600-800 per day - split the cost with other travellers if you can. Pack lunch and water, because there are no food options en route.",
+  },
+  {
+    q: "Can I visit Dunhuang and Jiuquan without a car?",
+    a: "Yes for the cities themselves. The high-speed train between Dunhuang and Jiuquan takes 2.5 hours and costs CNY 150-200, and both city centres are walkable or served by cheap taxis. The only stretch that genuinely requires a car is the Dunhuang west line.",
+  },
+  {
+    q: "Should I book Mogao Caves before I arrive?",
+    a: "Yes, and as early as you can. A-tickets sell out 2-4 weeks ahead in July, August and around Golden Week in early October. Every plan here assumes an 8 AM start at the caves, which means an early slot at the Digital Exhibition Center for the two films before the guided cave tour.",
+  },
+];
+
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Dunhuang & Jiuquan Itineraries: 3, 5 & 7 Day Plans (2026)","description":"Flexible Silk Road itineraries with field-tested timing and budgets: 3-day express, classic 5-day, and in-depth 7-day plans.","datePublished":"2026-07-15","dateModified":"2026-09-17"},{"@type":"FAQPage","mainEntity":faqs.map((f)=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))}]};
 
 const day3Schedule = [
   {time:"8:00 AM",act:"Mogao Caves A-ticket tour. Arrive at Digital Exhibition Center 30 min early for the two films. The dome theater is impressive."},
@@ -56,6 +82,11 @@ const itineraries = [
         <img src="/images/itinerary.webp?v=2" alt="Silk Road Itinerary Plans" class="u-img" width="1200" height="600" loading="lazy" />
       </div>
 
+  <!-- Lead answer — direct response to search intent, rendered without reveal -->
+  <p class="text-lg text-stone-700 leading-relaxed mb-12">
+    <strong class="text-stone-900">Five days is the classic Dunhuang and Jiuquan route.</strong> Three days covers Dunhuang alone, five adds Jiayuguan Fort and the western end of the Great Wall, and seven extends the corridor to Zhangye's Rainbow Mountains. Budget <strong class="text-stone-900">CNY 800-1200</strong> (3 days), <strong class="text-stone-900">CNY 1500-2200</strong> (5 days) or <strong class="text-stone-900">CNY 2200-3200</strong> (7 days) per person. Every plan below assumes a 7-8 AM start, and the one fixed constraint is Mogao Caves &mdash; book the A-ticket ahead.
+  </p>
+
   <section class="mb-20 reveal">
     <div class="flex items-center gap-3 mb-2"><span class="text-xs font-semibold text-mogao-600 uppercase tracking-wide bg-mogao-50 rounded-full px-3 py-1">3 Days</span><span class="text-xs text-stone-500">Dunhuang focus</span></div>
     <h2 class="text-2xl font-display u-strong">Express: The Silk Road Essentials</h2>
@@ -90,6 +121,24 @@ const itineraries = [
       </div>
     </section>
   ))}
+
+  <!-- FAQ — visible content backing the FAQPage schema above.
+       Deliberately not using .reveal: this is SEO-critical content and
+       .reveal starts at opacity:0 on desktop. -->
+  <section class="mb-16">
+    <h2 class="u-h2">Itinerary Questions Travelers Ask</h2>
+    <div class="space-y-3">
+      {faqs.map((f) => (
+        <details class="group bg-white rounded-2xl border border-stone-200">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer text-left u-strong list-none">
+            {f.q}
+            <svg class="w-5 h-5 shrink-0 text-stone-500 group-open:rotate-180 transition-transform" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="px-6 pb-5 text-stone-600 text-sm leading-relaxed">{f.a}</div>
+        </details>
+      ))}
+    </div>
+  </section>
 
   <div class="pt-12 border-t border-stone-200 text-center reveal">
     <p class="text-stone-500 text-sm mb-6">Want a custom plan? Use our interactive trip planner on the homepage.</p>

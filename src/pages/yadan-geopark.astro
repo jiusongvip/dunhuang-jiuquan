@@ -2,11 +2,20 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import AttractionSchema from "../components/AttractionSchema.astro";
+
+const faqs = [
+  { q: "How much does Yadan Geopark cost?", a: "CNY 120 admission plus a shuttle bus fee of CNY 70. The park is only reachable by private car, so allow CNY 600-800 for a full-day west line driver covering Yadan, Yumen Pass and the Han Great Wall." },
+  { q: "Is Yadan Geopark worth visiting?", a: "Yes, if you go at sunset. Midday is flat and washed out; the last hour of light turns the formations deep orange and is what makes the 180 km drive worthwhile. Ask your driver to stay until after the sun goes down." },
+  { q: "Can I visit Yadan Geopark by public transport?", a: "No. There is no public transport to the park. Hire a private driver in Dunhuang for the full-day west line trip, combining Yumen Pass and the Han Great Wall with Yadan." },
+  { q: "When is sunset at Yadan Geopark?", a: "Roughly 20:30-21:00 in summer and 18:30-19:30 in autumn. Leave Dunhuang by mid-afternoon to arrive with an hour of light — the drive is about two hours each way." },
+  { q: "How do I hire a driver for the Yadan west line?", a: "Two reliable options: ask your hotel to arrange a car and driver (usually CNY 600-800 for the day, shared between up to four people), or use Didi to book a round trip. Agree the price and the waiting time in writing before you set off." },
+  { q: "Can I walk among the rock formations?", a: "Only within marked areas. Yadan is an active geological site and stepping off the paths damages formations that took millennia to carve. The shuttle bus stops at four viewing points, and the best photographs come from those platforms anyway." },
+];
 ---
 
 <BaseLayout
-  title="Yadan National Geopark Guide 2026 | Dunhuang Ghost City"
-  description="Guide to Yadan National Geopark, Dunhuang: tickets (CNY 120), how to get there, why sunset is essential, and how to combine the trip with Yumen Pass."
+  title="Yadan National Geopark: Ghost City &amp; Sunset, Dunhuang 2026"
+  description="Why Yadan's sunset is the only time to go, how to hire a driver (CNY 600-800), the ticket price, and how to combine it with Yumen Pass."
   ogImage="/images/yadan-geopark.webp?v=2"
   ogImageWidth="1254"
   ogImageHeight="1254"
@@ -28,11 +37,7 @@ import AttractionSchema from "../components/AttractionSchema.astro";
       country="CN"
       ticketPrice="120"
       priceCurrency="CNY"
-      faqs={[
-        { q: "How much does Yadan Geopark cost?", a: "CNY 120 admission plus a shuttle bus fee of CNY 70. The park is only reachable by private car — allow CNY 600-800 for a full-day west line driver." },
-        { q: "Is Yadan Geopark worth the long drive?", a: "Yes, if you time it right. The drive is 180 km each way, but the surreal wind-carved formations at sunset are among the most dramatic landscapes on the Silk Road. Ask your driver to stay until after sunset." },
-        { q: "Can I visit Yadan Geopark by public transport?", a: "No. There is no public transport to the park. Hire a private driver in Dunhuang for the full-day west line trip, combining Yumen Pass and Han Great Wall with Yadan." },
-      ]}
+      faqs={faqs}
     />
   </Fragment>
 
@@ -59,6 +64,11 @@ import AttractionSchema from "../components/AttractionSchema.astro";
           sizes="100vw"
         />
       </div>
+
+      <!-- Lead answer — direct response to search intent, rendered without reveal -->
+      <p class="text-lg text-stone-700 leading-relaxed mb-12">
+        Yadan National Geopark (雅丹国家地质公园) is a field of <strong class="text-stone-900">wind-carved rock formations 180 km northwest of Dunhuang</strong>, known locally as Ghost City for the howling wind that funnels between them. Admission is <strong class="text-stone-900">CNY 120 plus CNY 70 shuttle</strong>, there is no public transport, and the formations only come alive in the <strong class="text-stone-900">last hour before sunset</strong> — plan the whole day around that.
+      </p>
 
       <!-- Quick Facts -->
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-16">
@@ -255,6 +265,22 @@ import AttractionSchema from "../components/AttractionSchema.astro";
           <a href="/tickets/" class="u-btn-solid3">
             All Ticket Prices
           </a>
+        </div>
+      </div>
+
+      <!-- FAQ — visible content backing the FAQPage schema above -->
+      <div class="mt-14">
+        <h2 class="text-2xl font-bold tracking-tight text-stone-900 mb-6">Frequently Asked Questions</h2>
+        <div class="space-y-3">
+          {faqs.map((f) => (
+            <details class="group bg-white rounded-2xl border border-stone-200">
+              <summary class="flex items-center justify-between px-6 py-5 cursor-pointer text-left u-strong list-none">
+                {f.q}
+                <svg class="w-5 h-5 shrink-0 text-stone-500 group-open:rotate-180 transition-transform" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="px-6 pb-5 text-stone-600 text-sm leading-relaxed">{f.a}</div>
+            </details>
+          ))}
         </div>
       </div>
     </div>      <section class="mt-16 p-6 bg-stone-50 rounded-2xl border border-stone-200 reveal">

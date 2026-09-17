@@ -2,7 +2,15 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 
-const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Dunhuang & Jiuquan Complete Travel Guide (2026)","description":"The ultimate Silk Road guide: Mogao Caves tickets, Jiayuguan Fort, transport guide, itineraries, budget breakdown, food, and practical advice for foreign travelers.","datePublished":"2026-06-01","dateModified":"2026-08-07"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many days for Dunhuang and Jiuquan?","acceptedAnswer":{"@type":"Answer","text":"Minimum 4 days: 2-3 in Dunhuang, 1-2 in Jiuquan. With 7 days add Zhangye."}},{"@type":"Question","name":"Dunhuang or Jiuquan?","acceptedAnswer":{"@type":"Answer","text":"Dunhuang for first-timers. Jiuquan for history and space enthusiasts."}}]}]};
+const faqs = [
+  { q: "How many days do I need for Dunhuang and Jiuquan?", a: "Four days minimum: two for Dunhuang (Mogao Caves, Crescent Lake) and two for Jiuquan and Jiayuguan (Jiayuguan Fort, the Overhanging Great Wall). Five to seven days lets you add Yadan Geopark and Yumen Pass." },
+  { q: "Should I visit Dunhuang or Jiuquan first?", a: "Visit Dunhuang first. Flights and high-speed trains from major Chinese cities land there, and moving east to Jiayuguan and Jiuquan follows the historic Silk Road direction." },
+  { q: "Is Dunhuang and Jiuquan easy for foreign travelers?", a: "Reasonably. Major sights have English signage and accept passport-linked bookings. Beyond the sights, English is limited — download a translation app and save your hotel address in Chinese characters before you arrive." },
+  { q: "What is the budget for a Silk Road trip in Gansu?", a: "Budget from CNY 500 per day per person: CNY 150-250 for a mid-range hotel, CNY 100-150 for food, CNY 50-100 for local transport, plus attraction tickets. Mogao Caves is the priciest single ticket at CNY 238." },
+  { q: "Do I need a tour guide in Dunhuang?", a: "No, but Mogao Caves requires joining an official guided group — this is included in your ticket. Everywhere else you can explore independently, and taxis or Didi are cheap and easy to use." },
+];
+
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Dunhuang & Jiuquan Trip Planner 2026: Routes, Days, Costs","description":"Plan the Silk Road in Gansu: how many days in Dunhuang vs Jiuquan, route order, costs, transport and foreigner-friendly tips. With 3/5/7-day plans.","datePublished":"2026-06-01","dateModified":"2026-09-16"},{"@type":"FAQPage","mainEntity":faqs.map((f)=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))}]};
 
 const quickFacts = [
   { label: "Province", value: "Gansu" }, { label: "UNESCO Sites", value: "1 (Mogao)" }, { label: "Distance", value: "400 km apart" }, { label: "Train", value: "2.5 hours" },
@@ -42,13 +50,19 @@ const practicalTips = [
 ];
 ---
 
-<BaseLayout title="Dunhuang &amp; Jiuquan Travel Guide 2026 | Complete Planner" description="The complete Silk Road guide: Mogao Caves, Jiayuguan Fort, Crescent Lake, transport, itineraries, budgets, food, and honest tips for foreign travelers." author="Dunhuang &amp; Jiuquan Guide Team" datePublished="2026-06-01" dateModified="2026-08-07">
+<BaseLayout title="Dunhuang &amp; Jiuquan Trip Planner 2026: Routes, Days, Costs" description="Plan the Silk Road in Gansu: how many days in Dunhuang vs Jiuquan, route order, costs, transport and foreigner-friendly tips. With 3/5/7-day plans." author="Dunhuang &amp; Jiuquan Guide Team" datePublished="2026-06-01" dateModified="2026-09-16">
 <Fragment slot="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></Fragment>
 
 <div class="u-prose-wrap pb-20 md:pb-28">
   <header class="pt-12 md:pt-20 mb-16 reveal">
     <SectionHeader eyebrow="Complete Guide" title="Dunhuang &amp; Jiuquan: The Complete Guide" subtitle="Everything you need to plan your Silk Road journey. Attractions, logistics, food, safety, and honest advice from people who have been there." />
   </header>
+
+  <!-- Lead answer — planning intent, rendered without reveal -->
+  <p class="text-lg text-stone-700 leading-relaxed mb-10">
+    Planning a Silk Road trip in Gansu? This planner covers the two decisions that matter most: <strong class="text-stone-900">how to split your days between Dunhuang and Jiuquan</strong>, and <strong class="text-stone-900">which order to visit them in</strong>. Dunhuang is the art stop, Jiuquan and Jiayuguan are the frontier. Read this first, then use the individual city guides for detail.
+  </p>
+
       <!-- Placeholder image - replace with real photography -->
       <div class="u-figure">
         <img src="/images/guide.webp?v=2" alt="Silk Road Travel Planning Guide" class="u-img" width="1200" height="600" loading="lazy" />
@@ -126,6 +140,22 @@ const practicalTips = [
         <p class="font-semibold text-mogao-700 text-sm">🎒 Gobi Desert Packing List</p>
         <p class="text-xs text-stone-500 mt-1">Season-by-season: what to bring and what to skip</p>
       </a>
+    </div>
+  </section>
+
+  <!-- FAQ — visible content backing the FAQPage schema above -->
+  <section class="mb-16">
+    <h2 class="text-2xl font-display u-strong mb-6">Frequently Asked Questions</h2>
+    <div class="space-y-3">
+      {faqs.map((f) => (
+        <details class="group bg-white rounded-2xl border border-stone-200">
+          <summary class="flex items-center justify-between px-6 py-5 cursor-pointer text-left u-strong list-none">
+            {f.q}
+            <svg class="w-5 h-5 shrink-0 text-stone-500 group-open:rotate-180 transition-transform" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="px-6 pb-5 text-stone-600 text-sm leading-relaxed">{f.a}</div>
+        </details>
+      ))}
     </div>
   </section>
 
